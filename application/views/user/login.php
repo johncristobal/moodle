@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>Moodle</title>
+<title>Iniciar sesión</title>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="description" content="Elearn project">
@@ -13,143 +13,50 @@
 <link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/animate.css">
 <link href="plugins/video-js/video-js.css" rel="stylesheet" type="text/css">
 <link rel="stylesheet" type="text/css" href="styles/main_styles.css">
+<link rel="stylesheet" type="text/css" href="styles/login.css">
 <link rel="stylesheet" type="text/css" href="styles/responsive.css">
 </head>
 <body>
 
-<div class="super_container">
+        <div class="super_container">
 
-	<!-- Header -->
-        <?php $this->load->view('header') ?>	
-	
-	<!-- Home -->
+            <!-- Header -->
+            <?php $this->load->view('header') ?>	
 
-	<div class="home">
-		<div class="home_slider_container">
-			
-			<!-- Home Slider -->
-			<div class="owl-carousel owl-theme home_slider">
-				
-				<!-- Slider Item -->
-				<div class="owl-item">
-					<!-- Background image artist https://unsplash.com/@benwhitephotography -->
-					<div class="home_slider_background" style="background-image:url(images/index.jpg)"></div>
-					<div class="home_container">
-						<div class="container">
-							<div class="row">
-								<div class="col">
-									<div class="home_content text-center">
-										<div class="home_logo"><img src="images/home_logo.png" alt=""></div>
-										<div class="home_text">
-											<div class="home_title">Complete Online Courses</div>
-											<div class="home_subtitle">Maecenas rutrum viverra sapien sed fermentum. Morbi tempor odio eget lacus tempus pulvinar. Praesent vel nisl fermentum, gravida augue ut, fermentum ipsum.</div>
-										</div>
-										<div class="home_buttons">
-											<div class="button home_button"><a href="#">learn more<div class="button_arrow"><i class="fa fa-angle-right" aria-hidden="true"></i></div></a></div>
-											<div class="button home_button"><a href="#">see all courses<div class="button_arrow"><i class="fa fa-angle-right" aria-hidden="true"></i></div></a></div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<!-- Slider Item -->
-				<div class="owl-item">
-					<!-- Background image artist https://unsplash.com/@benwhitephotography -->
-					<div class="home_slider_background" style="background-image:url(images/index.jpg)"></div>
-					<div class="home_container">
-						<div class="container">
-							<div class="row">
-								<div class="col">
-									<div class="home_content text-center">
-										<div class="home_logo"><img src="images/home_logo.png" alt=""></div>
-										<div class="home_text">
-											<div class="home_title">Complete Online Courses</div>
-											<div class="home_subtitle">Maecenas rutrum viverra sapien sed fermentum. Morbi tempor odio eget lacus tempus pulvinar. Praesent vel nisl fermentum, gravida augue ut, fermentum ipsum.</div>
-										</div>
-										<div class="home_buttons">
-											<div class="button home_button"><a href="#">learn more<div class="button_arrow"><i class="fa fa-angle-right" aria-hidden="true"></i></div></a></div>
-											<div class="button home_button"><a href="#">see all courses<div class="button_arrow"><i class="fa fa-angle-right" aria-hidden="true"></i></div></a></div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<!-- Slider Item -->
-				<div class="owl-item">
-					<!-- Background image artist https://unsplash.com/@benwhitephotography -->
-					<div class="home_slider_background" style="background-image:url(images/index.jpg)"></div>
-					<div class="home_container">
-						<div class="container">
-							<div class="row">
-								<div class="col">
-									<div class="home_content text-center">
-										<div class="home_logo"><img src="images/home_logo.png" alt=""></div>
-										<div class="home_text">
-											<div class="home_title">Complete Online Courses</div>
-											<div class="home_subtitle">Maecenas rutrum viverra sapien sed fermentum. Morbi tempor odio eget lacus tempus pulvinar. Praesent vel nisl fermentum, gravida augue ut, fermentum ipsum.</div>
-										</div>
-										<div class="home_buttons">
-											<div class="button home_button"><a href="#">learn more<div class="button_arrow"><i class="fa fa-angle-right" aria-hidden="true"></i></div></a></div>
-											<div class="button home_button"><a href="#">see all courses<div class="button_arrow"><i class="fa fa-angle-right" aria-hidden="true"></i></div></a></div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-
-			</div>
-		</div>
+	<!-- Home -->	
 	</div>
-
-	<!-- Featured Course -->
-
-	<div class="featured">
-		<div class="container">
-			<div class="row">
-				<div class="col">
-					<!-- Home Slider Nav -->
-					<div class="home_slider_nav_container d-flex flex-row align-items-start justify-content-between">
-						<div class="home_slider_nav home_slider_prev trans_200"><i class="fa fa-angle-left" aria-hidden="true"></i></div>
-						<div class="home_slider_nav home_slider_next trans_200"><i class="fa fa-angle-right" aria-hidden="true"></i></div>
-					</div>
-					<div class="featured_container">
-						<!--div class="row">
-							<div class="col-lg-6 featured_col">
-								<div class="featured_content">
-									<div class="featured_header d-flex flex-row align-items-center justify-content-start">
-										<div class="featured_tag"><a href="#">Featured</a></div>
-										<div class="featured_price ml-auto">Price: <span>$35</span></div>
-									</div>
-									<div class="featured_title"><h3><a href="courses.html">Online Literature Course</a></h3></div>
-									<div class="featured_text">Maecenas rutrum viverra sapien sed fermentum. Morbi tempor odio eget lacus tempus pulvinar. Donec vehicula efficitur nibh, in pretium nulla interdum non.</div>
-									<div class="featured_footer d-flex align-items-center justify-content-start">
-										<div class="featured_author_image"><img src="images/featured_author.jpg" alt=""></div>
-										<div class="featured_author_name">By <a href="#">James S. Morrison</a></div>
-										<div class="featured_sales ml-auto"><span>352</span> Sales</div>
-									</div>
-								</div>
-							</div>
-							<div class="col-lg-6 featured_col">
-								<!-- Background image artist https://unsplash.com/@jtylernix -->
-								<div class="featured_background" style="background-image:url(images/featured.jpg)"></div>
-							</div>
-						</div-->
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+    
+    	<!-- login module -->
+        
+        <div class="container login">
+            <div class="row justify-content-between">
+                <div class="col-6 offset-3">
+                <div class="section_title text-center"><h2>Inicia sesión</h2></div>
+                <form action="#" id="_form" class="_form">
+                    <div class="form-group">
+                        <label for="mail">Correo electrónico</label>
+                        <input type="email" class="form-control" id="mail" placeholder="usuario@cuenta...">
+                        <!--small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small-->
+                    </div>
+                    <div class="form-group">
+                        <label for="pass">Contraseña</label>
+                        <input type="password" class="form-control" id="pass" placeholder="...">
+                        <!--small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small-->
+                    </div>
+                     <div class="text-center">
+                        <button class="_button">
+                            <span>Ingresar</span>
+                        </button>
+                    </div>
+                    <div class="text-center">                        
+                        <a href=""><span>Olvidé mi contraseña</span></a>
+                    </div>
+                </form>
+                </div>
+            </div>
+        </div>
 
 	<!-- Courses -->
-
 	<div class="courses">
 		<div class="container">
 			<div class="row">
