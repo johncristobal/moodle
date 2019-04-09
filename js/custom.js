@@ -51,6 +51,48 @@ $(document).ready(function()
 	initMilestones();
 	initAccordions();
 
+        /*
+         * onsubmit form
+         */
+        $("#mail").on("change",function(){
+            inicioInput();
+        });
+        $("#mail").on("change",function(){
+            inicioInput();            
+        });
+        
+        $("#login_form").submit(function(e){
+            e.preventDefault();
+            console.log($("#mail").val());
+            console.log($("#pass").val());
+            $.ajax({
+                url: urlApi+"Login/validate",
+                cache: false, 
+                method: "post",
+                data: {correo: $("#mail").val(), pass: $("#pass").val()},
+                success: function(e){
+                    switch(e){
+                        case "1":
+                            window.location.href = urlApi+"admin";
+                        break;
+                        default:
+                            $("#error").removeClass("d-none");
+                            $("#error").addClass("d-block");
+                            //alert(e);
+                        break;
+                    }
+                },
+                error: function(e){
+                    alert(e);
+                }
+            });
+        });
+
+    	function inicioInput()
+	{
+            $("#error").removeClass("d-block");
+            $("#error").addClass("d-none");            
+        }
 	/* 
 
 	2. Set Header

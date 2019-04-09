@@ -1,58 +1,73 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
     <?php 
         $datos = array(
-            "titulo" => 'Iniciar sesión'
+            "titulo" => 'Usuarios'
         );
         $this->load->view('head',$datos);
     ?>
-</head>
 <body>
-
         <div class="super_container">
 
-            <!-- Header -->
-            <?php $this->load->view('header') ?>	
+        <!-- Header -->
+        <?php $this->load->view('admin/header'); ?>
 
 	<!-- Home -->	
 	</div>
     
-    	<!-- login module -->
-        
-        <div class="container login">
+    	<!-- login module -->        
+        <div class="container headerTitle">
             <div class="row justify-content-between">
                 <div class="col-6 offset-3">
-                <div class="section_title text-center"><h2>Inicia sesión</h2></div>
-                <form id="login_form" class="_form">
-                    <div class="form-group">
-                        <label for="mail">Correo electrónico</label>
-                        <input type="email" class="form-control" id="mail" placeholder="usuario@cuenta...">
-                        <!--small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small-->
-                    </div>
-                    <div class="form-group">
-                        <label for="pass">Contraseña</label>
-                        <input type="password" class="form-control" id="pass" placeholder="...">
-                        <!--small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small-->
-                    </div>
-                    <div class="text-center d-none" id="error">
-                        <div class="alert-danger">
-                            Favor de verificar datos...
-                        </div>
-                    </div>                    
-                    <div class="text-center">
-                         <button class="_button" type="submit">
-                            <span>Ingresar</span>
-                        </button>
-                    </div>
-                    <div class="text-center">                        
-                        <a href="#"><span>Olvidé mi contraseña</span></a>
-                    </div>
-                </form>
+                    <div class="section_title text-center"><h2>Usuarios</h2></div>                
                 </div>
             </div>
         </div>
+        
+        <div class="container">
+            <?php 
+                foreach ($usuarios as $value) {
+            ?>
+            <div class="d-none d-sm-block d-sm-block d-md-block d-lg-block d-xl-block">
+            <div class="row">
+                <div class="col-3 col-sm-3">
+                    <div class="news_post_image">
+                        Imagen
+                        <img src="<?= base_url() ?>images/news_1.jpg" alt="https://unsplash.com/@beccatapert">
+                    </div>
+                </div>
+                <div class="col-5 col-sm-5">
+                    <div class="news_post_date"><?= $value["nombre"]; ?></div>
+                </div>
+                <div class="col-2 col-sm-2">
+                    <div class="news_post_title"><a href="news.html"><?= $value["edad"]; ?> años </a></div>
+                </div>
+                <div class="col-2 col-sm-2">
+                    <div class="news_post_author"><a href="#">Asignatura</a></div>
+                </div>
+            </div>
+            </div>
+            <div class="d-block d-sm-none d-sm-none d-md-none d-lg-none d-xl-none">
+            <div class="row">
+                <div class="col-3">
+                    jajaja
+                    <div class="news_post_image">
+                        <img src="<?= base_url() ?>images/news_1.jpg" alt="https://unsplash.com/@beccatapert">
+                    </div>
+                </div>
+                <div class="col-5">
+                    <div class="news_post_date"><?= $value["nombre"]; ?></div>
+                    <div class="news_post_title"><a href="news.html"><?= $value["edad"]; ?> años </a></div>
+                    <div class="news_post_author"><a href="#">Asignatura</a></div>
+                </div>
+            </div>
+            </div>
+            <?php                     
+                }
+            ?> 
 
+        </div>
+        
 	<!-- Courses -->
 	<div class="courses">
 		<div class="container">
@@ -83,7 +98,7 @@
 							<!-- Slider Item -->
 							<div class="owl-item">
 								<div class="course">
-									<div class="course_image"><img src="images/course_1.jpg" alt=""></div>
+									<div class="course_image"><img src="<?= base_url() ?>images/course_1.jpg" alt=""></div>
 									<div class="course_body">
 										<div class="course_header d-flex flex-row align-items-center justify-content-start">
 											<div class="course_tag"><a href="#">Featured</a></div>
@@ -92,7 +107,7 @@
 										<div class="course_title"><h3><a href="courses.html">Online Literature Course</a></h3></div>
 										<div class="course_text">Maecenas rutrum viverra sapien sed ferm entum. Morbi tempor odio eget lacus tempus pulvinar.</div>
 										<div class="course_footer d-flex align-items-center justify-content-start">
-											<div class="course_author_image"><img src="images/featured_author.jpg" alt="https://unsplash.com/@anthonytran"></div>
+											<div class="course_author_image"><img src="<?= base_url() ?>images/featured_author.jpg" alt="https://unsplash.com/@anthonytran"></div>
 											<div class="course_author_name">By <a href="#">James S. Morrison</a></div>
 											<div class="course_sales ml-auto"><span>352</span> Sales</div>
 										</div>
@@ -103,7 +118,7 @@
 							<!-- Slider Item -->
 							<div class="owl-item">
 								<div class="course">
-									<div class="course_image"><img src="images/course_2.jpg" alt=""></div>
+									<div class="course_image"><img src="<?= base_url() ?>images/course_2.jpg" alt=""></div>
 									<div class="course_body">
 										<div class="course_header d-flex flex-row align-items-center justify-content-start">
 											<div class="course_tag"><a href="#">New</a></div>
@@ -112,7 +127,7 @@
 										<div class="course_title"><h3><a href="courses.html">Social Media Course</a></h3></div>
 										<div class="course_text">Maecenas rutrum viverra sapien sed ferm entum. Morbi tempor odio eget lacus tempus pulvinar.</div>
 										<div class="course_footer d-flex align-items-center justify-content-start">
-											<div class="course_author_image"><img src="images/course_author_2.jpg" alt=""></div>
+											<div class="course_author_image"><img src="<?= base_url() ?>images/course_author_2.jpg" alt=""></div>
 											<div class="course_author_name">By <a href="#">Mark Smith</a></div>
 											<div class="course_sales ml-auto"><span>352</span> Sales</div>
 										</div>
@@ -123,7 +138,7 @@
 							<!-- Slider Item -->
 							<div class="owl-item">
 								<div class="course">
-									<div class="course_image"><img src="images/course_3.jpg" alt="https://unsplash.com/@annademy"></div>
+									<div class="course_image"><img src="<?= base_url() ?>images/course_3.jpg" alt="https://unsplash.com/@annademy"></div>
 									<div class="course_body">
 										<div class="course_header d-flex flex-row align-items-center justify-content-start">
 											<div class="course_tag"><a href="#">Featured</a></div>
@@ -132,7 +147,7 @@
 										<div class="course_title"><h3><a href="courses.html">Marketing Course</a></h3></div>
 										<div class="course_text">Maecenas rutrum viverra sapien sed ferm entum. Morbi tempor odio eget lacus tempus pulvinar.</div>
 										<div class="course_footer d-flex align-items-center justify-content-start">
-											<div class="course_author_image"><img src="images/course_author_3.jpg" alt=""></div>
+											<div class="course_author_image"><img src="<?= base_url() ?>images/course_author_3.jpg" alt=""></div>
 											<div class="course_author_name">By <a href="#">Julia Williams</a></div>
 											<div class="course_sales ml-auto"><span>352</span> Sales</div>
 										</div>
@@ -156,14 +171,14 @@
 
 	<div class="milestones">
 		<!-- Background image artis https://unsplash.com/@thepootphotographer -->
-		<div class="parallax_background parallax-window" data-parallax="scroll" data-image-src="images/milestones.jpg" data-speed="0.8"></div>
+		<div class="parallax_background parallax-window" data-parallax="scroll" data-image-src="<?= base_url() ?>images/milestones.jpg" data-speed="0.8"></div>
 		<div class="container">
 			<div class="row milestones_container">
 							
 				<!-- Milestone -->
 				<div class="col-lg-3 milestone_col">
 					<div class="milestone text-center">
-						<div class="milestone_icon"><img src="images/milestone_1.svg" alt=""></div>
+						<div class="milestone_icon"><img src="<?= base_url() ?>images/milestone_1.svg" alt=""></div>
 						<div class="milestone_counter" data-end-value="1548">0</div>
 						<div class="milestone_text">Online Courses</div>
 					</div>
@@ -172,7 +187,7 @@
 				<!-- Milestone -->
 				<div class="col-lg-3 milestone_col">
 					<div class="milestone text-center">
-						<div class="milestone_icon"><img src="images/milestone_2.svg" alt=""></div>
+						<div class="milestone_icon"><img src="<?= base_url() ?>images/milestone_2.svg" alt=""></div>
 						<div class="milestone_counter" data-end-value="7286">0</div>
 						<div class="milestone_text">Students</div>
 					</div>
@@ -181,7 +196,7 @@
 				<!-- Milestone -->
 				<div class="col-lg-3 milestone_col">
 					<div class="milestone text-center">
-						<div class="milestone_icon"><img src="images/milestone_3.svg" alt=""></div>
+						<div class="milestone_icon"><img src="<?= base_url() ?>images/milestone_3.svg" alt=""></div>
 						<div class="milestone_counter" data-end-value="257">0</div>
 						<div class="milestone_text">Teachers</div>
 					</div>
@@ -190,7 +205,7 @@
 				<!-- Milestone -->
 				<div class="col-lg-3 milestone_col">
 					<div class="milestone text-center">
-						<div class="milestone_icon"><img src="images/milestone_4.svg" alt=""></div>
+						<div class="milestone_icon"><img src="<?= base_url() ?>images/milestone_4.svg" alt=""></div>
 						<div class="milestone_counter" data-end-value="39">0</div>
 						<div class="milestone_text">Countries</div>
 					</div>
@@ -339,7 +354,7 @@
 						
 						<!-- News Post -->
 						<div class="news_post d-flex flex-row align-items-start justify-content-start">
-							<div><div class="news_post_image"><img src="images/news_1.jpg" alt="https://unsplash.com/@beccatapert"></div></div>
+							<div><div class="news_post_image"><img src="<?= base_url() ?>images/news_1.jpg" alt="https://unsplash.com/@beccatapert"></div></div>
 							<div class="news_post_body">
 								<div class="news_post_date">April 02, 2018</div>
 								<div class="news_post_title"><a href="news.html">Why Choose online education?</a></div>
@@ -349,7 +364,7 @@
 
 						<!-- News Post -->
 						<div class="news_post d-flex flex-row align-items-start justify-content-start">
-							<div><div class="news_post_image"><img src="images/news_2.jpg" alt="https://unsplash.com/@nbb_photos"></div></div>
+							<div><div class="news_post_image"><img src="<?= base_url() ?>images/news_2.jpg" alt="https://unsplash.com/@nbb_photos"></div></div>
 							<div class="news_post_body">
 								<div class="news_post_date">April 02, 2018</div>
 								<div class="news_post_title"><a href="news.html">Books, Kindle or tablet?</a></div>
@@ -359,7 +374,7 @@
 
 						<!-- News Post -->
 						<div class="news_post d-flex flex-row align-items-start justify-content-start">
-							<div><div class="news_post_image"><img src="images/news_3.jpg" alt="https://unsplash.com/@rawpixel"></div></div>
+							<div><div class="news_post_image"><img src="<?= base_url() ?>images/news_3.jpg" alt="https://unsplash.com/@rawpixel"></div></div>
 							<div class="news_post_body">
 								<div class="news_post_date">April 02, 2018</div>
 								<div class="news_post_title"><a href="news.html">Why Choose online education?</a></div>
@@ -369,7 +384,7 @@
 
 						<!-- News Post -->
 						<div class="news_post d-flex flex-row align-items-start justify-content-start">
-							<div><div class="news_post_image"><img src="images/news_4.jpg" alt="https://unsplash.com/@jtylernix"></div></div>
+							<div><div class="news_post_image"><img src="<?= base_url() ?>images/news_4.jpg" alt="https://unsplash.com/@jtylernix"></div></div>
 							<div class="news_post_body">
 								<div class="news_post_date">April 02, 2018</div>
 								<div class="news_post_title"><a href="news.html">Books, Kindle or tablet?</a></div>
@@ -392,7 +407,7 @@
 					<div class="video_container_outer">
 						<div class="video_container">
 							<!-- Video poster image artist: https://unsplash.com/@annademy -->
-							<video id="vid1" class="video-js vjs-default-skin" controls data-setup='{ "poster": "images/video.jpg", "techOrder": ["youtube"], "sources": [{ "type": "video/youtube", "src": "https://youtu.be/5_MRXyYjHDk"}], "youtube": { "iv_load_policy": 1 } }'>
+							<video id="vid1" class="video-js vjs-default-skin" controls data-setup='{ "poster": "<?= base_url() ?>images/video.jpg", "techOrder": ["youtube"], "sources": [{ "type": "video/youtube", "src": "https://youtu.be/5_MRXyYjHDk"}], "youtube": { "iv_load_policy": 1 } }'>
 							</video>
 						</div>
 					</div>
@@ -427,7 +442,7 @@
 						<div class="logo_container">
 							<a href="#">
 								<div class="logo_content d-flex flex-row align-items-end justify-content-start">
-									<div class="logo_img"><img src="images/logo.png" alt=""></div>
+									<div class="logo_img"><img src="<?= base_url() ?>images/logo.png" alt=""></div>
 									<div class="logo_text">learn</div>
 								</div>
 							</a>
@@ -504,6 +519,5 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
     var urlApi = "<?php echo base_url() ?>";
 </script>
 <?php $this->load->view('scripts'); ?>    
-
 </body>
 </html>

@@ -3,7 +3,7 @@
 <head>
     <?php 
         $datos = array(
-            "titulo" => 'Iniciar sesión'
+            "titulo" => 'Admin'
         );
         $this->load->view('head',$datos);
     ?>
@@ -13,7 +13,7 @@
         <div class="super_container">
 
             <!-- Header -->
-            <?php $this->load->view('header') ?>	
+            <?php $this->load->view('admin/header'); ?>
 
 	<!-- Home -->	
 	</div>
@@ -23,32 +23,7 @@
         <div class="container login">
             <div class="row justify-content-between">
                 <div class="col-6 offset-3">
-                <div class="section_title text-center"><h2>Inicia sesión</h2></div>
-                <form id="login_form" class="_form">
-                    <div class="form-group">
-                        <label for="mail">Correo electrónico</label>
-                        <input type="email" class="form-control" id="mail" placeholder="usuario@cuenta...">
-                        <!--small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small-->
-                    </div>
-                    <div class="form-group">
-                        <label for="pass">Contraseña</label>
-                        <input type="password" class="form-control" id="pass" placeholder="...">
-                        <!--small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small-->
-                    </div>
-                    <div class="text-center d-none" id="error">
-                        <div class="alert-danger">
-                            Favor de verificar datos...
-                        </div>
-                    </div>                    
-                    <div class="text-center">
-                         <button class="_button" type="submit">
-                            <span>Ingresar</span>
-                        </button>
-                    </div>
-                    <div class="text-center">                        
-                        <a href="#"><span>Olvidé mi contraseña</span></a>
-                    </div>
-                </form>
+                    <div class="section_title text-center"><h2>Hola Admin</h2></div>                
                 </div>
             </div>
         </div>
