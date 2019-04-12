@@ -52,7 +52,7 @@ $(document).ready(function()
 	initAccordions();
 
         /*
-         * onsubmit form
+         * onsubmit form login
          */
         $("#mail").on("change",function(){
             inicioInput();
@@ -93,6 +93,15 @@ $(document).ready(function()
             $("#error").removeClass("d-block");
             $("#error").addClass("d-none");            
         }
+        
+        /* 
+	11. get excel file
+	*/
+        $("#excelRead").click(function(e){
+            //alert("jajaja");
+            $("#openDoc").modal('show');
+        });
+       
 	/* 
 
 	2. Set Header

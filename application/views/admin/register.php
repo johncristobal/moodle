@@ -3,7 +3,7 @@
 <head>
     <?php 
         $datos = array(
-            "titulo" => 'Admin'
+            "titulo" => 'Registrar usuario'
         );
         $this->load->view('head',$datos);
     ?>
@@ -19,98 +19,111 @@
         <?php $this->load->view('admin/header'); ?>
 
 	</div>	
-    <div class="container headerTitle">
-    <div class="row justify-content-between">
-        <div class="col-6 offset-3">
-            <div class="section_title text-center"><h2>Registro de Usuario</h2></div>                
-        </div>
-    </div>
+        <div class="container headerTitle">
+            <div class="row justify-content-between">
+                <div class="col-4 col-sm-5 offset-sm-3">
+                    <div class="section_title text-center"><h2>Registro</h2></div>                
+                </div>
+                <div class="col-8 col-sm-4 right">
+                    <div id="excelRead">
+                        <!--div>
+                            <input type="text" class="course_input" placeholder="Course" >
+                        </div-->
+                        <div class="d-none d-sm-block d-sm-block d-md-block d-lg-block d-xl-block">
+                            <button class="course_button_add" id="">                                
+                                <span>Importar excel</span>   
+                            </button>
+                        </div>
+                        <div class="d-block d-sm-none d-sm-none d-md-none d-lg-none d-xl-none">
+                            <button class="course_button_add_res">
+                                <span>Importar excel</span> 
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
 	</div>
 
 	<!-- Contact -->
 
 	<div class="contact">
-
-		<div class="container-fluid">
+		<div class="container">
 			<div class="row row-xl-eq-height">
 				<!-- Contact Content -->
-				<div class="col-xl-6">
-					<div class="contact_content">
-						<!--
-						<div class="row">
-							<div class="col-xl-6">
-								<div class="contact_about">
-									<div class="logo_container">
-										<a href="#">
-											<div class="logo_content d-flex flex-row align-items-end justify-content-start">
-												<div class="logo_img"><img src="images/logo.png" alt=""></div>
-												<div class="logo_text">learn</div>
-											</div>
-										</a>
-									</div>
-									<div class="contact_about_text">
-										<p>Suspendisse tincidunt magna eget massa hendrerit efficitur. Ut euismod pellentesque imperdiet. Cras laoreet gravida lectus, at viverra lorem venenatis in. Aenean id varius quam. Nullam bibendum interdum dui, ac tempor lorem convallis ut. Maecenas rutrum viverra sapien sed fermentum. Morbi tempor odio eget lacus tempus pulvinar.</p>
-									</div>
-								</div>
-							</div>
-							<div class="col-xl-6">
-								<div class="contact_info_container">
-									<div class="contact_info_main_title">Contact Us</div>
-									<div class="contact_info">
-										<div class="contact_info_item">
-											<div class="contact_info_title">Address:</div>
-											<div class="contact_info_line">1481 Creekside Lane Avila Beach, CA 93424</div>
-										</div>
-										<div class="contact_info_item">
-											<div class="contact_info_title">Phone:</div>
-											<div class="contact_info_line">+53 345 7953 32453</div>
-										</div>
-										<div class="contact_info_item">
-											<div class="contact_info_title">Email:</div>
-											<div class="contact_info_line">yourmail@gmail.com</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div> -->
-						<div class="contact_form_container">
-							<form  id="contact_form" action="<?= base_url() ?>admin/nuevoUsuario " method="post"class="contact_form">
-								<div>
-									<div class="row">
-										<div class="col-lg-6 contact_name_col">
-											<label>Nombre</label>
-											<input type="text" class="contact_input" name="nombre" placeholder="Nombre" required="required">
-										</div>
-										<div class="col-lg-6">
-											<label>Fecha de nacimiento</label>
-											<input type="date" class="contact_input" name="fecha_nacim" required="required">
-										</div>
-									</div>
-								</div>
-							    <div>
-							      <label for="tipoUser">Tipo de usuario</label>
-							      <select id="tipoUser" name="tipoUser" class="contact_input" >
-							        <option selected>Alumno</option>
-							        <option>Maestro</option>
-							      </select>
-							    </div>
-								<div>
-									<label>Correo electrónico</label>
-									<input type="email" class="contact_input" name="correo" placeholder="Correo electrónico" required="required">
-								</div>
-								<div>
-									<label>Contraseña</label>
-									<input type="password" class="contact_input" name="password" placeholder="Escriba una contraseña" required="required">
-								</div>
-								<div>
-									<label>Repita la contraseña</label>
-									<input type="password" class="contact_input" name="password2" placeholder="Escriba nuevamente la contraseña">
-								</div>								
-								<button class="contact_button"><span>Crear usuario</span><span class="button_arrow"><i class="fa fa-angle-right" aria-hidden="true"></i></span></button>
-							</form>
-						</div>
-					</div>
-				</div>
+                            <div class="col-12 col-sm-6 offset-sm-3">
+                                <div class="">						
+                                    <form  id="contact_form" action="<?= base_url() ?>admin/nuevoUsuario " method="post" class="_form">
+                                        <div>
+                                            <div class="row">
+                                                <div class="col-12 col-sm-6 contact_name_col">
+                                                    <div class="form-group">
+                                                        <label for="nombre">Nombre</label>
+                                                        <input type="text" class="form-control" name="nombre" id="nombre" placeholder="" required="required">
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-sm-6">
+                                                    <div class="form-group">
+                                                        <!--div class='input-group date' id='datetimepicker1'>
+                                                            <input type='text' class="form-control" />
+                                                            <span class="input-group-addon">
+                                                                <span class="glyphicon glyphicon-calendar"></span>
+                                                            </span>
+                                                        </div-->
+                                                        <label for="fecha_nacim">Fecha de nacimiento</label>
+                                                        <input type="date" class="form-control" name="fecha_nacim" id="fecha_nacim" required="required">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div class="row">
+                                                <div class="col-12 col-sm-6 contact_name_col">
+                                                    <div class="form-group">
+                                                        <label for="tipoUser">Tipo de usuario</label>
+                                                        <select id="tipoUser" name="tipoUser" class="form-control" >
+                                                          <option selected>Alumno</option>
+                                                          <option>Maestro</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                                <div class="col-12 col-sm-6">
+                                                    <div class="form-group">
+                                                    <label for="matricula">Matrícula</label>
+                                                    <input type="text" class="form-control" io="matricula" name="matricula" placeholder="" required="required">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div class="form-group">
+                                                <label for="correo">Correo electrónico</label>
+                                                <input type="email" class="form-control" id="correo" name="correo" placeholder="" required="required">
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div class="form-group">
+                                                <label for="password">Contraseña</label>
+                                                <input type="password" class="form-control" id="password" name="password" placeholder="Escriba una contraseña" required="required">
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <div class="form-group">
+                                                <label for="password2">Repita la contraseña</label>
+                                                <input type="password" class="form-control" id="password2" name="password2" placeholder="Escriba nuevamente la contraseña">
+                                            </div>
+                                        </div>	
+                                        <div class="text-center">
+                                            <button class="_button" type="submit">
+                                               <span>Crear usuario</span>
+                                           </button>
+                                        </div>
+                                        <div>
+                                            <br>
+                                        </div>
+                                    </form>
+
+                                </div>
+                            </div>
 			</div>
 				
 		</div>
@@ -200,6 +213,43 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 			</div>
 		</div>
 	</footer>
+        
+        <div class="modal fade" id="openDoc" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">Importar archivo de excel</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <form method="post" action="<?= base_url()?>admin/readExcelUsuarios" enctype="multipart/form-data"> 
+                  
+                    <div class="modal-body">
+                      <p>Selecciona el documento de excel con la plantilla definida.</p>
+                        <div class="form-group">
+                          <input type="file" class="form-control-file" id="excelFile" name="excelFile">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <input type="submit" class="btn btn-danger" value="Leer excel"/>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    </div>
+                </form>
+
+              </div>
+            </div>
+      </div>
 </div>
+<script>
+    var urlApi = "<?php echo base_url() ?>";
+</script>
+
+<?php $this->load->view('scripts'); ?>  
+<script type="text/javascript">
+    $(function () {
+        $('#datetimepicker1').datetimepicker();
+    });
+</script>
 </body>
 </html>

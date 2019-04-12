@@ -21,6 +21,7 @@ class Adminmodel extends CI_Model {
         $datos = [
             'id' => '',
             'nombre' => $info["nombre"],
+            'matricula' => $info["matricula"],
             'edad' => $edad,
             'estatus' => '1',// Personalizar esto cuando esté la tabla estatus @cmaya
             'fecha_alta' => date("Y-m-d"),
@@ -59,8 +60,20 @@ class Adminmodel extends CI_Model {
             'rol' =>$tipoUser,
             'fecha_alta' => date("Y-m-d")
         ];
+        
         $result=$this->db->insert('usuarios', $datos); 
+        
+        /*
+         * Cambio forma de recuperar id, usando insert_id
+         */       
         if($result){
+            $insertId = $this->db->insert_id();
+            return $insertId;
+        }else{
+            return null;
+        }
+
+        /*if($result){
         $idUser=$this->db->select('id')
             ->from('usuarios')
             ->where('correo',$info["correo"])
@@ -70,6 +83,6 @@ class Adminmodel extends CI_Model {
             }else{
                 return null;
             }
-        }
+        }*/
     }
 }

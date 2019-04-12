@@ -13,6 +13,7 @@ require_once APPPATH."/third_party/PHPExcel.php";
     NOTA 3
  * agregamos requiere para excel
  * puto el que lo lea -> hahahahahahah cabrón! 
+ * Pense que no lo leerias jajaja
  *  */
 
 class Admin extends CI_Controller {
@@ -38,6 +39,7 @@ class Admin extends CI_Controller {
             redirect('/');            
         }
     }
+    
     public function register(){
         if($this->sesionActiva()){
             $data["usuarios"] = $this->Adminmodel->getUsers();
@@ -46,29 +48,34 @@ class Admin extends CI_Controller {
             redirect('/');            
         }
     }
-     public function nuevoUsuario(){
+     
+    public function nuevoUsuario(){
         if($this->sesionActiva()){
             if($this->input->post()){
-              $info=$this->input->post(); 
-              $edad=$this->calcularEdad($info["fecha_nacim"]);
-             //Se crea primero al usuario
-             $result=$this->Adminmodel->crearUsuario($info); 
-             // Se crea al estudiante
-             $result=$this->Adminmodel->crearAlumno($info,$result,$edad);
-             if($result){
-                $this->load->view('admin/admin');
-             }
-        }
+                $info=$this->input->post(); 
+                $edad=$this->calcularEdad($info["fecha_nacim"]);
+                //Se crea primero al usuario
+                $result=$this->Adminmodel->crearUsuario($info); 
+                
+                // Se crea al estudiante
+                $resultAlumno=$this->Adminmodel->crearAlumno($info,$result,$edad);
+                if($resultAlumno){
+                    $data["usuarios"] = $this->Adminmodel->getUsers();
+                    $this->load->view('admin/users',$data);
+                }
+            }
         }else{
             redirect('/');            
         }
     }  
+    
     public function calcularEdad($fecha_nacim){
-    $fechaHoy = new DateTime();
-    $fechaNacim = new DateTime($fecha_nacim);
-    $dif = $fechaHoy->diff($fechaNacim);
-    return $dif->y;
+        $fechaHoy = new DateTime();
+        $fechaNacim = new DateTime($fecha_nacim);
+        $dif = $fechaHoy->diff($fechaNacim);
+        return $dif->y;
     }
+    
     public function sesionActiva(){
         $sesion = $this->session->userdata("session");
         if($sesion === "1"){
@@ -87,30 +94,9 @@ class Admin extends CI_Controller {
         if ($_FILES['excelFile']) {
             $data = $_FILES['excelFile']["tmp_name"];
         }
-        $config['upload_path']          = './uploads/';
-        $config['allowed_types']        = 'xlsx';
-        //$config['max_size']             = 100;
-        //$config['max_width']            = 1024;
-        //$config['max_height']           = 768;
-
-        $this->load->library('upload');
-
-        if ( ! $this->upload->do_upload('excelFile'))
-        {
-            $error = array('error' => $this->upload->display_errors());
-            $this->load->view('upload_form', $error);
-        }
-        else
-        {
-            $fileTemp = $this->upload->data();
-
-            $data = array('upload_data' => $this->upload->data());
-
-            $this->load->view('upload_success', $data);
-        }
-                
-        $data = $this->input->post('excelFile');
-        $file = './libro.xlsx';
+        
+        //$data = $this->input->post('excelFile');
+        $file = $data;//'./libro.xlsx';
  
         //load the excel library
         $this->load->library('excel');
@@ -130,17 +116,41 @@ class Admin extends CI_Controller {
             if ($data_value == ""){
                 break;
             }
+            
             //The header will/should be in row 1 only. of course, this can be modified to suit your need.
             if ($row == 1) {
                 $header[$row][$column] = $data_value;
             } else {
-                $arr_data[$row][$column] = $data_value;
+                $datosUsuario[$column] =  $data_value;   
+                if($column == "F"){
+                    //guardas datos usuaruio y alumno
+                    $info["tipoUser"] = $datosUsuario["C"];
+                    $info["correo"] = $datosUsuario["A"];
+                    $info["password"] = $datosUsuario["B"];
+                    $info["nombre"] = $datosUsuario["D"];
+                    $info["matricula"] = $datosUsuario["E"];
+
+                    $result=$this->Adminmodel->crearUsuario($info); 
+
+                    // Se crea al estudiante
+                    $resultAlumno=$this->Adminmodel->crearAlumno($info,$result,0);
+                    if($resultAlumno){
+                        continue;
+                    }else{
+                        echo "error";
+                    }                
+                }
             }
+            
+            
         }
 
+        //$users["usuarios"] = $this->Adminmodel->getUsers();
+        //$this->load->view('admin/users',$users);
+        redirect('admin/users');
         //send the data in an array format
-        $data['header'] = $header;
-        $data['values'] = $arr_data;
+        //$data['header'] = $header;
+        //$data['values'] = $arr_data;
     }
     
     public function cerrar(){
