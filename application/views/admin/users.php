@@ -50,7 +50,6 @@
             <div class="d-block d-sm-none d-sm-none d-md-none d-lg-none d-xl-none">
             <div class="row">
                 <div class="col-3">
-                    jajaja
                     <div class="news_post_image">
                         <img src="<?= base_url() ?>images/news_1.jpg" alt="https://unsplash.com/@beccatapert">
                     </div>
@@ -67,7 +66,16 @@
             ?> 
 
         </div>
-        
+	<div class="row">
+		<div class="col">
+			<div class="course_search">
+				<form action="<?= base_url() ?>admin/register"" method="post" class="course_search_form d-flex flex-md-row flex-column align-items-start justify-content-between">
+					<div><input type="text" class="course_input" placeholder="Course" ></div>
+					<button class="course_button"><span>Crear nuevo usuario</span><span class="button_arrow"><i class="fa fa-angle-right" aria-hidden="true"></i></span></button>
+				</form>
+			</div>
+		</div>
+	</div>    
 	<!-- Courses -->
 	<div class="courses">
 		<div class="container">

@@ -12,6 +12,7 @@ require_once APPPATH."/third_party/PHPExcel.php";
  
     NOTA 3
  * agregamos requiere para excel
+ * puto el que lo lea -> hahahahahahah cabrón! 
  *  */
 
 class Admin extends CI_Controller {
@@ -37,7 +38,37 @@ class Admin extends CI_Controller {
             redirect('/');            
         }
     }
-    
+    public function register(){
+        if($this->sesionActiva()){
+            $data["usuarios"] = $this->Adminmodel->getUsers();
+            $this->load->view('admin/register',$data);
+        }else{
+            redirect('/');            
+        }
+    }
+     public function nuevoUsuario(){
+        if($this->sesionActiva()){
+            if($this->input->post()){
+              $info=$this->input->post(); 
+              $edad=$this->calcularEdad($info["fecha_nacim"]);
+             //Se crea primero al usuario
+             $result=$this->Adminmodel->crearUsuario($info); 
+             // Se crea al estudiante
+             $result=$this->Adminmodel->crearAlumno($info,$result,$edad);
+             if($result){
+                $this->load->view('admin/admin');
+             }
+        }
+        }else{
+            redirect('/');            
+        }
+    }  
+    public function calcularEdad($fecha_nacim){
+    $fechaHoy = new DateTime();
+    $fechaNacim = new DateTime($fecha_nacim);
+    $dif = $fechaHoy->diff($fechaNacim);
+    return $dif->y;
+    }
     public function sesionActiva(){
         $sesion = $this->session->userdata("session");
         if($sesion === "1"){
