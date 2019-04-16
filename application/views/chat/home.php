@@ -10,6 +10,10 @@
 <body>
 <!--
 from: https://bootsnipp.com/snippets/9njj
+check: 
+https://www.anexia-it.com/blog/en/setting-up-your-own-online-chat-module-with-codeigniter/
+https://github.com/llbbl/codeigniter-chat/blob/master/create.sql
+http://qnimate.com/database-design-for-storing-chat-messages/
 -->
 <div class="super_container chatBody">
 
