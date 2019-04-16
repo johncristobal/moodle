@@ -75,6 +75,12 @@ $(document).ready(function()
                         case "1":
                             window.location.href = urlApi+"admin";
                         break;
+                        case "2":
+                            window.location.href = urlApi+"teacher";
+                        break;
+                        case "3":
+                            window.location.href = urlApi+"student";
+                        break;
                         default:
                             $("#error").removeClass("d-none");
                             $("#error").addClass("d-block");

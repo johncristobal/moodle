@@ -57,9 +57,20 @@ class Admin extends CI_Controller {
                 //Se crea primero al usuario
                 $result=$this->Adminmodel->crearUsuario($info); 
                 
-                // Se crea al estudiante
-                $resultAlumno=$this->Adminmodel->crearAlumno($info,$result,$edad);
-                if($resultAlumno){
+                switch($result[1]){
+                    case "profesores":
+                        // Se crea al estudiante
+                        $resultU=$this->Adminmodel->crearProfesor($info,$result[0],$edad);
+                        break;
+                    case "alumnos":
+                        // Se crea al estudiante
+                        $resultU=$this->Adminmodel->crearAlumno($info,$result[0],$edad);
+                        break;
+                    default: 
+                        break;
+                }
+                
+                if($resultU){
                     $data["usuarios"] = $this->Adminmodel->getUsers();
                     $this->load->view('admin/users',$data);
                 }
@@ -89,8 +100,7 @@ class Admin extends CI_Controller {
         $this->load->view("admin/excel");
     }
     
-    public function readExcelUsuarios(){
-        
+    public function readExcelUsuarios(){        
         if ($_FILES['excelFile']) {
             $data = $_FILES['excelFile']["tmp_name"];
         }

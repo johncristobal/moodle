@@ -81,8 +81,8 @@
                                                     <div class="form-group">
                                                         <label for="tipoUser">Tipo de usuario</label>
                                                         <select id="tipoUser" name="tipoUser" class="form-control" >
-                                                          <option selected>Alumno</option>
-                                                          <option>Maestro</option>
+                                                            <option>Alumno</option>
+                                                            <option>Maestro</option>
                                                         </select>
                                                     </div>
                                                 </div>

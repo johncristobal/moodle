@@ -5,7 +5,7 @@ class Adminmodel extends CI_Model {
     public function getUsers(){
 
         $datos = $this->db->select('*')
-            ->from('alumnos')
+            ->from('usuarios')
             ->where('estatus',"1")
             ->get();
         
@@ -13,6 +13,25 @@ class Adminmodel extends CI_Model {
             return "";
         }else{        
             return $datos->result_array();
+        }
+    }
+        
+    public function crearProfesor($info,$idUser,$edad){
+
+        $datos = [
+            'id' => '',
+            'nombre' => $info["nombre"],
+            'matricula' => $info["matricula"],
+            'fecha_nac' => $info["fecha_nacim"],
+            'estatus' => '1',// Personalizar esto cuando esté la tabla estatus @cmaya
+            'fecha_alta' => date("Y-m-d"),
+            'Fk_usuario' => $idUser
+        ];
+        $result=$this->db->insert('profesores', $datos); 
+        if($result){
+            return true;
+        }else{
+            return false;
         }
     }
 
@@ -41,12 +60,15 @@ class Adminmodel extends CI_Model {
         switch ($info["tipoUser"]) {
             case 'Admin':
                 $tipoUser=1;
+                $tabla="";
                 break;
              case 'Maestro':
                 $tipoUser=2;
+                $tabla="profesores";
                 break;
             case 'Alumno':
                 $tipoUser=3;
+                $tabla="alumnos";
                 break;                           
             default:
                 $tipoUser=null;
@@ -68,7 +90,7 @@ class Adminmodel extends CI_Model {
          */       
         if($result){
             $insertId = $this->db->insert_id();
-            return $insertId;
+            return [$insertId,$tabla];
         }else{
             return null;
         }

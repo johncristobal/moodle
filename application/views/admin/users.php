@@ -50,9 +50,9 @@
             ?>
             <div class="d-none d-sm-block d-sm-block d-md-block d-lg-block d-xl-block text-center" style="padding: 20px;">
                 <div class="row">
-                    <div class="col-3 col-sm-3 offset-2"><div class="news_post_title_user">Nombre</div></div>
-                    <div class="col-3 col-sm-2"><div class="news_post_title_user">Edad</div></div>
-                    <div class="col-3 col-sm-2"><div class="news_post_title_user">Matrícula</div></div>
+                    <div class="col-3 col-sm-3 offset-2"><div class="news_post_title_user">Correo</div></div>
+                    <div class="col-3 col-sm-2"><div class="news_post_title_user">Rol</div></div>
+                    <div class="col-3 col-sm-2"><div class="news_post_title_user">Fecha creacion</div></div>
                 </div>
             </div>
 
@@ -69,13 +69,13 @@
                         </div>
                     </div-->
                     <div class="col-3 col-sm-3 offset-2">
-                        <div class="news_post_date"><?= $value["nombre"]; ?></div>
+                        <div class="news_post_date"><?= $value["correo"]; ?></div>
                     </div>
                     <div class="col-2 col-sm-2">
-                        <div class=""><?= $value["edad"]; ?> años </div>
+                        <div class=""><?= $value["rol"]; ?></div>
                     </div>
                     <div class="col-2 col-sm-2">
-                        <div class="news_post_author"><?= $value["matricula"]; ?></div>
+                        <div class="news_post_author"><?= $value["fecha_alta"]; ?></div>
                     </div>
                     <!--div class="col-1 col-sm-1">
                         <a href=""><img src="<?= base_url() ?>" /></a>
@@ -93,9 +93,9 @@
                     </div>
                 </div-->
                 <div class="col-9">
-                    <div class="news_post_date_res">Nombre: <?= $value["nombre"]; ?></div>
-                    <div class="">Edad: <?= $value["edad"]; ?> años </div>
-                    <div class="">Matricula: <?= $value["matricula"]; ?></div>
+                    <div class="news_post_date_res">Correo: <?= $value["corre"]; ?></div>
+                    <div class=""><?= $value["rol"]; ?> </div>
+                    <div class="">Alta: <?= $value["fecha_alta"]; ?></div>
                     <br/>
                 </div>
             </div>
