@@ -25,4 +25,20 @@ class Teacher extends CI_Controller {
         //cargar vista de chat general
         $this->load->view("chat/home");
     }
+    
+    public function homework(){
+        //recupero id profesor
+        $idprofesor = 1;
+        
+        /*
+         * con idprofesor recuperas materias de tabla profesor_materia
+         * lista con idprofesor_materia (idPM)
+         * recuperas tareas con la lista de materias tabla tareas (donde idPM)
+         * materia1 => array(tareas)
+         * materia2 => array(tareas)
+         * formar json
+         */
+        
+        $this->load->view("teacher/homeworks");
+    }
 }

@@ -1569,11 +1569,19 @@ section
 }
 .accordion_panel p
 {
-	padding-top: 33px;
-	color: #6c6a74;
+	padding-top: 10px;
+	color: #f50202;
 	line-height: 2.2;
 }
-
+.accordion_panel .p
+{
+    padding-top: 10px;
+    color: #6c6a74;
+    line-height: 2.2;
+}
+.accordion_panel .nuevatarea{
+    margin-top: 15px;
+}
 /*********************************
 10. Events
 *********************************/
@@ -1720,7 +1728,15 @@ section
 {
 	color: #f50202;
 }
-
+.news_post_comments a
+{
+	color: #f50202;
+	-webkit-transition: all 200ms ease;
+	-moz-transition: all 200ms ease;
+	-ms-transition: all 200ms ease;
+	-o-transition: all 200ms ease;
+	transition: all 200ms ease;
+}
 /*********************************
 12. Video
 *********************************/
