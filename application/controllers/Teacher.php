@@ -15,9 +15,15 @@ class Teacher extends CI_Controller {
     //put your code here
     public function __construct() {
         parent::__construct();
+        
+        $this->load->model('Profesormodel');
     }
     
     public function index(){
+        $id = $this->session->userdata("id");
+        $idprofesor = $this->Profesormodel->getIdProfesor($id);
+        $this->session->set_userdata("idprofesor",$idprofesor["id"]);
+
         $this->load->view("teacher/home");
     }
     
@@ -27,8 +33,9 @@ class Teacher extends CI_Controller {
     }
     
     public function homework(){
+        
         //recupero id profesor
-        $idprofesor = 1;
+        $idprofesor = $this->session->userdata("idprofesor");
         
         /*
          * con idprofesor recuperas materias de tabla profesor_materia
@@ -39,6 +46,27 @@ class Teacher extends CI_Controller {
          * formar json
          */
         
-        $this->load->view("teacher/homeworks");
+        //materias
+        $tareas = array();
+        $materias = $this->Profesormodel->getMateriasProfesor($idprofesor);
+        foreach ($materias as $value) {
+            //recuperamos tareas con id_PM
+            $materia = $value["materia"];
+            $tareas_materia = $this->Profesormodel->getTareasMateriaProfesor($value["id_pm"]);            
+            //materian => tareas
+            $tareas[$materia] = $tareas_materia;
+        }
+        $data["tareas"] = $tareas;
+        $this->load->view("teacher/homeworks",$data);
+    }
+    
+    public function homework_alumno($id){
+
+        /*
+         * leer de alumno_tarea donde idtarea = id
+         * recupero alumno que ya subieron tarea
+         * bajo archivos para revisar y asignar calificacion
+         */
+
     }
 }
