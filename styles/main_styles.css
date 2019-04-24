@@ -1940,3 +1940,34 @@ section
 	color: #6c6a74;
 	margin-top: 3px;
 }
+
+/*********************************
+    materias
+*********************************/
+.backGray{
+    padding: 10px;
+    background-color: #f2f1f8;
+}
+
+.panelMaterial{
+    margin: 15px;
+    padding: 10px;
+    background-color: white;    
+}
+.footerPanel{    
+    margin: 15px;
+    margin-left: 25px;
+    padding: 10px;    
+}
+.smallCustom{
+    font-size: 90%;
+    margin-left: 10px;
+    font-weight: 400;
+}
+.footerPanel .fa{
+    color: red;
+}
+.footerPanel a{
+    color: black;
+    text-decoration: none;
+}

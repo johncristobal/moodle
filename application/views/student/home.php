@@ -10,28 +10,215 @@
 </head>
 <body>
 
-        <div class="super_container">
-
-            <!-- Header -->
-            <?php $this->load->view('student/header'); ?>
+        <div class="container-fluid">            
+            <div class="row">
+                <div class="col-12 col-sm-3 nopadding">
+                    <div class="backGray">                        
+                    <div class="row">
+                        <div class="col-6">
+                        <a href="#">
+                            <div class="logo_content d-flex flex-row align-items-end justify-content-start">
+                                <div class="logo_img"><img src="images/logo.png" alt=""></div>
+                                <div class="logo_text">learn</div>
+                            </div>
+                        </a>  
+                        </div>
+                        <div class="col-6 text-right">
+                                <div class="hamburger menu_mm">
+                                    <i class="fa fa-bars menu_mm" aria-hidden="true"></i>
+                                </div>                            
+                        </div>
+                        
+                    </div>
+                        
+                    <!-- Header -->
+                    <div class="d-none d-sm-block">
+                    <div class="panelMaterial">
+                    <div class="row">
+                        <div class="col-6">
+                        <div class="p">                            
+                            <div class="news_post_comments">
+                                <a href="">Materia 1</a>
+                            </div>                                                                                                                               
+                        </div>
+                        </div> 
+                        <div class="col-6">
+                            <div>
+                                <span class="small">Emilio Pacheco</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-6">
+                        <div class="p">
+                            <div class="news_post_comments">
+                                <a href="">Materia 1</a>
+                            </div>
+                        </div>
+                        </div>             
+                        <div class="col-6">
+                            <div>
+                                <span class="small">Emilio Pacheco</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-6">
+                        <div class="p">
+                            <div class="news_post_comments">
+                                <a href="">Materia 1</a>
+                            </div>                                                                                                                               
+                        </div>
+                        </div>             
+                        <div class="col-6">
+                            <div>
+                                <span class="small">Emilio Pacheco</span>
+                            </div>
+                        </div>
+                    </div>                        
+                    </div>
+                    <div class="footerPanel">
+                        <div class="row mt-2">
+                            <a href="<?= base_url() ?>student">
+                            <span class="fa fa-home"></span>                            
+                            <span class="smallCustom">Home</span>
+                            </a>
+                        </div>
+                        <div class="row mt-2">
+                            <a href="<?= base_url() ?>teacher/messages">
+                            <span class="fa fa-comments"></span>                            
+                            <span class="smallCustom">Chat</span>
+                            </a>
+                        </div>
+                        <div class="row mt-2">
+                            <a href="#">
+                            <span class="fa fa-phone"></span>                            
+                            <span class="smallCustom">Contacto</span>
+                            </a>
+                        </div>
+                        <div class="row mt-2">
+                            <a href="<?= base_url() ?>admin/cerrar">
+                            <span class="fa fa-power-off"></span>                            
+                            <span class="smallCustom">Cerrar sesión</span>
+                            </a>
+                        </div>
+                    </div>
+                    </div>                   
+                </div>
+                </div>
+                <div class="col-12 col-sm-9">
+                    <!-- login module -->
+                    <div class="container">
+                        <div class="row justify-content-between">
+                            <div class="panelMaterial">
+                                
+                                <div class="section_title text-center"><h2>Hola Estudiante</h2></div>                
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+            </div>
 
 	<!-- Home -->	
 	</div>
-    
-    	<!-- login module -->
-        
-        <div class="container login">
-            <div class="row justify-content-between">
-                <div class="col-6 offset-3">
-                    <div class="section_title text-center"><h2>Hola Estudiante</h2></div>                
-                </div>
-            </div>
-        </div>
-
-	<!-- Courses -->
 	
-	<!-- Footer -->
-
+	<!-- menu respnsibe -->
+        <div class="menu d-flex flex-column justify-content-start text-right menu_mm trans_400">
+		<div class="menu_close_container"><div class="menu_close"><div></div><div></div></div></div>
+		<!--div class="search">
+			<form action="#" class="header_search_form menu_mm">
+				<input type="search" class="search_input menu_mm" placeholder="Search" required="required">
+				<button class="header_search_button d-flex flex-column align-items-center justify-content-center menu_mm">
+					<i class="fa fa-search menu_mm" aria-hidden="true"></i>
+				</button>
+			</form>
+		</div-->
+		<div class="panelMaterial">
+                    <div class="row">
+                        <div class="col-6">
+                        <div class="p">                            
+                            <div class="news_post_comments">
+                                <a href="">Materia 1</a>
+                            </div>                                                                                                                               
+                        </div>
+                        </div> 
+                        <div class="col-6">
+                            <div>
+                                <span class="small">Emilio Pacheco</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-6">
+                        <div class="p">
+                            <div class="news_post_comments">
+                                <a href="">Materia 1</a>
+                            </div>
+                        </div>
+                        </div>             
+                        <div class="col-6">
+                            <div>
+                                <span class="small">Emilio Pacheco</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col-6">
+                        <div class="p">
+                            <div class="news_post_comments">
+                                <a href="">Materia 1</a>
+                            </div>                                                                                                                               
+                        </div>
+                        </div>             
+                        <div class="col-6">
+                            <div>
+                                <span class="small">Emilio Pacheco</span>
+                            </div>
+                        </div>
+                    </div>                        
+                    </div>
+                    <div class="footerPanel d-flex flex-column align-items-end text-right">
+                        <div class="row mt-2">
+                            <a href="<?= base_url() ?>student">                                                       
+                            <span class="smallCustom">Home</span>
+                            <span class="fa fa-home"></span> 
+                            </a>
+                        </div>
+                        <div class="row mt-2">
+                            <a href="<?= base_url() ?>teacher/messages">
+                            <span class="smallCustom">Chat</span>
+                            <span class="fa fa-comments"></span>                            
+                            </a>
+                        </div>
+                        <div class="row mt-2">
+                            <a href="#">
+                            <span class="smallCustom">Contacto</span>
+                            <span class="fa fa-phone"></span>                            
+                            </a>
+                        </div>
+                        <div class="row mt-2">
+                            <a href="<?= base_url() ?>admin/cerrar">
+                            <span class="smallCustom">Cerrar sesión</span>
+                            <span class="fa fa-power-off"></span>                            
+                            </a>
+                        </div>
+                    </div>
+		<!--div class="menu_extra">
+			<div class="menu_phone"><span class="menu_title">phone:</span>(009) 35475 6688933 32</div>
+			<div class="menu_social">
+				<span class="menu_title">follow us</span>
+				<ul>
+					<li><a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
+					<li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+					<li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+					<li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+				</ul>
+			</div>
+		</div-->
+	</div>
+        
+        <!--footer-->
 	<footer class="footer">
 		<div class="container">
 			<div class="row">

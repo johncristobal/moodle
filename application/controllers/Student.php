@@ -17,9 +17,15 @@ class Student extends CI_Controller {
         parent::__construct();
         
         $this->load->model("Chatmodel");
+        $this->load->model("Alumnomodel");
     }
     
     public function index(){
+        
+        $id = $this->session->userdata("id");
+        $idalumno = $this->Alumnomodel->getIdAlumno($id);
+        $this->session->set_userdata("idalumno",$idalumno["id"]);
+        
         $this->load->view("student/home");
     }
     
