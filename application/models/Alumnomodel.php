@@ -13,11 +13,19 @@ class Alumnomodel extends CI_Model {
     }
     
     //recupermos materias
+    /*
+     * select materias.materia from materias
+inner join profesor_materia on materias.id = profesor_materia.materia
+inner join alumno_profesor_materia on profesor_materia.id_pm = alumno_profesor_materia.id_pm
+where alumno_profesor_materia.id_alumno = 1
+     */
     public function getMateriasAlumno($id){
-        $query = $this->db->select('profesor_materia.id_pm, materias.materia')
+        $query = $this->db->select('materias.materia,profesores.nombre')
                 ->from('materias')
-                ->join("profesor_materia","profesor_materia.materia = materias.id")
-                ->where('profesor',$id)->get();
+                ->join("profesor_materia","materias.id = profesor_materia.materia")
+                ->join("profesores","profesores.id = profesor_materia.profesor")
+                ->join("alumno_profesor_materia","profesor_materia.id_pm = alumno_profesor_materia.id_pm")
+                ->where('alumno_profesor_materia.id_alumno',$id)->get();
         
         if($query->num_rows() == 0){
             return "-1";

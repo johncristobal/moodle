@@ -32,7 +32,7 @@ class Teacher extends CI_Controller {
         $this->load->view("chat/home");
     }
     
-    public function homework(){
+    public function asignatures(){
         
         //recupero id profesor
         $idprofesor = $this->session->userdata("idprofesor");
@@ -49,14 +49,19 @@ class Teacher extends CI_Controller {
         //materias
         $tareas = array();
         $materias = $this->Profesormodel->getMateriasProfesor($idprofesor);
-        foreach ($materias as $value) {
-            //recuperamos tareas con id_PM
-            $materia = $value["materia"];
-            $tareas_materia = $this->Profesormodel->getTareasMateriaProfesor($value["id_pm"]);            
-            //materian => tareas
-            $tareas[$materia] = $tareas_materia;
+        if($materias != "-1"){
+            foreach ($materias as $value) {
+                //recuperamos tareas con id_PM
+                $materia = $value["materia"];
+                $tareas_materia = $this->Profesormodel->getTareasMateriaProfesor($value["id_pm"]);            
+                //materian => tareas
+                $tareas[$materia] = $tareas_materia;
+            }
+            $data["tareas"] = $tareas;
+        }else{
+            $data["tareas"] = "-1";
         }
-        $data["tareas"] = $tareas;
+
         $this->load->view("teacher/homeworks",$data);
     }
     

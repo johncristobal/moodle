@@ -25,6 +25,7 @@
                     <div class="section_title text-center"><h2>Mis Materias</h2></div>
                     <div class="accordions">
                         <?php
+                            if($tareas != "-1"){
                             foreach ($tareas as $key => $value) {
                         ?>
                         <div class="accordion_container">
@@ -64,6 +65,11 @@
                                     ?>                                    
                                 </div>                            
                         </div>
+                        <?php
+                            }
+                            }else{
+                        ?>
+                            <div class="section_title text-center"><h3>No tienes materias asignadas</h3></div>
                         <?php
                             }
                         ?>
