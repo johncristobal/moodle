@@ -34,48 +34,29 @@
                     <!-- Header -->
                     <div class="d-none d-sm-block">
                     <div class="panelMaterial">
-                    <div class="row">
-                        <div class="col-6">
-                        <div class="p">                            
-                            <div class="news_post_comments">
-                                <a href="">Materia 1</a>
-                            </div>                                                                                                                               
+                        <?php
+                            if($materias){
+                                foreach ($materias as $value) {
+                                    
+                        ?>
+                        <div class="row mt-2">
+                           <div class="col-6">
+                           <div class="p">                            
+                               <div class="news_post_comments">
+                                   <a href=""><?= $value["materia"] ?></a>
+                               </div>                                                                                                                               
+                           </div>
+                           </div> 
+                           <div class="col-6">
+                               <div>
+                                   <span class="small"><?= $value["nombre"] ?></span>
+                               </div>
+                           </div>
                         </div>
-                        </div> 
-                        <div class="col-6">
-                            <div>
-                                <span class="small">Emilio Pacheco</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row mt-2">
-                        <div class="col-6">
-                        <div class="p">
-                            <div class="news_post_comments">
-                                <a href="">Materia 1</a>
-                            </div>
-                        </div>
-                        </div>             
-                        <div class="col-6">
-                            <div>
-                                <span class="small">Emilio Pacheco</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row mt-2">
-                        <div class="col-6">
-                        <div class="p">
-                            <div class="news_post_comments">
-                                <a href="">Materia 1</a>
-                            </div>                                                                                                                               
-                        </div>
-                        </div>             
-                        <div class="col-6">
-                            <div>
-                                <span class="small">Emilio Pacheco</span>
-                            </div>
-                        </div>
-                    </div>                        
+                        <?php
+                                }
+                            }
+                        ?>
                     </div>
                     <div class="footerPanel">
                         <div class="row mt-2">

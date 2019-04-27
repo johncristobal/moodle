@@ -21,27 +21,45 @@ class Student extends CI_Controller {
     }
     
     public function index(){
-        
+
+        if($this->sesionActiva()){
         $id = $this->session->userdata("id");
         $idalumno = $this->Alumnomodel->getIdAlumno($id);
         $data["infoAlumno"]=$this->Alumnomodel->getInfoAlumno($id);
-        $this->session->set_userdata("idalumno",$idalumno["id"]);        
-        $this->load->view("student/home",$data);
+        $this->session->set_userdata("idalumno",$idalumno["id"]);  
+        $data["materias"] = $this->Alumnomodel->getMateriasAlumno($idalumno["id"]);
+        $this->load->view("student/home",$data);  
+        }else{
+            redirect('/');
+        }
     }
     
     public function messages(){
-        //cargar vista de chat general
-        //selecciona a quien va char
-        $idcon = 5;
-        $myid = $this->session->userdata("id"); //6
-        
-        $buscarid = $idcon.";".$myid;
-        $buscaridrev = $myid.";".$idcon;
-        
-        $chats["chats"] = $this->Chatmodel->getMessages($buscarid,$buscaridrev);
-        $chats["me"] = $myid;
-        $chats["from"] = 5;
-        
-        $this->load->view("chat/home",$chats);
+        if($this->sesionActiva()){
+            //cargar vista de chat general
+            //selecciona a quien va char
+            $idcon = 5;
+            $myid = $this->session->userdata("id"); //6
+
+            $buscarid = $idcon.";".$myid;
+            $buscaridrev = $myid.";".$idcon;
+
+            $chats["chats"] = $this->Chatmodel->getMessages($buscarid,$buscaridrev);
+            $chats["me"] = $myid;
+            $chats["from"] = 5;
+
+            $this->load->view("chat/home",$chats);
+        }else{
+            redirect('/');
+        }
+    }
+    
+    public function sesionActiva(){
+        $sesion = $this->session->userdata("session");
+        if($sesion === "1"){
+            return true;
+        }else{
+            return false; 
+        }
     }
 }
