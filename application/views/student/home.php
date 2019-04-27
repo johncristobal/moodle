@@ -106,20 +106,62 @@
                     </div>                   
                 </div>
                 </div>
-                <div class="col-12 col-sm-9">
+                <div class="col-lg 12 col-sm-9">
                     <!-- login module -->
                     <div class="container">
                         <div class="row justify-content-between">
                             <div class="panelMaterial">
-                                
-                                <div class="section_title text-center"><h2>Hola Estudiante</h2></div>                
-                            </div>
-                            
-                        </div>
-                    </div>
-                </div>
-            </div>
+                               <div class="row"> 
+                                <div class="col-lg-6 col-sm-9"> 
+                                 <img src="<?=base_url()?>/images/usericon.jpg" class="img-rounded"  width="100" height="100">
 
+                                <div class="card">
+                                    <div class="card-header" id="headingOne">
+                                        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                        Información de perfil
+                                        <i class="lnr lnr-chevron-down"></i>
+                                        <i class="lnr lnr-chevron-up"></i>
+                                        </button>
+                                    </div>
+                                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                                     <div class="card-body">
+                                        <ul class="list-group">
+                                       <li class="list-group-item"><b>Nombre:</b> <?= $infoAlumno["nombre"]?> </li>
+                                       <li class="list-group-item"><b>Matrícula:</b> <?= $infoAlumno["matricula"]?> </li>
+                                       <li class="list-group-item"><b>Edad:</b> <?= $infoAlumno["edad"]?> </li>
+                                       <li class="list-group-item"><b>Fecha de Nacimiento:</b> <?= $infoAlumno["nombre"]?>  </li>
+                                        </ul> 
+                                        </div>
+                                    </div>
+                                </div>                                
+                                </div>
+                                <div class="col-lg-6 col-sm-9">
+                                <div class="section_title text-right"><h2>Bienvenido Estudiante</h2></div> 
+                                <div class="card derecha">
+                                    <div class="card-header" id="headingOne">
+                                        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                        Información de cuenta
+                                        <i class="lnr lnr-chevron-down"></i>
+                                        <i class="lnr lnr-chevron-up"></i>
+                                        </button>
+                                    </div>
+                                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                                        <div class="card-body">
+                                        <ul class="list-group">
+                                       <li class="list-group-item"><b>Correo:</b> <?= $infoAlumno["correo"]?> </li>
+                                       <li class="list-group-item"><b>Fecha de alta:</b> <?= $infoAlumno["fecha_alta"]?> </li>
+                                        </ul> 
+                                        </div>
+                                    </div>
+                                </div> 
+                                </div>
+                                </div>       
+                            </div>
+                        </div>   
+                                      
+                    </div>
+                </div> 
+            </div>
 	<!-- Home -->	
 	</div>
 	

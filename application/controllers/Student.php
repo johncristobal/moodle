@@ -24,9 +24,9 @@ class Student extends CI_Controller {
         
         $id = $this->session->userdata("id");
         $idalumno = $this->Alumnomodel->getIdAlumno($id);
-        $this->session->set_userdata("idalumno",$idalumno["id"]);
-        
-        $this->load->view("student/home");
+        $data["infoAlumno"]=$this->Alumnomodel->getInfoAlumno($id);
+        $this->session->set_userdata("idalumno",$idalumno["id"]);        
+        $this->load->view("student/home",$data);
     }
     
     public function messages(){

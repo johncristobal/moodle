@@ -11,7 +11,19 @@ class Alumnomodel extends CI_Model {
             return $query->result_array()[0];
         }
     }
-    
+    // obtenemos la información del alumno
+     public function getInfoAlumno($id){
+        $query = $this->db->select('usuarios.*, alumnos.*')
+                ->from('usuarios')
+                ->join("alumnos","usuarios.id = alumnos.Fk_usuario")
+            ->get();
+        
+        if($query->num_rows() == 0){
+            return "-1";
+        }else{
+            return $query->result_array()[0];
+        }
+    }   
     //recupermos materias
     public function getMateriasAlumno($id){
         $query = $this->db->select('profesor_materia.id_pm, materias.materia')

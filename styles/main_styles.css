@@ -1971,3 +1971,7 @@ section
     color: black;
     text-decoration: none;
 }
+.card derecha {
+	float: right;
+	 background:red;
+}
