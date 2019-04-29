@@ -20,49 +20,61 @@ class Teacher extends CI_Controller {
     }
     
     public function index(){
-        $id = $this->session->userdata("id");
-        $idprofesor = $this->Profesormodel->getIdProfesor($id);
-        $this->session->set_userdata("idprofesor",$idprofesor["id"]);
+        if($this->sesionActiva()){
+            $id = $this->session->userdata("id");
+            $idprofesor = $this->Profesormodel->getIdProfesor($id);
+            $this->session->set_userdata("idprofesor",$idprofesor["id"]);
 
-        $this->load->view("teacher/home");
+            $this->load->view("teacher/home");
+        }else{
+            redirect("/");
+        }
     }
     
     public function messages(){
-        //cargar vista de chat general
-        $this->load->view("chat/home");
+        if($this->sesionActiva()){
+            //cargar vista de chat general
+            $this->load->view("chat/home");
+        }else{
+            redirect("/");
+        }
     }
     
     public function asignatures(){
         
-        //recupero id profesor
-        $idprofesor = $this->session->userdata("idprofesor");
-        
-        /*
-         * con idprofesor recuperas materias de tabla profesor_materia
-         * lista con idprofesor_materia (idPM)
-         * recuperas tareas con la lista de materias tabla tareas (donde idPM)
-         * materia1 => array(tareas)
-         * materia2 => array(tareas)
-         * formar json
-         */
-        
-        //materias
-        $tareas = array();
-        $materias = $this->Profesormodel->getMateriasProfesor($idprofesor);
-        if($materias != "-1"){
-            foreach ($materias as $value) {
-                //recuperamos tareas con id_PM
-                $materia = $value["materia"];
-                $tareas_materia = $this->Profesormodel->getTareasMateriaProfesor($value["id_pm"]);            
-                //materian => tareas
-                $tareas[$materia] = $tareas_materia;
-            }
-            $data["tareas"] = $tareas;
-        }else{
-            $data["tareas"] = "-1";
-        }
+        if($this->sesionActiva()){
+            //recupero id profesor
+            $idprofesor = $this->session->userdata("idprofesor");
 
-        $this->load->view("teacher/homeworks",$data);
+            /*
+             * con idprofesor recuperas materias de tabla profesor_materia
+             * lista con idprofesor_materia (idPM)
+             * recuperas tareas con la lista de materias tabla tareas (donde idPM)
+             * materia1 => array(tareas)
+             * materia2 => array(tareas)
+             * formar json
+             */
+
+            //materias
+            $tareas = array();
+            $materias = $this->Profesormodel->getMateriasProfesor($idprofesor);
+            if($materias != "-1"){
+                foreach ($materias as $value) {
+                    //recuperamos tareas con id_PM
+                    $materia = $value["materia"];
+                    $tareas_materia = $this->Profesormodel->getTareasMateriaProfesor($value["id_pm"]);            
+                    //materian => tareas
+                    $tareas[$materia] = $tareas_materia;
+                }
+                $data["tareas"] = $tareas;
+            }else{
+                $data["tareas"] = "-1";
+            }
+
+            $this->load->view("teacher/homeworks",$data);
+        }else{
+             redirect('/');
+        }
     }
     
     public function homework_alumno($id){
@@ -72,6 +84,14 @@ class Teacher extends CI_Controller {
          * recupero alumno que ya subieron tarea
          * bajo archivos para revisar y asignar calificacion
          */
-
+    }
+    
+    public function sesionActiva(){
+        $sesion = $this->session->userdata("session");
+        if($sesion === "1"){
+            return true;
+        }else{
+            return false; 
+        }
     }
 }
