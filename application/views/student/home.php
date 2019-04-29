@@ -95,7 +95,7 @@
                                <div class="row"> 
                                 <div class="col-lg-6 col-sm-9"> 
                                  <img src="<?=base_url()?>/images/usericon.jpg" class="img-rounded"  width="100" height="100">
-
+                                <div class="card-box1">    
                                 <div class="card">
                                     <div class="card-header" id="headingOne">
                                         <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
@@ -114,19 +114,21 @@
                                         </ul> 
                                         </div>
                                     </div>
-                                </div>                                
+                                </div>   
+                                </div>                             
                                 </div>
                                 <div class="col-lg-6 col-sm-9">
-                                <div class="section_title text-right"><h2>Bienvenido Estudiante</h2></div> 
-                                <div class="card derecha">
-                                    <div class="card-header" id="headingOne">
-                                        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                <div class="section_title text-center"><h2>Bienvenido <?=$infoAlumno["nombre"]?></h2></div>
+                                <div class="card-box2"> 
+                                <div class="card">
+                                    <div class="card-header" id="headingTwo">
+                                        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseOne">
                                         Información de cuenta
                                         <i class="lnr lnr-chevron-down"></i>
                                         <i class="lnr lnr-chevron-up"></i>
                                         </button>
                                     </div>
-                                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                                    <div id="collapseTwo" class="collapse show" aria-labelledby="headingTwo" data-parent="#accordionExample">
                                         <div class="card-body">
                                         <ul class="list-group">
                                        <li class="list-group-item"><b>Correo:</b> <?= $infoAlumno["correo"]?> </li>
@@ -135,11 +137,45 @@
                                         </div>
                                     </div>
                                 </div> 
+                            </div>
                                 </div>
                                 </div>       
                             </div>
                         </div>   
-                                      
+                      <div class="row">    
+                      <div class="container">
+                       <h2>Tareas próximas</h2>                   
+                     <div class="col-lg 12 col-sm-9">
+                    <table class="table">
+                        <thead class="thead-dark">
+                          <tr>
+                            <th>Materia</th>
+                            <th>Tarea</th>
+                            <th>Fecha límite</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>Física</td>
+                            <td>Reporte de teoría de cuerdas</td>
+                            <td>4 de Mayo del 2019</td>
+                          </tr>
+                          <tr>
+                            <td>Fundamentos económicos</td>
+                            <td>Análisis FODA</td>
+                            <td>8 de Mayo del 2019</td>
+                          </tr>
+                          <tr>
+                            <td>Derecho</td>
+                            <td>Resumen de la constitución mexicana</td>
+                            <td>15 de Mayo del 2019</td>
+                          </tr>
+                        </tbody>
+                      </table>
+                </div>
+            </div>
+
+            </div>              
                     </div>
                 </div> 
             </div>

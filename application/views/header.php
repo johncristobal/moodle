@@ -38,22 +38,19 @@
 							<div class="logo_container">
 								<a href="#">
 									<div class="logo_content d-flex flex-row align-items-end justify-content-start">
-										<div class="logo_img"><img src="images/logo.png" alt=""></div>
+										<div class="logo_img"><img src="images/mini_logo.png" alt=""></div>
 										<div class="logo_text">learn</div>
 									</div>
 								</a>
 							</div>
 							<nav class="main_nav_contaner ml-auto">
 								<ul class="main_nav">
-									<li><a href="<?= base_url() ?>">home</a></li>
-									<li><a href="about.html">about us</a></li>
-									<li><a href="courses.html">courses</a></li>
-									<li><a href="news.html">news</a></li>
-									<li><a href="contact.html">contact</a></li>
-                                                                        <li><a href="<?= base_url() ?>login">Iniciar sesión</a></li>
+									<li><a href="<?= base_url() ?>">Inicio</a></li>
+									<li><a href="about.html">Acerca de nosotros</a></li>
+									<li><a href="courses.html">Oferta educativa</a></li>
+									<li><a href="contact.html">Contacto</a></li>
+                                    <li><a href="<?= base_url() ?>login">Iniciar sesión</a></li>
 								</ul>
-								<div class="search_button"><i class="fa fa-search" aria-hidden="true"></i></div>
-
 								<!-- Hamburger -->
 
 								<div class="hamburger menu_mm">

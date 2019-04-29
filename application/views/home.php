@@ -146,10 +146,11 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-10 offset-lg-1">
-					<div class="section_title text-center"><h2>Choose your course</h2></div>
-					<div class="section_subtitle">Suspendisse tincidunt magna eget massa hendrerit efficitur. Ut euismod pellentesque imperdiet. Cras laoreet gravida lectus, at viverra lorem venenatis in. Aenean id varius quam. Nullam bibendum interdum dui, ac tempor lorem convallis ut</div>
+					<div class="section_title text-center"><h2>¿QUIÉNES SOMOS?</h2></div>
+					<div class="section_subtitle">Somos una Institución Educativa con 32 años de experiencia, Actualmente contamos Con 17 Planteles en la Ciudad de México y el área Metropolitana. Nuestro éxito se basa en la flexibilidad que ofrecemos a nuestros alumnos para concluir sus estudios rápidamente.</div>
 				</div>
 			</div>
+			<!--
 			<div class="row">
 				<div class="col">
 					<div class="course_search">
@@ -160,7 +161,7 @@
 						</form>
 					</div>
 				</div>
-			</div>
+			</div> -->
 			<div class="row">
 				<div class="col">
 					
@@ -174,16 +175,19 @@
 									<div class="course_image"><img src="images/course_1.jpg" alt=""></div>
 									<div class="course_body">
 										<div class="course_header d-flex flex-row align-items-center justify-content-start">
-											<div class="course_tag"><a href="#">Featured</a></div>
-											<div class="course_price ml-auto">Price: <span>$35</span></div>
+											<div class="course_tag"><a href="#">Bachillerato</a></div>
 										</div>
-										<div class="course_title"><h3><a href="courses.html">Online Literature Course</a></h3></div>
-										<div class="course_text">Maecenas rutrum viverra sapien sed ferm entum. Morbi tempor odio eget lacus tempus pulvinar.</div>
-										<div class="course_footer d-flex align-items-center justify-content-start">
-											<div class="course_author_image"><img src="images/featured_author.jpg" alt="https://unsplash.com/@anthonytran"></div>
-											<div class="course_author_name">By <a href="#">James S. Morrison</a></div>
-											<div class="course_sales ml-auto"><span>352</span> Sales</div>
-										</div>
+										<div class="course_title"><h3><a href="courses.html">Bachillerato a 18 meses</a></h3></div>
+										<div class="course_text">
+										.         Aplicación de Examen en el Plantel
+										·         Certificación con validez oficial (bachillerato General)
+										·         Desde 2 horas diarias o en sabatino
+										·         Sin restricción de edad
+										·         Sin examen de admisión
+										·         Colegiaturas accesibles
+										·         Clases de Ingles
+										·         Grupos reducidos
+									</div>
 									</div>
 								</div>
 							</div>
@@ -194,39 +198,27 @@
 									<div class="course_image"><img src="images/course_2.jpg" alt=""></div>
 									<div class="course_body">
 										<div class="course_header d-flex flex-row align-items-center justify-content-start">
-											<div class="course_tag"><a href="#">New</a></div>
-											<div class="course_price ml-auto">Price: <span>$35</span></div>
+											<div class="course_tag"><a href="#">Licenciatura</a></div>
 										</div>
-										<div class="course_title"><h3><a href="courses.html">Social Media Course</a></h3></div>
-										<div class="course_text">Maecenas rutrum viverra sapien sed ferm entum. Morbi tempor odio eget lacus tempus pulvinar.</div>
-										<div class="course_footer d-flex align-items-center justify-content-start">
-											<div class="course_author_image"><img src="images/course_author_2.jpg" alt=""></div>
-											<div class="course_author_name">By <a href="#">Mark Smith</a></div>
-											<div class="course_sales ml-auto"><span>352</span> Sales</div>
+										<div class="course_title"><h3><a href="courses.html">Derecho</a></h3></div>
+										<div class="course_text">La carrera de Derecho tiene como objetivo formar profesionales en la ciencia jurídica con énfasis en el área empresarial. El abogado es un profesional capacitado para ejercer competitivamente la profesión con un alto sentido ético que le permite desempeñarse de manera eficiente y confiable.</div>
+									</div>
+								</div>
+							</div>
+							<!-- Slider Item -->
+							<div class="owl-item">
+								<div class="course">
+									<div class="course_image"><img src="images/course_2.jpg" alt=""></div>
+									<div class="course_body">
+										<div class="course_header d-flex flex-row align-items-center justify-content-start">
+											<div class="course_tag"><a href="#">Licenciatura</a></div>
 										</div>
+										<div class="course_title"><h3><a href="courses.html">Contaduría</a></h3></div>
+										<div class="course_text">El objetivo de la licenciatura es contaduría tiene como principal objetivo la formación de profesionales que proyecten y hagan uso adecuado de la información financiera en base a las normas principios y técnicas contables y en existencia en el Ámbito tanto nacional como en el internacional.</div>
 									</div>
 								</div>
 							</div>
 
-							<!-- Slider Item -->
-							<div class="owl-item">
-								<div class="course">
-									<div class="course_image"><img src="images/course_3.jpg" alt="https://unsplash.com/@annademy"></div>
-									<div class="course_body">
-										<div class="course_header d-flex flex-row align-items-center justify-content-start">
-											<div class="course_tag"><a href="#">Featured</a></div>
-											<div class="course_price ml-auto">Price: <span>$35</span></div>
-										</div>
-										<div class="course_title"><h3><a href="courses.html">Marketing Course</a></h3></div>
-										<div class="course_text">Maecenas rutrum viverra sapien sed ferm entum. Morbi tempor odio eget lacus tempus pulvinar.</div>
-										<div class="course_footer d-flex align-items-center justify-content-start">
-											<div class="course_author_image"><img src="images/course_author_3.jpg" alt=""></div>
-											<div class="course_author_name">By <a href="#">Julia Williams</a></div>
-											<div class="course_sales ml-auto"><span>352</span> Sales</div>
-										</div>
-									</div>
-								</div>
-							</div>
 
 						</div>
 						
@@ -297,23 +289,23 @@
 				<!-- Why Choose Us -->
 
 				<div class="col-lg-4 grouped_col">
-					<div class="grouped_title">Why Choose Us?</div>
+					<div class="grouped_title">Acerca de nosotros</div>
 					<div class="accordions">
 
 						<div class="accordion_container">
-							<div class="accordion d-flex flex-row align-items-center active"><div>Mauris vehicula nisi congue?</div></div>
+							<div class="accordion d-flex flex-row align-items-center active"><div>¿Quiénes somos?</div></div>
 							<div class="accordion_panel">
 								<div>
-									<p>Suspendisse tincidunt magna eget massa hendrerit efficitur. Ut euismod pellentesque imperdiet. Cras laoreet gravida lectus, at viverra lorem venenatis in. Aenean id varius quam.</p>
+									<p>Somos una Institución Educativa con 32 años de experiencia, Actualmente contamos Con 17 Planteles en la Ciudad de México y el área Metropolitana. Nuestro éxito se basa en la flexibilidad que ofrecemos a nuestros alumnos para concluir sus estudios rápidamente.</p>
 								</div>
 							</div>
 						</div>
 
 						<div class="accordion_container">
-							<div class="accordion d-flex flex-row align-items-center"><div>Vehicula nisi congue, blandit?</div></div>
+							<div class="accordion d-flex flex-row align-items-center"><div>¿Qué esperar de nosotros?</div></div>
 							<div class="accordion_panel">
 								<div>
-									<p>Suspendisse tincidunt magna eget massa hendrerit efficitur. Ut euismod pellentesque imperdiet. Cras laoreet gravida lectus, at viverra lorem venenatis in. Aenean id varius quam.</p>
+									<p>Nuestro innovador sistema académico, amplia el acceso a una educación de calidad global para formar personas productivas que agreguen un valor social.</p>
 								</div>
 							</div>
 						</div>
@@ -343,24 +335,21 @@
 				<!-- Events -->
 
 				<div class="col-lg-4 grouped_col">
-					<div class="grouped_title">Upcoming Events</div>
+					<div class="grouped_title"></div>
 					<div class="events">
 
 						<!-- Event -->
-						<div class="event d-flex flex-row align-items-start justify-content-start">
-							<div>
-								<div class="event_date d-flex flex-column align-items-center justify-content-center">
-									<div class="event_day">20</div>
-									<div class="event_month">April</div>
+						<div class="accordion_container">
+							<div class="accordion d-flex flex-row align-items-center active"><div>Misión</div></div>
+							<div class="accordion_panel">
+								<div>
+									<p>Impartir un servicio educativo de calidad fomentando en nuestros alumnos una formación de valores y excelencia académica, que les permita ingresar a un mundo de competencia y desarrollo integral.</p>
 								</div>
-							</div>
-							<div class="event_body">
-								<div class="event_title"><a href="#">New Marketing Course Release</a></div>
-								<div class="event_subtitle">Location: Online Platform</div>
 							</div>
 						</div>
 
 						<!-- Event -->
+						<!--
 						<div class="event d-flex flex-row align-items-start justify-content-start">
 							<div>
 								<div class="event_date d-flex flex-column align-items-center justify-content-center">
@@ -372,49 +361,7 @@
 								<div class="event_title"><a href="#">Students Art Workshop</a></div>
 								<div class="event_subtitle">Location: Online Platform</div>
 							</div>
-						</div>
-
-						<!-- Event -->
-						<div class="event d-flex flex-row align-items-start justify-content-start">
-							<div>
-								<div class="event_date d-flex flex-column align-items-center justify-content-center">
-									<div class="event_day">25</div>
-									<div class="event_month">April</div>
-								</div>
-							</div>
-							<div class="event_body">
-								<div class="event_title"><a href="#">Launch Party for a new Platform</a></div>
-								<div class="event_subtitle">Location: Online Platform</div>
-							</div>
-						</div>
-
-						<!-- Event -->
-						<div class="event d-flex flex-row align-items-start justify-content-start">
-							<div>
-								<div class="event_date d-flex flex-column align-items-center justify-content-center">
-									<div class="event_day">27</div>
-									<div class="event_month">April</div>
-								</div>
-							</div>
-							<div class="event_body">
-								<div class="event_title"><a href="#">New Marketing Course</a></div>
-								<div class="event_subtitle">Location: Online Platform</div>
-							</div>
-						</div>
-
-						<!-- Event -->
-						<div class="event d-flex flex-row align-items-start justify-content-start">
-							<div>
-								<div class="event_date d-flex flex-column align-items-center justify-content-center">
-									<div class="event_day">29</div>
-									<div class="event_month">April</div>
-								</div>
-							</div>
-							<div class="event_body">
-								<div class="event_title"><a href="#">New Marketing Course</a></div>
-								<div class="event_subtitle">Location: Online Platform</div>
-							</div>
-						</div>
+						</div> -->
 
 					</div>
 				</div>
@@ -422,20 +369,18 @@
 				<!-- News -->
 
 				<div class="col-lg-4 grouped_col">
-					<div class="grouped_title">Latest News</div>
+					<div class="grouped_title"></div>
 					<div class="news">
-						
-						<!-- News Post -->
-						<div class="news_post d-flex flex-row align-items-start justify-content-start">
-							<div><div class="news_post_image"><img src="images/news_1.jpg" alt="https://unsplash.com/@beccatapert"></div></div>
-							<div class="news_post_body">
-								<div class="news_post_date">April 02, 2018</div>
-								<div class="news_post_title"><a href="news.html">Why Choose online education?</a></div>
-								<div class="news_post_author">By <a href="#">William Smith</a></div>
+						<div class="accordion_container">
+							<div class="accordion d-flex flex-row align-items-center active"><div>Visión</div></div>
+							<div class="accordion_panel">
+								<div>
+									<p>Crear, a través de una educación de alta calidad, una sociedad conformada por individuos conscientes de su propia identidad y de su papel en la sociedad del siglo XXI, capaces de proponer e implementar estrategias de cambio para su beneficio.</p>
+								</div>
 							</div>
 						</div>
-
 						<!-- News Post -->
+						<!--
 						<div class="news_post d-flex flex-row align-items-start justify-content-start">
 							<div><div class="news_post_image"><img src="images/news_2.jpg" alt="https://unsplash.com/@nbb_photos"></div></div>
 							<div class="news_post_body">
@@ -443,54 +388,14 @@
 								<div class="news_post_title"><a href="news.html">Books, Kindle or tablet?</a></div>
 								<div class="news_post_author">By <a href="#">William Smith</a></div>
 							</div>
-						</div>
-
-						<!-- News Post -->
-						<div class="news_post d-flex flex-row align-items-start justify-content-start">
-							<div><div class="news_post_image"><img src="images/news_3.jpg" alt="https://unsplash.com/@rawpixel"></div></div>
-							<div class="news_post_body">
-								<div class="news_post_date">April 02, 2018</div>
-								<div class="news_post_title"><a href="news.html">Why Choose online education?</a></div>
-								<div class="news_post_author">By <a href="#">William Smith</a></div>
-							</div>
-						</div>
-
-						<!-- News Post -->
-						<div class="news_post d-flex flex-row align-items-start justify-content-start">
-							<div><div class="news_post_image"><img src="images/news_4.jpg" alt="https://unsplash.com/@jtylernix"></div></div>
-							<div class="news_post_body">
-								<div class="news_post_date">April 02, 2018</div>
-								<div class="news_post_title"><a href="news.html">Books, Kindle or tablet?</a></div>
-								<div class="news_post_author">By <a href="#">William Smith</a></div>
-							</div>
-						</div>
-
+						</div>-->
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-
-	<!-- Video -->
-
-	<div class="video">
-		<div class="container">
-			<div class="row">
-				<div class="col">
-					<div class="video_container_outer">
-						<div class="video_container">
-							<!-- Video poster image artist: https://unsplash.com/@annademy -->
-							<video id="vid1" class="video-js vjs-default-skin" controls data-setup='{ "poster": "images/video.jpg", "techOrder": ["youtube"], "sources": [{ "type": "video/youtube", "src": "https://youtu.be/5_MRXyYjHDk"}], "youtube": { "iv_load_policy": 1 } }'>
-							</video>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-
 	<!-- Join -->
-
+<!--
 	<div class="join">
 		<div class="container">
 			<div class="row">
@@ -502,7 +407,7 @@
 		</div>
 		<div class="button join_button"><a href="#">register now<div class="button_arrow"><i class="fa fa-angle-right" aria-hidden="true"></i></div></a></div>
 	</div>
-
+-->
 	<!-- Footer -->
 
 	<footer class="footer">
