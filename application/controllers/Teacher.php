@@ -47,6 +47,8 @@ class Teacher extends CI_Controller {
              * Despues, a esta lista agregaremos los chat de mainchat 
              * like users '%P_901%'
             */
+            
+            //Agrego materias del profesor para mensajes masivos
             $chats = array();
             $idprofesor = $this->session->userdata("idprofesor"); //901
             $materias = $this->Profesormodel->getMateriasProfesor($idprofesor);
@@ -73,7 +75,12 @@ class Teacher extends CI_Controller {
             if($mainchats != "-1"){
                 foreach ($mainchats as $value) {
                     $personas = explode(";",$value["users"]);
-                    //el profesor siempre estara del lado derecho 
+                    
+                    /*
+                     * NOTA...
+                     * el profesor siempre estara del lado derecho 
+                     */
+                    
                     $userTemp = explode("_", $personas[0]);
                     if($userTemp[0] == "A"){
                         $datosUser = $this->Alumnomodel->getInfoAlumno($userTemp[1]);
@@ -86,6 +93,12 @@ class Teacher extends CI_Controller {
                     }
                 }
             }
+            
+            /*
+             * Ahora agrego posibles alumnos a los cuales les puedo enviar mensajes
+             * los busco en alumno_profesor_materia
+             * en $materias ya tngo las materias, ahora busco alumnos
+             */
             
             //mandamos lista de chat a vista
             $data["chats"] = $chats;

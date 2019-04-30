@@ -47,6 +47,8 @@ class Student extends CI_Controller {
              * Despues, a esta lista agregaremos los chat de mainchat 
              * like users '%P_901%'
             */
+            
+            //Recupero materias para mensajes masivos
             $chats = array();
             $idalumno = $this->session->userdata("idalumno"); //1
             $materias = $this->Alumnomodel->getMateriasAlumno($idalumno);
@@ -86,6 +88,12 @@ class Student extends CI_Controller {
                     }
                 }
             }
+            
+            /*
+             * Ahora agrego posibles profesores a los cuales les puedo enviar mensajes
+             * los busco en alumno_profesor_materia
+             * en $materias ya tngo las materias, ahora busco profesores
+             */
             
             //mandamos lista de chat a vista
             $data["chats"] = $chats;
