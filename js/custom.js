@@ -15,6 +15,9 @@
 
 
 ******************************/
+var idchatTemp = "";
+var me = "";
+var lastmessage = 0;
 
 $(document).ready(function()
 {
@@ -94,12 +97,6 @@ $(document).ready(function()
             });
         });
 
-    	function inicioInput()
-	{
-            $("#error").removeClass("d-block");
-            $("#error").addClass("d-none");            
-        }
-        
         /* 
 	11. get excel file
 	*/
@@ -107,7 +104,183 @@ $(document).ready(function()
             //alert("jajaja");
             $("#openDoc").modal('show');
         });
-       
+        
+        /*
+         * 
+         * return messages
+         */
+        $(".chat_user a").click(function(e){
+            e.preventDefault();
+            me = $(this).attr("id");
+            idchatTemp = $(this).attr("href");
+            $(".chat").empty();
+            //alert($(this).attr("href"));
+            $.ajax({
+                url: urlApi+"api/Chat/getMessages",
+                cache: false, 
+                method: "post",
+                data: {idchat: idchatTemp},
+                success: function(e){
+                    //recuperamos mensajes json
+                    var data = $.parseJSON(e);
+                    $.each(data, function(k, v) {
+                        lastmessage = v.timestamp;
+                        if (v.envia === me){
+                            $(".chat").append("<li class='right clearfix'><span class='chat-img pull-right'>"+
+                                "<img src='http://placehold.it/50/FA6F57/fff&amp;text=ME' alt='User Avatar' class='rounded-circle'>"+
+                                "</span>"+
+                                "    <div class='chat-body clearfix'>"+
+                                "        <div class=''>"+
+                                "            <small class=' text-muted'><span class='glyphicon glyphicon-time'></span>"+v.timestamp+"</small>"+
+                                "            <strong class='pull-right primary-font'> "+v.tempName+" </strong>"+
+                                "        </div>"+
+                                "        <p>"+
+                                "            "+v.message+
+                                "        </p>"+
+                                "    </div>"+
+                                "</li>");                                                       
+                        }else{
+                            $(".chat").append("<li class='left clearfix'>"+
+                                "<span class='chat-img pull-left'>"+
+                                "    <img src='http://placehold.it/50/55C1E7/fff&amp;text=U' alt='User Avatar' class='rounded-circle'>"+
+                                "</span>"+
+                                "<div class='chat-body clearfix'>"+
+                                "    <div class=''>"+
+                                "        <strong class='primary-font'> "+v.tempName+" </strong> <small class='pull-right text-muted'>"+
+                                "            <span class='glyphicon glyphicon-time'></span>"+v.timestamp+"</small>"+
+                                "    </div>"+
+                                "    <p>"+
+                                "        "+v.message+
+                                "    </p>"+
+                                "</div>"+
+                            "</li>");                            
+                        }
+                        $(".chat").scrollTop($(".chat")[0].scrollHeight);
+                    });
+                },
+                error: function(e){
+                    alert(e);
+                }
+            });
+        });
+
+
+        $("#btn-chat").click(function(e){
+            /*
+             * recuperas mensaje
+             * agregas mensaje en lista de mensajes...append
+             * mandas mensaje a basedatos
+             */
+
+            var mensaje = $("#btn-input").val();
+            //alert(mensaje);
+            $("#btn-input").val("");
+                
+            //$(".chat").scrollTop($(".chat")[0].scrollHeight);
+    
+            $.ajax({
+                url: urlApi+"api/Chat/saveMessage",
+                cache: false, 
+                method: "post",
+                data: {message: mensaje, where: idchatTemp, envia: mee},
+                success: function(e){
+                     lastmessage = Number(e);
+                     $(".chat").append("<li class='right clearfix'><span class='chat-img pull-right'>"+
+                        "<img src='http://placehold.it/50/FA6F57/fff&amp;text=ME' alt='User Avatar' class='rounded-circle'>"+
+                        "</span>"+
+                        "    <div class='chat-body clearfix'>"+
+                        "        <div class=''>"+
+                        "            <small class=' text-muted'><span class='glyphicon glyphicon-time'></span>"+lastmessage+"</small>"+
+                        "            <strong class='pull-right primary-font'> "+mee+" </strong>"+
+                        "        </div>"+
+                        "        <p>"+
+                        "            "+mensaje+
+                        "        </p>"+
+                        "    </div>"+
+                        "</li>");
+
+                        $(".chat").scrollTop($(".chat")[0].scrollHeight);
+                    //alert(e);
+                    //recuperamos mensajes json  
+                    //setInterval(getMessagesUpdate,500);//();
+                    /*setTimeout(function() {
+                        getMessagesUpdate()
+                    }, 1000);*/
+                    //setTimeout("getMessagesUpdate()",1000)
+                },
+                error: function(e){
+                    alert(e);
+                }
+            });            
+        });    
+
+        setInterval(function(){
+             getMessagesUpdate();;
+        }, 2500);
+
+        function getMessagesUpdate(){
+            //$(".chat").empty();
+            if(idchatTemp === ""){
+                return;
+            }
+            //alert($(this).attr("href"));
+            $.ajax({
+                url: urlApi+"api/Chat/getLastMessages",
+                cache: false, 
+                method: "post",
+                data: {idchat: idchatTemp,lasttime:lastmessage},
+                success: function(e){
+                    //recuperamos mensajes json
+                    if (e !== "-1"){
+                        var data = $.parseJSON(e);
+                        $.each(data, function(k, v) {
+                            lastmessage = v.timestamp;
+                            if (v.envia === me){
+                                $(".chat").append("<li class='right clearfix'><span class='chat-img pull-right'>"+
+                                    "<img src='http://placehold.it/50/FA6F57/fff&amp;text=ME' alt='User Avatar' class='rounded-circle'>"+
+                                    "</span>"+
+                                    "    <div class='chat-body clearfix'>"+
+                                    "        <div class=''>"+
+                                    "            <small class=' text-muted'><span class='glyphicon glyphicon-time'></span>"+v.timestamp+"</small>"+
+                                    "            <strong class='pull-right primary-font'> "+v.tempName+" </strong>"+
+                                    "        </div>"+
+                                    "        <p>"+
+                                    "            "+v.message+
+                                    "        </p>"+
+                                    "    </div>"+
+                                    "</li>");                                                       
+                            }else{
+                                $(".chat").append("<li class='left clearfix'>"+
+                                    "<span class='chat-img pull-left'>"+
+                                    "    <img src='http://placehold.it/50/55C1E7/fff&amp;text=U' alt='User Avatar' class='rounded-circle'>"+
+                                    "</span>"+
+                                    "<div class='chat-body clearfix'>"+
+                                    "    <div class=''>"+
+                                    "        <strong class='primary-font'> "+v.tempName+" </strong> <small class='pull-right text-muted'>"+
+                                    "            <span class='glyphicon glyphicon-time'></span>"+v.timestamp+"</small>"+
+                                    "    </div>"+
+                                    "    <p>"+
+                                    "        "+v.message+
+                                    "    </p>"+
+                                    "</div>"+
+                                "</li>");                            
+                            }
+                            $(".chat").scrollTop($(".chat")[0].scrollHeight);
+                        });
+                    }
+                },
+                error: function(e){
+                    alert(e);
+                }
+            });
+        }
+        
+    	function inicioInput()
+	{
+            $("#error").removeClass("d-block");
+            $("#error").addClass("d-none");            
+        }
+        
 	/* 
 
 	2. Set Header
@@ -424,3 +597,5 @@ $(document).ready(function()
 	}
 
 });
+    
+    //setTimeout("getMessagesUpdate()",1000);
