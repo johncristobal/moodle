@@ -1941,6 +1941,13 @@ section
 	margin-top: 3px;
 }
 
+/*
+loading
+*/
+.loading{
+    height: 150px;
+    width: 150px;
+}
 /*********************************
     materias
 *********************************/

@@ -86,7 +86,12 @@ http://qnimate.com/database-design-for-storing-chat-messages/
                                 </div>
                             </div>
                             <div class="col-sm-7 offset-sm-1">
-                                <div class="row">
+                                <div class="row">      
+                                    <div class="col gif" style="display: none;">
+                                        <div class="text-center">
+                                            <img class="loading" src="<?php echo base_url()?>images/preload.gif"/>
+                                        </div>                                        
+                                    </div>
                                     <div class="col chat">
                                         
                                         <!--li class="right clearfix"><span class="chat-img pull-right">
@@ -338,5 +343,6 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
     var mee = "<?= $me ?>";
 </script>
 <?php $this->load->view('scripts'); ?> 
+<script src="<?= base_url() ?>js/chat.js"></script>
 </body>
 </html>
