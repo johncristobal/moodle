@@ -33,11 +33,16 @@ class Chat extends CI_Controller {
         //recuperamos idusers
         $users = $this->input->post("idchat");
         $idusers = $this->Chatmodel->getIdUsers($users);
-
-        //recuperamos mensajes
-        $messages = $this->Chatmodel->getMessages($idusers["id"]);
-
-        echo json_encode($messages);        
+        
+        if($idusers == "-1"){
+            //no hay chat ebtre ambos, crea elemento
+            $idusers = $this->Chatmodel->addMainChat($users);
+            echo $idusers;
+        }else{
+            //recuperamos mensajes
+            $messages = $this->Chatmodel->getMessages($idusers["id"]);            
+            echo json_encode($messages);        
+        }
     }    
     
     public function saveMessage(){

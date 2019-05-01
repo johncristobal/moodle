@@ -50,7 +50,7 @@ http://qnimate.com/database-design-for-storing-chat-messages/
                                             <div class="chat-body clearfix">
                                                 <div class="col user">
                                                     <strong class="primary-font"><?= $value["user"] ?></strong> <small class="pull-right text-muted">
-                                                        <span class="glyphicon glyphicon-time"></span>12 mins ago</small>
+                                                        <span class="glyphicon glyphicon-time"></span><?= $value["materia"] ?></small>
                                                 </div>
                                                 
                                             </div>

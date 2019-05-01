@@ -74,4 +74,16 @@ class Chatmodel extends CI_Model {
         
         return $time;
     }
+    
+    public function addMainChat($users){        
+        $data = array(
+            "users" => $users,
+            "fecha_alta" => Date(),
+            "estatus" => 1,
+        );
+        
+        $num = $this->db->insert("mainchat",$data);
+        
+        return  $this->db->insert_id();
+    }
 }
