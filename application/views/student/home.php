@@ -66,7 +66,7 @@
                             </a>
                         </div>
                         <div class="row mt-2">
-                            <a href="<?= base_url() ?>teacher/messages">
+                            <a href="<?= base_url() ?>student/messages">
                             <span class="fa fa-comments"></span>                            
                             <span class="smallCustom">Chat</span>
                             </a>
@@ -245,7 +245,7 @@
                             </a>
                         </div>
                         <div class="row mt-2">
-                            <a href="<?= base_url() ?>teacher/messages">
+                            <a href="<?= base_url() ?>student/messages">
                             <span class="smallCustom">Chat</span>
                             <span class="fa fa-comments"></span>                            
                             </a>

@@ -43,7 +43,7 @@ $(document).ready(function()
 
 	initHeaderSearch();
 	initMenu();
-	initGoogleMap();
+	//initGoogleMap();
 
 	/* 
 
@@ -141,7 +141,7 @@ $(document).ready(function()
 
 	*/
 
-	function initGoogleMap()
+	/*function initGoogleMap()
 	{
 		var myLatlng = new google.maps.LatLng(34.043238,-118.258338);
     	var mapOptions = 
@@ -277,6 +277,6 @@ $(document).ready(function()
 				map.setCenter(myLatlng);
 			}, 1400);
 		});
-	}
+	}*/
 
 });

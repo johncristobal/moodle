@@ -38,6 +38,19 @@ class Profesormodel extends CI_Model {
             return $query->result_array();
         }
     }
+    
+    public function getAlumnosMateriasProfesor($idpm){
+        $query = $this->db->select('*')
+            ->from('alumno_profesor_materia')
+            ->where('id_pm',$idpm)
+            ->get();
+
+        if($query->num_rows() == 0){
+            return "-1";
+        }else{
+            return $query->result_array();
+        } 
+    }
 
 
     public function validateLogin($data){

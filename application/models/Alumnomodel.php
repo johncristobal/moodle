@@ -11,11 +11,13 @@ class Alumnomodel extends CI_Model {
             return $query->result_array()[0];
         }
     }
+    
     // obtenemos la información del alumno
-     public function getInfoAlumno($id){
+    public function getInfoAlumno($id){
         $query = $this->db->select('usuarios.*, alumnos.*')
-                ->from('usuarios')
-                ->join("alumnos","usuarios.id = alumnos.Fk_usuario")
+            ->from('usuarios')
+            ->join("alumnos","usuarios.id = alumnos.Fk_usuario")
+            ->where('alumnos.id',$id)
             ->get();
         
         if($query->num_rows() == 0){
@@ -24,6 +26,20 @@ class Alumnomodel extends CI_Model {
             return $query->result_array()[0];
         }
     }   
+    
+    public function getProfesoresMateriasAlumno($idalumno){
+        $query = $this->db->select('*')
+            ->from('alumno_profesor_materia')
+            ->where('id_alumno',$idalumno)
+            ->get();
+
+        if($query->num_rows() == 0){
+            return "-1";
+        }else{
+            return $query->result_array();
+        } 
+    }
+    
     //recupermos materias
     /*
      * select materias.materia from materias
@@ -32,7 +48,7 @@ inner join alumno_profesor_materia on profesor_materia.id_pm = alumno_profesor_m
 where alumno_profesor_materia.id_alumno = 1
      */
     public function getMateriasAlumno($id){
-        $query = $this->db->select('materias.materia,profesores.nombre')
+        $query = $this->db->select('materias.materia,profesores.nombre,profesor_materia.id_pm,profesores.id')
                 ->from('materias')
                 ->join("profesor_materia","materias.id = profesor_materia.materia")
                 ->join("profesores","profesores.id = profesor_materia.profesor")

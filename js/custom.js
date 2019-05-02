@@ -15,6 +15,9 @@
 
 
 ******************************/
+var idchatTemp = "";
+var me = "";
+var lastmessage = 0;
 
 $(document).ready(function()
 {
@@ -94,12 +97,6 @@ $(document).ready(function()
             });
         });
 
-    	function inicioInput()
-	{
-            $("#error").removeClass("d-block");
-            $("#error").addClass("d-none");            
-        }
-        
         /* 
 	11. get excel file
 	*/
@@ -107,7 +104,13 @@ $(document).ready(function()
             //alert("jajaja");
             $("#openDoc").modal('show');
         });
-       
+                        
+    	function inicioInput()
+	{
+            $("#error").removeClass("d-block");
+            $("#error").addClass("d-none");            
+        }
+        
 	/* 
 
 	2. Set Header
@@ -424,3 +427,5 @@ $(document).ready(function()
 	}
 
 });
+    
+    //setTimeout("getMessagesUpdate()",1000);
