@@ -179,14 +179,14 @@
 										</div>
 										<div class="course_title"><h3><a href="courses.html">Bachillerato a 18 meses</a></h3></div>
 										<div class="course_text">
-										.         Aplicación de Examen en el Plantel
-										·         Certificación con validez oficial (bachillerato General)
-										·         Desde 2 horas diarias o en sabatino
-										·         Sin restricción de edad
-										·         Sin examen de admisión
-										·         Colegiaturas accesibles
-										·         Clases de Ingles
-										·         Grupos reducidos
+                                                                                ·         Aplicación de Examen en el Plantel<br>
+										·         Certificación con validez oficial (bachillerato General)<br>
+										·         Desde 2 horas diarias o en sabatino<br>
+										·         Sin restricción de edad<br>
+										·         Sin examen de admisión<br>
+										·         Colegiaturas accesibles<br>
+										·         Clases de Ingles<br>
+										·         Grupos reducidos<br>
 									</div>
 									</div>
 								</div>
@@ -201,20 +201,20 @@
 											<div class="course_tag"><a href="#">Licenciatura</a></div>
 										</div>
 										<div class="course_title"><h3><a href="courses.html">Derecho</a></h3></div>
-										<div class="course_text">La carrera de Derecho tiene como objetivo formar profesionales en la ciencia jurídica con énfasis en el área empresarial. El abogado es un profesional capacitado para ejercer competitivamente la profesión con un alto sentido ético que le permite desempeñarse de manera eficiente y confiable.</div>
+										<div class="course_text">La carrera de Derecho tiene como objetivo formar profesionales en la ciencia jurídica con énfasis en el área empresarial. <br><br>El abogado es un profesional capacitado para ejercer competitivamente la profesión con un alto sentido ético que le permite desempeñarse de manera eficiente y confiable.</div>
 									</div>
 								</div>
 							</div>
 							<!-- Slider Item -->
 							<div class="owl-item">
 								<div class="course">
-									<div class="course_image"><img src="images/course_2.jpg" alt=""></div>
+									<div class="course_image"><img src="images/course_3.jpg" alt=""></div>
 									<div class="course_body">
 										<div class="course_header d-flex flex-row align-items-center justify-content-start">
 											<div class="course_tag"><a href="#">Licenciatura</a></div>
 										</div>
 										<div class="course_title"><h3><a href="courses.html">Contaduría</a></h3></div>
-										<div class="course_text">El objetivo de la licenciatura es contaduría tiene como principal objetivo la formación de profesionales que proyecten y hagan uso adecuado de la información financiera en base a las normas principios y técnicas contables y en existencia en el Ámbito tanto nacional como en el internacional.</div>
+                                                                                <div class="course_text">El objetivo de la licenciatura es contaduría tiene como principal objetivo la formación de profesionales que proyecten y hagan uso adecuado de la información financiera.<br><br>Esto con base a las normas principios y técnicas contables y en existencia en el ámbito tanto nacional como en el internacional.<br></div>
 									</div>
 								</div>
 							</div>
@@ -223,8 +223,8 @@
 						</div>
 						
 						<!-- Courses Slider Nav -->
-						<div class="courses_slider_nav courses_slider_prev trans_200"><i class="fa fa-angle-left" aria-hidden="true"></i></div>
-						<div class="courses_slider_nav courses_slider_next trans_200"><i class="fa fa-angle-right" aria-hidden="true"></i></div>
+						<!--div class="courses_slider_nav courses_slider_prev trans_200"><i class="fa fa-angle-left" aria-hidden="true"></i></div>
+						<div class="courses_slider_nav courses_slider_next trans_200"><i class="fa fa-angle-right" aria-hidden="true"></i></div-->
 
 					</div>
 				</div>
@@ -232,64 +232,50 @@
 		</div>
 	</div>
 
-	<!-- Milestones -->
-
-	<div class="milestones">
-		<!-- Background image artis https://unsplash.com/@thepootphotographer -->
-		<div class="parallax_background parallax-window" data-parallax="scroll" data-image-src="images/milestones.jpg" data-speed="0.8"></div>
-		<div class="container">
-			<div class="row milestones_container">
-							
-				<!-- Milestone -->
-				<div class="col-lg-3 milestone_col">
-					<div class="milestone text-center">
-						<div class="milestone_icon"><img src="images/milestone_1.svg" alt=""></div>
-						<div class="milestone_counter" data-end-value="1548">0</div>
-						<div class="milestone_text">Online Courses</div>
-					</div>
-				</div>
-
-				<!-- Milestone -->
-				<div class="col-lg-3 milestone_col">
-					<div class="milestone text-center">
-						<div class="milestone_icon"><img src="images/milestone_2.svg" alt=""></div>
-						<div class="milestone_counter" data-end-value="7286">0</div>
-						<div class="milestone_text">Students</div>
-					</div>
-				</div>
-
-				<!-- Milestone -->
-				<div class="col-lg-3 milestone_col">
-					<div class="milestone text-center">
-						<div class="milestone_icon"><img src="images/milestone_3.svg" alt=""></div>
-						<div class="milestone_counter" data-end-value="257">0</div>
-						<div class="milestone_text">Teachers</div>
-					</div>
-				</div>
-
-				<!-- Milestone -->
-				<div class="col-lg-3 milestone_col">
-					<div class="milestone text-center">
-						<div class="milestone_icon"><img src="images/milestone_4.svg" alt=""></div>
-						<div class="milestone_counter" data-end-value="39">0</div>
-						<div class="milestone_text">Countries</div>
-					</div>
-				</div>
-
-			</div>
-		</div>
-	</div>
 
 	<!-- Sections -->
 
 	<div class="grouped_sections">
 		<div class="container">
 			<div class="row">
+                            <div class="col text-center">				
+                                <div class="section_title text-center"><h2>Acerca de nosotros</h2></div>
+                                <br>
+                            </div>			                            
+                            <div class="row borderWhite">
+                                <div class="borderWhite redSS col-12 col-sm-12 col-md-6 text-center">
+                                    <div class="milestone_icon text-center"><img src="images/milestone_1.svg" alt=""></div>
+                                    <br><br>
+                                    <div class="title">¿Quiénes somos?</div>
+                                    <br>
+                                    <p>Somos una Institución Educativa con 32 años de experiencia, Actualmente contamos Con 17 Planteles en la Ciudad de México y el área Metropolitana. Nuestro éxito se basa en la flexibilidad que ofrecemos a nuestros alumnos para concluir sus estudios rápidamente.</p>
+                                </div>
+                                <div class="borderWhite whiteSS col-12 col-sm-12 col-md-6 text-center">
+                                    <div class="milestone_icon text-center"><img src="images/milestone_2.svg" alt=""></div>
+                                    <br>
+                                    <br><div class="title">Misión</div>
+                                    <br>
+                                    <p>Nuestro innovador sistema académico, amplia el acceso a una educación de calidad global para formar personas productivas que agreguen un valor social.</p>                                                
+                                </div>
+                            </div>
+                            <div class="row borderWhite">
+                                <div class="borderWhite whiteSS col-12 col-sm-12 col-md-6 text-center">
+                                    <div class="milestone_icon text-center"><img src="images/milestone_3.svg" alt=""></div>
+                                    <br>
+                                    <br><div class="title">Visión</div>
+                                    <br>
+                                    <p>Impartir un servicio educativo de calidad fomentando en nuestros alumnos una formación de valores y excelencia académica, que les permita ingresar a un mundo de competencia y desarrollo integral.</p>
+                                </div>
+                                <div class="borderWhite redSS col-12 col-sm-12 col-md-6 text-center">
+                                    <div class="milestone_icon text-center"><img src="images/milestone_4.svg" alt=""></div>
+                                    <br>
+                                    <br><div class="title">¿Qué esperar de nosotros?</div>
+                                    <br>
+                                    <p>Crear, a través de una educación de alta calidad, una sociedad conformada por individuos conscientes de su propia identidad y de su papel en la sociedad del siglo XXI, capaces de proponer e implementar estrategias de cambio para su beneficio.</p>
+                                </div>
+                            </div>
 
-				<!-- Why Choose Us -->
-
-				<div class="col-lg-4 grouped_col">
-					<div class="grouped_title">Acerca de nosotros</div>
+                                <!--div class="col-lg-4 grouped_col">
 					<div class="accordions">
 
 						<div class="accordion_container">
@@ -330,67 +316,56 @@
 
 					</div>
 
-				</div>
+				</div-->
 
-				<!-- Events -->
-
-				<div class="col-lg-4 grouped_col">
-					<div class="grouped_title"></div>
-					<div class="events">
-
-						<!-- Event -->
-						<div class="accordion_container">
-							<div class="accordion d-flex flex-row align-items-center active"><div>Misión</div></div>
-							<div class="accordion_panel">
-								<div>
-									<p>Impartir un servicio educativo de calidad fomentando en nuestros alumnos una formación de valores y excelencia académica, que les permita ingresar a un mundo de competencia y desarrollo integral.</p>
-								</div>
-							</div>
-						</div>
-
-						<!-- Event -->
-						<!--
-						<div class="event d-flex flex-row align-items-start justify-content-start">
-							<div>
-								<div class="event_date d-flex flex-column align-items-center justify-content-center">
-									<div class="event_day">23</div>
-									<div class="event_month">April</div>
-								</div>
-							</div>
-							<div class="event_body">
-								<div class="event_title"><a href="#">Students Art Workshop</a></div>
-								<div class="event_subtitle">Location: Online Platform</div>
-							</div>
-						</div> -->
-
+				
+			</div>
+		</div>
+	</div>
+        
+        <div class="milestones">
+                
+		<!-- Background image artis https://unsplash.com/@thepootphotographer -->
+		<div class="parallax_background parallax-window" data-parallax="scroll" data-image-src="images/milestones.jpg" data-speed="0.8"></div>
+		<div class="container">
+			<div class="row milestones_container">
+				Contacto			
+				<!-- Milestone -->
+				<!--div class="col-lg-3 milestone_col">
+					<div class="milestone text-center">
+						<div class="milestone_icon"><img src="images/milestone_1.svg" alt=""></div>
+						<div class="milestone_counter" data-end-value="1548">0</div>
+						<div class="milestone_text">Online Courses</div>
 					</div>
 				</div>
 
-				<!-- News -->
-
-				<div class="col-lg-4 grouped_col">
-					<div class="grouped_title"></div>
-					<div class="news">
-						<div class="accordion_container">
-							<div class="accordion d-flex flex-row align-items-center active"><div>Visión</div></div>
-							<div class="accordion_panel">
-								<div>
-									<p>Crear, a través de una educación de alta calidad, una sociedad conformada por individuos conscientes de su propia identidad y de su papel en la sociedad del siglo XXI, capaces de proponer e implementar estrategias de cambio para su beneficio.</p>
-								</div>
-							</div>
-						</div>
-						<!-- News Post -->
-						<!--
-						<div class="news_post d-flex flex-row align-items-start justify-content-start">
-							<div><div class="news_post_image"><img src="images/news_2.jpg" alt="https://unsplash.com/@nbb_photos"></div></div>
-							<div class="news_post_body">
-								<div class="news_post_date">April 02, 2018</div>
-								<div class="news_post_title"><a href="news.html">Books, Kindle or tablet?</a></div>
-								<div class="news_post_author">By <a href="#">William Smith</a></div>
-							</div>
-						</div>-->
+				<!-- Milestone >
+				<div class="col-lg-3 milestone_col">
+					<div class="milestone text-center">
+						<div class="milestone_icon"><img src="images/milestone_2.svg" alt=""></div>
+						<div class="milestone_counter" data-end-value="7286">0</div>
+						<div class="milestone_text">Students</div>
 					</div>
 				</div>
+
+				<!-- Milestone >
+				<div class="col-lg-3 milestone_col">
+					<div class="milestone text-center">
+						<div class="milestone_icon"><img src="images/milestone_3.svg" alt=""></div>
+						<div class="milestone_counter" data-end-value="257">0</div>
+						<div class="milestone_text">Teachers</div>
+					</div>
+				</div>
+
+				<!-- Milestone >
+				<div class="col-lg-3 milestone_col">
+					<div class="milestone text-center">
+						<div class="milestone_icon"><img src="images/milestone_4.svg" alt=""></div>
+						<div class="milestone_counter" data-end-value="39">0</div>
+						<div class="milestone_text">Countries</div>
+					</div>
+				</div-->
+
 			</div>
 		</div>
 	</div>

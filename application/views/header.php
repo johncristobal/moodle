@@ -1,3 +1,15 @@
+<style>
+    .logo{
+        height: 80px;
+        width: 115px;
+    }
+    @media only screen and (max-width: 575px)
+    {
+        .logo {
+            display: none;
+        }
+    }
+</style>
 <header class="header">
 			
 		<!-- Top Bar -->
@@ -38,8 +50,8 @@
 							<div class="logo_container">
 								<a href="#">
 									<div class="logo_content d-flex flex-row align-items-end justify-content-start">
-										<div class="logo_img"><img src="images/mini_logo.png" alt=""></div>
-										<div class="logo_text">learn</div>
+                                                                            <div class="logo_img"><img class="logo" src="images/logo_instituto.jpg" alt=""></div>
+                                                                            &nbsp;&nbsp;&nbsp;&nbsp;<div class="logo_text">Idea</div>
 									</div>
 								</a>
 							</div>

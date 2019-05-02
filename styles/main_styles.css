@@ -1142,6 +1142,55 @@ section
 	background-position: center center;
 }
 
+/*
+6.5 Main
+*/
+.borderWhite{
+    border: 5px solid #f2f1f8;
+}
+.redSS{
+    background-color: #f50202;
+    padding-left: 75px;
+    padding-right: 75px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    
+}
+.redSS > .title{
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    font-size: x-large;    
+}
+.redSS > p{
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    font-size: initial;
+}
+
+.whiteSS{
+    background: #f2f1f8;
+    padding-left: 75px;
+    padding-right: 75px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+.whiteSS > .title{
+    color: #6c6a74;
+    font-weight: bold;
+    text-align: center;
+    font-size: x-large;    
+}
+
+.whiteSS > p{
+    color: #6c6a74;
+    font-weight: bold;
+    text-align: center;
+    font-size: initial;
+}
+
+
 /*********************************
 7. Courses
 *********************************/
