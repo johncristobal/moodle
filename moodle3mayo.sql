@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 23-04-2019 a las 18:58:40
+-- Tiempo de generación: 03-05-2019 a las 17:04:14
 -- Versión del servidor: 10.1.21-MariaDB
 -- Versión de PHP: 5.6.30
 
@@ -41,7 +41,8 @@ CREATE TABLE `alumnos` (
 --
 
 INSERT INTO `alumnos` (`id`, `nombre`, `edad`, `matricula`, `estatus`, `fecha_alta`, `Fk_usuario`) VALUES
-(1, 'JOHN', 12, 'ee345', 1, '2019-04-15', 6);
+(1, 'JOHN', 12, 'ee345', 1, '2019-04-15', 6),
+(2, 'allumnos 2', 20, 'matrocula alumnos 2', 1, '2019-04-02', 8);
 
 -- --------------------------------------------------------
 
@@ -61,7 +62,8 @@ CREATE TABLE `alumno_profesor_materia` (
 --
 
 INSERT INTO `alumno_profesor_materia` (`id`, `id_alumno`, `id_pm`, `estatus`) VALUES
-(1, 1, 1, 1);
+(1, 1, 100000, 1),
+(2, 2, 100000, 1);
 
 -- --------------------------------------------------------
 
@@ -78,35 +80,48 @@ CREATE TABLE `alumno_tareas` (
   `estatus` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Volcado de datos para la tabla `alumno_tareas`
---
-
-INSERT INTO `alumno_tareas` (`id`, `id_alumno`, `id_tarea`, `archivo`, `calificacion`, `estatus`) VALUES
-(1, 1, 1, '', 0, 1);
-
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `chat`
+-- Estructura de tabla para la tabla `chats`
 --
 
-CREATE TABLE `chat` (
+CREATE TABLE `chats` (
   `id` int(11) NOT NULL,
-  `id_user` varchar(20) NOT NULL,
+  `id_users` varchar(50) NOT NULL,
   `message` text NOT NULL,
   `envia` int(11) NOT NULL,
+  `tempName` varchar(255) NOT NULL,
   `estatus` int(11) NOT NULL,
   `timestamp` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+-- --------------------------------------------------------
+
 --
--- Volcado de datos para la tabla `chat`
+-- Estructura de tabla para la tabla `chat_user`
 --
 
-INSERT INTO `chat` (`id`, `id_user`, `message`, `envia`, `estatus`, `timestamp`) VALUES
-(1, '5;6', 'hola como estas?', 5, 1, 0),
-(2, '5;6', 'bien y tu', 6, 1, 0);
+CREATE TABLE `chat_user` (
+  `id` int(11) NOT NULL,
+  `id_users` int(11) NOT NULL,
+  `id_user` int(11) NOT NULL,
+  `estatus` int(11) NOT NULL,
+  `last_time` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `mainchat`
+--
+
+CREATE TABLE `mainchat` (
+  `id` int(11) NOT NULL,
+  `users` varchar(100) NOT NULL,
+  `fecha_alta` date NOT NULL,
+  `estatus` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -127,7 +142,9 @@ CREATE TABLE `materias` (
 
 INSERT INTO `materias` (`id`, `materia`, `estatus`, `fecha_alta`) VALUES
 (1, 'Materia_1', 1, '2019-04-23'),
-(2, 'Materia_2', 1, '2019-04-23');
+(2, 'Materia_2', 1, '2019-04-23'),
+(3, 'materia_3', 1, '2019-04-23'),
+(4, 'materia_4', 1, '2019-04-24');
 
 -- --------------------------------------------------------
 
@@ -150,7 +167,7 @@ CREATE TABLE `profesores` (
 --
 
 INSERT INTO `profesores` (`id`, `nombre`, `fecha_nac`, `matricula`, `estatus`, `fecha_alta`, `Fk_usuario`) VALUES
-(1, 'Flavio', '2019-04-01', '12345', 1, '2019-04-15', 5);
+(901, 'profe 3', '2019-04-26', 'profe3', 1, '2019-04-26', 9);
 
 -- --------------------------------------------------------
 
@@ -170,8 +187,7 @@ CREATE TABLE `profesor_materia` (
 --
 
 INSERT INTO `profesor_materia` (`id_pm`, `profesor`, `materia`, `estatus`) VALUES
-(1, 1, 1, 1),
-(2, 1, 2, 1);
+(100000, 901, 3, 1);
 
 -- --------------------------------------------------------
 
@@ -189,14 +205,6 @@ CREATE TABLE `tareas` (
   `estatus` int(11) NOT NULL,
   `id_pm` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Volcado de datos para la tabla `tareas`
---
-
-INSERT INTO `tareas` (`id`, `tarea`, `fecha_alta`, `fecha_fin`, `puntos`, `archivo`, `estatus`, `id_pm`) VALUES
-(1, 'tarea_1', '2019-04-15', '2019-04-22', 80, '', 1, 1),
-(2, 'tarea_1_1', '2019-04-16', '2019-04-23', 20, '', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -221,7 +229,9 @@ INSERT INTO `usuarios` (`id`, `correo`, `password`, `estatus`, `rol`, `fecha_alt
 (1, 'nowoscmexico@gmail.com', 'nowoscadm19', 1, 1, '2019-04-09'),
 (2, 'cristobaljohn00@gmail.com', 'cristobal12345', 1, 1, '2019-04-09'),
 (5, 'alexis@gmail.com', '12345', 1, 2, '2019-04-15'),
-(6, 'oscar@gmail.com', 'oscar', 1, 3, '2019-04-15');
+(6, 'oscar@gmail.com', 'oscar', 1, 3, '2019-04-15'),
+(8, 'alumno@gmail.com', 'alumno', 1, 3, '2019-04-24'),
+(9, 'profesor@gmail.com', 'profesor', 1, 2, '2019-04-26');
 
 --
 -- Índices para tablas volcadas
@@ -251,9 +261,22 @@ ALTER TABLE `alumno_tareas`
   ADD KEY `id_tarea` (`id_tarea`);
 
 --
--- Indices de la tabla `chat`
+-- Indices de la tabla `chats`
 --
-ALTER TABLE `chat`
+ALTER TABLE `chats`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `id_users` (`id_users`);
+
+--
+-- Indices de la tabla `chat_user`
+--
+ALTER TABLE `chat_user`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `mainchat`
+--
+ALTER TABLE `mainchat`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -274,8 +297,8 @@ ALTER TABLE `profesores`
 --
 ALTER TABLE `profesor_materia`
   ADD PRIMARY KEY (`id_pm`),
-  ADD KEY `profesor` (`profesor`),
-  ADD KEY `materia` (`materia`);
+  ADD KEY `profesor_materia_ibfk_1` (`profesor`),
+  ADD KEY `profesor_materia_ibfk_2` (`materia`);
 
 --
 -- Indices de la tabla `tareas`
@@ -298,47 +321,57 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `alumnos`
 --
 ALTER TABLE `alumnos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT de la tabla `alumno_profesor_materia`
 --
 ALTER TABLE `alumno_profesor_materia`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT de la tabla `alumno_tareas`
 --
 ALTER TABLE `alumno_tareas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
--- AUTO_INCREMENT de la tabla `chat`
+-- AUTO_INCREMENT de la tabla `chats`
 --
-ALTER TABLE `chat`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+ALTER TABLE `chats`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=109;
+--
+-- AUTO_INCREMENT de la tabla `chat_user`
+--
+ALTER TABLE `chat_user`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+--
+-- AUTO_INCREMENT de la tabla `mainchat`
+--
+ALTER TABLE `mainchat`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT de la tabla `materias`
 --
 ALTER TABLE `materias`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT de la tabla `profesores`
 --
 ALTER TABLE `profesores`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=902;
 --
 -- AUTO_INCREMENT de la tabla `profesor_materia`
 --
 ALTER TABLE `profesor_materia`
-  MODIFY `id_pm` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_pm` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=100001;
 --
 -- AUTO_INCREMENT de la tabla `tareas`
 --
 ALTER TABLE `tareas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- Restricciones para tablas volcadas
 --
@@ -373,8 +406,8 @@ ALTER TABLE `profesores`
 -- Filtros para la tabla `profesor_materia`
 --
 ALTER TABLE `profesor_materia`
-  ADD CONSTRAINT `profesor_materia_ibfk_1` FOREIGN KEY (`profesor`) REFERENCES `profesores` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `profesor_materia_ibfk_2` FOREIGN KEY (`materia`) REFERENCES `materias` (`id`);
+  ADD CONSTRAINT `profesor_materia_ibfk_1` FOREIGN KEY (`profesor`) REFERENCES `profesores` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `profesor_materia_ibfk_2` FOREIGN KEY (`materia`) REFERENCES `materias` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Filtros para la tabla `tareas`
