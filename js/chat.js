@@ -18,6 +18,7 @@
 var idchatTemp = "";
 var me = "";
 var lastmessage = 0;
+var activeChat = "";
 
 $(document).ready(function()
 {
@@ -66,40 +67,6 @@ $(document).ready(function()
         $("#mail").on("change",function(){
             inicioInput();            
         });
-        
-        $("#login_form").submit(function(e){
-            e.preventDefault();
-            console.log($("#mail").val());
-            console.log($("#pass").val());
-            $.ajax({
-                url: urlApi+"Login/validate",
-                cache: false, 
-                method: "post",
-                data: {correo: $("#mail").val(), pass: $("#pass").val()},
-                success: function(e){
-                    switch(e){
-                        case "1":
-                            window.location.href = urlApi+"admin";
-                        break;
-                        case "2":
-                            window.location.href = urlApi+"teacher";
-                        break;
-                        case "3":
-                            window.location.href = urlApi+"student";
-                        break;
-                        default:
-                            $("#error").removeClass("d-none");
-                            $("#error").addClass("d-block");
-                            //alert(e);
-                        break;
-                    }
-                },
-                error: function(e){
-                    alert(e);
-                }
-            });
-        });
-
         /* 
 	11. get excel file
 	*/
@@ -124,12 +91,14 @@ $(document).ready(function()
             $("#btn-chat").prop("disabled", false);
             $("#btn-input").prop("disabled", false);
 
+            $(this).find(".chat-body").find(".user").find("small").remove();
+
             //recuperas mensjaes
             $.ajax({
                 url: urlApi+"api/Chat/getMessages",
                 cache: false, 
                 method: "post",
-                data: {idchat: idchatTemp},
+                data: {idchat: idchatTemp, idme: me},
                 success: function(e){
                     //recuperamos mensajes json
                     var data = $.parseJSON(e);
@@ -166,11 +135,12 @@ $(document).ready(function()
                             "</li>");                            
                         }
                         $(".chat").scrollTop($(".chat")[0].scrollHeight);
-                        $(".gif").hide();
-
                     });
+                    
+                    $(".gif").hide();
                 },
                 error: function(e){
+                    $(".gif").hide();
                     alert(e);
                 }
             });
@@ -208,7 +178,7 @@ $(document).ready(function()
                 url: urlApi+"api/Chat/saveMessage",
                 cache: false, 
                 method: "post",
-                data: {message: mensaje, where: idchatTemp, envia: mee},
+                data: {message: mensaje, where: idchatTemp, envia: mee, tempNameS: tempName},
                 success: function(e){
                      lastmessage = Number(e);
                      $(".chat").append("<li class='right clearfix'><span class='chat-img pull-right'>"+
@@ -217,7 +187,7 @@ $(document).ready(function()
                         "    <div class='chat-body clearfix'>"+
                         "        <div class=''>"+
                         "            <small class=' text-muted'><span class='glyphicon glyphicon-time'></span>"+lastmessage+"</small>"+
-                        "            <strong class='pull-right primary-font'> "+mee+" </strong>"+
+                        "            <strong class='pull-right primary-font'> "+tempName+" </strong>"+
                         "        </div>"+
                         "        <p>"+
                         "            "+mensaje+
@@ -237,11 +207,48 @@ $(document).ready(function()
                 error: function(e){
                     alert(e);
                 }
-            }); 
+            });
         }
 
         setInterval(function(){
-             getMessagesUpdate();;
+             getMessagesChatUpdate();
+        }, 2500);
+        
+        function getMessagesChatUpdate(){
+            //$(".chat").empty(); href"));
+            $(".chat_user a").each(function(){
+                var idusers = $(this).attr("href");
+                var me = $(this).attr("id");
+                var tempElement = $(this).find(".chat-body").find(".user");
+                if (idusers === idchatTemp){
+                    return;
+                }
+                
+                $.ajax({
+                    url: urlApi+"api/Chat/getMessagesNotRead",
+                    cache: false, 
+                    method: "post",
+                    data: {idchat: idusers,iduser:me},
+                    success: function(e){
+                        if (e !== "0"){
+                            
+                            //console.log(tempElement);
+                            tempElement.find("small").remove();                
+                            tempElement.append("<small class='pull-right notRead text-muted'>"+e+"</small>");                            
+                        }
+                    },
+                    error: function(e){
+                        alert(e);
+                    }
+                });
+                //console.log($(this).attr("href"));
+                //var user = $(this).find(".chat-body").find(".user").find("strong").append("<div>a</div>");
+                //console.log(user);
+            });            
+        }
+
+        setInterval(function(){
+             getMessagesUpdate();
         }, 2500);
 
         function getMessagesUpdate(){

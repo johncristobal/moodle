@@ -49,39 +49,17 @@ http://qnimate.com/database-design-for-storing-chat-messages/
                                             </span>
                                             <div class="chat-body clearfix">
                                                 <div class="col user">
-                                                    <strong class="primary-font"><?= $value["user"] ?></strong> <small class="pull-right text-muted">
-                                                        <span class="glyphicon glyphicon-time"></span><?= $value["materia"] ?></small>
+                                                    <strong class="primary-font"><?= $value["user"] ?></strong> 
+                                                    <small class="pull-right notRead text-muted" <?php if($value["numMessages"] == 0){echo "style='display:none'"; } ?> >                                                        
+                                                        <?= $value["numMessages"] ?>
+                                                    </small>
                                                 </div>
-                                                
                                             </div>
-                                        </li>
+                                            </li>
                                         </a>
                                         <?php
                                             }
                                         ?>
-                                        <!--li class="left clearfix">
-                                            <span class="chat-img pull-left">
-                                                <img src="http://placehold.it/50/55C1E7/fff&amp;text=U" alt="User Avatar" class="rounded-circle">
-                                            </span>
-                                            <div class="chat-body clearfix">
-                                                <div class="col user">
-                                                    <strong class="primary-font">Jack Sparrow</strong> <small class="pull-right text-muted">
-                                                        <span class="glyphicon glyphicon-time"></span>12 mins ago</small>
-                                                </div>
-                                                
-                                            </div>
-                                        </li>
-                                        <li class="left clearfix">
-                                            <span class="chat-img pull-left">
-                                                <img src="http://placehold.it/50/55C1E7/fff&amp;text=U" alt="User Avatar" class="rounded-circle">
-                                            </span>
-                                            <div class="chat-body clearfix">
-                                                <div class="col user">
-                                                    <strong class="primary-font">Jack Sparrow</strong> <small class="pull-right text-muted">
-                                                        <span class="glyphicon glyphicon-time"></span>12 mins ago</small>
-                                                </div>                                                
-                                            </div>
-                                        </li-->
                                     </div>
                                 </div>
                             </div>
@@ -341,6 +319,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 <script>
     var urlApi = "<?php echo base_url() ?>";
     var mee = "<?= $me ?>";
+    var tempName = "<?= $tempName; ?>"
 </script>
 <?php $this->load->view('scripts'); ?> 
 <script src="<?= base_url() ?>js/chat.js"></script>

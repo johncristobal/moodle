@@ -26,6 +26,7 @@ class Teacher extends CI_Controller {
             $id = $this->session->userdata("id");
             $idprofesor = $this->Profesormodel->getIdProfesor($id);
             $this->session->set_userdata("idprofesor",$idprofesor["id"]);
+            $this->session->set_userdata("tempName",$idprofesor["nombre"]);
 
             $this->load->view("teacher/home");
         }else{
@@ -51,16 +52,23 @@ class Teacher extends CI_Controller {
             //Agrego materias del profesor para mensajes masivos
             $chats = array();
             $idprofesor = $this->session->userdata("idprofesor"); //901
+            $tempName = $this->session->userdata("tempName");
+
             $materias = $this->Profesormodel->getMateriasProfesor($idprofesor);
             if($materias != "-1"){
                 //de la lista de materias del profesor son las que se veran en chatlist
                 foreach ($materias as $value) {
+                    
+                    //recuperamos solo cantidad de mensjaes si hay
+                    $numMessages = $this->Chatmodel->lastMessages($idprofesor,"PM_".$value["id_pm"]);
+                    
                     //recuperamos tareas con id_PM
                     $tempArray = array(
                         "user" => $value["materia"],
                         "id" => "PM_".$value["id_pm"],
                         "userchat" => "PM_".$value["id_pm"],
-                        "materia" => ""    
+                        "materia" => "",
+                        "numMessages" => $numMessages
                     );                    
                     
                     //$materia["nombre"] = $value["materia"];
@@ -77,11 +85,15 @@ class Teacher extends CI_Controller {
                     $alumnos = $this->Profesormodel->getAlumnosMateriasProfesor($value["id_pm"]);
                     foreach ($alumnos as $alumno) {
                         $datosUser = $this->Alumnomodel->getInfoAlumno($alumno["id_alumno"]);
+                        
+                        $numMessages = $this->Chatmodel->lastMessages($idprofesor,"A_".$datosUser["id"].";P_".$idprofesor);
+
                         $tempArray = array(
                             "user" => $datosUser["nombre"],
                             "id" => "A_".$datosUser["id"],
                             "userchat" => "A_".$datosUser["id"].";P_".$idprofesor,
-                            "materia" => $value["materia"]
+                            "materia" => $value["materia"],
+                            "numMessages" => $numMessages
                         );
                         array_push($chats, $tempArray);
                     }
@@ -90,34 +102,17 @@ class Teacher extends CI_Controller {
             }else{
                 //$data["tareas"] = "-1";
             }
-            
-            //ya tengo materias, ahora logica para recuperar chat de mainchat
-            /*$mainchats = $this->Chatmodel->getChats($idprofesor);
-            if($mainchats != "-1"){
-                foreach ($mainchats as $value) {
-                    $personas = explode(";",$value["users"]);
-                    
-                    /*
-                     * NOTA...
-                     * el profesor siempre estara del lado derecho 
-                     */
-            /*        
-                    $userTemp = explode("_", $personas[0]);
-                    if($userTemp[0] == "A"){
-                        $datosUser = $this->Alumnomodel->getInfoAlumno($userTemp[1]);
-                        $tempArray = array(
-                            "user" => $datosUser["nombre"],
-                            "id" => "A_".$datosUser["id"],
-                            "userchat" => $value["users"]
-                        );
-                        array_push($chats, $tempArray);
-                    }
-                }
-            }*/
+                        
+            /*
+             * ahora con la lista de chat, vamos a recuperar los mensjaes 
+             * que no se han leido aun...en tabla chat_user
+             */
             
             //mandamos lista de chat a vista
-            $data["chats"] = $chats;
+            $data["chats"] = $chats;            
             $data["me"] = $idprofesor;
+            $data["tempName"] = $tempName;
+            
             //cargar vista de chat general
             $this->load->view("chat/home",$data);
         }else{

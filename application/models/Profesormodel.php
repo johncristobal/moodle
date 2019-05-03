@@ -3,7 +3,7 @@
 class Profesormodel extends CI_Model {
     
     public function getIdProfesor($id){
-        $query = $this->db->select('id')->from('profesores')->where('Fk_usuario',$id)->get();
+        $query = $this->db->select('id,nombre')->from('profesores')->where('Fk_usuario',$id)->get();
         
         if($query->num_rows() == 0){
             return "-1";

@@ -32,6 +32,8 @@ class Chat extends CI_Controller {
         
         //recuperamos idusers
         $users = $this->input->post("idchat");
+        $idme = $this->input->post("idme");
+        
         $idusers = $this->Chatmodel->getIdUsers($users);
         
         if($idusers == "-1"){
@@ -40,7 +42,16 @@ class Chat extends CI_Controller {
             echo $idusers;
         }else{
             //recuperamos mensajes
-            $messages = $this->Chatmodel->getMessages($idusers["id"]);            
+            $messages = $this->Chatmodel->getMessages($idusers["id"]);
+            $lasttime = 0;
+            if(count($messages) > 0){
+                $lasttime = $messages[count($messages)-1]["timestamp"];                
+            }else{
+                $lasttime = 0;            
+            }
+            
+            $this->Chatmodel->updateLastTime($idusers["id"],$lasttime,$idme);
+            
             echo json_encode($messages);        
         }
     }    
@@ -48,14 +59,26 @@ class Chat extends CI_Controller {
     public function saveMessage(){
         
         //salvar mensaje en la tabla con id...
+        $tempName = $this->input->post("tempNameS");        
         $idchats = $this->input->post("where");
         $envia = $this->input->post("envia");
-        $idusers = $this->Chatmodel->getIdUsers($idchats);
         $mensaje = $this->input->post("message");
-        //$envia = $this->session->userdata("envia");
-        $num = $this->Chatmodel->savemessage($idusers["id"],$mensaje,$envia);
+        $time = time();
+
+        $id_users = $this->Chatmodel->getIdUsers($idchats);
+        $last = $this->Chatmodel->saveLastMessageUser($id_users["id"],$envia,$time);
+        $num = $this->Chatmodel->savemessage($id_users["id"],$mensaje,$envia,$tempName,$time);
         
         echo $num;
+    }
+    
+    public function getMessagesNotRead(){
+        $idusers = $this->input->post("idchat");
+        $idme = $this->input->post("iduser");
+        
+        $numMessages = $this->Chatmodel->lastMessages($idme,$idusers);
+
+        echo "".$numMessages."";
     }
     
     public function getLastMessages(){

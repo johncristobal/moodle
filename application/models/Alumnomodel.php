@@ -3,7 +3,7 @@
 class Alumnomodel extends CI_Model {
     
     public function getIdAlumno($id){
-        $query = $this->db->select('id')->from('alumnos')->where('Fk_usuario',$id)->get();
+        $query = $this->db->select('id,nombre')->from('alumnos')->where('Fk_usuario',$id)->get();
         
         if($query->num_rows() == 0){
             return "-1";

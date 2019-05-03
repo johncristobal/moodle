@@ -25,8 +25,10 @@ class Student extends CI_Controller {
         if($this->sesionActiva()){
             $id = $this->session->userdata("id");
             $idalumno = $this->Alumnomodel->getIdAlumno($id);
-            $data["infoAlumno"]=$this->Alumnomodel->getInfoAlumno($idalumno["id"]);
             $this->session->set_userdata("idalumno",$idalumno["id"]);  
+            $this->session->set_userdata("tempName",$idalumno["nombre"]);
+
+            $data["infoAlumno"]=$this->Alumnomodel->getInfoAlumno($idalumno["id"]);
             $data["materias"] = $this->Alumnomodel->getMateriasAlumno($idalumno["id"]);
             $this->load->view("student/home",$data);  
         }else{
@@ -50,17 +52,23 @@ class Student extends CI_Controller {
             
             //Recupero materias para mensajes masivos
             $chats = array();
-            $idalumno = $this->session->userdata("idalumno"); //1
+            $idalumno = $this->session->userdata("idalumno");
+            $tempName = $this->session->userdata("tempName");
+            
             $materias = $this->Alumnomodel->getMateriasAlumno($idalumno);
             if($materias != "-1"){
                 //de la lista de materias del allumno son las que se veran en chatlist
                 foreach ($materias as $value) {
+                    //recuperamos solo cantidad de mensjaes si hay
+                    $numMessages = $this->Chatmodel->lastMessages($idalumno,"PM_".$value["id_pm"]);
+
                     //recuperamos tareas con id_PM
                     $tempArray = array(
                         "user" => $value["materia"],
                         "id" => "PM_".$value["id_pm"],
                         "userchat" => "PM_".$value["id_pm"],
-                        "materia" => ""    
+                        "materia" => "",
+                        "numMessages" => $numMessages
                     );
                     
                     //$materia["nombre"] = $value["materia"];
@@ -73,12 +81,15 @@ class Student extends CI_Controller {
                  * en $materias ya tngo las materias, ahora busco profesores
                  */
                 foreach ($materias as $value) {
+                    $numMessages = $this->Chatmodel->lastMessages($idalumno,"A_".$idalumno.";P_".$value["id"]);
+                    
                     //recuperamos lumnos con id_PM
                     $tempArray = array(
                         "user" => $value["nombre"],
                         "id" => "P_".$value["id"],
                         "userchat" => "A_".$idalumno.";P_".$value["id"],
-                        "materia" => $value["materia"]
+                        "materia" => $value["materia"],
+                        "numMessages" => $numMessages
                     );
                     array_push($chats, $tempArray);
                     
@@ -106,11 +117,10 @@ class Student extends CI_Controller {
                 }
             }*/
             
-
-            
             //mandamos lista de chat a vista
             $data["chats"] = $chats;
             $data["me"] = $idalumno;
+            $data["tempName"] = $tempName;
             //cargar vista de chat general
             $this->load->view("chat/home",$data);
         }else{
