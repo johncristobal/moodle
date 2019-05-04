@@ -118,6 +118,13 @@ class Student extends CI_Controller {
             }*/
             
             //mandamos lista de chat a vista
+            $price = array();
+            foreach ($chats as $key => $row)
+            {
+                $price[$key] = $row['numMessages'];
+            }
+            array_multisort($price, SORT_DESC, $chats);
+
             $data["chats"] = $chats;
             $data["me"] = $idalumno;
             $data["tempName"] = $tempName;

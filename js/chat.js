@@ -31,7 +31,9 @@ $(document).ready(function()
 	*/
 
 	var menu = $('.menu');
+	var chatMedia = $('.chatMedia');
 	var menuActive = false;
+	var chatActive = $(".chat_close");
 	var header = $('.header');
 	var burger = $('.hamburger');
 	var ctrl = new ScrollMagic.Controller();
@@ -48,7 +50,8 @@ $(document).ready(function()
 		setHeader();
 	});
 
-	initHeaderSearch();
+        getMessagesChatUpdate();
+        initHeaderSearch();
 	initMenu();
 	initHomeSlider();
 	initCoursesSlider();
@@ -81,9 +84,20 @@ $(document).ready(function()
          */
         $(".chat_user a").click(function(e){
             e.preventDefault();
+            
+            //muestro menu
+            chatMedia.addClass('active');
+            
             //recuperas id del chat y quien soy 
             me = $(this).attr("id");
             idchatTemp = $(this).attr("href");
+            
+            $(".chat_user a").each(function(){                
+                $(this).find("li").removeClass("selected");
+            });
+            
+            $(this).find("li").addClass("selected");
+            
             //borras y activas gif
             $(".chat").empty();
             $(".gif").show();
@@ -144,6 +158,10 @@ $(document).ready(function()
                     alert(e);
                 }
             });
+        });
+        
+        chatActive.click(function(e){
+            chatMedia.removeClass('active');
         });
 
         $("#btn-input").keypress(function(event){	
@@ -216,10 +234,14 @@ $(document).ready(function()
         
         function getMessagesChatUpdate(){
             //$(".chat").empty(); href"));
+            
+            var primero = $(".chat_user a").first();
+            
             $(".chat_user a").each(function(){
                 var idusers = $(this).attr("href");
                 var me = $(this).attr("id");
                 var tempElement = $(this).find(".chat-body").find(".user");
+                var element = $(this);
                 if (idusers === idchatTemp){
                     return;
                 }
@@ -230,11 +252,12 @@ $(document).ready(function()
                     method: "post",
                     data: {idchat: idusers,iduser:me},
                     success: function(e){
-                        if (e !== "0"){
-                            
+                        if (e !== "0"){                            
                             //console.log(tempElement);
                             tempElement.find("small").remove();                
                             tempElement.append("<small class='pull-right notRead text-muted'>"+e+"</small>");                            
+                            
+                            //element.prependTo(primero);
                         }
                     },
                     error: function(e){

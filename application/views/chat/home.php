@@ -24,7 +24,7 @@ http://qnimate.com/database-design-for-storing-chat-messages/
 	<div class="coursesChat">
 		<div class="container">
 			<div class="row">
-                            <div class="col-sm-3 offset-sm-1">
+                            <div class="col-12 col-sm-3 offset-sm-1">
                                 <div class="row">
                                     <div class="col">
                                         <div class="input-group mb-3">
@@ -63,7 +63,13 @@ http://qnimate.com/database-design-for-storing-chat-messages/
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-sm-7 offset-sm-1">
+                            <div class="col-12 col-sm-7 offset-sm-1 chatMedia trans_400">
+                                <div class="row">
+                                    <div class="col offset-10">
+                                        <div class="chat_close_container"><div class="chat_close"><div></div><div></div></div></div>		
+                                        <br>
+                                    </div>
+                                </div>
                                 <div class="row">      
                                     <div class="col gif" style="display: none;">
                                         <div class="text-center">

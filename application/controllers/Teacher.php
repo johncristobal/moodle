@@ -36,7 +36,6 @@ class Teacher extends CI_Controller {
     
     public function messages(){
         if($this->sesionActiva()){
-            
             /*
              * recuperar lista de chat disponibles
              * empezando con las materias del profe
@@ -109,7 +108,14 @@ class Teacher extends CI_Controller {
              */
             
             //mandamos lista de chat a vista
-            $data["chats"] = $chats;            
+            $price = array();
+            foreach ($chats as $key => $row)
+            {
+                $price[$key] = $row['numMessages'];
+            }
+            array_multisort($price, SORT_DESC, $chats);
+
+            $data["chats"] = $chats;
             $data["me"] = $idprofesor;
             $data["tempName"] = $tempName;
             

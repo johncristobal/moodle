@@ -343,7 +343,7 @@ section
 }
 .header.scrolled
 {
-	top: -61px;
+	top: -75px;
 }
 
 /*********************************
@@ -642,6 +642,72 @@ section
 .hamburger:hover i
 {
 	color: #f50202;
+}
+
+/*
+3.5 Chat
+*/
+@media only screen and (max-width: 575px)
+{
+    .chatMedia{
+        position: fixed;
+        top: 0;
+        right: -520px;
+        /* width: 400px; */
+        height: 100vh;
+        background: #FFFFFF;
+        z-index: 101;
+        padding-right: 35px;
+        padding-top: 65px;
+        padding-left: 30px;
+        box-shadow: 0px 5px 20px rgba(0,0,0,0.1);
+    }
+    .chatMedia.active
+    {
+        right: 0;
+    }
+    .chat_close_container
+    {
+            /*position: absolute;
+            top: 30px;
+            right: 60px;*/
+            width: 28px;
+            height: 28px;
+            transform-origin: center center;
+            -webkit-transform: rotate(45deg);
+            -moz-transform: rotate(45deg);
+            -ms-transform: rotate(45deg);
+            -o-transform: rotate(45deg);
+            transform: rotate(45deg);
+            cursor: pointer;
+    }
+    .chat_close
+    {
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3D;
+    }
+    .chat_close div
+    {
+            width: 100%;
+            height: 2px;
+            background: #232323;
+            top: 8px;
+            -webkit-transition: all 200ms ease;
+            -moz-transition: all 200ms ease;
+            -ms-transition: all 200ms ease;
+            -o-transition: all 200ms ease;
+            transition: all 200ms ease;
+    }
+    .chat_close div:last-of-type
+    {
+            -webkit-transform: rotate(90deg) translateX(-2px);
+            -moz-transform: rotate(90deg) translateX(-2px);
+            -ms-transform: rotate(90deg) translateX(-2px);
+            -o-transform: rotate(90deg) translateX(-2px);
+            transform: rotate(90deg) translateX(-2px);
+            transform-origin: center;
+    }
 }
 
 /*********************************
@@ -2211,6 +2277,10 @@ chat
     padding: 0;
     overflow-y: scroll;
     height: 300px;
+}
+
+.selected{
+    background-color: #f1f1f1;
 }
 
 .chat li

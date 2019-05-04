@@ -27,12 +27,12 @@ class Chat extends CI_Controller {
          * recupera idmainchat donde users = input post
          * recupera mensajes de chats: 
          * mandamos mensajes json
-         * 
+         * A2;901 ; 901
          */
         
         //recuperamos idusers
-        $users = $this->input->post("idchat");
-        $idme = $this->input->post("idme");
+        $users = $this->input->post("idchat"); //A2901
+        $idme = $this->input->post("idme"); // 901
         
         $idusers = $this->Chatmodel->getIdUsers($users);
         
