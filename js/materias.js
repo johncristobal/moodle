@@ -25,6 +25,7 @@ $(document).ready(function()
 
 	var menu = $('.menu');
 	var menuActive = false;
+        var cont = 0;
 	var header = $('.header');
 	var burger = $('.hamburger');
 	var ctrl = new ScrollMagic.Controller();
@@ -50,9 +51,29 @@ $(document).ready(function()
          * Custom on materias
          */
         $(".agregar").click(function(e){
-            var element = $(".combosMaterias");
-            element.clone().appendTo(".nueva_materia");
-            //$(".nueva_materia").add(element);
+            //var element = $(".combosMaterias");
+            //element.clone().appendTo(".nueva_materia");
+            
+            $(".nueva_materia").append("<div class='row combosMaterias"+cont+"'>"+
+                    "<div class='col-3 offset-2'>"+
+                    "    <select name='materia'>"+
+                    "        <option value='0'>Elige una opción...</option>"+
+                    "        <option value='1'>Materia 1</option>"+
+                    "        <option value='2'>Materia 2</option>"+
+                    "        <option value='3'>Materia 3</option>"+
+                    "    </select>"+
+                    "</div>"+
+                    "<div class='col-3'>   "+
+                    "    <select name='profesor'>"+
+                    "        <option value='0'>Elige una opción...</option>"+
+                    "        <option value='901'>Profe 1</option>"+
+                    "        <option value='902'>Profe 2</option>"+
+                    "        <option value='903'>Profe 3</option>"+
+                    "    </select>"+
+                    "</div>"+
+                "</div>");
+
+            cont++;
         });
         
         $(".eliminar").click(function(e){

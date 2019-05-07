@@ -16,6 +16,20 @@ class Adminmodel extends CI_Model {
         }
     }
         
+    public function getProfesores(){
+
+        $datos = $this->db->select('*')
+            ->from('profesores')
+            ->where('estatus',"1")
+            ->get();
+        
+        if($datos->num_rows() == 0){
+            return "";
+        }else{        
+            return $datos->result_array();
+        }
+    }
+    
     public function crearProfesor($info,$idUser,$edad){
 
         $datos = [

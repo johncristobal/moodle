@@ -106,7 +106,13 @@ class Admin extends CI_Controller {
 
     public function asignaturesTeacher(){
         if($this->sesionActiva()){
+            //materias ya asignadas
             $data["materias_profesor"] = $this->Adminmodel->getAsignaturesTeacher();
+            //materias
+            $data["materias"] = $this->Adminmodel->getAsignatures();
+            //profesores
+            $data["profesores"] = $this->Adminmodel->getProfesores();
+            
             $this->load->view('admin/asignatures_teacher',$data);
         }else{
             redirect('/');            

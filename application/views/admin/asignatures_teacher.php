@@ -47,10 +47,25 @@
 
             <div class="nueva_materia">
                 <div class="row combosMaterias">
-                    <div class="col-3 offset-2">Materia</div>
-                    <div class="col-3">Profesor</div>
+                    <div class="col-3 offset-2">
+                        <select name="materia">
+                            <option value="0">Elige una opción...</option>
+                            <option value="1">Materia 1</option>
+                            <option value="2">Materia 2</option>
+                            <option value="3">Materia 3</option>
+                        </select>
+                    </div>
+                    <div class="col-3">   
+                        <select name="profesor">
+                            <option value="0">Elige una opción...</option>
+                            <option value="901">Profe 1</option>
+                            <option value="902">Profe 2</option>
+                            <option value="903">Profe 3</option>
+                        </select>
+                    </div>
                 </div>
             </div>
+            
             <?php 
                 if($materias_profesor){
             ?>
