@@ -107,4 +107,35 @@ class Adminmodel extends CI_Model {
             }
         }*/
     }
+
+/* =============================================================================
+ * Modulo para materias
+ =============================================================================*/    
+
+    public function getAsignatures(){
+
+        $datos = $this->db->select('*')
+            ->from('materias')
+            ->where('estatus',"1")
+            ->get();
+        
+        if($datos->num_rows() == 0){
+            return "";
+        }else{        
+            return $datos->result_array();
+        }
+    }
+    
+    public function getAsignaturesTeacher(){
+        $datos = $this->db->select('*')
+            ->from('profesor_materia')
+            ->where('estatus',"1")
+            ->get();
+        
+        if($datos->num_rows() == 0){
+            return "";
+        }else{        
+            return $datos->result_array();
+        } 
+    }
 }

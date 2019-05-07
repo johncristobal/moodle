@@ -30,7 +30,11 @@ class Admin extends CI_Controller {
             redirect('/');
         }
     }
-    
+
+/* =============================================================================
+ * Modulo para usuarios
+ =============================================================================*/    
+        
     public function users(){
         if($this->sesionActiva()){
             $data["usuarios"] = $this->Adminmodel->getUsers();
@@ -86,6 +90,43 @@ class Admin extends CI_Controller {
         $dif = $fechaHoy->diff($fechaNacim);
         return $dif->y;
     }
+    
+/* =============================================================================
+ * Modulo para materias
+ =============================================================================*/    
+    
+    public function asignatures(){
+        if($this->sesionActiva()){
+            $data["materias"] = $this->Adminmodel->getAsignatures();
+            $this->load->view('admin/asignatures',$data);
+        }else{
+            redirect('/');            
+        }
+    }
+
+    public function asignaturesTeacher(){
+        if($this->sesionActiva()){
+            $data["materias_profesor"] = $this->Adminmodel->getAsignaturesTeacher();
+            $this->load->view('admin/asignatures_teacher',$data);
+        }else{
+            redirect('/');            
+        }
+    }
+
+    public function registerAsignatures(){
+        if($this->sesionActiva()){
+            $data["materias"] = $this->Adminmodel->getAsignatures();
+            $this->load->view('admin/asignatures',$data);
+        }else{
+            redirect('/');            
+        }
+    }
+
+
+/* =============================================================================
+ * Modulo para sesion
+ =============================================================================*/    
+    
     
     public function sesionActiva(){
         $sesion = $this->session->userdata("session");
