@@ -25,7 +25,7 @@ $(document).ready(function()
 
 	var menu = $('.menu');
 	var menuActive = false;
-        var cont = 0;
+        var cont = 1;
 	var header = $('.header');
 	var burger = $('.hamburger');
 	var ctrl = new ScrollMagic.Controller();
@@ -53,8 +53,17 @@ $(document).ready(function()
         $(".agregar").click(function(e){
             //var element = $(".combosMaterias");
             //element.clone().appendTo(".nueva_materia");
+            var newel = $('.combosMaterias:last').clone(true);
             
-            $(".nueva_materia").append("<div class='row combosMaterias"+cont+"'>"+
+            $(newel).find('.select1').find('select').attr("id","materia_"+cont);
+            $(newel).find('.select1').find('select').attr("name","materia_"+cont);
+  
+            $(newel).find('.select2').find('select').attr("id","profesor_"+cont);
+            $(newel).find('.select2').find('select').attr("name","profesor_"+cont);
+            
+            $(newel).insertAfter(".combosMaterias:last");
+
+            /*$(".nueva_materia").append("<div class='row combosMaterias"+cont+"'>"+
                     "<div class='col-3 offset-2'>"+
                     "    <select name='materia'>"+
                     "        <option value='0'>Elige una opción...</option>"+
@@ -71,9 +80,32 @@ $(document).ready(function()
                     "        <option value='903'>Profe 3</option>"+
                     "    </select>"+
                     "</div>"+
-                "</div>");
+                "</div>");*/
 
             cont++;
+        });
+        
+        /*
+         * recupero todos los select y las relaciones para guardar en materia_profesor
+         */
+        $(".saveRelations").click(function(e){
+
+            $(".modal-body").empty();
+                       
+            $('.nueva_materia > div').each(function(i){
+                    var select1 = $(this).find(".select1");
+                    var select2 = $(this).find(".select2");
+                    console.log(select1.find("select :selected").text());
+                    console.log(select2.find("select :selected").text());
+
+                    $(".modal-body").append(
+                        "Materia: "+select1.find("select").val()+"\n"+
+                        "Profesor: "+select2.find("select").val()
+                    );
+                });
+
+            $("#modalRelations").modal('show');            
+
         });
         
         $(".eliminar").click(function(e){

@@ -47,24 +47,30 @@
 
             <div class="nueva_materia">
                 <div class="row combosMaterias">
-                    <div class="col-3 offset-2">
-                        <select name="materia">
-                            <option value="0">Elige una opción...</option>
-                            <option value="1">Materia 1</option>
-                            <option value="2">Materia 2</option>
-                            <option value="3">Materia 3</option>
+                    <div class="col-3 offset-2 select1">
+                        <select name="materia_0">
+                        <option value="0">Elige una opción...</option>
+                        <?php
+                            foreach ($materias as $value) {
+                                echo "<option value='".$value["id"]."'>".$value["materia"]."</option>";
+                            }
+                        ?>
                         </select>
                     </div>
-                    <div class="col-3">   
-                        <select name="profesor">
+                    <div class="col-3 select2">   
+                        <select name="profesor_0">
                             <option value="0">Elige una opción...</option>
-                            <option value="901">Profe 1</option>
-                            <option value="902">Profe 2</option>
-                            <option value="903">Profe 3</option>
+                            <?php
+                            foreach ($profesores as $value) {
+                                echo "<option value='".$value["id"]."'>".$value["nombre"]."</option>";
+                            }
+                            ?>
                         </select>
                     </div>
                 </div>
             </div>
+            
+            <div class="col-2"><button class="saveRelations">Guardar</button></div>
             
             <?php 
                 if($materias_profesor){
@@ -230,6 +236,28 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 			</div>
 		</div>
 	</footer>
+        
+        <!-- Modal -->
+        <div class="modal fade" id="modalRelations" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        
 </div>
 <script>
     var urlApi = "<?php echo base_url() ?>";
