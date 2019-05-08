@@ -127,6 +127,27 @@ class Admin extends CI_Controller {
             redirect('/');            
         }
     }
+    
+    public function saveProfesroMateria(){
+        if($this->sesionActiva()){
+            //rewcupero json con datos de select's
+            $datos = $this->input->post("data"); 
+            $json = json_decode($datos);
+            //itero
+            foreach ($json as $value) {
+                
+                $idmateria = $value->idmateria;
+                $idprofe = $value->idprofe;
+                
+                //ahora, verifico si existe primero, si no, guardo
+                $this->Adminmodel->saveRelationProfesorMateria($idmateria,$idprofe);
+            }
+            
+            echo "listo";
+        }else{
+            redirect('/');            
+        }
+    }
 
 
 /* =============================================================================

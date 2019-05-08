@@ -63,25 +63,6 @@ $(document).ready(function()
             
             $(newel).insertAfter(".combosMaterias:last");
 
-            /*$(".nueva_materia").append("<div class='row combosMaterias"+cont+"'>"+
-                    "<div class='col-3 offset-2'>"+
-                    "    <select name='materia'>"+
-                    "        <option value='0'>Elige una opción...</option>"+
-                    "        <option value='1'>Materia 1</option>"+
-                    "        <option value='2'>Materia 2</option>"+
-                    "        <option value='3'>Materia 3</option>"+
-                    "    </select>"+
-                    "</div>"+
-                    "<div class='col-3'>   "+
-                    "    <select name='profesor'>"+
-                    "        <option value='0'>Elige una opción...</option>"+
-                    "        <option value='901'>Profe 1</option>"+
-                    "        <option value='902'>Profe 2</option>"+
-                    "        <option value='903'>Profe 3</option>"+
-                    "    </select>"+
-                    "</div>"+
-                "</div>");*/
-
             cont++;
         });
         
@@ -99,15 +80,56 @@ $(document).ready(function()
                     console.log(select2.find("select :selected").text());
 
                     $(".modal-body").append(
-                        "Materia: "+select1.find("select").val()+"\n"+
-                        "Profesor: "+select2.find("select").val()
+                        "Materia: "+select1.find("select :selected").text()+" - "+
+                        "Profesor: "+select2.find("select :selected").text()+"<br>"
                     );
+            //select2.find("select").val()
                 });
 
-            $("#modalRelations").modal('show');            
-
+            $("#modalRelations").modal('show');
         });
         
+        /*
+         * Guardo en base de datos y recargo pagina
+         */
+        $(".lastSaveRelations").click(function(e){
+
+            //$(".modal-body").empty();
+            var arreglo = [];
+            $('.nueva_materia > div').each(function(i){
+                    var select1 = $(this).find(".select1");
+                    var select2 = $(this).find(".select2");
+                    console.log(select1.find("select :selected").text());
+                    console.log(select2.find("select :selected").text());
+
+                    var materiaid = select1.find("select").val();
+                    var profeid = select2.find("select").val();
+                    
+                    var relTemp = {idmateria:materiaid,idprofe:profeid};
+                    arreglo.push(relTemp);            
+                });
+                
+                var myJSON = JSON.stringify(arreglo);
+                
+                $.ajax({
+                url: urlApi+"Admin/saveProfesroMateria",
+                cache: false, 
+                method: "post",
+                data: {data: myJSON},
+                success: function(e){
+                    if(e === "listo"){
+                        window.location.href = urlApi+"admin/asignaturesTeacher";
+                    }else{
+
+                    }
+                },
+                error: function(e){
+                    alert(e);
+                }
+            });
+
+            //$("#modalRelations").modal('show');
+        });
         $(".eliminar").click(function(e){
             $(this).parent().remove($(this));
         });

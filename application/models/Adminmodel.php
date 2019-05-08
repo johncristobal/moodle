@@ -141,15 +141,38 @@ class Adminmodel extends CI_Model {
     }
     
     public function getAsignaturesTeacher(){
-        $datos = $this->db->select('*')
+        $datos = $this->db->select('profesor_materia.id_pm,profesores.nombre,materias.materia')
             ->from('profesor_materia')
-            ->where('estatus',"1")
+            ->join("profesores","profesores.id = profesor_materia.profesor")
+            ->join("materias","materias.id = profesor_materia.materia")
+            ->where('profesor_materia.estatus',"1")
             ->get();
         
         if($datos->num_rows() == 0){
             return "";
         }else{        
             return $datos->result_array();
+        } 
+    }
+    
+    public function saveRelationProfesorMateria($idmateria,$idprofesor){
+        $datos = $this->db->select('*')
+            ->from('profesor_materia')
+            ->where('profesor',$idprofesor)
+            ->where('materia',$idmateria)
+            ->where('estatus',"1")
+            ->get();
+        
+        if($datos->num_rows() == 0){
+            //no existe, guardo
+            $temp = array(
+                "profesor" => $idprofesor,
+                "materia" => $idmateria,
+                "estatus" => 1
+            );
+            $result=$this->db->insert('profesor_materia', $temp); 
+        }else{
+            return "-1";
         } 
     }
 }

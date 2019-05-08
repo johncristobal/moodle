@@ -6,7 +6,7 @@
         );
         $this->load->view('head',$datos);
     ?>
-<body>
+    <body>
         <div class="super_container">
 
         <!-- Header -->
@@ -15,145 +15,168 @@
 	<!-- Home -->	
 	</div>
     
-    	<!-- login module -->        
-        <div class="container headerTitle">
+        <div class="container-fluid headerTitle">
             <div class="row justify-content-between">
                 <div class="col-4 col-sm-5 offset-sm-3">
-                    <div class="section_title text-center"><h2>Profesor - Materias</h2></div>                
+                    <div class="section_title text-center">
+                        <h2>Profesor - Materias</h2>
+                        
+                    </div>                
                 </div>
-                <!--div class="col-8 col-sm-4 right">
-                    <div class="">
-                        <form action="<?= base_url() ?>admin/registerAsignatures" method="post" class="">
-                            <div class="d-none d-sm-block d-sm-block d-md-block d-lg-block d-xl-block">
-                                <button class="course_button_add">                                
-                                    <span>Crear nueva materia</span>   
-                                </button>
-                                <img class="" src="<?= base_url() ?>images/milestone_2.svg" alt="" width="50px" height="50px">                                
-                            </div>
-                            <div class="d-block d-sm-none d-sm-none d-md-none d-lg-none d-xl-none">
-                                <button class="course_button_add_res">
-                                    <span>Crear nueva materia</span> 
-                                </button>
-                            </div>
-                        </form>
-                    </div>
-                </div-->
             </div>
+            <ul class="nav nav-tabs mb-5 mt-3 nav-fill" id="pills-tab" role="tablist">
+                <li class="nav-item">
+                  <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Asignar materias</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Materias asignadas</a>
+                </li>
+                
+            </ul>
+            
+            <!--Tabs content-->
+            <div class="tab-content" id="pills-tabContent">
+                
+            <!--Tab nuevas asignadas-->
+            <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+                <div class="container">
+                    <div class="row justify-content-between">
+                    <div class="col-4 col-sm-5 offset-sm-3">
+                        <div class="section_title text-center">
+                            
+                            <p>
+                                Da clic en el boton <button class="btn btn-danger"><i class="fa fa-plus-circle" aria-hidden="true"></i></button> para agregar relaciones. <br>
+                                Después da clic en <strong>Guardar relaciones</strong> para <br>salvar las relaciones creadas
+                            </p>
+                        </div>                
+                    </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-2 offset-9"><button class="btn btn-danger agregar"><i class="fa fa-plus-circle" aria-hidden="true"></i></button></div>
+                    </div>
+
+                    <div class="nueva_materia">
+                        <div class="row combosMaterias">
+                            <div class="col-3"></div>
+                            <div class="col-2 select1">
+                                <select name="materia_0">
+                                <option value="0">Elige una materia...</option>
+                                <?php
+                                    foreach ($materias as $value) {
+                                        echo "<option value='".$value["id"]."'>".$value["materia"]."</option>";
+                                    }
+                                ?>
+                                </select>
+                            </div>
+                            <div class="col-1 text-center">
+                                - - - - -
+                            </div>
+                            <div class="col-2 select2">   
+                                <select name="profesor_0">
+                                    <option value="0">Asigna profesor...</option>
+                                    <?php
+                                    foreach ($profesores as $value) {
+                                        echo "<option value='".$value["id"]."'>".$value["nombre"]."</option>";
+                                    }
+                                    ?>
+                                </select>
+                            </div>
+                            <div class="col-3"></div>
+                        </div>
+                    </div>
+                    <div class="row">                  
+                        <div class="col text-right">
+                            <br><br>
+                            <button class="btn btn-danger saveRelations">Guardar relaciones</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                
+            <!--Tab materias asignadas-->
+            <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+                <div class="container">
+                    <div class="row justify-content-between">
+                    <div class="col-4 col-sm-5 offset-sm-3">
+                        <div class="section_title text-center">                            
+                            <p>
+                                Visualiza las materias asignadas y sus profesores. <br>Usa el botón de <i class="fa fa-trash-o" aria-hidden="true"></i> para borrar la relación.
+                            </p>
+                        </div>                
+                    </div>
+                    </div>
+                    <?php 
+                    if($materias_profesor){
+                    ?>
+                    <div class="d-none d-sm-block d-sm-block d-md-block d-lg-block d-xl-block text-center" style="padding: 20px;">
+                        <div class="row">
+                            <div class="col-sm-1 offset-3"><div class="news_post_title_user">Id</div></div>
+                            <div class="col-sm-2"><div class="news_post_title_user">Profesor</div></div>
+                            <div class="col-sm-2"><div class="news_post_title_user">Materia</div></div>
+                            
+                            <div class="col-sm-1"><div class="news_post_title_user"></div></div>
+                        </div>
+                    </div>
+
+                    <?php 
+                        foreach ($materias_profesor as $value) {
+                    ?>
+
+                    <div class="d-none d-sm-block d-sm-block d-md-block d-lg-block d-xl-block text-center justify-content-center">
+                        <div class="row">
+                            <div class="col-sm-1 offset-3">
+                                <div class="news_post_date"><?= $value["id_pm"]; ?></div>
+                            </div>
+                            <div class="col-sm-2">
+                                <div class=""><?= $value["nombre"]; ?></div>
+                            </div>
+                            <div class="col-sm-2">
+                                <div class="news_post_author"><?= $value["materia"]; ?></div>
+                            </div>
+                                              
+                            <div class="col-sm-1">
+                                <div class="news_post_author"><i class="fa fa-trash-o" aria-hidden="true"></i></div>
+                            </div>  
+
+                            <!--div class="col-1 col-sm-1">
+                                <a href=""><img src="<?= base_url() ?>" /></a>
+                            </div>
+                            <div class="col-1 col-sm-1">
+                            </div-->
+                        </div>
+                    </div>
+
+                    <div class="d-block d-sm-none d-sm-none d-md-none d-lg-none d-xl-none">
+                    <div class="row">
+                        <!--div class="col-3">
+                            <div class="news_post_image">
+                                <img src="<?= base_url() ?>images/news_1.jpg" alt="https://unsplash.com/@beccatapert">
+                            </div>
+                        </div-->
+                        <div class="col-9">
+                            <div class="news_post_date_res">Materia: <?= $value["id_pm"]; ?></div>
+                            <div class=""><?= $value["profesor"]; ?> </div>
+                            <div class="">Alta: <?= $value["fecha_alta"]; ?></div>
+                            <br/>
+                        </div>
+                    </div>
+                    </div>
+                    <?php                     
+                        }            
+                        }else{
+                    ?>
+                        <div class="col-4 col-sm-5 offset-sm-3">
+                            <div class="section_title text-center"><h2>Sin materias</h2></div>                
+                        </div>
+                    <?php
+                        }
+                    ?> 
+                </div>
+            </div>
+          </div>
         </div>
         
-        <div class="container-fluid">
-
-            <div class="col-2"><button class="agregar">Agregar</button></div>
-
-            <div class="nueva_materia">
-                <div class="row combosMaterias">
-                    <div class="col-3 offset-2 select1">
-                        <select name="materia_0">
-                        <option value="0">Elige una opción...</option>
-                        <?php
-                            foreach ($materias as $value) {
-                                echo "<option value='".$value["id"]."'>".$value["materia"]."</option>";
-                            }
-                        ?>
-                        </select>
-                    </div>
-                    <div class="col-3 select2">   
-                        <select name="profesor_0">
-                            <option value="0">Elige una opción...</option>
-                            <?php
-                            foreach ($profesores as $value) {
-                                echo "<option value='".$value["id"]."'>".$value["nombre"]."</option>";
-                            }
-                            ?>
-                        </select>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="col-2"><button class="saveRelations">Guardar</button></div>
-            
-            <?php 
-                if($materias_profesor){
-            ?>
-            <div class="d-none d-sm-block d-sm-block d-md-block d-lg-block d-xl-block text-center" style="padding: 20px;">
-                <div class="row">
-                    <div class="col-lg 3 col-sm-3 offset-2"><div class="news_post_title_user">Materia</div></div>
-                    <div class="col-lg 3 col-sm-2"><div class="news_post_title_user">Descripción</div></div>
-                    <div class="col-lg 2 col-sm-2"><div class="news_post_title_user">Fecha creación</div></div>
-                    <div class="col-lg 2 col-sm-2"><div class="news_post_title_user"></div></div>
-                    <div class="col-lg 2 col-sm-2"><div class="news_post_title_user"></div></div>
-                </div>
-            </div>
-
-            <?php 
-                foreach ($materias_profesor as $value) {
-            ?>
-            
-            <div class="d-none d-sm-block d-sm-block d-md-block d-lg-block d-xl-block text-center justify-content-center">
-                <div class="row">
-                    <!--div class="col-3 col-sm-3">
-                        <div class="news_post_image">
-                            
-                            <img src="<?= base_url() ?>images/news_1.jpg" alt="https://unsplash.com/@beccatapert">
-                        </div>
-                    </div-->
-                    <div class="col-lg 3 col-sm-3 offset-2">
-                        <div class="news_post_date"><?= $value["id_pm"]; ?></div>
-                    </div>
-                    <div class="col-lg 3 col-sm-2">
-                        <div class=""><?= $value["profesor"]; ?></div>
-                    </div>
-                    <div class="col-lg 2 col-sm-2">
-                        <div class="news_post_author"><?= $value["estatus"]; ?></div>
-                    </div>
-                      <div class="col-lg 2 col-sm-2">
-                        <div class="news_post_author"><i class="fa fa-pencil" aria-hidden="true"></i></div>
-                     </div>                   
-                    <div class="col-lg 2 col-sm-2">
-                        <div class="news_post_author"><i class="fa fa-trash-o" aria-hidden="true"></i></div>
-                    </div>  
-
-                    <!--div class="col-1 col-sm-1">
-                        <a href=""><img src="<?= base_url() ?>" /></a>
-                    </div>
-                    <div class="col-1 col-sm-1">
-                    </div-->
-                </div>
-            </div>
-            
-            <div class="d-block d-sm-none d-sm-none d-md-none d-lg-none d-xl-none">
-            <div class="row">
-                <!--div class="col-3">
-                    <div class="news_post_image">
-                        <img src="<?= base_url() ?>images/news_1.jpg" alt="https://unsplash.com/@beccatapert">
-                    </div>
-                </div-->
-                <div class="col-9">
-                    <div class="news_post_date_res">Materia: <?= $value["id_pm"]; ?></div>
-                    <div class=""><?= $value["profesor"]; ?> </div>
-                    <div class="">Alta: <?= $value["fecha_alta"]; ?></div>
-                    <br/>
-                </div>
-            </div>
-            </div>
-            <?php                     
-                }            
-                }else{
-            ?>
-                <div class="col-4 col-sm-5 offset-sm-3">
-                    <div class="section_title text-center"><h2>Sin materias</h2></div>                
-                </div>
-            <?php
-                }
-            ?> 
-
-        </div>
-   
-	<!-- Courses -->
-	
-
 	<!-- Footer -->
-
 	<footer class="footer">
 		<div class="container">
 			<div class="row">
@@ -242,7 +265,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <h5 class="modal-title" id="exampleModalLabel">¿Guardar estas relaciones?</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
@@ -251,8 +274,8 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
                 
               </div>
               <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-danger lastSaveRelations">Guardar</button>
               </div>
             </div>
           </div>
