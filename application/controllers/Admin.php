@@ -154,17 +154,17 @@ class Admin extends CI_Controller {
             //rewcupero json con datos de select's
             $idpm = $this->input->post("idpm"); 
             
-            //primero set estatus 2 en tabla profesor_materia
-            $this->Adminmodel->deleteProfesorMateria($idpm);
-            
-            //primero set estatus 2 en tabla profesor_materia
-            $this->Adminmodel->deleteAlumnosProfesorMateria($idpm);
-            
+            //ahora chat / mainchar / chatuset
+            $this->Adminmodel->deleteChatProfesorMateria($idpm);
+
             //ahora tearas / alumno_tarea
             $this->Adminmodel->deleteTareasProfesorMateria($idpm);
 
-            //ahora chat / mainchar / chatuset
-            $this->Adminmodel->deleteChatProfesorMateria($idpm);
+            //primero set estatus 2 en tabla profesor_materia
+            $this->Adminmodel->deleteAlumnosProfesorMateria($idpm);
+
+            //primero set estatus 2 en tabla profesor_materia
+            $this->Adminmodel->deleteProfesorMateria($idpm);
             
             echo "listo";
         }else{

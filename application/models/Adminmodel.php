@@ -182,7 +182,7 @@ class Adminmodel extends CI_Model {
         );
 
         $this->db->where('id_pm', $idpm); 
-        $num = $this->db->update("profesor_materia",$data);
+        $num = $this->db->delete("profesor_materia");
 
         return $num;
     }
@@ -193,7 +193,7 @@ class Adminmodel extends CI_Model {
         );
 
         $this->db->where('id_pm', $idpm); 
-        $num = $this->db->update("alumno_profesor_materia",$data);
+        $num = $this->db->delete("alumno_profesor_materia");
 
         return $num;
     }
@@ -202,9 +202,6 @@ class Adminmodel extends CI_Model {
         $data = array(
             "estatus" => 2
         );
-
-        $this->db->where('id_pm', $idpm); 
-        $num = $this->db->update("tareas",$data);
 
         //recupero idtareas 
         $datos = $this->db->select('id')
@@ -221,9 +218,12 @@ class Adminmodel extends CI_Model {
                 
                 $id = $value["id"];
                 $this->db->where('id_tarea', $id); 
-                $num = $this->db->update("alumno_tareas",$data);
+                $num = $this->db->delete("alumno_tareas");
             }
-        } 
+        }        
+        
+        $this->db->where('id_pm', $idpm); 
+        $num = $this->db->delete("tareas");
         
         return $num;
     }
@@ -232,17 +232,19 @@ class Adminmodel extends CI_Model {
         $data = array(
             "estatus" => 2
         );
-
-        $this->db->where('users', "PM_".$idpm); 
-        $num = $this->db->update("mainchat",$data);
         
         $idchat = $this->getIdUsers("PM_".$idpm)["id"];
 
         $this->db->where('id_users', $idchat); 
-        $this->db->update("chats",$data);
+        $this->db->delete("chats");
         //chatuser
         $this->db->where('id_users', $idchat); 
-        $this->db->update("chat_user",$data);
+        $this->db->delete("chat_user");
+        
+        $this->db->where('users', "PM_".$idpm); 
+        $this->db->delete("mainchat");
+        
+        return "1";
     }
     
     public function getIdUsers($iduses){
