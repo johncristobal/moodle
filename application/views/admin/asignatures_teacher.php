@@ -19,8 +19,7 @@
             <div class="row justify-content-between">
                 <div class="col-4 col-sm-5 offset-sm-3">
                     <div class="section_title text-center">
-                        <h2>Profesor - Materias</h2>
-                        
+                        <h2>Profesor - Materias</h2>                        
                     </div>                
                 </div>
             </div>
@@ -135,7 +134,7 @@
                             </div>
                                               
                             <div class="col-sm-1">
-                                <div class="news_post_author"><i class="fa fa-trash-o" aria-hidden="true"></i></div>
+                                <div class="news_post_author"><i class="fa fa-trash-o delete" id="<?= $value["id_pm"]; ?>" aria-hidden="true"></i></div>
                             </div>  
 
                             <!--div class="col-1 col-sm-1">

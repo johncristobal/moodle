@@ -148,6 +148,29 @@ class Admin extends CI_Controller {
             redirect('/');            
         }
     }
+    
+    public function deleteProfesorMateria(){
+        if($this->sesionActiva()){
+            //rewcupero json con datos de select's
+            $idpm = $this->input->post("idpm"); 
+            
+            //primero set estatus 2 en tabla profesor_materia
+            $this->Adminmodel->deleteProfesorMateria($idpm);
+            
+            //primero set estatus 2 en tabla profesor_materia
+            $this->Adminmodel->deleteAlumnosProfesorMateria($idpm);
+            
+            //ahora tearas / alumno_tarea
+            $this->Adminmodel->deleteTareasProfesorMateria($idpm);
+
+            //ahora chat / mainchar / chatuset
+            $this->Adminmodel->deleteChatProfesorMateria($idpm);
+            
+            echo "listo";
+        }else{
+            redirect('/');            
+        }
+    }
 
 
 /* =============================================================================

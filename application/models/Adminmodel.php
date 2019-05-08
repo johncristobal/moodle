@@ -175,4 +175,86 @@ class Adminmodel extends CI_Model {
             return "-1";
         } 
     }
+    
+    public function deleteProfesorMateria($idpm){
+        $data = array(
+            "estatus" => 2
+        );
+
+        $this->db->where('id_pm', $idpm); 
+        $num = $this->db->update("profesor_materia",$data);
+
+        return $num;
+    }
+    
+    public function deleteAlumnosProfesorMateria($idpm){
+        $data = array(
+            "estatus" => 2
+        );
+
+        $this->db->where('id_pm', $idpm); 
+        $num = $this->db->update("alumno_profesor_materia",$data);
+
+        return $num;
+    }
+    
+    public function deleteTareasProfesorMateria($idpm){
+        $data = array(
+            "estatus" => 2
+        );
+
+        $this->db->where('id_pm', $idpm); 
+        $num = $this->db->update("tareas",$data);
+
+        //recupero idtareas 
+        $datos = $this->db->select('id')
+            ->from('tareas')
+            ->where('id_pm',$idpm)
+            ->get();
+        
+        if($datos->num_rows() == 0){
+            //no existe, guardo
+            return "-1";
+        }else{
+            //iteramos sobre los id y vamos poniendo estatus 2 en alumnos_tareas
+            foreach ($datos->result_array() as $value) {
+                
+                $id = $value["id"];
+                $this->db->where('id_tarea', $id); 
+                $num = $this->db->update("alumno_tareas",$data);
+            }
+        } 
+        
+        return $num;
+    }
+    
+    public function deleteChatProfesorMateria($idpm){
+        $data = array(
+            "estatus" => 2
+        );
+
+        $this->db->where('users', "PM_".$idpm); 
+        $num = $this->db->update("mainchat",$data);
+        
+        $idchat = $this->getIdUsers("PM_".$idpm)["id"];
+
+        $this->db->where('id_users', $idchat); 
+        $this->db->update("chats",$data);
+        //chatuser
+        $this->db->where('id_users', $idchat); 
+        $this->db->update("chat_user",$data);
+    }
+    
+    public function getIdUsers($iduses){
+        $datos = $this->db->select('id')
+            ->from('mainchat')
+            ->where('users',$iduses)
+            ->get();
+        
+        if($datos->num_rows() == 0){
+            return "-1";
+        }else{        
+            return $datos->result_array()[0];
+        }
+    }
 }

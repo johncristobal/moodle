@@ -112,10 +112,31 @@ $(document).ready(function()
                 var myJSON = JSON.stringify(arreglo);
                 
                 $.ajax({
-                url: urlApi+"Admin/saveProfesroMateria",
+                    url: urlApi+"Admin/saveProfesroMateria",
+                    cache: false, 
+                    method: "post",
+                    data: {data: myJSON},
+                    success: function(e){
+                        if(e === "listo"){
+                            window.location.href = urlApi+"admin/asignaturesTeacher";
+                        }else{
+
+                        }
+                    },
+                    error: function(e){
+                        alert(e);
+                    }
+                });
+
+            //$("#modalRelations").modal('show');
+        });
+        $(".delete").click(function(e){
+            var idpm= $(this).attr("id");
+            $.ajax({
+                url: urlApi+"Admin/deleteProfesorMateria",
                 cache: false, 
                 method: "post",
-                data: {data: myJSON},
+                data: {idpm: idpm},
                 success: function(e){
                     if(e === "listo"){
                         window.location.href = urlApi+"admin/asignaturesTeacher";
@@ -127,11 +148,7 @@ $(document).ready(function()
                     alert(e);
                 }
             });
-
-            //$("#modalRelations").modal('show');
-        });
-        $(".eliminar").click(function(e){
-            $(this).parent().remove($(this));
+            
         });
 
 	/* 
