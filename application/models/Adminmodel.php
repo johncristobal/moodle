@@ -16,6 +16,20 @@ class Adminmodel extends CI_Model {
         }
     }
         
+    public function getProfesores(){
+
+        $datos = $this->db->select('*')
+            ->from('profesores')
+            ->where('estatus',"1")
+            ->get();
+        
+        if($datos->num_rows() == 0){
+            return "";
+        }else{        
+            return $datos->result_array();
+        }
+    }
+    
     public function crearProfesor($info,$idUser,$edad){
 
         $datos = [
@@ -178,5 +192,143 @@ class Adminmodel extends CI_Model {
         }else{
             return $query->row();
         } 
+    }
+
+/* =============================================================================
+ * Modulo para materias
+ =============================================================================*/    
+
+    public function getAsignatures(){
+
+        $datos = $this->db->select('*')
+            ->from('materias')
+            ->where('estatus',"1")
+            ->get();
+        
+        if($datos->num_rows() == 0){
+            return "";
+        }else{        
+            return $datos->result_array();
+        }
+    }
+    
+    public function getAsignaturesTeacher(){
+        $datos = $this->db->select('profesor_materia.id_pm,profesores.nombre,materias.materia')
+            ->from('profesor_materia')
+            ->join("profesores","profesores.id = profesor_materia.profesor")
+            ->join("materias","materias.id = profesor_materia.materia")
+            ->where('profesor_materia.estatus',"1")
+            ->get();
+        
+        if($datos->num_rows() == 0){
+            return "";
+        }else{        
+            return $datos->result_array();
+        } 
+    }
+    
+    public function saveRelationProfesorMateria($idmateria,$idprofesor){
+        $datos = $this->db->select('*')
+            ->from('profesor_materia')
+            ->where('profesor',$idprofesor)
+            ->where('materia',$idmateria)
+            ->where('estatus',"1")
+            ->get();
+        
+        if($datos->num_rows() == 0){
+            //no existe, guardo
+            $temp = array(
+                "profesor" => $idprofesor,
+                "materia" => $idmateria,
+                "estatus" => 1
+            );
+            $result=$this->db->insert('profesor_materia', $temp); 
+        }else{
+            return "-1";
+        } 
+    }
+    
+    public function deleteProfesorMateria($idpm){
+        $data = array(
+            "estatus" => 2
+        );
+
+        $this->db->where('id_pm', $idpm); 
+        $num = $this->db->delete("profesor_materia");
+
+        return $num;
+    }
+    
+    public function deleteAlumnosProfesorMateria($idpm){
+        $data = array(
+            "estatus" => 2
+        );
+
+        $this->db->where('id_pm', $idpm); 
+        $num = $this->db->delete("alumno_profesor_materia");
+
+        return $num;
+    }
+    
+    public function deleteTareasProfesorMateria($idpm){
+        $data = array(
+            "estatus" => 2
+        );
+
+        //recupero idtareas 
+        $datos = $this->db->select('id')
+            ->from('tareas')
+            ->where('id_pm',$idpm)
+            ->get();
+        
+        if($datos->num_rows() == 0){
+            //no existe, guardo
+            return "-1";
+        }else{
+            //iteramos sobre los id y vamos poniendo estatus 2 en alumnos_tareas
+            foreach ($datos->result_array() as $value) {
+                
+                $id = $value["id"];
+                $this->db->where('id_tarea', $id); 
+                $num = $this->db->delete("alumno_tareas");
+            }
+        }        
+        
+        $this->db->where('id_pm', $idpm); 
+        $num = $this->db->delete("tareas");
+        
+        return $num;
+    }
+    
+    public function deleteChatProfesorMateria($idpm){
+        $data = array(
+            "estatus" => 2
+        );
+        
+        $idchat = $this->getIdUsers("PM_".$idpm)["id"];
+
+        $this->db->where('id_users', $idchat); 
+        $this->db->delete("chats");
+        //chatuser
+        $this->db->where('id_users', $idchat); 
+        $this->db->delete("chat_user");
+        
+        $this->db->where('users', "PM_".$idpm); 
+        $this->db->delete("mainchat");
+        
+        return "1";
+    }
+    
+    public function getIdUsers($iduses){
+        $datos = $this->db->select('id')
+            ->from('mainchat')
+            ->where('users',$iduses)
+            ->get();
+        
+        if($datos->num_rows() == 0){
+            return "-1";
+        }else{        
+            return $datos->result_array()[0];
+        }
     }
 }

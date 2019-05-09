@@ -82,19 +82,21 @@ class Teacher extends CI_Controller {
                 foreach ($materias as $value) {
                     //recuperamos lumnos con id_PM
                     $alumnos = $this->Profesormodel->getAlumnosMateriasProfesor($value["id_pm"]);
-                    foreach ($alumnos as $alumno) {
-                        $datosUser = $this->Alumnomodel->getInfoAlumno($alumno["id_alumno"]);
-                        
-                        $numMessages = $this->Chatmodel->lastMessages($idprofesor,"A_".$datosUser["id"].";P_".$idprofesor);
+                    if($alumnos != "-1"){
+                        foreach ($alumnos as $alumno) {
+                            $datosUser = $this->Alumnomodel->getInfoAlumno($alumno["id_alumno"]);
 
-                        $tempArray = array(
-                            "user" => $datosUser["nombre"],
-                            "id" => "A_".$datosUser["id"],
-                            "userchat" => "A_".$datosUser["id"].";P_".$idprofesor,
-                            "materia" => $value["materia"],
-                            "numMessages" => $numMessages
-                        );
-                        array_push($chats, $tempArray);
+                            $numMessages = $this->Chatmodel->lastMessages($idprofesor,"A_".$datosUser["id"].";P_".$idprofesor);
+
+                            $tempArray = array(
+                                "user" => $datosUser["nombre"],
+                                "id" => "A_".$datosUser["id"],
+                                "userchat" => "A_".$datosUser["id"].";P_".$idprofesor,
+                                "materia" => $value["materia"],
+                                "numMessages" => $numMessages
+                            );
+                            array_push($chats, $tempArray);
+                        }
                     }
                 }
                 

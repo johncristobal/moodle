@@ -7,6 +7,7 @@ class Chatmodel extends CI_Model {
         $datos = $this->db->select('*')
             ->from('chats')
             ->where('id_users',$idusers)
+            ->where('estatus',1)  
             ->get();
         
         if($datos->num_rows() == 0){
@@ -34,6 +35,7 @@ class Chatmodel extends CI_Model {
             ->from('chats')
             ->where('id_users',$idusers)
             ->where('timestamp >',$time)    
+            ->where('estatus',1)                  
             ->get();
         
         if($datos->num_rows() == 0){
@@ -47,6 +49,7 @@ class Chatmodel extends CI_Model {
         $datos = $this->db->select('id')
             ->from('mainchat')
             ->where('users',$iduses)
+            ->where('estatus',1)              
             ->get();
         
         if($datos->num_rows() == 0){
@@ -61,6 +64,7 @@ class Chatmodel extends CI_Model {
         $datos = $this->db->select('*')
             ->from('mainchat')
             ->like('users',$idfrom)
+            ->where('estatus',1)  
             ->get();
         
         if($datos->num_rows() == 0){
@@ -79,6 +83,7 @@ class Chatmodel extends CI_Model {
                 ->from('chat_user')
                 ->where('id_users',$idusers["id"])
                 ->where('id_user',$idwho)
+                ->where('estatus',1)  
                 ->get();
 
             if($datos->num_rows() == 0){
@@ -113,6 +118,7 @@ class Chatmodel extends CI_Model {
             ->from('chat_user')
             ->where('id_users',$id_chat)
             ->where('id_user',$d_user)
+            ->where('estatus',1)       
             ->get();
         
         if($datos->num_rows() == 0){

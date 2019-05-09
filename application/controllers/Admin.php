@@ -30,7 +30,11 @@ class Admin extends CI_Controller {
             redirect('/');
         }
     }
-    
+
+/* =============================================================================
+ * Modulo para usuarios
+ =============================================================================*/    
+        
     public function users(){
         if($this->sesionActiva()){
             $data["usuarios"] = $this->Adminmodel->getUsers();
@@ -147,6 +151,93 @@ class Admin extends CI_Controller {
         $dif = $fechaHoy->diff($fechaNacim);
         return $dif->y;
     }
+    
+/* =============================================================================
+ * Modulo para materias
+ =============================================================================*/    
+    
+    public function asignatures(){
+        if($this->sesionActiva()){
+            $data["materias"] = $this->Adminmodel->getAsignatures();
+            $this->load->view('admin/asignatures',$data);
+        }else{
+            redirect('/');            
+        }
+    }
+
+    public function asignaturesTeacher(){
+        if($this->sesionActiva()){
+            //materias ya asignadas
+            $data["materias_profesor"] = $this->Adminmodel->getAsignaturesTeacher();
+            //materias
+            $data["materias"] = $this->Adminmodel->getAsignatures();
+            //profesores
+            $data["profesores"] = $this->Adminmodel->getProfesores();
+            
+            $this->load->view('admin/asignatures_teacher',$data);
+        }else{
+            redirect('/');            
+        }
+    }
+
+    public function registerAsignatures(){
+        if($this->sesionActiva()){
+            $data["materias"] = $this->Adminmodel->getAsignatures();
+            $this->load->view('admin/asignatures',$data);
+        }else{
+            redirect('/');            
+        }
+    }
+    
+    public function saveProfesroMateria(){
+        if($this->sesionActiva()){
+            //rewcupero json con datos de select's
+            $datos = $this->input->post("data"); 
+            $json = json_decode($datos);
+            //itero
+            foreach ($json as $value) {
+                
+                $idmateria = $value->idmateria;
+                $idprofe = $value->idprofe;
+                
+                //ahora, verifico si existe primero, si no, guardo
+                $this->Adminmodel->saveRelationProfesorMateria($idmateria,$idprofe);
+            }
+            
+            echo "listo";
+        }else{
+            redirect('/');            
+        }
+    }
+    
+    public function deleteProfesorMateria(){
+        if($this->sesionActiva()){
+            //rewcupero json con datos de select's
+            $idpm = $this->input->post("idpm"); 
+            
+            //ahora chat / mainchar / chatuset
+            $this->Adminmodel->deleteChatProfesorMateria($idpm);
+
+            //ahora tearas / alumno_tarea
+            $this->Adminmodel->deleteTareasProfesorMateria($idpm);
+
+            //primero set estatus 2 en tabla profesor_materia
+            $this->Adminmodel->deleteAlumnosProfesorMateria($idpm);
+
+            //primero set estatus 2 en tabla profesor_materia
+            $this->Adminmodel->deleteProfesorMateria($idpm);
+            
+            echo "listo";
+        }else{
+            redirect('/');            
+        }
+    }
+
+
+/* =============================================================================
+ * Modulo para sesion
+ =============================================================================*/    
+    
     
     public function sesionActiva(){
         $sesion = $this->session->userdata("session");

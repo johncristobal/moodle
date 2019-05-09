@@ -2038,3 +2038,17 @@ loading
 	float: right;
 	 background:red;
 }
+
+.asignar{
+    margin-top: 30px;
+    margin-bottom: 30px;
+    padding: 5px;
+}
+
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+    color: #fff;
+    background-color: red;
+}
+.nav-item a{
+    color: black;
+}
