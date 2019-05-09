@@ -53,8 +53,8 @@
                     <div class="col-lg 3 col-sm-3 offset-2"><div class="news_post_title_user">Correo</div></div>
                     <div class="col-lg 3 col-sm-2"><div class="news_post_title_user">Rol</div></div>
                     <div class="col-lg 2 col-sm-2"><div class="news_post_title_user">Fecha creación</div></div>
-                    <div class="col-lg 2 col-sm-2"><div class="news_post_title_user"></div></div>
-                    <div class="col-lg 2 col-sm-2"><div class="news_post_title_user"></div></div>
+                    <div class="col-lg 2 col-sm-2"><div class="news_post_title_user">Editar</div></div>
+                    <div class="col-lg 2 col-sm-2"><div class="news_post_title_user">Borrar</div></div>
                 </div>
             </div>
 
@@ -80,10 +80,10 @@
                         <div class="news_post_author"><?= $value["fecha_alta"]; ?></div>
                     </div>
                       <div class="col-lg 2 col-sm-2">
-                        <div class="news_post_author"><i class="fa fa-pencil" aria-hidden="true"></i></div>
+                        <div class="news_post_author"><a href="<?= base_url(); ?>admin/editarUsuario/<?= $value["id"];?>" <i class="fa fa-pencil" aria-hidden="true"></i></a></div>
                      </div>                   
                     <div class="col-lg 2 col-sm-2">
-                        <div class="news_post_author"><i class="fa fa-trash-o" aria-hidden="true"></i></div>
+                        <div class="news_post_author"><a href="<?= base_url(); ?>admin/eliminarUsuario/<?= $value["id"];?>"<i class="fa fa-trash-o" aria-hidden="true"></i></a></div>
                     </div>  
 
                     <!--div class="col-1 col-sm-1">

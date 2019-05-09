@@ -79,7 +79,68 @@ class Admin extends CI_Controller {
             redirect('/');            
         }
     }  
-    
+    public function editarUsuario($id){
+        if($this->sesionActiva()){
+             $result=$this->Adminmodel->getRol($id); 
+             if($result){
+                switch ($result["rol"]) {
+                    case '1':
+                        $tabla="adm"; //Habrá que definir si se pueden eliminar entre admins
+                        break;
+                     case '2':
+                        $tabla="profesores"; 
+                        break;
+                    case '3':
+                        $tabla="alumnos"; 
+                        break;                                           
+                    default:
+                        break;
+                }
+               $data["info"]=$this->Adminmodel->getInfoUser($id,$tabla);
+               $data["idUser"]=$id;
+               if ($data){
+                $this->load->view('admin/editUser',$data);
+               } 
+
+             }
+        }else{
+            redirect('/');            
+        }
+    }
+    public function eliminarUsuario($id){
+        if($this->sesionActiva()){
+             $result=$this->Adminmodel->getRol($id); 
+             if($result){
+                switch ($result["rol"]) {
+                    case '1':
+                        $tabla="adm"; //Habrá que definir si se pueden eliminar entre admins
+                        break;
+                     case '2':
+                        $tabla="profesores"; 
+                        break;
+                    case '3':
+                        $tabla="alumnos"; 
+                        break;                                           
+                    default:
+                        break;
+                }
+               $result=$this->Adminmodel->eliminarUser($id,$tabla);
+             }
+        }else{
+            redirect('/');            
+        }
+    }
+    public function guardarCambios(){
+        if($this->sesionActiva()){
+            if($this->input->post()){
+                $info=$this->input->post();
+                $result=$this->Adminmodel->editarUser($info);  
+                redirect('admin/users');              
+             }
+        }else{
+            redirect('/');            
+        }
+    }
     public function calcularEdad($fecha_nacim){
         $fechaHoy = new DateTime();
         $fechaNacim = new DateTime($fecha_nacim);

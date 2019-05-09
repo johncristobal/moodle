@@ -14,4 +14,5 @@
     <link rel="stylesheet" type="text/css" href="<?= base_url() ?>styles/login.css">
     <link rel="stylesheet" type="text/css" href="<?= base_url() ?>styles/admin.css">
     <link rel="stylesheet" type="text/css" href="<?= base_url() ?>styles/responsive.css">
+    <link rel="stylesheet" type="text/css" href="<?= base_url() ?>styles/sweetalert.css">
 </head>

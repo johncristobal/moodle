@@ -13,3 +13,5 @@
 <script src="<?= base_url() ?>plugins/parallax-js-master/parallax.min.js"></script>
 <script src="<?= base_url() ?>js/custom.js"></script>
 <script src="<?= base_url() ?>js/contact.js"></script>
+<script src="<?= base_url() ?>js/sweetalert.min.js"></script>
+<script src="<?= base_url() ?>js/functions.js"></script>
