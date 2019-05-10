@@ -233,17 +233,17 @@ class Adminmodel extends CI_Model {
             "estatus" => 2
         );
         
-        $idchat = $this->getIdUsers("PM_".$idpm)["id"];
+        $idchat = $this->getIdUsers("PM_".$idpm);
+        if($idchat != "-1"){
+            $this->db->where('id_users', $idchat["id"]); 
+            $this->db->delete("chats");
+            //chatuser
+            $this->db->where('id_users', $idchat["id"]); 
+            $this->db->delete("chat_user");
 
-        $this->db->where('id_users', $idchat); 
-        $this->db->delete("chats");
-        //chatuser
-        $this->db->where('id_users', $idchat); 
-        $this->db->delete("chat_user");
-        
-        $this->db->where('users', "PM_".$idpm); 
-        $this->db->delete("mainchat");
-        
+            $this->db->where('users', "PM_".$idpm); 
+            $this->db->delete("mainchat");
+        }        
         return "1";
     }
     

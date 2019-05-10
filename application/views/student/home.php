@@ -35,7 +35,7 @@
                     <div class="d-none d-sm-block">
                     <div class="panelMaterial">
                         <?php
-                            if($materias){
+                            if($materias != "-1"){
                                 foreach ($materias as $value) {
                                     
                         ?>
@@ -55,6 +55,14 @@
                         </div>
                         <?php
                                 }
+                            }else{
+                        ?>
+                            <div class="p">                            
+                               <div class="news_post_comments">
+                                   <a href="">Sin materias asignadas</a>
+                               </div>
+                           </div>
+                        <?php
                             }
                         ?>
                     </div>

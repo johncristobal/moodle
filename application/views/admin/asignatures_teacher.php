@@ -126,16 +126,18 @@
                             <div class="col-sm-1 offset-3">
                                 <div class="news_post_date"><?= $value["id_pm"]; ?></div>
                             </div>
-                            <div class="col-sm-2">
-                                <div class=""><?= $value["nombre"]; ?></div>
+                            <div class="col-sm-2 nombre" id="<?= $value["nombre"]; ?>">
+                                <div><?= $value["nombre"]; ?></div>
                             </div>
-                            <div class="col-sm-2">
-                                <div class="news_post_author"><?= $value["materia"]; ?></div>
+                            <div class="col-sm-2 materia" id="<?= $value["materia"]; ?>">
+                                <div><?= $value["materia"]; ?></div>
                             </div>
                                               
-                            <div class="col-sm-1">
-                                <div class="news_post_author"><i class="fa fa-trash-o delete" id="<?= $value["id_pm"]; ?>" aria-hidden="true"></i></div>
-                            </div>  
+                            <div class="col-sm-1 delete">
+                                <div class="news_post_author">
+                                    <i class="fa fa-trash-o" id="<?= $value["id_pm"]; ?>" aria-hidden="true"></i>
+                                </div>
+                            </div>
 
                             <!--div class="col-1 col-sm-1">
                                 <a href=""><img src="<?= base_url() ?>" /></a>
@@ -260,7 +262,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 	</footer>
         
         <!-- Modal -->
-        <div class="modal fade" id="modalRelations" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal fade" id="modalRelations" tabindex="-1" role="dialog" aria-labelledby="modalRelations" aria-hidden="true">
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header">
@@ -275,6 +277,27 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                 <button type="button" class="btn btn-danger lastSaveRelations">Guardar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!--Validar borrar-->
+        <div class="modal fade" id="modalDelete" tabindex="-1" role="dialog" aria-labelledby="modalDelete" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">¿Deseas eliminar esta relación?</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body body-deleted">
+                
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-danger deleteRelations">Borrar</button>
               </div>
             </div>
           </div>

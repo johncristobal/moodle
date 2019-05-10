@@ -14,4 +14,7 @@
     <link rel="stylesheet" type="text/css" href="<?= base_url() ?>styles/login.css">
     <link rel="stylesheet" type="text/css" href="<?= base_url() ?>styles/admin.css">
     <link rel="stylesheet" type="text/css" href="<?= base_url() ?>styles/responsive.css">
+
+    <link id="bsdp-css" href="<?= base_url() ?>styles/bootstrap-datepicker3.min.css" rel="stylesheet">
+
 </head>

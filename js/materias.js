@@ -29,6 +29,7 @@ $(document).ready(function()
 	var header = $('.header');
 	var burger = $('.hamburger');
 	var ctrl = new ScrollMagic.Controller();
+        var idpm = "";
 
 	setHeader();
 
@@ -48,7 +49,7 @@ $(document).ready(function()
         
         /*
          * 
-         * Custom on materias
+         * agrega fila con relacion
          */
         $(".agregar").click(function(e){
             //var element = $(".combosMaterias");
@@ -67,7 +68,7 @@ $(document).ready(function()
         });
         
         /*
-         * recupero todos los select y las relaciones para guardar en materia_profesor
+         * recupero todos los select y las relaciones para mostrar modal
          */
         $(".saveRelations").click(function(e){
 
@@ -130,8 +131,28 @@ $(document).ready(function()
 
             //$("#modalRelations").modal('show');
         });
+                
+        /*
+         * show relation to delete
+         */
         $(".delete").click(function(e){
-            var idpm= $(this).attr("id");
+            idpm = $(this).find(".fa").attr("id");
+            var nombre = $(this).siblings(".nombre").attr("id");
+            var materia = $(this).siblings(".materia").attr("id");
+            
+            $("#modalDelete").modal('show');
+            $(".body-deleted").append(
+                "Materia: "+materia+" - "+
+                "Profesor: "+nombre+"<br>"
+            );               
+        });
+        
+        /*
+         * delete relations and reload page
+         */
+        $(".deleteRelations").click(function(e){
+            //var idpm= $(this).attr("id");
+             
             $.ajax({
                 url: urlApi+"Admin/deleteProfesorMateria",
                 cache: false, 
@@ -147,8 +168,7 @@ $(document).ready(function()
                 error: function(e){
                     alert(e);
                 }
-            });
-            
+            });            
         });
 
 	/* 

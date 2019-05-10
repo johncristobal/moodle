@@ -33,6 +33,10 @@ class Teacher extends CI_Controller {
             redirect("/");
         }
     }
+
+/* ////////////////////////////////////////////////////////////////////////////
+ * Modulo chat
+ */////////////////////////////////////////////////////////////////////////////
     
     public function messages(){
         if($this->sesionActiva()){
@@ -128,6 +132,10 @@ class Teacher extends CI_Controller {
         }
     }
     
+/* ////////////////////////////////////////////////////////////////////////////
+ * Modulo materias
+ */////////////////////////////////////////////////////////////////////////////
+    
     public function asignatures(){
         
         if($this->sesionActiva()){
@@ -145,18 +153,23 @@ class Teacher extends CI_Controller {
 
             //materias
             $tareas = array();
+            $idpm = array();
             $materias = $this->Profesormodel->getMateriasProfesor($idprofesor);
             if($materias != "-1"){
                 foreach ($materias as $value) {
                     //recuperamos tareas con id_PM
                     $materia = $value["materia"];
-                    $tareas_materia = $this->Profesormodel->getTareasMateriaProfesor($value["id_pm"]);            
+                    $tareas_materia = $this->Profesormodel->getTareasMateriaProfesor($value["id_pm"]);      
+                    
                     //materian => tareas
                     $tareas[$materia] = $tareas_materia;
+                    $idpm[$materia] = $value["id_pm"];
                 }
                 $data["tareas"] = $tareas;
+                $data["idpm"] = $idpm;
             }else{
                 $data["tareas"] = "-1";
+                $data["idpm"] = "-1";
             }
 
             $this->load->view("teacher/homeworks",$data);
@@ -164,16 +177,7 @@ class Teacher extends CI_Controller {
              redirect('/');
         }
     }
-    
-    public function homework_alumno($id){
-
-        /*
-         * leer de alumno_tarea donde idtarea = id
-         * recupero alumno que ya subieron tarea
-         * bajo archivos para revisar y asignar calificacion
-         */
-    }
-    
+        
     public function sesionActiva(){
         $sesion = $this->session->userdata("session");
         if($sesion === "1"){
