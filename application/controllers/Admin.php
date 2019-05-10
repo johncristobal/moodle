@@ -53,18 +53,18 @@ class Admin extends CI_Controller {
         if($this->sesionActiva()){
             if($this->input->post()){
                 $info=$this->input->post(); 
-                $edad=$this->calcularEdad($info["fecha_nacim"]);
+                //$edad=$this->calcularEdad($info["fecha_nacim"]);
                 //Se crea primero al usuario
                 $result=$this->Adminmodel->crearUsuario($info); 
                 
                 switch($result[1]){
                     case "profesores":
                         // Se crea al estudiante
-                        $resultU=$this->Adminmodel->crearProfesor($info,$result[0],$edad);
+                        $resultU=$this->Adminmodel->crearProfesor($info,$result[0]);
                         break;
                     case "alumnos":
                         // Se crea al estudiante
-                        $resultU=$this->Adminmodel->crearAlumno($info,$result[0],$edad);
+                        $resultU=$this->Adminmodel->crearAlumno($info,$result[0]);
                         break;
                     default: 
                         break;
@@ -79,10 +79,11 @@ class Admin extends CI_Controller {
             redirect('/');            
         }
     }  
+    
     public function editarUsuario($id){
         if($this->sesionActiva()){
-             $result=$this->Adminmodel->getRol($id); 
-             if($result){
+            $result=$this->Adminmodel->getRol($id); 
+            if($result){
                 switch ($result["rol"]) {
                     case '1':
                         $tabla="adm"; //Habrá que definir si se pueden eliminar entre admins
@@ -96,17 +97,18 @@ class Admin extends CI_Controller {
                     default:
                         break;
                 }
-               $data["info"]=$this->Adminmodel->getInfoUser($id,$tabla);
-               $data["idUser"]=$id;
-               if ($data){
-                $this->load->view('admin/editUser',$data);
-               } 
-
-             }
+                
+                $data["info"]=$this->Adminmodel->getInfoUser($id,$tabla);
+                $data["idUser"]=$id;
+                if($data){
+                    $this->load->view('admin/editUser',$data);
+                } 
+            }
         }else{
             redirect('/');            
         }
     }
+    
     public function eliminarUsuario($id){
         if($this->sesionActiva()){
              $result=$this->Adminmodel->getRol($id); 
@@ -133,6 +135,7 @@ class Admin extends CI_Controller {
             redirect('/');            
         }
     }
+    
     public function guardarCambios(){
         if($this->sesionActiva()){
             if($this->input->post()){

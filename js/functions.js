@@ -20,7 +20,7 @@ jQuery("#editForm").click(function() {
 		showCancelButton: true,
 		cancelButtonText: "No",  
 		cancelButtonColor: "#DD6B55", 		
-		confirmButtonColor: "#17a2b8",   
+		confirmButtonColor: "#ffae01",   
 		confirmButtonText: "Continuar",   
 		closeOnConfirm: false , 
 		closeOnCancel: true,
@@ -42,7 +42,7 @@ jQuery("#editSubjectForm").click(function() {
 		showCancelButton: true,
 		cancelButtonText: "No",  
 		cancelButtonColor: "#DD6B55", 		
-		confirmButtonColor: "#17a2b8",   
+		confirmButtonColor: "#ffae01",   
 		confirmButtonText: "Continuar",   
 		closeOnConfirm: false , 
 		closeOnCancel: true,
@@ -63,7 +63,7 @@ jQuery("#editSubjectForm").click(function() {
             title: "¿Seguro que deseas eliminar esta materia?",
             type: "warning",
             showCancelButton: true,
-            confirmButtonColor: "#DD6B55",
+            confirmButtonColor: "#ffae01",
             confirmButtonText: "Continuar",
             closeOnConfirm: false }, function()
         {
@@ -78,7 +78,7 @@ jQuery("#editSubjectForm").click(function() {
             title: "¿Seguro que deseas eliminar a este usuario?",
             type: "warning",
             showCancelButton: true,
-            confirmButtonColor: "#DD6B55",
+            confirmButtonColor: "#ffae01",
             confirmButtonText: "Continuar",
             closeOnConfirm: false }, function()
         {

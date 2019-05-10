@@ -41,7 +41,7 @@
                         </div>
                     </div>                    
                     <div class="text-center">
-                         <button class="_button" type="submit">
+                         <button class="_button msg-warning" type="submit">
                             <span>Ingresar</span>
                         </button>
                     </div>
@@ -54,7 +54,7 @@
         </div>
 
 	<!-- Courses -->
-	<div class="courses">
+	<!--div class="courses">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-10 offset-lg-1">
@@ -76,11 +76,9 @@
 			<div class="row">
 				<div class="col">
 					
-					<!-- Courses Slider -->
 					<div class="courses_slider_container">
 						<div class="owl-carousel owl-theme courses_slider">
 							
-							<!-- Slider Item -->
 							<div class="owl-item">
 								<div class="course">
 									<div class="course_image"><img src="images/course_1.jpg" alt=""></div>
@@ -100,7 +98,7 @@
 								</div>
 							</div>
 
-							<!-- Slider Item -->
+
 							<div class="owl-item">
 								<div class="course">
 									<div class="course_image"><img src="images/course_2.jpg" alt=""></div>
@@ -120,7 +118,6 @@
 								</div>
 							</div>
 
-							<!-- Slider Item -->
 							<div class="owl-item">
 								<div class="course">
 									<div class="course_image"><img src="images/course_3.jpg" alt="https://unsplash.com/@annademy"></div>
@@ -142,7 +139,6 @@
 
 						</div>
 						
-						<!-- Courses Slider Nav -->
 						<div class="courses_slider_nav courses_slider_prev trans_200"><i class="fa fa-angle-left" aria-hidden="true"></i></div>
 						<div class="courses_slider_nav courses_slider_next trans_200"><i class="fa fa-angle-right" aria-hidden="true"></i></div>
 
@@ -150,17 +146,14 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</div-->
 
 	<!-- Milestones -->
-
-	<div class="milestones">
-		<!-- Background image artis https://unsplash.com/@thepootphotographer -->
+	<!--div class="milestones">
 		<div class="parallax_background parallax-window" data-parallax="scroll" data-image-src="images/milestones.jpg" data-speed="0.8"></div>
 		<div class="container">
 			<div class="row milestones_container">
 							
-				<!-- Milestone -->
 				<div class="col-lg-3 milestone_col">
 					<div class="milestone text-center">
 						<div class="milestone_icon"><img src="images/milestone_1.svg" alt=""></div>
@@ -169,7 +162,7 @@
 					</div>
 				</div>
 
-				<!-- Milestone -->
+				
 				<div class="col-lg-3 milestone_col">
 					<div class="milestone text-center">
 						<div class="milestone_icon"><img src="images/milestone_2.svg" alt=""></div>
@@ -178,7 +171,7 @@
 					</div>
 				</div>
 
-				<!-- Milestone -->
+				
 				<div class="col-lg-3 milestone_col">
 					<div class="milestone text-center">
 						<div class="milestone_icon"><img src="images/milestone_3.svg" alt=""></div>
@@ -187,7 +180,7 @@
 					</div>
 				</div>
 
-				<!-- Milestone -->
+				
 				<div class="col-lg-3 milestone_col">
 					<div class="milestone text-center">
 						<div class="milestone_icon"><img src="images/milestone_4.svg" alt=""></div>
@@ -198,15 +191,13 @@
 
 			</div>
 		</div>
-	</div>
+	</div-->
 
 	<!-- Sections -->
 
-	<div class="grouped_sections">
+	<!--div class="grouped_sections">
 		<div class="container">
 			<div class="row">
-
-				<!-- Why Choose Us -->
 
 				<div class="col-lg-4 grouped_col">
 					<div class="grouped_title">Why Choose Us?</div>
@@ -252,13 +243,11 @@
 
 				</div>
 
-				<!-- Events -->
-
 				<div class="col-lg-4 grouped_col">
 					<div class="grouped_title">Upcoming Events</div>
 					<div class="events">
 
-						<!-- Event -->
+						
 						<div class="event d-flex flex-row align-items-start justify-content-start">
 							<div>
 								<div class="event_date d-flex flex-column align-items-center justify-content-center">
@@ -272,7 +261,7 @@
 							</div>
 						</div>
 
-						<!-- Event -->
+						
 						<div class="event d-flex flex-row align-items-start justify-content-start">
 							<div>
 								<div class="event_date d-flex flex-column align-items-center justify-content-center">
@@ -286,7 +275,7 @@
 							</div>
 						</div>
 
-						<!-- Event -->
+						
 						<div class="event d-flex flex-row align-items-start justify-content-start">
 							<div>
 								<div class="event_date d-flex flex-column align-items-center justify-content-center">
@@ -300,7 +289,7 @@
 							</div>
 						</div>
 
-						<!-- Event -->
+						
 						<div class="event d-flex flex-row align-items-start justify-content-start">
 							<div>
 								<div class="event_date d-flex flex-column align-items-center justify-content-center">
@@ -314,7 +303,7 @@
 							</div>
 						</div>
 
-						<!-- Event -->
+						
 						<div class="event d-flex flex-row align-items-start justify-content-start">
 							<div>
 								<div class="event_date d-flex flex-column align-items-center justify-content-center">
@@ -331,13 +320,13 @@
 					</div>
 				</div>
 
-				<!-- News -->
+				
 
 				<div class="col-lg-4 grouped_col">
 					<div class="grouped_title">Latest News</div>
 					<div class="news">
 						
-						<!-- News Post -->
+						
 						<div class="news_post d-flex flex-row align-items-start justify-content-start">
 							<div><div class="news_post_image"><img src="images/news_1.jpg" alt="https://unsplash.com/@beccatapert"></div></div>
 							<div class="news_post_body">
@@ -347,7 +336,6 @@
 							</div>
 						</div>
 
-						<!-- News Post -->
 						<div class="news_post d-flex flex-row align-items-start justify-content-start">
 							<div><div class="news_post_image"><img src="images/news_2.jpg" alt="https://unsplash.com/@nbb_photos"></div></div>
 							<div class="news_post_body">
@@ -357,7 +345,7 @@
 							</div>
 						</div>
 
-						<!-- News Post -->
+						
 						<div class="news_post d-flex flex-row align-items-start justify-content-start">
 							<div><div class="news_post_image"><img src="images/news_3.jpg" alt="https://unsplash.com/@rawpixel"></div></div>
 							<div class="news_post_body">
@@ -367,7 +355,7 @@
 							</div>
 						</div>
 
-						<!-- News Post -->
+						
 						<div class="news_post d-flex flex-row align-items-start justify-content-start">
 							<div><div class="news_post_image"><img src="images/news_4.jpg" alt="https://unsplash.com/@jtylernix"></div></div>
 							<div class="news_post_body">
@@ -381,17 +369,17 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</div-->
 
 	<!-- Video -->
 
-	<div class="video">
+	<!--div class="video">
 		<div class="container">
 			<div class="row">
 				<div class="col">
 					<div class="video_container_outer">
 						<div class="video_container">
-							<!-- Video poster image artist: https://unsplash.com/@annademy -->
+							
 							<video id="vid1" class="video-js vjs-default-skin" controls data-setup='{ "poster": "images/video.jpg", "techOrder": ["youtube"], "sources": [{ "type": "video/youtube", "src": "https://youtu.be/5_MRXyYjHDk"}], "youtube": { "iv_load_policy": 1 } }'>
 							</video>
 						</div>
@@ -399,11 +387,11 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</div-->
 
 	<!-- Join -->
 
-	<div class="join">
+	<!--div class="join">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-10 offset-lg-1">
@@ -413,7 +401,7 @@
 			</div>
 		</div>
 		<div class="button join_button"><a href="#">register now<div class="button_arrow"><i class="fa fa-angle-right" aria-hidden="true"></i></div></a></div>
-	</div>
+	</div-->
 
 	<!-- Footer -->
 

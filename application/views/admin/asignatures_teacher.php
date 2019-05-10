@@ -17,7 +17,7 @@
     
         <div class="container-fluid headerTitle">
             <div class="row justify-content-between">
-                <div class="col-4 col-sm-5 offset-sm-3">
+                <div class="col-12 col-sm-5 offset-sm-3">
                     <div class="section_title text-center">
                         <h2>Profesor - Materias</h2>                        
                     </div>                
@@ -40,9 +40,8 @@
             <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
                 <div class="container">
                     <div class="row justify-content-between">
-                    <div class="col-4 col-sm-5 offset-sm-3">
-                        <div class="section_title text-center">
-                            
+                    <div class="col-12 col-sm-5 offset-sm-3">
+                        <div class="section_title text-center">                            
                             <p>
                                 Da clic en el boton <button class="btn btn-danger"><i class="fa fa-plus-circle" aria-hidden="true"></i></button> para agregar relaciones. <br>
                                 Después da clic en <strong>Guardar relaciones</strong> para <br>salvar las relaciones creadas
@@ -51,13 +50,23 @@
                     </div>
                     </div>
                     <div class="row">
-                        <div class="col-2 offset-9"><button class="btn btn-danger agregar"><i class="fa fa-plus-circle" aria-hidden="true"></i></button></div>
+                        <br>
+                    </div>
+                    <div class="row">
+                        <div class="col-2 offset-9">
+                            <button class="btn btn-danger agregar">
+                                <i class="fa fa-plus-circle" aria-hidden="true"></i>
+                            </button>                            
+                        </div>
+                    </div>
+                    <div class="row">
+                        <br>
                     </div>
 
                     <div class="nueva_materia">
                         <div class="row combosMaterias">
-                            <div class="col-3"></div>
-                            <div class="col-2 select1">
+                            <div class="col-12 col-sm-3"></div>
+                            <div class="col-5 col-sm-2 select1">
                                 <select name="materia_0">
                                 <option value="0">Elige una materia...</option>
                                 <?php
@@ -67,10 +76,10 @@
                                 ?>
                                 </select>
                             </div>
-                            <div class="col-1 text-center">
-                                - - - - -
+                            <div class="col-2 col-sm-1 text-center">
+                                <strong>></strong>
                             </div>
-                            <div class="col-2 select2">   
+                            <div class="col-5 col-sm-2 select2">   
                                 <select name="profesor_0">
                                     <option value="0">Asigna profesor...</option>
                                     <?php
@@ -80,13 +89,13 @@
                                     ?>
                                 </select>
                             </div>
-                            <div class="col-3"></div>
+                            <div class="col-12 col-sm-3"></div>
                         </div>
                     </div>
                     <div class="row">                  
                         <div class="col text-right">
                             <br><br>
-                            <button class="btn btn-danger saveRelations">Guardar relaciones</button>
+                            <button class="btn btn-danger msg-warning saveRelations">Guardar relaciones</button>
                         </div>
                     </div>
                 </div>
@@ -96,10 +105,11 @@
             <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
                 <div class="container">
                     <div class="row justify-content-between">
-                    <div class="col-4 col-sm-5 offset-sm-3">
+                    <div class="col-12 col-sm-5 offset-sm-3">
                         <div class="section_title text-center">                            
                             <p>
                                 Visualiza las materias asignadas y sus profesores. <br>Usa el botón de <i class="fa fa-trash-o" aria-hidden="true"></i> para borrar la relación.
+                                <br>
                             </p>
                         </div>                
                     </div>
@@ -111,8 +121,7 @@
                         <div class="row">
                             <div class="col-sm-1 offset-3"><div class="news_post_title_user">Id</div></div>
                             <div class="col-sm-2"><div class="news_post_title_user">Profesor</div></div>
-                            <div class="col-sm-2"><div class="news_post_title_user">Materia</div></div>
-                            
+                            <div class="col-sm-2"><div class="news_post_title_user">Materia</div></div>                            
                             <div class="col-sm-1"><div class="news_post_title_user"></div></div>
                         </div>
                     </div>
@@ -122,6 +131,7 @@
                     ?>
 
                     <div class="d-none d-sm-block d-sm-block d-md-block d-lg-block d-xl-block text-center justify-content-center">
+                        <div class="row"><br></div>
                         <div class="row">
                             <div class="col-sm-1 offset-3">
                                 <div class="news_post_date"><?= $value["id_pm"]; ?></div>
@@ -147,18 +157,29 @@
                         </div>
                     </div>
 
+                    <!--responsive-->
                     <div class="d-block d-sm-none d-sm-none d-md-none d-lg-none d-xl-none">
-                    <div class="row">
+                        <div class="row"><br></div>
+                        <div class="row">
                         <!--div class="col-3">
                             <div class="news_post_image">
                                 <img src="<?= base_url() ?>images/news_1.jpg" alt="https://unsplash.com/@beccatapert">
                             </div>
                         </div-->
                         <div class="col-9">
-                            <div class="news_post_date_res">Materia: <?= $value["id_pm"]; ?></div>
-                            <div class=""><?= $value["profesor"]; ?> </div>
-                            <div class="">Alta: <?= $value["fecha_alta"]; ?></div>
+                            <div class="news_post_date_res">Id: <?= $value["id_pm"]; ?></div>
+                            <div class="">Profesor: <?= $value["nombre"]; ?> </div>
+                            <div class="">Materia: <?= $value["materia"]; ?></div>
                             <br/>
+                        </div>
+                        <div class="materia" id="<?= $value["materia"]; ?>">                            
+                        </div>
+                        <div class="nombre" id="<?= $value["nombre"]; ?>">                            
+                        </div>
+                        <div class="col-2 delete">
+                            <div class="news_post_author">
+                                <i class="fa fa-trash-o" id="<?= $value["id_pm"]; ?>" aria-hidden="true"></i>
+                            </div>
                         </div>
                     </div>
                     </div>
@@ -276,7 +297,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                <button type="button" class="btn btn-danger lastSaveRelations">Guardar</button>
+                <button type="button" class="btn btn-danger msg-warning lastSaveRelations">Guardar</button>
               </div>
             </div>
           </div>

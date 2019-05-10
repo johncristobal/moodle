@@ -21,7 +21,7 @@
 	</div>	
         <div class="container headerTitle">
             <div class="row justify-content-between">
-                <div class="col-4 col-sm-5 offset-sm-3">
+                <div class="col-12 col-sm-5 offset-sm-3">
                     <div class="section_title text-center"><h2>Registrar nueva Materia</h2></div>                
                 </div>
                 <div class="col-8 col-sm-4 right">
@@ -29,7 +29,7 @@
                         <!--div>
                             <input type="text" class="course_input" placeholder="Course" >
                         </div-->
-                        <div class="d-none d-sm-block d-sm-block d-md-block d-lg-block d-xl-block">
+                        <!--div class="d-none d-sm-block d-sm-block d-md-block d-lg-block d-xl-block">
                             <button class="course_button_add" id="">                                
                                 <span>Importar excel</span>   
                             </button>
@@ -38,7 +38,7 @@
                             <button class="course_button_add_res">
                                 <span>Importar excel</span> 
                             </button>
-                        </div>
+                        </div-->
                     </div>
                 </div>
             </div>
@@ -76,7 +76,7 @@
                                             </div>
                                         </div>
                                         <div class="text-center">
-                                            <button class="_button" type="submit">
+                                            <button class="_button msg-warning" type="submit">
                                                <span>Crear materia</span>
                                            </button>
                                         </div>

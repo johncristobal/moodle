@@ -78,7 +78,7 @@
                                         </div>
                                         <div class="text-center">
                                           
-                                            <input type="button" name="editSubjectForm" id="editSubjectForm" value="Guardar cambios" class="_button">
+                                            <input type="button" name="editSubjectForm" id="editSubjectForm" value="Guardar cambios" class="_button msg-warning">
                                         </div>
                                         <div>
                                             <br>

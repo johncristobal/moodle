@@ -32,8 +32,8 @@
                             <div class="accordion d-flex flex-row align-items-center active"><div><?= $key ?></div></div>                           
                                 <div class="accordion_panel" style="max-height: 164px;">
                                     <div class="row">
-                                        <div class="col offset-10">
-                                            <button class="btn btn-danger nuevatarea" id="<?= $idpm[$key] ?>">Nueva tarea</button>
+                                        <div class="col offset-4 offset-sm-10">
+                                            <button class="btn btn-danger nuevatarea msg-warning" id="<?= $idpm[$key] ?>">Nueva tarea</button>
                                         </div>
                                     </div>
                                     
@@ -42,20 +42,20 @@
                                             foreach ($value as $tarea) {
                                     ?>
                                         <div class="row">
-                                        <div class="col-2 offset-1">
+                                        <div class="col-5 col-sm-2 offset-1">
                                         <div class="p">
                                             <div class="news_post_comments">
                                                 <a href="<?= base_url() ?>teacher/homework_alumno/<?= $tarea["id"]?>"><?= $tarea["tarea"] ?></a>
                                             </div>                                                                                                                               
                                         </div>
                                         </div>
-                                        <div class="col-2 p">
+                                        <div class="col-5 col-sm-2 p">
                                             Puntos: <strong><?= $tarea["puntos"]?></strong>
                                         </div>
-                                        <div class="col-3 p">
+                                        <div class="col-6 col-sm-3 p">
                                             Fecha de alta: <strong><?= date("m/d/Y", strtotime($tarea["fecha_alta"])) ?></strong>
                                         </div>
-                                        <div class="col-3 p">
+                                        <div class="col-6 col-sm-3 p">
                                             Fecha de fin: <strong><?= date("m/d/Y", strtotime($tarea["fecha_fin"])) ?></strong>
                                         </div>
                                     </div>
@@ -281,7 +281,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                <button type="submit" class="btn btn-danger addTarea">Agregar</button>
+                <button type="submit" class="btn btn-danger addTarea msg-warning">Agregar</button>
               </div>
             </form>
             </div>

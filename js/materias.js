@@ -72,26 +72,83 @@ $(document).ready(function()
          */
         $(".saveRelations").click(function(e){
 
-            $(".modal-body").empty();
-                       
+            //$(".modal-body").empty();
+            var append = "";
+            
             $('.nueva_materia > div').each(function(i){
                     var select1 = $(this).find(".select1");
                     var select2 = $(this).find(".select2");
                     console.log(select1.find("select :selected").text());
                     console.log(select2.find("select :selected").text());
 
-                    $(".modal-body").append(
+                    /*$(".modal-body").append(
                         "Materia: "+select1.find("select :selected").text()+" - "+
                         "Profesor: "+select2.find("select :selected").text()+"<br>"
-                    );
-            //select2.find("select").val()
+                    ); */
+                    append += "Materia: "+select1.find("select :selected").text()+" - "+
+                        "Profesor: "+select2.find("select :selected").text()+"\n";
+
+                        
                 });
 
-            $("#modalRelations").modal('show');
+            //$("#modalRelations").modal('show');
+
+            // m,ostrar alert carlitos (: 
+            swal({   
+                title: "¿Guardar estas relaciones?",   
+                text: append,   
+                type: "warning",   
+                showCancelButton: true,
+                cancelButtonText: "No",  
+                cancelButtonColor: "#DD6B55", 		
+                confirmButtonColor: "#ffae01",   
+                confirmButtonText: "Continuar",   
+                closeOnConfirm: false , 
+                closeOnCancel: true,
+            },
+            function(isConfirm){   
+                if (isConfirm) {     
+                    //$(".modal-body").empty();
+                    var arreglo = [];
+                    $('.nueva_materia > div').each(function(i){
+                        var select1 = $(this).find(".select1");
+                        var select2 = $(this).find(".select2");
+                        console.log(select1.find("select :selected").text());
+                        console.log(select2.find("select :selected").text());
+
+                        var materiaid = select1.find("select").val();
+                        var profeid = select2.find("select").val();
+
+                        var relTemp = {idmateria:materiaid,idprofe:profeid};
+                        arreglo.push(relTemp);            
+                    });
+
+                    var myJSON = JSON.stringify(arreglo);
+
+                    $.ajax({
+                        url: urlApi+"Admin/saveProfesroMateria",
+                        cache: false, 
+                        method: "post",
+                        data: {data: myJSON},
+                        success: function(e){
+                            if(e === "listo"){
+                                window.location.href = urlApi+"admin/asignaturesTeacher";
+                            }else{
+
+                            }
+                        },
+                        error: function(e){
+                            alert(e);
+                        }
+                    });	
+                }else {
+                    return false;
+                }
+            });
         });
         
         /*
-         * Guardo en base de datos y recargo pagina
+         * Guardo en base de datos y recargo pagina +++deprecated+++
          */
         $(".lastSaveRelations").click(function(e){
 
@@ -136,19 +193,59 @@ $(document).ready(function()
          * show relation to delete
          */
         $(".delete").click(function(e){
+            //$(".body-deleted").empty();
+            
             idpm = $(this).find(".fa").attr("id");
             var nombre = $(this).siblings(".nombre").attr("id");
             var materia = $(this).siblings(".materia").attr("id");
             
-            $("#modalDelete").modal('show');
-            $(".body-deleted").append(
+            //$("#modalDelete").modal('show');
+            var append = "Materia: "+materia+" - "+
+                "Profesor: "+nombre;
+
+            /*$(".body-deleted").append(
                 "Materia: "+materia+" - "+
                 "Profesor: "+nombre+"<br>"
-            );               
+            );*/
+            swal({   
+                    title: "¿Seguro que deseas continuar?",  
+                    text: append,  
+                    type: "warning",   
+                    showCancelButton: true,
+                    cancelButtonText: "No",  
+                    cancelButtonColor: "#DD6B55", 		
+                    confirmButtonColor: "#ffae01",   
+                    confirmButtonText: "Continuar",   
+                    closeOnConfirm: false , 
+                    closeOnCancel: true,
+            },
+            function(isConfirm){   
+                if (isConfirm) {     
+                    $.ajax({
+                    url: urlApi+"Admin/deleteProfesorMateria",
+                    cache: false, 
+                    method: "post",
+                    data: {idpm: idpm},
+                    success: function(e){
+                        if(e === "listo"){
+                            window.location.href = urlApi+"admin/asignaturesTeacher";
+                        }else{
+
+                        }
+                    },
+                    error: function(e){
+                        alert(e);
+                    }
+                });	
+                }else {
+            return false;
+             }
+            }
+            );
         });
         
         /*
-         * delete relations and reload page
+         * delete relations and reload page ++++ deprecated++++
          */
         $(".deleteRelations").click(function(e){
             //var idpm= $(this).attr("id");

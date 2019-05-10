@@ -30,7 +30,7 @@ class Adminmodel extends CI_Model {
         }
     }
     
-    public function crearProfesor($info,$idUser,$edad){
+    public function crearProfesor($info,$idUser){
 
         $datos = [
             'id' => '',
@@ -49,13 +49,13 @@ class Adminmodel extends CI_Model {
         }
     }
 
-    public function crearAlumno($info,$idUser,$edad){
+    public function crearAlumno($info,$idUser){
 
         $datos = [
             'id' => '',
             'nombre' => $info["nombre"],
             'matricula' => $info["matricula"],
-            'edad' => $edad,
+            'fecha_nac' => $info["fecha_nacim"],
             'estatus' => '1',// Personalizar esto cuando esté la tabla estatus @cmaya
             'fecha_alta' => date("Y-m-d"),
             'Fk_usuario' => $idUser
@@ -143,7 +143,7 @@ class Adminmodel extends CI_Model {
         $datosRol = [
             'nombre' => $info["nombre"],
             'matricula' => $info["matricula"],
-            //'fecha_nac' => $info["fecha_nacim"],
+            'fecha_nac' => $info["fecha_nacim"],
             'estatus' => '1',// Personalizar esto cuando esté la tabla estatus @cmaya
             'fecha_alta' => date("Y-m-d"),
         ];        

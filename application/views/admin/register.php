@@ -113,7 +113,7 @@
                                             </div>
                                         </div>	
                                         <div class="text-center">
-                                            <button class="_button" type="submit">
+                                            <button class="_button msg-warning" type="submit">
                                                <span>Crear usuario</span>
                                            </button>
                                         </div>

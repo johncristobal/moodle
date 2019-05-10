@@ -21,7 +21,7 @@
 	</div>	
         <div class="container headerTitle">
             <div class="row justify-content-between">
-                <div class="col-4 col-sm-5 offset-sm-3">
+                <div class="col-12 col-sm-5 offset-sm-3">
                     <div class="section_title text-center"><h2>Editar usuario</h2></div>                
                 </div>
                 <div class="col-8 col-sm-4 right">
@@ -110,11 +110,9 @@
                                             <br>
                                         </div>
                                     </form>
-
                                 </div>
                             </div>
-			</div>
-				
+			</div>				
 		</div>
 	</div>
 
@@ -203,6 +201,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 		</div>
 	</footer>
         
+        <!--Importar archivo excel-->
         <div class="modal fade" id="openDoc" tabindex="-1" role="dialog">
             <div class="modal-dialog" role="document">
               <div class="modal-content">

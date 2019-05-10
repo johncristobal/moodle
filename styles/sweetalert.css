@@ -713,3 +713,14 @@ body.stop-scrolling {
 
 .sweet-alert .sa-icon.sa-success .sa-line.sa-long {
   -ms-transform: rotate(-45deg) \9; }
+
+.msg-warning{
+    color: #fff;
+    background-color: #ffae01;
+    border-color: #ffae01;
+}
+.msg-warning:hover{
+    color: #fff;
+    background-color: #ff8a00;
+    border-color: #ff8a00;
+}
