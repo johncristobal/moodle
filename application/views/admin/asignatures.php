@@ -23,7 +23,7 @@
                 </div>
                 <div class="col-8 col-sm-4 right">
                     <div class="">
-                        <form action="<?= base_url() ?>admin/registerAsignatures" method="post" class="">
+                        <form action="<?= base_url() ?>admin/createSubject" method="post" class="">
                             <!--div>
                                 <input type="text" class="course_input" placeholder="Course" >
                             </div-->
@@ -53,8 +53,8 @@
                     <div class="col-lg 3 col-sm-3 offset-2"><div class="news_post_title_user">Materia</div></div>
                     <div class="col-lg 3 col-sm-2"><div class="news_post_title_user">Descripción</div></div>
                     <div class="col-lg 2 col-sm-2"><div class="news_post_title_user">Fecha creación</div></div>
-                    <div class="col-lg 2 col-sm-2"><div class="news_post_title_user"></div></div>
-                    <div class="col-lg 2 col-sm-2"><div class="news_post_title_user"></div></div>
+                    <div class="col-lg 2 col-sm-2"><div class="news_post_title_user">Editar</div></div>
+                    <div class="col-lg 2 col-sm-2"><div class="news_post_title_user">Borrar</div></div>
                 </div>
             </div>
 
@@ -80,12 +80,12 @@
                         <div class="news_post_author"><?= $value["fecha_alta"]; ?></div>
                     </div>
                       <div class="col-lg 2 col-sm-2">
-                        <div class="news_post_author"><i class="fa fa-pencil" aria-hidden="true"></i></div>
+                        <div class="news_post_author"><a href="<?= base_url()?>admin/editSubject/<?= $value["id"];?>"><i class="fa fa-pencil" aria-hidden="true"></i></a></div>
                      </div>                   
                     <div class="col-lg 2 col-sm-2">
-                        <div class="news_post_author"><i class="fa fa-trash-o" aria-hidden="true"></i></div>
+                        <div class="news_post_author"><a href="#" id="<?= $value["id"];?>" class="confirmation" ><i class="fa fa-trash-o" aria-hidden="true"></i></a></div>
                     </div>  
-
+<!--<?=base_url();?>admin/deleteSubject/<?= $value["id"];?>-->
                     <!--div class="col-1 col-sm-1">
                         <a href=""><img src="<?= base_url() ?>" /></a>
                     </div>

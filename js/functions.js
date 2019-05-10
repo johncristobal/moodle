@@ -34,6 +34,59 @@ jQuery("#editForm").click(function() {
 	}
 	);
 });
+
+jQuery("#editSubjectForm").click(function() {
+	swal({   
+		title: "¿Seguro que deseas continuar?",    
+		type: "warning",   
+		showCancelButton: true,
+		cancelButtonText: "No",  
+		cancelButtonColor: "#DD6B55", 		
+		confirmButtonColor: "#17a2b8",   
+		confirmButtonText: "Continuar",   
+		closeOnConfirm: false , 
+		closeOnCancel: true,
+	},
+	function(isConfirm){   
+			if (isConfirm) {     
+					$("#subject_form").submit();	
+		}else {
+        return false;
+      }
+	}
+	);
+});
+
+ $('.confirmation').on('click', function(){
+	 var id = $(this).attr("id");
+	     swal({
+            title: "¿Seguro que deseas eliminar esta materia?",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "Continuar",
+            closeOnConfirm: false }, function()
+        {
+            $(location).attr('href',urlApi+'admin/deleteSubject/'+id);
+        }
+    );
+
+ });
+ $('.confirmationUser').on('click', function(){
+	 var id = $(this).attr("id");
+	     swal({
+            title: "¿Seguro que deseas eliminar a este usuario?",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "Continuar",
+            closeOnConfirm: false }, function()
+        {
+            $(location).attr('href',urlApi+'admin/eliminarUsuario/'+id);
+        }
+    );
+
+ });
 jQuery(".msg-cond").click(function() {
 	swal({   
 		title: "¿Deseas unirte al lado oscuro?",   

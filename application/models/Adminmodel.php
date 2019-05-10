@@ -211,7 +211,20 @@ class Adminmodel extends CI_Model {
             return $datos->result_array();
         }
     }
-    
+
+    public function getInfoSubject($idSubject){
+
+        $datos = $this->db->select('*')
+            ->from('materias')
+            ->where('id',$idSubject)
+            ->get();
+        
+        if($datos->num_rows() == 0){
+            return "";
+        }else{        
+            return $datos->row();
+        }
+    }    
     public function getAsignaturesTeacher(){
         $datos = $this->db->select('profesor_materia.id_pm,profesores.nombre,materias.materia')
             ->from('profesor_materia')
@@ -319,6 +332,50 @@ class Adminmodel extends CI_Model {
         return "1";
     }
     
+    public function createSubject($info){
+        $datos = [
+            'id' => '',
+            'materia' => $info["nombreMateria"],
+            'estatus' => $info["estatusMateria"],
+            'fecha_alta' => date("Y-m-d")
+        ];
+        
+        $result=$this->db->insert('materias', $datos); 
+         
+        if($result){
+            $insertId = $this->db->insert_id();
+            return [$insertId,$tabla];
+        }else{
+            return null;
+        }
+    }
+
+    public function editSubject($idSubject,$info){
+        $datos = [
+            'materia' => $info["nombreMateria"],
+            'estatus' => $info["estatusMateria"],
+            'fecha_alta' => date("Y-m-d")//Considerar guardar el cambio de la última edición
+        ]; 
+        $this->db->where('id', $idSubject);
+        $result=$this->db->update('materias', $datos);
+        if($result){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public function deleteSubject($idSubject){
+
+       $this->db->where('id', $idSubject);
+       $result=$this->db->delete('materias');  
+         
+        if($result){
+            return true;
+        }else{
+            return false;
+        }
+    }
     public function getIdUsers($iduses){
         $datos = $this->db->select('id')
             ->from('mainchat')

@@ -7,13 +7,9 @@ require_once APPPATH."/third_party/PHPExcel.php";
     NOTA 1
  * En todos los metodos validaremos sesionAction para seguir a cualquier accion
  * 
-    NOTA 2
- * puto el que lo lea
  
-    NOTA 3
+    NOTA 2
  * agregamos requiere para excel
- * puto el que lo lea -> hahahahahahah cabrón! 
- * Pense que no lo leerias jajaja
  *  */
 
 class Admin extends CI_Controller {
@@ -129,6 +125,9 @@ class Admin extends CI_Controller {
                         break;
                 }
                $result=$this->Adminmodel->eliminarUser($id,$tabla);
+               if($result){
+                redirect('admin/users');
+               }
              }
         }else{
             redirect('/');            
@@ -231,6 +230,65 @@ class Admin extends CI_Controller {
         }else{
             redirect('/');            
         }
+    }
+
+    public function createSubject(){
+        if($this->sesionActiva()){
+            if($this->input->post()){
+                $info=$this->input->post();
+               $idSubject=$this->Adminmodel->createSubject($info);
+               if($idSubject){
+                redirect('admin/asignatures');  
+               }else{
+                /* Llamar a página de error*/
+                echo "error";
+               }
+            }else{
+            $this->load->view('admin/createSubject');
+            }  
+
+        }else{
+             redirect('/'); 
+        }
+    }
+    public function editSubject($id){
+        if($this->sesionActiva()){
+            if($this->input->post()){
+            $info=$this->input->post();
+            $result=$this->Adminmodel->editSubject($id,$info);
+            if($result){
+               redirect('admin/asignatures'); 
+            }else{
+               /* Llamar a página de error*/
+                echo "error";  
+            }
+        }else{
+            $data["info"]=$this->Adminmodel->getInfoSubject($id);
+            $data["idSubject"]=$id;
+            if($data){
+
+                $this->load->view('admin/editSubject',$data);
+            }
+            
+        }
+        }else{
+            redirect('/');   
+        }
+
+    }
+    public function deleteSubject($id){
+        if($this->sesionActiva()){
+            $result=$this->Adminmodel->deleteSubject($id);
+            if($result){
+               redirect('admin/asignatures'); 
+            }else{
+               /* Llamar a página de error*/
+                echo "error";  
+            }
+        }else{
+            redirect('/');   
+        }
+
     }
 
 
