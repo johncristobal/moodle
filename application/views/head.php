@@ -17,4 +17,5 @@
 
     <link id="bsdp-css" href="<?= base_url() ?>styles/bootstrap-datepicker3.min.css" rel="stylesheet">
 
+    <link rel="stylesheet" type="text/css" href="<?= base_url() ?>styles/sweetalert.css">
 </head>
