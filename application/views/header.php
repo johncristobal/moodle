@@ -6,7 +6,8 @@
     @media only screen and (max-width: 575px)
     {
         .logo {
-            display: none;
+            height: 35px;
+            width: 40px;
         }
     }
 </style>
@@ -48,7 +49,7 @@
 					<div class="col">
 						<div class="header_content d-flex flex-row align-items-center justify-content-start">
 							<div class="logo_container">
-								<a href="#">
+								<a href="<?= base_url(); ?>">
 									<div class="logo_content d-flex flex-row align-items-end justify-content-start">
                                                                             <div class="logo_img"><img class="logo" src="images/logo_instituto.jpg" alt=""></div>
                                                                             &nbsp;&nbsp;&nbsp;&nbsp;<div class="logo_text">Idea</div>
@@ -58,10 +59,10 @@
 							<nav class="main_nav_contaner ml-auto">
 								<ul class="main_nav">
 									<li><a href="<?= base_url() ?>">Inicio</a></li>
-									<li><a href="about.html">Acerca de nosotros</a></li>
-									<li><a href="courses.html">Oferta educativa</a></li>
+									<!--li><a href="about.html">Acerca de nosotros</a></li>
+									<li><a href="courses.html">Oferta educativa</a></li-->
 									<li><a href="contact.html">Contacto</a></li>
-                                    <li><a href="<?= base_url() ?>login">Iniciar sesión</a></li>
+                                                                        <li><a href="<?= base_url() ?>login">Iniciar sesión</a></li>
 								</ul>
 								<!-- Hamburger -->
 
@@ -95,25 +96,27 @@
 	</header>
 
 	<!-- Menu resposinve-->
-
 	<div class="menu d-flex flex-column align-items-end justify-content-start text-right menu_mm trans_400">
 		<div class="menu_close_container"><div class="menu_close"><div></div><div></div></div></div>
-		<div class="search">
+		<!--div class="search">
 			<form action="#" class="header_search_form menu_mm">
 				<input type="search" class="search_input menu_mm" placeholder="Search" required="required">
 				<button class="header_search_button d-flex flex-column align-items-center justify-content-center menu_mm">
 					<i class="fa fa-search menu_mm" aria-hidden="true"></i>
 				</button>
 			</form>
-		</div>
+		</div-->
 		<nav class="menu_nav">
 			<ul class="menu_mm">
-				<li class="menu_mm"><a href="index.html">Home</a></li>
+                                <li class="menu_mm"><a href="<?= base_url() ?>">Inicio</a></li>
+                                <li><a href="contact.html">Contacto</a></li>
+                                <li><a href="<?= base_url() ?>login">Iniciar sesión</a></li>
+				<!--li class="menu_mm"><a href="index.html">Home</a></li>
 				<li class="menu_mm"><a href="courses.html">Courses</a></li>
 				<li class="menu_mm"><a href="instructors.html">Instructors</a></li>
 				<li class="menu_mm"><a href="#">Events</a></li>
 				<li class="menu_mm"><a href="blog.html">Blog</a></li>
-				<li class="menu_mm"><a href="contact.html">Contact</a></li>
+				<li class="menu_mm"><a href="contact.html">Contact</a></li-->
 			</ul>
 		</nav>
 		<div class="menu_extra">

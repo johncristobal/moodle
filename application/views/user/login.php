@@ -22,9 +22,9 @@
         
         <div class="container login">
             <div class="row justify-content-between">
-                <div class="col-6 offset-3">
-                <div class="section_title text-center"><h2>Inicia sesión</h2></div>
-                <form id="login_form" class="_form">
+                <div class="col-12 col-sm-6 offset-sm-3">
+                    <div class="section_title text-center"><h2>Inicia sesión</h2><br></div>
+                    <form id="login_form" class="_form">
                     <div class="form-group">
                         <label for="mail">Correo electrónico</label>
                         <input type="email" class="form-control" id="mail" placeholder="usuario@cuenta...">

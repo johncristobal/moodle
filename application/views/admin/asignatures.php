@@ -127,7 +127,7 @@
             ?> 
 
             <div class="row">
-                <div class="col-12 col-sm-4 offset-2 offset-sm-8 asignar">
+                <div class="col-10 col-sm-4 offset-2 offset-sm-8 asignar">
                     <a href="<?= base_url() ?>admin/asignaturesTeacher" class="btn btn-danger msg-warning"> Asignar materias a profesor </a>
                 </div>
             </div>

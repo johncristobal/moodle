@@ -8,6 +8,19 @@
         $this->load->view('head',$datos);
     ?>
 </head>
+<style>
+    .logo{
+        height: 80px;
+        width: 115px;
+    }
+    @media only screen and (max-width: 575px)
+    {
+        .logo {
+            height: 35px;
+            width: 40px;
+        }
+    }
+</style>
 <body>
 
         <div class="container-fluid">            
@@ -16,10 +29,10 @@
                     <div class="backGray">                        
                     <div class="row">
                         <div class="col-6">
-                        <a href="#">
+                        <a href="<?= base_url(); ?>student">
                             <div class="logo_content d-flex flex-row align-items-end justify-content-start">
-                                <div class="logo_img"><img src="images/logo.png" alt=""></div>
-                                <div class="logo_text">learn</div>
+                                <div class="logo_img"><img class="logo" src="<?= base_url(); ?>images/logo_instituto.jpg" alt=""></div>
+                                &nbsp;&nbsp;&nbsp;&nbsp;<div class="logo_text">Idea</div>
                             </div>
                         </a>  
                         </div>
@@ -211,48 +224,37 @@
 			</form>
 		</div-->
 		<div class="panelMaterial">
-                    <div class="row">
-                        <div class="col-6">
-                        <div class="p">                            
-                            <div class="news_post_comments">
-                                <a href="">Materia 1</a>
-                            </div>                                                                                                                               
+                        <?php
+                            if($materias != "-1"){
+                                foreach ($materias as $value) {
+                                    
+                        ?>
+                        <div class="row mt-2">
+                           <div class="col-6">
+                           <div class="p">                            
+                               <div class="news_post_comments">
+                                   <a href=""><?= $value["materia"] ?></a>
+                               </div>                                                                                                                               
+                           </div>
+                           </div> 
+                           <div class="col-6">
+                               <div>
+                                   <span class="small"><?= $value["nombre"] ?></span>
+                               </div>
+                           </div>
                         </div>
-                        </div> 
-                        <div class="col-6">
-                            <div>
-                                <span class="small">Emilio Pacheco</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row mt-2">
-                        <div class="col-6">
-                        <div class="p">
-                            <div class="news_post_comments">
-                                <a href="">Materia 1</a>
-                            </div>
-                        </div>
-                        </div>             
-                        <div class="col-6">
-                            <div>
-                                <span class="small">Emilio Pacheco</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row mt-2">
-                        <div class="col-6">
-                        <div class="p">
-                            <div class="news_post_comments">
-                                <a href="">Materia 1</a>
-                            </div>                                                                                                                               
-                        </div>
-                        </div>             
-                        <div class="col-6">
-                            <div>
-                                <span class="small">Emilio Pacheco</span>
-                            </div>
-                        </div>
-                    </div>                        
+                        <?php
+                                }
+                            }else{
+                        ?>
+                            <div class="p">                            
+                               <div class="news_post_comments">
+                                   <a href="">Sin materias asignadas</a>
+                               </div>
+                           </div>
+                        <?php
+                            }
+                        ?>
                     </div>
                     <div class="footerPanel d-flex flex-column align-items-end text-right">
                         <div class="row mt-2">

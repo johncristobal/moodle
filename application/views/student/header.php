@@ -1,5 +1,17 @@
-<header class="header">
-			
+<style>
+    .logo{
+        height: 80px;
+        width: 115px;
+    }
+    @media only screen and (max-width: 575px)
+    {
+        .logo {
+            height: 35px;
+            width: 40px;
+        }
+    }
+</style>
+<header class="header">			
 		<!-- Header Content -->
 		<div class="header_container">
 			<div class="container">
@@ -7,10 +19,10 @@
 					<div class="col">
                                             <div class="header_content d-flex flex-row align-items-center justify-content-start">
                                                 <div class="logo_container">
-                                                    <a href="#">
+                                                    <a href="<?= base_url(); ?>student">
                                                         <div class="logo_content d-flex flex-row align-items-end justify-content-start">
-                                                            <div class="logo_img"><img src="images/logo.png" alt=""></div>
-                                                            <div class="logo_text">learn</div>
+                                                            <div class="logo_img"><img class="logo" src="<?= base_url(); ?>images/logo_instituto.jpg" alt=""></div>
+                                                            &nbsp;&nbsp;&nbsp;&nbsp;<div class="logo_text">Idea</div>
                                                         </div>
                                                     </a>
                                                 </div>
