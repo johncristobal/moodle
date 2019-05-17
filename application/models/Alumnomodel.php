@@ -48,7 +48,7 @@ inner join alumno_profesor_materia on profesor_materia.id_pm = alumno_profesor_m
 where alumno_profesor_materia.id_alumno = 1
      */
     public function getMateriasAlumno($id){
-        $query = $this->db->select('materias.materia,profesores.nombre,profesor_materia.id_pm,profesores.id')
+        $query = $this->db->select('materias.materia,profesores.nombre,profesor_materia.id_pm,profesor_materia.grupo,profesores.id')
                 ->from('materias')
                 ->join("profesor_materia","materias.id = profesor_materia.materia")
                 ->join("profesores","profesores.id = profesor_materia.profesor")
@@ -61,6 +61,10 @@ where alumno_profesor_materia.id_alumno = 1
             return $query->result_array();
         }
     }
+
+/************************
+ *  Tareas
+ ***********************/  
     
     //recuperamos tareas
     public function getTareasMateriaAlumno($idpm){
@@ -74,7 +78,24 @@ where alumno_profesor_materia.id_alumno = 1
             return $query->result_array();
         }
     }
+    
+    public function getTareasAlumno($idtarea,$idalumno){
+        $query = $this->db->select('alumno_tareas.id,alumno_tareas.estatus,alumno_tareas.calificacion,tareas.tarea,tareas.fecha_fin,tareas.puntos,')
+            ->from('alumno_tareas')
+            ->join("tareas","tareas.id = alumno_tareas.id_tarea")
+            ->where('alumno_tareas.id_tarea',$idtarea)
+            ->where('alumno_tareas.id_alumno',$idalumno)->get();
 
+        if($query->num_rows() == 0){
+            return "-1";
+        }else{
+            return $query->result_array()[0];
+        }
+    }
+
+/************************
+ *  Login
+ ***********************/    
 
     public function validateLogin($data){
 

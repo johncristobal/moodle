@@ -62,6 +62,9 @@ $(document).ready(function()
             $(newel).find('.select2').find('select').attr("id","profesor_"+cont);
             $(newel).find('.select2').find('select').attr("name","profesor_"+cont);
             
+            $(newel).find('.form-group').find('input').attr("id","nombreGrupo_"+cont);
+            $(newel).find('.form-group').find('input').attr("name","nombreGrupo_"+cont);
+            
             $(newel).insertAfter(".combosMaterias:last");
 
             cont++;
@@ -113,13 +116,15 @@ $(document).ready(function()
                     $('.nueva_materia > div').each(function(i){
                         var select1 = $(this).find(".select1");
                         var select2 = $(this).find(".select2");
+                        var input = $(this).find(".form-group");
                         console.log(select1.find("select :selected").text());
                         console.log(select2.find("select :selected").text());
 
                         var materiaid = select1.find("select").val();
                         var profeid = select2.find("select").val();
+                        var grupo = input.find("input").val();
 
-                        var relTemp = {idmateria:materiaid,idprofe:profeid};
+                        var relTemp = {idmateria:materiaid,idprofe:profeid, grupo:grupo};
                         arreglo.push(relTemp);            
                     });
 
@@ -132,7 +137,7 @@ $(document).ready(function()
                         data: {data: myJSON},
                         success: function(e){
                             if(e === "listo"){
-                                window.location.href = urlApi+"admin/asignaturesTeacher";
+                                window.location.href = urlApi+"admin/groups";
                             }else{
 
                             }
@@ -176,7 +181,7 @@ $(document).ready(function()
                     data: {data: myJSON},
                     success: function(e){
                         if(e === "listo"){
-                            window.location.href = urlApi+"admin/asignaturesTeacher";
+                            window.location.href = urlApi+"admin/groups";
                         }else{
 
                         }
@@ -188,7 +193,49 @@ $(document).ready(function()
 
             //$("#modalRelations").modal('show');
         });
-                
+          
+          /*
+           * Recupero alumnos
+           */
+        $(".getAlumnos").click(function(e){
+            e.preventDefault();
+            var idpm = $(this).attr("id");
+            $(".nombreMateria").empty();
+            $(".nombreMateria").text(idpm);
+            $.ajax({
+                url: urlApi+"admin/getAlumnosGrupo",
+                cache: false, 
+                method: "post",
+                data: {data: idpm},
+                success: function(e){
+                    var data = JSON.parse(e);
+                    
+                    $.each(data,function (o,d){
+                       console.log(d.nombre); 
+                       $(".dataAlumno").empty();
+                       $(".dataAlumno").append(
+                            "<div class='row'>"+
+                            "    <div class='col-5 col-sm-2 offset-1'>"+
+                            "    <div class='p'>"+
+                            "        <div class='news_post_comments'>"+
+                            "            <a href='<?= base_url() ?>admin/homework_alumno/"+d.id_alumno+"'>"+d.nombre+"</a>"+
+                            "        </div>"+                                                                                                                               
+                            "    </div>"+
+                            "    </div>"+
+                            "    <div class='col-2 col-sm-2'>"+
+                            "        <div class='news_post_author'>"+
+                            "            <i class='fa fa-trash-o eliminaAlumnoMateria' id='"+d.id_alumno+"' itemid='"+idpm+"' aria-hidden='true'></i>"+
+                            "        </div>"+
+                            "    </div>"+
+                            "</div>");
+                    });
+                },
+                error: function(e){
+                    alert(e);
+                }
+            });
+        })
+    
         /*
          * show relation to delete
          */
@@ -228,7 +275,7 @@ $(document).ready(function()
                     data: {idpm: idpm},
                     success: function(e){
                         if(e === "listo"){
-                            window.location.href = urlApi+"admin/asignaturesTeacher";
+                            window.location.href = urlApi+"admin/groups";
                         }else{
 
                         }
@@ -257,7 +304,7 @@ $(document).ready(function()
                 data: {idpm: idpm},
                 success: function(e){
                     if(e === "listo"){
-                        window.location.href = urlApi+"admin/asignaturesTeacher";
+                        window.location.href = urlApi+"admin/groups";
                     }else{
 
                     }
@@ -268,6 +315,103 @@ $(document).ready(function()
             });            
         });
 
+
+        /*
+         * 
+         * abrir modal para alumnos
+         */
+        $(".addAlumnos").click(function(e){
+            $("#modalAlumnos").modal("show");
+            idpm = ($(this).attr("id"));
+        });
+        
+        /*
+         * 
+         * salvar relaciones
+         */
+        $(".addRelationAlumnos").click(function(e){
+            //recuperar idpm
+            var alumnos = "";
+            //recuperamos alumnos
+            $(".boxes input[type=checkbox]").each(function(i){
+                var checekd = $(this).prop('checked');
+                if(checekd){
+                    console.log(checekd);
+                    var idalumno = $(this).attr("value");
+                    alumnos += idalumno+",";    
+                    
+                }
+            });
+            
+            if(alumnos === ""){
+                alert("Selecciona al menos un alumno...");
+            }else{
+                //ajax para guardar datos 
+                $.ajax({
+                    url: urlApi+"Admin/saveAlumnoGrupo",
+                    cache: false, 
+                    method: "post",
+                    data: {idpm: idpm, alumnos: alumnos},
+                    success: function(e){
+                        if(e === "listo"){
+                            window.location.href = urlApi+"admin/studentsGroups/"+idpm;
+                        }else{
+
+                        }
+                    },
+                    error: function(e){
+                        alert(e);
+                    }
+                }); 
+            }
+        });
+
+        /*
+         * 
+         * Eliminar relacion. lñanza pop carlitos
+         */
+        
+        $(".eliminaAlumnoMateria").click(function(e){
+            var idalumno = $(this).attr("id");
+            var idpm = $(this).attr("itemid");
+            
+            swal({   
+                title: "¿Deseas eliminar este usuario?",   
+                text: "",   
+                type: "warning",   
+                showCancelButton: true,
+                cancelButtonText: "No",  
+                cancelButtonColor: "#DD6B55", 		
+                confirmButtonColor: "#ffae01",   
+                confirmButtonText: "Continuar",   
+                closeOnConfirm: false , 
+                closeOnCancel: true,
+            },
+            function(isConfirm){   
+                if (isConfirm) {     
+
+                    $.ajax({
+                        url: urlApi+"admin/eliminarAlumnoMateria",
+                        cache: false, 
+                        method: "post",
+                        data: {idpm: idpm,alumno: idalumno},
+                        success: function(e){
+                            if(e === "listo"){
+                                window.location.href = urlApi+"admin/studentsGroups/"+idpm;
+                            }else{
+
+                            }
+                        },
+                        error: function(e){
+                            alert(e);
+                        }
+                    });	
+                }else {
+                    return false;
+                }
+            });
+        })
+        
 	/* 
 
 	2. Set Header

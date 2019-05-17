@@ -32,6 +32,7 @@
                                                         <li><a href="<?= base_url() ?>admin">Admin</a></li>
                                                         <li><a href="<?= base_url() ?>admin/users">Usuarios</a></li>
                                                         <li><a href="<?= base_url() ?>admin/asignatures">Materias</a></li>
+                                                        <li><a href="<?= base_url() ?>admin/groups">Grupos</a></li>
                                                         <li><a href="<?= base_url() ?>admin/cerrar">Cerrar sesión</a></li>
                                                     </ul>
                                                     <!--div class="search_button"><i class="fa fa-search" aria-hidden="true"></i></div-->
@@ -83,6 +84,7 @@
                             <li class="menu_mm"><a href="<?= base_url() ?>admin">Admin</a></li>
                             <li class="menu_mm"><a href="<?= base_url() ?>admin/users">Usuarios</a></li>
                             <li class="menu_mm"><a href="<?= base_url() ?>admin/asignatures">Materias</a></li>
+                            <li class="menu_mm"><a href="<?= base_url() ?>admin/groups">Grupos</a></li>
                             <li class="menu_mm"><a href="<?= base_url() ?>admin/cerrar">Cerrar sesión</a></li>
 				<!--li class="menu_mm"><a href="index.html">Home</a></li>
 				<li class="menu_mm"><a href="courses.html">Courses</a></li>

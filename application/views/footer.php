@@ -28,10 +28,11 @@
 								<li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
 								<li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
 							</ul>
-						</div>-
-						<div class="copyright"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> Derechos reservados | <a href="#" target="_blank">Nowosc México</a>
-<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></div>
+						</div>
+						
+                                            <div class="copyright d-none d-sm-block"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                                                Copyright &copy;<script>document.write(new Date().getFullYear());</script> Derechos reservados | <a href="#" target="_blank">Nowosc México</a>
+                                            </div>
 					</div>
 				</div>
 
@@ -73,6 +74,11 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> Derec
 							<div class="footer_contact_item">
 								<div class="footer_contact_title">Correo electrónico:</div>
 								<div class="footer_contact_line">idea@gmail.com</div>
+							</div>
+                                                    <div class="footer_contact_item d-block d-sm-none">
+							<div class="copyright"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                                                Copyright &copy;<script>document.write(new Date().getFullYear());</script> Derechos reservados | <a href="#" target="_blank">Nowosc México</a>
+                                            </div>
 							</div>
 						</div>
 					</div>

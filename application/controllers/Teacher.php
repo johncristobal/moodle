@@ -159,11 +159,12 @@ class Teacher extends CI_Controller {
                 foreach ($materias as $value) {
                     //recuperamos tareas con id_PM
                     $materia = $value["materia"];
+                    $grupo = $value["grupo"];
                     $tareas_materia = $this->Profesormodel->getTareasMateriaProfesor($value["id_pm"]);      
                     
                     //materian => tareas
-                    $tareas[$materia] = $tareas_materia;
-                    $idpm[$materia] = $value["id_pm"];
+                    $tareas[$materia." - ".$grupo] = $tareas_materia;
+                    $idpm[$materia." - ".$grupo] = $value["id_pm"];
                 }
                 $data["tareas"] = $tareas;
                 $data["idpm"] = $idpm;

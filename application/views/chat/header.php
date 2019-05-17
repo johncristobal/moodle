@@ -1,3 +1,16 @@
+<style>
+    .logo{
+        height: 80px;
+        width: 115px;
+    }
+    @media only screen and (max-width: 575px)
+    {
+        .logo {
+            height: 35px;
+            width: 40px;
+        }
+    }
+</style>
 <header class="header">
 			
 		<!-- Header Content -->

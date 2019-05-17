@@ -1947,6 +1947,16 @@ section
 	padding-top: 108px;
 	padding-bottom: 90px;
 }
+@media only screen and (max-width: 575px)
+{
+.footer
+{
+	width: 100%;
+	background: #f2f1f8;
+	padding-top: 240px;
+	padding-bottom: 90px;
+}
+}
 .footer .logo_container
 {
 	position: absolute;
@@ -2352,4 +2362,17 @@ chat
 .right{    
     list-style: none;
     margin-top: 10px;
+}
+
+.select{
+    height: 40px;
+}
+.combosMaterias{
+    height: 80px;
+}
+@media only screen and (max-width: 575px)
+{
+    .combosMaterias{
+        height: 130px;
+    } 
 }

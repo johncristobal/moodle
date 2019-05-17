@@ -20,11 +20,33 @@ class Homeworkmodel extends CI_Model {
         );
         
         $result=$this->db->insert('tareas', $datos); 
+        $idtarea = $this->db->insert_id();
+        
         if($result){
-            return true;
+            
+            //recuperamos alumnos
+            $query = $this->db->select('id_alumno')
+                ->from('alumno_profesor_materia')
+                ->where('id_pm',$idpm)->get();
+
+            if($query->num_rows() == 0){
+                return "-1";
+            }else{
+                $alumnos = $query->result_array();
+                foreach ($alumnos as $value) {
+                    //a cada alumno creas fila de tarea
+                    $datos = array(
+                        'id_alumno' => $value["id_alumno"],
+                        'id_tarea' => $idtarea,
+                        'estatus' => '0',// Personalizar esto cuando esté la tabla estatus @cmaya
+                    );
+
+                    $result=$this->db->insert('alumno_tareas', $datos); 
+                }
+            }
         }else{
-            return false;
-        }
+            return "-1";
+        }        
     }
     
     public function getIdProfesor($id){

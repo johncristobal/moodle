@@ -138,6 +138,31 @@ class Student extends CI_Controller {
         }
     }
     
+/* ////////////////////////////////////////////////////////////////////////////
+ * Modulo tareas / materias
+ */////////////////////////////////////////////////////////////////////////////
+    
+    public function asignature($idpm){
+        
+        $idalumno = $this->session->userdata("idalumno");
+        //recuperar tareas que ha subido profe a idpm
+        $tareas = $this->Alumnomodel->getTareasMateriaAlumno($idpm);
+
+        $tareasAlumno = array();
+        if($tareas != "-1"){
+            foreach ($tareas as $value) {
+
+                $tareaTemp = $this->Alumnomodel->getTareasAlumno($value["id"],$idalumno);
+                array_push($tareasAlumno, $tareaTemp);
+            }
+             $data["tareasAlumno"] = $tareasAlumno;
+        }else{
+             $data["tareasAlumno"] = "-1";
+        }        
+       
+        $this->load->view("student/homeworks",$data);
+    }
+    
     public function sesionActiva(){
         $sesion = $this->session->userdata("session");
         if($sesion === "1"){

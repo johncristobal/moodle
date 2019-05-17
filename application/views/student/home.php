@@ -56,13 +56,13 @@
                            <div class="col-6">
                            <div class="p">                            
                                <div class="news_post_comments">
-                                   <a href=""><?= $value["materia"] ?></a>
+                                   <a href="<?php echo base_url()?>student/asignature/<?= $value["id_pm"] ?>"><?= $value["materia"] ?></a>
                                </div>                                                                                                                               
                            </div>
-                           </div> 
+                           </div>
                            <div class="col-6">
                                <div>
-                                   <span class="small"><?= $value["nombre"] ?></span>
+                                   <span class="small"><?= $value["grupo"] ?> - <?= $value["nombre"] ?></span>
                                </div>
                            </div>
                         </div>

@@ -167,46 +167,11 @@ class Admin extends CI_Controller {
         }
     }
 
-    public function asignaturesTeacher(){
-        if($this->sesionActiva()){
-            //materias ya asignadas
-            $data["materias_profesor"] = $this->Adminmodel->getAsignaturesTeacher();
-            //materias
-            $data["materias"] = $this->Adminmodel->getAsignatures();
-            //profesores
-            $data["profesores"] = $this->Adminmodel->getProfesores();
-            
-            $this->load->view('admin/asignatures_teacher',$data);
-        }else{
-            redirect('/');            
-        }
-    }
 
     public function registerAsignatures(){
         if($this->sesionActiva()){
             $data["materias"] = $this->Adminmodel->getAsignatures();
             $this->load->view('admin/asignatures',$data);
-        }else{
-            redirect('/');            
-        }
-    }
-    
-    public function saveProfesroMateria(){
-        if($this->sesionActiva()){
-            //rewcupero json con datos de select's
-            $datos = $this->input->post("data"); 
-            $json = json_decode($datos);
-            //itero
-            foreach ($json as $value) {
-                
-                $idmateria = $value->idmateria;
-                $idprofe = $value->idprofe;
-                
-                //ahora, verifico si existe primero, si no, guardo
-                $this->Adminmodel->saveRelationProfesorMateria($idmateria,$idprofe);
-            }
-            
-            echo "listo";
         }else{
             redirect('/');            
         }
@@ -234,7 +199,7 @@ class Admin extends CI_Controller {
             redirect('/');            
         }
     }
-
+    
     public function createSubject(){
         if($this->sesionActiva()){
             if($this->input->post()){
@@ -294,7 +259,102 @@ class Admin extends CI_Controller {
 
     }
 
+/* =============================================================================
+ * Modulo para grupos
+ =============================================================================*/    
+    
+    public function groups(){
+        if($this->sesionActiva()){
+            
+            $alumnosMateriaArray = array();
+            
+            //materias ya asignadas
+            $data["materias_profesor"] = $this->Adminmodel->getAsignaturesTeacher();
+            //materias
+            $data["materias"] = $this->Adminmodel->getAsignatures();
+            //profesores
+            $data["profesores"] = $this->Adminmodel->getProfesores();
+            //allumno
+            $data["alumnos"] = $this->Adminmodel->getAlumnos();
+            
+            //alumnos en grupos
+            foreach ($data["materias_profesor"] as $value) {
+                $idpm = $value["id_pm"];
+                $grupo = $value["grupo"];
+                $alumnosMateria = $this->Adminmodel->getAlumnosMateria($idpm);
+                
+                $alumnosMateriaArray[$grupo] = $alumnosMateria;                
+            }
+            
+            $data["alumnosMateriaArray"] = $alumnosMateriaArray;
+            
+            $this->load->view('admin/groups',$data);
+        }else{
+            redirect('/');            
+        }
+    }
+    
+    public function studentsGroups($idpm){
+        $alumnosMateria = $this->Adminmodel->getAlumnosMateria($idpm);
 
+        $data["grupo"] = $this->Adminmodel->getDataGrupo($idpm);
+        $data["alumnosMateriaArray"] = $alumnosMateria;
+        //allumno
+        $data["alumnos"] = $this->Adminmodel->getAlumnos();
+
+        $this->load->view("admin/studentsGroup",$data);
+    }
+    
+    public function getAlumnosGrupo(){
+        $idpm = $this->input->post("data"); 
+        $alumnosMateria = $this->Adminmodel->getAlumnosMateria($idpm);        
+        echo json_encode($alumnosMateria);//$alumnosMateria;
+    }
+    
+    public function saveProfesroMateria(){
+        if($this->sesionActiva()){
+            //rewcupero json con datos de select's
+            $datos = $this->input->post("data"); 
+            $json = json_decode($datos);
+            //itero
+            foreach ($json as $value) {
+                
+                $idmateria = $value->idmateria;
+                $idprofe = $value->idprofe;
+                $grupo = $value->grupo;
+                //ahora, verifico si existe primero, si no, guardo
+                $this->Adminmodel->saveRelationProfesorMateria($idmateria,$idprofe,$grupo);
+            }
+            
+            echo "listo";
+        }else{
+            redirect('/');            
+        }
+    }
+    
+    public function saveAlumnoGrupo(){
+        $alumnos = $this->input->post("alumnos"); 
+        $idpm = $this->input->post("idpm"); 
+        
+        $todos = explode(",", $alumnos);
+        foreach ($todos as $value) {
+            if($value != ""){
+                $this->Adminmodel->saveRelationAlumnoGrupo($idpm,$value);
+            }
+        }
+        
+        echo "listo";
+    }
+    
+    public function eliminarAlumnoMateria(){
+        $alumnos = $this->input->post("alumno"); 
+        $idpm = $this->input->post("idpm"); 
+        
+        $this->Adminmodel->eliminarRelationAlumnoGrupo($idpm,$alumnos);
+        
+        echo "listo";
+    }
+    
 /* =============================================================================
  * Modulo para sesion
  =============================================================================*/    

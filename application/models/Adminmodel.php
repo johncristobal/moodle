@@ -30,6 +30,20 @@ class Adminmodel extends CI_Model {
         }
     }
     
+    public function getAlumnos(){
+
+        $datos = $this->db->select('*')
+            ->from('alumnos')
+            ->where('estatus',"1")
+            ->get();
+        
+        if($datos->num_rows() == 0){
+            return "";
+        }else{        
+            return $datos->result_array();
+        }
+    }
+    
     public function crearProfesor($info,$idUser){
 
         $datos = [
@@ -225,8 +239,9 @@ class Adminmodel extends CI_Model {
             return $datos->row();
         }
     }    
+    
     public function getAsignaturesTeacher(){
-        $datos = $this->db->select('profesor_materia.id_pm,profesores.nombre,materias.materia')
+        $datos = $this->db->select('profesor_materia.id_pm,profesor_materia.grupo,profesores.nombre,materias.materia')
             ->from('profesor_materia')
             ->join("profesores","profesores.id = profesor_materia.profesor")
             ->join("materias","materias.id = profesor_materia.materia")
@@ -240,26 +255,118 @@ class Adminmodel extends CI_Model {
         } 
     }
     
-    public function saveRelationProfesorMateria($idmateria,$idprofesor){
-        $datos = $this->db->select('*')
+    public function saveRelationProfesorMateria($idmateria,$idprofesor,$grupo){
+        
+        //la insertare por si acaso
+        $temp = array(
+            "profesor" => $idprofesor,
+             "materia" => $idmateria,
+            "grupo" => $grupo,
+            "estatus" => 1
+        );
+        
+        $result=$this->db->insert('profesor_materia', $temp); 
+            
+        return $result;
+        
+        /*$datos = $this->db->select('*')
             ->from('profesor_materia')
             ->where('profesor',$idprofesor)
             ->where('materia',$idmateria)
             ->where('estatus',"1")
             ->get();
         
+        //checo si existe, si no para crearla
         if($datos->num_rows() == 0){
             //no existe, guardo
             $temp = array(
                 "profesor" => $idprofesor,
                 "materia" => $idmateria,
+                "grupo" => $grupo,
                 "estatus" => 1
             );
             $result=$this->db->insert('profesor_materia', $temp); 
         }else{
             return "-1";
-        } 
+        }*/ 
     }
+    
+    /*
+     * Grupos
+     */
+    
+    public function getDataGrupo($idpm){
+        $datos = $this->db->select('profesor_materia.grupo,profesor_materia.id_pm,profesores.nombre,materias.materia')
+            ->from('profesor_materia')
+            ->join("profesores","profesores.id = profesor_materia.profesor")
+            ->join("materias","materias.id = profesor_materia.materia")
+            ->where('profesor_materia.id_pm',$idpm)
+            ->where('profesor_materia.estatus',"1")
+            ->get();
+        
+        //checo si existe, si no para crearla
+        if($datos->num_rows() == 0){
+            return "-1";            
+        }else{
+            return $datos->result_array()[0];
+        }
+    }
+    
+    public function getAlumnosMateria($idpm){
+        $datos = $this->db->select('alumno_profesor_materia.id,alumno_profesor_materia.id_alumno,alumnos.nombre')
+            ->from('alumno_profesor_materia')
+            ->join("alumnos","alumnos.id = alumno_profesor_materia.id_alumno")
+            ->where('alumno_profesor_materia.id_pm',$idpm)
+            ->where('alumno_profesor_materia.estatus',"1")
+            ->get();
+        
+        //checo si existe, si no para crearla
+        if($datos->num_rows() == 0){
+
+            return "-1";
+        }else{
+            return $datos->result_array();
+        }
+    }
+    
+    public function saveRelationAlumnoGrupo($idpm,$idalumno){
+        
+        $datos = $this->db->select('*')
+            ->from('alumno_profesor_materia')
+            ->where('id_alumno',$idpm)
+            ->where('id_pm',$idalumno)
+            ->where('estatus',"1")
+            ->get();
+        
+        //checo si existe, si no para crearla
+        if($datos->num_rows() == 0){
+
+            //la insertare por si acaso
+            $temp = array(
+                "id_alumno" => $idalumno,
+                "id_pm" => $idpm,
+                "estatus" => 1
+            );
+
+            $result=$this->db->insert('alumno_profesor_materia', $temp); 
+
+            return $result;
+        }else{
+            return "-1";
+        }
+    }
+    
+    public function eliminarRelationAlumnoGrupo($idpm,$alumnos){
+        $this->db->where('id_pm', $idpm); 
+        $this->db->where('id_alumno', $alumnos); 
+        $num = $this->db->delete("alumno_profesor_materia");
+
+        return $num;
+    }
+    
+/*
+    CHAT
+ *  */
     
     public function deleteProfesorMateria($idpm){
         $data = array(

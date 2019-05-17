@@ -14,7 +14,7 @@ class Profesormodel extends CI_Model {
     
     //recupermos materias
     public function getMateriasProfesor($id){
-        $query = $this->db->select('profesor_materia.id_pm, materias.materia')
+        $query = $this->db->select('profesor_materia.id_pm,profesor_materia.grupo, materias.materia')
             ->from('materias')
             ->join("profesor_materia","profesor_materia.materia = materias.id")
             ->where('profesor',$id)->get();
