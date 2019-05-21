@@ -151,18 +151,23 @@ class Student extends CI_Controller {
         $tareasAlumno = array();
         if($tareas != "-1"){
             foreach ($tareas as $value) {
-
                 $tareaTemp = $this->Alumnomodel->getTareasAlumno($value["id"],$idalumno);
                 array_push($tareasAlumno, $tareaTemp);
             }
-             $data["tareasAlumno"] = $tareasAlumno;
+            $data["tareasAlumno"] = $tareasAlumno;
         }else{
-             $data["tareasAlumno"] = "-1";
-        }        
+            $data["tareasAlumno"] = "-1";
+        }
+        
+        $data["grupo"] = $this->Alumnomodel->getInfoGrupo($idpm);
        
         $this->load->view("student/homeworks",$data);
     }
-    
+
+/* ////////////////////////////////////////////////////////////////////////////
+ * Modulo sesionj
+ */////////////////////////////////////////////////////////////////////////////
+
     public function sesionActiva(){
         $sesion = $this->session->userdata("session");
         if($sesion === "1"){

@@ -114,10 +114,10 @@
                         <div class="row justify-content-between">
                             <div class="panelMaterial">
                                 <div class="row"> 
-                                    <div class="col-3"> 
+                                    <div class="col-5"> 
                                         <img src="<?=base_url()?>/images/usericon.jpg" class="img-rounded"  width="100" height="100">                                                           
                                     </div>
-                                    <div class="col-9">
+                                    <div class="col-7">
                                         <div class="section_title text-center"><h2>Bienvenido <?=$infoAlumno["nombre"]?></h2></div>                                    
                                     </div>
                                 </div>
@@ -233,13 +233,13 @@
                            <div class="col-6">
                            <div class="p">                            
                                <div class="news_post_comments">
-                                   <a href=""><?= $value["materia"] ?></a>
+                                   <a href="<?php echo base_url()?>student/asignature/<?= $value["id_pm"] ?>"><?= $value["materia"] ?></a>
                                </div>                                                                                                                               
                            </div>
                            </div> 
                            <div class="col-6">
                                <div>
-                                   <span class="small"><?= $value["nombre"] ?></span>
+                                   <span class="small"><?= $value["grupo"] ?> - <?= $value["nombre"] ?></span>
                                </div>
                            </div>
                         </div>

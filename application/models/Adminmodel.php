@@ -333,8 +333,8 @@ class Adminmodel extends CI_Model {
         
         $datos = $this->db->select('*')
             ->from('alumno_profesor_materia')
-            ->where('id_alumno',$idpm)
-            ->where('id_pm',$idalumno)
+            ->where('id_alumno',$idalumno)
+            ->where('id_pm',$idpm)
             ->where('estatus',"1")
             ->get();
         
@@ -483,6 +483,7 @@ class Adminmodel extends CI_Model {
             return false;
         }
     }
+    
     public function getIdUsers($iduses){
         $datos = $this->db->select('id')
             ->from('mainchat')

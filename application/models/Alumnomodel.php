@@ -13,6 +13,22 @@ class Alumnomodel extends CI_Model {
     }
     
     // obtenemos la información del alumno
+    public function getInfoGrupo($idpm){
+        $query = $this->db->select('profesor_materia.id_pm,profesor_materia.grupo,profesores.nombre,materias.materia')
+            ->from('profesor_materia')
+            ->join("profesores","profesor_materia.profesor = profesores.id")
+            ->join("materias","profesor_materia.materia = materias.id")
+            ->where('profesor_materia.id_pm',$idpm)
+            ->get();
+        
+        if($query->num_rows() == 0){
+            return "-1";
+        }else{
+            return $query->result_array()[0];
+        }
+    }  
+    
+    // obtenemos la información del alumno
     public function getInfoAlumno($id){
         $query = $this->db->select('usuarios.*, alumnos.*')
             ->from('usuarios')
@@ -80,7 +96,7 @@ where alumno_profesor_materia.id_alumno = 1
     }
     
     public function getTareasAlumno($idtarea,$idalumno){
-        $query = $this->db->select('alumno_tareas.id,alumno_tareas.estatus,alumno_tareas.calificacion,tareas.tarea,tareas.fecha_fin,tareas.puntos,')
+        $query = $this->db->select('alumno_tareas.id,alumno_tareas.estatus,alumno_tareas.calificacion,tareas.archivo,tareas.tarea,tareas.fecha_fin,tareas.puntos')
             ->from('alumno_tareas')
             ->join("tareas","tareas.id = alumno_tareas.id_tarea")
             ->where('alumno_tareas.id_tarea',$idtarea)

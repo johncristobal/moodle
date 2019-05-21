@@ -2,6 +2,30 @@
 
 class Homeworkmodel extends CI_Model {
     
+    public function saveHomeworkStudent($idtarea,$archivo){
+        $datos = array(
+            'estatus' => '2',// Personalizar esto cuando esté la tabla estatus @cmaya
+            'archivo' => $archivo,
+        );
+        
+        $this->db->where('id',$idtarea);
+        $this->db->update('alumno_tareas',$datos);
+        
+        return 1;
+    }
+    
+    public function updateHomeworkStudent($idtarea,$cali){
+        $datos = array(
+            'estatus' => '3',// Personalizar esto cuando esté la tabla estatus @cmaya
+            'calificacion' => $cali,
+        );
+        
+        $this->db->where('id',$idtarea);
+        $this->db->update('alumno_tareas',$datos);
+        
+        return 1;
+    }
+    
     public function saveHomework($data,$archivo){
         $description = $data["description"];
         $dateUp =  date('Y-m-d', strtotime($data["dateUp"]));

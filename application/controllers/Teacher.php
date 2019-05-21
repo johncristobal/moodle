@@ -173,12 +173,24 @@ class Teacher extends CI_Controller {
                 $data["idpm"] = "-1";
             }
 
-            $this->load->view("teacher/homeworks",$data);
+            $this->load->view("teacher/asignatures",$data);
         }else{
              redirect('/');
         }
     }
-        
+    
+/* ////////////////////////////////////////////////////////////////////////////
+ * Modulo tareas
+ */////////////////////////////////////////////////////////////////////////////
+ 
+    public function homework_alumno($idtarea){
+        //select from alumno_tarea donde idtarea = idtarea
+        $tareas = $this->Profesormodel->getTareasAlumno($idtarea);
+        $data["tareas"] = $tareas;
+        $this->load->view("teacher/homeworks_alumno",$data);
+    }
+
+
     public function sesionActiva(){
         $sesion = $this->session->userdata("session");
         if($sesion === "1"){
