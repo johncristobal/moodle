@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 17-05-2019 a las 19:31:20
+-- Tiempo de generación: 21-05-2019 a las 21:02:12
 -- Versión del servidor: 10.1.21-MariaDB
 -- Versión de PHP: 5.6.30
 
@@ -41,7 +41,7 @@ CREATE TABLE `alumnos` (
 --
 
 INSERT INTO `alumnos` (`id`, `nombre`, `fecha_nac`, `matricula`, `estatus`, `fecha_alta`, `Fk_usuario`) VALUES
-(2, 'allumnos 2', '2019-05-01', 'alumno', 1, '2019-05-10', 8),
+(2, 'alumno', '2019-05-01', 'alumno', 1, '2019-05-10', 8),
 (3, 'alumno2', '1994-02-08', 'alumno2', 1, '2019-05-10', 10);
 
 -- --------------------------------------------------------
@@ -65,7 +65,8 @@ INSERT INTO `alumno_profesor_materia` (`id`, `id_alumno`, `id_pm`, `estatus`) VA
 (19, 2, 100001, 1),
 (20, 3, 100001, 1),
 (21, 2, 100003, 1),
-(22, 3, 100003, 1);
+(22, 3, 100003, 1),
+(25, 2, 100004, 1);
 
 -- --------------------------------------------------------
 
@@ -88,9 +89,9 @@ CREATE TABLE `alumno_tareas` (
 
 INSERT INTO `alumno_tareas` (`id`, `id_alumno`, `id_tarea`, `archivo`, `calificacion`, `estatus`) VALUES
 (1, 2, 13, '', 0, 0),
-(2, 3, 13, '', 0, 0),
+(2, 3, 13, 'CV.pdf', 9, 3),
 (3, 2, 14, '', 0, 0),
-(4, 3, 14, '', 0, 0);
+(4, 3, 14, 'curp.pdf', 50, 3);
 
 -- --------------------------------------------------------
 
@@ -158,7 +159,8 @@ CREATE TABLE `mainchat` (
 INSERT INTO `mainchat` (`id`, `users`, `fecha_alta`, `estatus`) VALUES
 (2, 'A_2;P_901', '0000-00-00', 1),
 (4, 'PM_100001', '0000-00-00', 1),
-(5, 'A_1;P_901', '0000-00-00', 1);
+(5, 'A_1;P_901', '0000-00-00', 1),
+(6, 'A_3;P_901', '0000-00-00', 1);
 
 -- --------------------------------------------------------
 
@@ -227,7 +229,8 @@ CREATE TABLE `profesor_materia` (
 
 INSERT INTO `profesor_materia` (`id_pm`, `profesor`, `materia`, `grupo`, `estatus`) VALUES
 (100001, 901, 1, '1CM5', 1),
-(100003, 902, 7, '3CV4', 1);
+(100003, 902, 7, '3CV4', 1),
+(100004, 902, 2, '8CM10', 1);
 
 -- --------------------------------------------------------
 
@@ -374,7 +377,7 @@ ALTER TABLE `alumnos`
 -- AUTO_INCREMENT de la tabla `alumno_profesor_materia`
 --
 ALTER TABLE `alumno_profesor_materia`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 --
 -- AUTO_INCREMENT de la tabla `alumno_tareas`
 --
@@ -394,7 +397,7 @@ ALTER TABLE `chat_user`
 -- AUTO_INCREMENT de la tabla `mainchat`
 --
 ALTER TABLE `mainchat`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT de la tabla `materias`
 --
@@ -409,7 +412,7 @@ ALTER TABLE `profesores`
 -- AUTO_INCREMENT de la tabla `profesor_materia`
 --
 ALTER TABLE `profesor_materia`
-  MODIFY `id_pm` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=100004;
+  MODIFY `id_pm` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=100005;
 --
 -- AUTO_INCREMENT de la tabla `tareas`
 --
