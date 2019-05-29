@@ -2370,6 +2370,11 @@ chat
 .combosMaterias{
     height: 80px;
 }
+
+.backgray{
+    background: #f2f1f8;
+}
+
 @media only screen and (max-width: 575px)
 {
     .combosMaterias{

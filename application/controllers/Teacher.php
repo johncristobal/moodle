@@ -185,11 +185,32 @@ class Teacher extends CI_Controller {
  
     public function homework_alumno($idtarea){
         //select from alumno_tarea donde idtarea = idtarea
-        $tareas = $this->Profesormodel->getTareasAlumno($idtarea);
-        $data["tareas"] = $tareas;
-        $this->load->view("teacher/homeworks_alumno",$data);
+        if($this->sesionActiva()){
+            $tareas = $this->Profesormodel->getTareasAlumno($idtarea);
+            $data["tareas"] = $tareas;
+            $this->load->view("teacher/homeworks_alumno",$data);
+        }
+        else{
+            redirect('/');
+        }
     }
 
+/* ////////////////////////////////////////////////////////////////////////////
+ * Modulo perfil
+ */////////////////////////////////////////////////////////////////////////////
+     
+    public function perfil(){
+        if($this->sesionActiva()){
+            $idprofesor = $this->session->userdata("idprofesor");
+
+            //select from alumno_tarea donde idtarea = idtarea
+            $datos = $this->Profesormodel->geInfoProfesor($idprofesor);
+            $data["data"] = $datos;
+            $this->load->view("teacher/perfil",$data);
+        }else{
+            redirect('/');
+        }
+    }
 
     public function sesionActiva(){
         $sesion = $this->session->userdata("session");

@@ -77,6 +77,19 @@ class Profesormodel extends CI_Model {
         } 
     }
 
+    public function geInfoProfesor($idprofe){
+        $query = $this->db->select('usuarios.*, profesores.*')
+            ->from('usuarios')
+            ->join("profesores","usuarios.id = profesores.Fk_usuario")
+            ->where('profesores.id',$idprofe)
+            ->get();
+        
+        if($query->num_rows() == 0){
+            return "-1";
+        }else{
+            return $query->result_array()[0];
+        }
+    }
 
     public function validateLogin($data){
 
