@@ -43,6 +43,34 @@ class Alumnomodel extends CI_Model {
         }
     }   
     
+    public function updateProfileAlumno($data,$archivo,$idalumno){
+        
+        if($archivo == ""){
+            $datos = array(
+                "nombre" => $data["nombre"],
+                "fecha_nac" => date('Y-m-d', strtotime($data["dateDown"])),
+                "matricula" => $data["matricula"]
+            );
+        }else{
+            $datos = array(
+                "nombre" => $data["nombre"],
+                "fecha_nac" => date('Y-m-d', strtotime($data["dateDown"])),
+                "matricula" => $data["matricula"],
+                "imagen_perfil" => $archivo            
+            );
+        }
+                
+        $this->db->where("id",$idalumno);
+        $this->db->update("alumnos",$datos);
+        
+        $datosUser = array(
+            "correo" => $data["correo"]
+        );
+        
+        $this->db->where("id",$data["idusuario"]);
+        $this->db->update("usuarios",$datosUser);
+    }
+        
     public function getProfesoresMateriasAlumno($idalumno){
         $query = $this->db->select('*')
             ->from('alumno_profesor_materia')

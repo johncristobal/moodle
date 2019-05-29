@@ -61,7 +61,8 @@
 									<li><a href="<?= base_url() ?>">Inicio</a></li>
 									<!--li><a href="about.html">Acerca de nosotros</a></li>
 									<li><a href="courses.html">Oferta educativa</a></li-->
-									<li><a href="contact.html">Contacto</a></li>
+                                                                        <li><a href="<?= base_url() ?>nosotros">Nosotros</a></li>
+                                                                        <li><a href="contact.html">Contacto</a></li>
                                                                         <li><a href="<?= base_url() ?>login">Iniciar sesión</a></li>
 								</ul>
 								<!-- Hamburger -->

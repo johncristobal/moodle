@@ -3,7 +3,7 @@
 <head>
     <?php 
         $datos = array(
-            "titulo" => 'Perfil Profesor'
+            "titulo" => 'Perfil Alumno'
         );
         $this->load->view('head',$datos);
     ?>
@@ -13,7 +13,7 @@
         <div class="super_container">
 
             <!-- Header -->
-            <?php $this->load->view('teacher/headerBack'); ?>
+            <?php $this->load->view('student/headerBack'); ?>
 
 	<!-- Home -->	
 	</div>
@@ -30,7 +30,7 @@
             <div class="row">
                 <div class="col-sm-3"></div>
                 <div class="col-12 col-sm-6 backGray">
-                    <div class="section_title text-center"><h2>Información del profesor</h2></div>                    
+                    <div class="section_title text-center"><h2>Perfil</h2></div>                    
                     <br>
                     <div class="row text-center">
                         <div class="col-12 text-center">
@@ -41,7 +41,7 @@
                             <?php
                                 }else{
                             ?>
-                                <img src="<?= base_url() ?>perfilProfesor/<?= $idprofesor ?>/<?= $data["imagen_perfil"]; ?>" class="img-rounded" width="200px" height="200px">                                    
+                                <img src="<?= base_url() ?>perfilAlumno/<?= $idalumno ?>/<?= $data["imagen_perfil"]; ?>" class="img-rounded" width="200px" height="200px">                                    
                             <?php
                                 }
                             ?>    
@@ -108,7 +108,7 @@
                   <span aria-hidden="true">&times;</span>
                 </button>
               </div>
-            <form id="formularioEditarInfo" method="post" enctype="multipart/form-data">
+            <form id="formularioEditarInfoAlumno" method="post" enctype="multipart/form-data">
               <div class="modal-body">
                   <input type="hidden" name="idusuario" value="<?= $data["Fk_usuario"] ?>" >  
                 <div class="form-group row">
@@ -121,7 +121,7 @@
                     <?php
                         }else{
                     ?>
-                        <img id="imagePerfil" src="<?= base_url() ?>perfilProfesor/<?= $idprofesor ?>/<?= $data["imagen_perfil"]; ?>" class="img-rounded" width="200px" height="200px">                                    
+                        <img id="imagePerfil" src="<?= base_url() ?>perfilAlumno/<?= $idalumno ?>/<?= $data["imagen_perfil"]; ?>" class="img-rounded" width="200px" height="200px">                                    
                     <?php
                         }
                     ?>                    

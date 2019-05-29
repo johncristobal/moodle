@@ -199,16 +199,53 @@ class Teacher extends CI_Controller {
  * Modulo perfil
  */////////////////////////////////////////////////////////////////////////////
      
-    public function perfil(){
+    public function profile(){
         if($this->sesionActiva()){
             $idprofesor = $this->session->userdata("idprofesor");
 
             //select from alumno_tarea donde idtarea = idtarea
             $datos = $this->Profesormodel->geInfoProfesor($idprofesor);
             $data["data"] = $datos;
+            $data["idprofesor"] = $idprofesor;
             $this->load->view("teacher/perfil",$data);
         }else{
             redirect('/');
+        }
+    }
+    
+    public function saveDataProfile(){
+        
+        if($this->sesionActiva()){
+            
+            $idprofesor = $this->session->userdata("idprofesor");
+             
+            $data = $this->input->post();
+
+            $archivo = "";
+            if(isset($_FILES["archivo"]["name"])){
+                $archivo = $_FILES["archivo"]["name"];
+            }else{
+                $archivo = "";
+            }
+            $this->Profesormodel->updateProfileProfesor($data,$archivo,$idprofesor);
+
+            if(isset($_FILES["archivo"]["name"])){
+                $tempfile = $_FILES["archivo"]["tmp_name"];
+                $archivo = $_FILES["archivo"]["name"];
+
+                if (!file_exists('perfilProfesor/'.$idprofesor)) {
+                    mkdir('perfilProfesor/'.$idprofesor, 0777, true);
+                }
+
+                //remember  chmod -R 777 .
+                //$sourcePath = $_FILES['foto']['tmp_name']; // Storing source path of the file in a variable
+                $targetPath = 'perfilProfesor/'.$idprofesor."/".$archivo;//.$_FILES['file']['name']; // Target path where file is to be stored
+                move_uploaded_file($tempfile,$targetPath) ; // Moving Uploaded file
+            }
+
+            echo "listo";
+        }else{
+            redirect("/");
         }
     }
 

@@ -99,6 +99,12 @@
                             </a>
                         </div>
                         <div class="row mt-2">
+                            <a href="<?= base_url() ?>student/profile">
+                            <span class="fa fa-image"></span>                            
+                            <span class="smallCustom">Perfil</span>
+                            </a>
+                        </div>
+                        <div class="row mt-2">
                             <a href="<?= base_url() ?>admin/cerrar">
                             <span class="fa fa-power-off"></span>                            
                             <span class="smallCustom">Cerrar sesión</span>
@@ -114,8 +120,19 @@
                         <div class="row justify-content-between">
                             <div class="panelMaterial">
                                 <div class="row"> 
-                                    <div class="col-5"> 
-                                        <img src="<?=base_url()?>/images/usericon.jpg" class="img-rounded"  width="100" height="100">                                                           
+                                    <div class="col-5">
+                                        <?php
+                                            if($infoAlumno["imagen_perfil"] == ""){
+                                        ?>
+                                            <img src="<?=base_url()?>/images/usericon.jpg" class="img-rounded" width="200px" height="200px">
+                                        <?php
+                                            }else{
+                                        ?>
+                                            <img src="<?= base_url() ?>perfilAlumno/<?= $idalumno ?>/<?= $infoAlumno["imagen_perfil"]; ?>" class="img-rounded" width="150px" height="150px">                                    
+                                        <?php
+                                            }
+                                        ?>   
+                                        <!--img src="<?=base_url()?>/images/usericon.jpg" class="img-rounded"  width="100" height="100"--> 
                                     </div>
                                     <div class="col-7">
                                         <div class="section_title text-center"><h2>Bienvenido <?=$infoAlumno["nombre"]?></h2></div>                                    
@@ -273,6 +290,12 @@
                             <a href="#">
                             <span class="smallCustom">Contacto</span>
                             <span class="fa fa-phone"></span>                            
+                            </a>
+                        </div>
+                        <div class="row mt-2">
+                            <a href="<?= base_url() ?>student/profile">
+                            <span class="smallCustom">Perfil</span>
+                            <span class="fa fa-image"></span>                            
                             </a>
                         </div>
                         <div class="row mt-2">

@@ -91,6 +91,34 @@ class Profesormodel extends CI_Model {
         }
     }
 
+    public function updateProfileProfesor($data,$archivo,$idprofesor){
+        
+        if($archivo == ""){
+            $datos = array(
+                "nombre" => $data["nombre"],
+                "fecha_nac" => date('Y-m-d', strtotime($data["dateDown"])),
+                "matricula" => $data["matricula"]
+            );
+        }else{
+            $datos = array(
+                "nombre" => $data["nombre"],
+                "fecha_nac" => date('Y-m-d', strtotime($data["dateDown"])),
+                "matricula" => $data["matricula"],
+                "imagen_perfil" => $archivo            
+            );
+        }
+                
+        $this->db->where("id",$idprofesor);
+        $this->db->update("profesores",$datos);
+        
+        $datosUser = array(
+            "correo" => $data["correo"]
+        );
+        
+        $this->db->where("id",$data["idusuario"]);
+        $this->db->update("usuarios",$datosUser);
+    }
+    
     public function validateLogin($data){
 
         $datos = $this->db->select('id,rol')

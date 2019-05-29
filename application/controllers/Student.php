@@ -24,12 +24,14 @@ class Student extends CI_Controller {
 
         if($this->sesionActiva()){
             $id = $this->session->userdata("id");
+            $idalumnoSesion = $this->session->userdata("idalumno");
             $idalumno = $this->Alumnomodel->getIdAlumno($id);
             $this->session->set_userdata("idalumno",$idalumno["id"]);  
             $this->session->set_userdata("tempName",$idalumno["nombre"]);
 
             $data["infoAlumno"]=$this->Alumnomodel->getInfoAlumno($idalumno["id"]);
             $data["materias"] = $this->Alumnomodel->getMateriasAlumno($idalumno["id"]);
+            $data["idalumno"] = $idalumnoSesion;
             $this->load->view("student/home",$data);  
         }else{
             redirect('/');
@@ -164,6 +166,60 @@ class Student extends CI_Controller {
         $this->load->view("student/homeworks",$data);
     }
 
+/* ////////////////////////////////////////////////////////////////////////////
+ * Modulo perfil
+ */////////////////////////////////////////////////////////////////////////////
+     
+    public function profile(){
+        if($this->sesionActiva()){
+            $idalumno = $this->session->userdata("idalumno");
+
+            //select from alumno_tarea donde idtarea = idtarea
+            $datos = $this->Alumnomodel->getInfoAlumno($idalumno);
+            $data["data"] = $datos;
+            $data["idalumno"] = $idalumno;
+            $this->load->view("student/perfil",$data);
+        }else{
+            redirect('/');
+        }
+    }    
+    
+    public function saveDataProfile(){
+        
+        if($this->sesionActiva()){
+            
+            $idalumno = $this->session->userdata("idalumno");
+             
+            $data = $this->input->post();
+
+            $archivo = "";
+            if(isset($_FILES["archivo"]["name"])){
+                $archivo = $_FILES["archivo"]["name"];
+            }else{
+                $archivo = "";
+            }
+            $this->Alumnomodel->updateProfileAlumno($data,$archivo,$idalumno);
+
+            if(isset($_FILES["archivo"]["name"])){
+                $tempfile = $_FILES["archivo"]["tmp_name"];
+                $archivo = $_FILES["archivo"]["name"];
+
+                if (!file_exists('perfilAlumno/'.$idalumno)) {
+                    mkdir('perfilAlumno/'.$idalumno, 0777, true);
+                }
+
+                //remember  chmod -R 777 .
+                //$sourcePath = $_FILES['foto']['tmp_name']; // Storing source path of the file in a variable
+                $targetPath = 'perfilAlumno/'.$idalumno."/".$archivo;//.$_FILES['file']['name']; // Target path where file is to be stored
+                move_uploaded_file($tempfile,$targetPath) ; // Moving Uploaded file
+            }
+
+            echo "listo";
+        }else{
+            redirect("/");
+        }
+    }
+    
 /* ////////////////////////////////////////////////////////////////////////////
  * Modulo sesionj
  */////////////////////////////////////////////////////////////////////////////

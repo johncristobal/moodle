@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 03-05-2019 a las 17:04:14
+-- Tiempo de generación: 29-05-2019 a las 18:54:54
 -- Versión del servidor: 10.1.21-MariaDB
 -- Versión de PHP: 5.6.30
 
@@ -29,10 +29,11 @@ SET time_zone = "+00:00";
 CREATE TABLE `alumnos` (
   `id` int(11) NOT NULL,
   `nombre` varchar(100) NOT NULL,
-  `edad` int(11) NOT NULL,
+  `fecha_nac` date NOT NULL,
   `matricula` varchar(255) NOT NULL,
   `estatus` int(11) NOT NULL,
   `fecha_alta` date NOT NULL,
+  `imagen_perfil` varchar(250) DEFAULT NULL,
   `Fk_usuario` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -40,9 +41,9 @@ CREATE TABLE `alumnos` (
 -- Volcado de datos para la tabla `alumnos`
 --
 
-INSERT INTO `alumnos` (`id`, `nombre`, `edad`, `matricula`, `estatus`, `fecha_alta`, `Fk_usuario`) VALUES
-(1, 'JOHN', 12, 'ee345', 1, '2019-04-15', 6),
-(2, 'allumnos 2', 20, 'matrocula alumnos 2', 1, '2019-04-02', 8);
+INSERT INTO `alumnos` (`id`, `nombre`, `fecha_nac`, `matricula`, `estatus`, `fecha_alta`, `imagen_perfil`, `Fk_usuario`) VALUES
+(2, 'alumno', '1999-06-03', 'alumno', 1, '2019-05-10', '2019-05-21.jpg', 8),
+(3, 'alumno2', '1994-02-08', 'alumno2', 1, '2019-05-10', NULL, 10);
 
 -- --------------------------------------------------------
 
@@ -62,8 +63,11 @@ CREATE TABLE `alumno_profesor_materia` (
 --
 
 INSERT INTO `alumno_profesor_materia` (`id`, `id_alumno`, `id_pm`, `estatus`) VALUES
-(1, 1, 100000, 1),
-(2, 2, 100000, 1);
+(19, 2, 100001, 1),
+(20, 3, 100001, 1),
+(21, 2, 100003, 1),
+(22, 3, 100003, 1),
+(25, 2, 100004, 1);
 
 -- --------------------------------------------------------
 
@@ -79,6 +83,16 @@ CREATE TABLE `alumno_tareas` (
   `calificacion` double NOT NULL,
   `estatus` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `alumno_tareas`
+--
+
+INSERT INTO `alumno_tareas` (`id`, `id_alumno`, `id_tarea`, `archivo`, `calificacion`, `estatus`) VALUES
+(1, 2, 13, '', 0, 0),
+(2, 3, 13, 'CV.pdf', 9, 3),
+(3, 2, 14, '', 0, 0),
+(4, 3, 14, 'curp.pdf', 50, 3);
 
 -- --------------------------------------------------------
 
@@ -96,6 +110,14 @@ CREATE TABLE `chats` (
   `timestamp` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Volcado de datos para la tabla `chats`
+--
+
+INSERT INTO `chats` (`id`, `id_users`, `message`, `envia`, `tempName`, `estatus`, `timestamp`) VALUES
+(1, '2', 'hola profe buen dia', 2, 'allumnos 2', 1, 1558098076),
+(2, '2', 'que tal alumnos 2 ', 901, 'profe 3', 1, 1558098087);
+
 -- --------------------------------------------------------
 
 --
@@ -110,6 +132,14 @@ CREATE TABLE `chat_user` (
   `last_time` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Volcado de datos para la tabla `chat_user`
+--
+
+INSERT INTO `chat_user` (`id`, `id_users`, `id_user`, `estatus`, `last_time`) VALUES
+(1, 2, 2, 1, 1558098087),
+(2, 2, 901, 1, 1558098087);
+
 -- --------------------------------------------------------
 
 --
@@ -122,6 +152,16 @@ CREATE TABLE `mainchat` (
   `fecha_alta` date NOT NULL,
   `estatus` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `mainchat`
+--
+
+INSERT INTO `mainchat` (`id`, `users`, `fecha_alta`, `estatus`) VALUES
+(2, 'A_2;P_901', '0000-00-00', 1),
+(4, 'PM_100001', '0000-00-00', 1),
+(5, 'A_1;P_901', '0000-00-00', 1),
+(6, 'A_3;P_901', '0000-00-00', 1);
 
 -- --------------------------------------------------------
 
@@ -144,7 +184,7 @@ INSERT INTO `materias` (`id`, `materia`, `estatus`, `fecha_alta`) VALUES
 (1, 'Materia_1', 1, '2019-04-23'),
 (2, 'Materia_2', 1, '2019-04-23'),
 (3, 'materia_3', 1, '2019-04-23'),
-(4, 'materia_4', 1, '2019-04-24');
+(7, 'civica e historia', 1, '2019-05-10');
 
 -- --------------------------------------------------------
 
@@ -159,6 +199,7 @@ CREATE TABLE `profesores` (
   `matricula` varchar(100) NOT NULL,
   `estatus` int(11) NOT NULL,
   `fecha_alta` date NOT NULL,
+  `imagen_perfil` varchar(250) DEFAULT NULL,
   `Fk_usuario` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -166,8 +207,9 @@ CREATE TABLE `profesores` (
 -- Volcado de datos para la tabla `profesores`
 --
 
-INSERT INTO `profesores` (`id`, `nombre`, `fecha_nac`, `matricula`, `estatus`, `fecha_alta`, `Fk_usuario`) VALUES
-(901, 'profe 3', '2019-04-26', 'profe3', 1, '2019-04-26', 9);
+INSERT INTO `profesores` (`id`, `nombre`, `fecha_nac`, `matricula`, `estatus`, `fecha_alta`, `imagen_perfil`, `Fk_usuario`) VALUES
+(901, 'profesor', '1980-08-08', 'matricula_profesor', 1, '2019-05-10', 'iconomapa.png', 9),
+(902, 'profesor2', '1993-03-03', 'profesor2', 1, '2019-05-10', NULL, 12);
 
 -- --------------------------------------------------------
 
@@ -179,6 +221,7 @@ CREATE TABLE `profesor_materia` (
   `id_pm` int(11) NOT NULL,
   `profesor` int(11) NOT NULL,
   `materia` int(11) NOT NULL,
+  `grupo` varchar(200) NOT NULL,
   `estatus` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -186,8 +229,10 @@ CREATE TABLE `profesor_materia` (
 -- Volcado de datos para la tabla `profesor_materia`
 --
 
-INSERT INTO `profesor_materia` (`id_pm`, `profesor`, `materia`, `estatus`) VALUES
-(100000, 901, 3, 1);
+INSERT INTO `profesor_materia` (`id_pm`, `profesor`, `materia`, `grupo`, `estatus`) VALUES
+(100001, 901, 1, '1CM5', 1),
+(100003, 902, 7, '3CV4', 1),
+(100004, 902, 2, '8CM10', 1);
 
 -- --------------------------------------------------------
 
@@ -205,6 +250,14 @@ CREATE TABLE `tareas` (
   `estatus` int(11) NOT NULL,
   `id_pm` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `tareas`
+--
+
+INSERT INTO `tareas` (`id`, `tarea`, `fecha_alta`, `fecha_fin`, `puntos`, `archivo`, `estatus`, `id_pm`) VALUES
+(13, 'tarea A', '2019-04-05', '2019-11-05', 10, 'curp.pdf', 1, 100001),
+(14, 'tarea 2', '2019-06-05', '1970-01-01', 50, 'guia-aso-2017-manual-app-store-optimization.pdf', 1, 100001);
 
 -- --------------------------------------------------------
 
@@ -228,10 +281,10 @@ CREATE TABLE `usuarios` (
 INSERT INTO `usuarios` (`id`, `correo`, `password`, `estatus`, `rol`, `fecha_alta`) VALUES
 (1, 'nowoscmexico@gmail.com', 'nowoscadm19', 1, 1, '2019-04-09'),
 (2, 'cristobaljohn00@gmail.com', 'cristobal12345', 1, 1, '2019-04-09'),
-(5, 'alexis@gmail.com', '12345', 1, 2, '2019-04-15'),
-(6, 'oscar@gmail.com', 'oscar', 1, 3, '2019-04-15'),
-(8, 'alumno@gmail.com', 'alumno', 1, 3, '2019-04-24'),
-(9, 'profesor@gmail.com', 'profesor', 1, 2, '2019-04-26');
+(8, 'alumno@gmail.com', 'alumno', 1, 3, '2019-05-10'),
+(9, 'profesor@gmail.com', 'profesor', 1, 2, '2019-05-10'),
+(10, 'alumno2@gmail.com', 'alumno2', 1, 3, '2019-05-10'),
+(12, 'profesor2@gmail.com', 'profesor2', 1, 2, '2019-05-10');
 
 --
 -- Índices para tablas volcadas
@@ -321,57 +374,57 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `alumnos`
 --
 ALTER TABLE `alumnos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT de la tabla `alumno_profesor_materia`
 --
 ALTER TABLE `alumno_profesor_materia`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 --
 -- AUTO_INCREMENT de la tabla `alumno_tareas`
 --
 ALTER TABLE `alumno_tareas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT de la tabla `chats`
 --
 ALTER TABLE `chats`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=109;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT de la tabla `chat_user`
 --
 ALTER TABLE `chat_user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT de la tabla `mainchat`
 --
 ALTER TABLE `mainchat`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT de la tabla `materias`
 --
 ALTER TABLE `materias`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT de la tabla `profesores`
 --
 ALTER TABLE `profesores`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=902;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=903;
 --
 -- AUTO_INCREMENT de la tabla `profesor_materia`
 --
 ALTER TABLE `profesor_materia`
-  MODIFY `id_pm` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=100001;
+  MODIFY `id_pm` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=100005;
 --
 -- AUTO_INCREMENT de la tabla `tareas`
 --
 ALTER TABLE `tareas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 --
 -- Restricciones para tablas volcadas
 --
