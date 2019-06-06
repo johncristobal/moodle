@@ -54,66 +54,21 @@ $(document).ready(function()
 	initMilestones();
 	initAccordions();
 
-        /*
-         * onsubmit form login
-         */
-        $("#mail").on("change",function(){
-            inicioInput();
-        });
-        $("#mail").on("change",function(){
-            inicioInput();            
-        });
-        
-        $("#login_form").submit(function(e){
-            e.preventDefault();
-            console.log($("#mail").val());
-            console.log($("#pass").val());
-            $.ajax({
-                url: urlApi+"Login/validate",
-                cache: false, 
-                method: "post",
-                data: {correo: $("#mail").val(), pass: $("#pass").val()},
-                success: function(e){
-                    switch(e){
-                        case "1":
-                            window.location.href = urlApi+"admin";
-                        break;
-                        case "2":
-                            window.location.href = urlApi+"teacher";
-                        break;
-                        case "3":
-                            window.location.href = urlApi+"student";
-                        break;
-                        case "4":
-                            window.location.href = urlApi+"director";
-                        break;
-                        default:
-                            $("#error").removeClass("d-none");
-                            $("#error").addClass("d-block");
-                            //alert(e);
-                        break;
-                    }
-                },
-                error: function(e){
-                    alert(e);
-                }
-            });
-        });
+        $('.deleteDirectorUser').on('click', function(){
+            var id = $(this).attr("id");
+                swal({
+               title: "¿Seguro que deseas eliminar a este usuario?",
+               type: "warning",
+               showCancelButton: true,
+               confirmButtonColor: "#ffae01",
+               confirmButtonText: "Continuar",
+               closeOnConfirm: false }, function()
+           {
+               $(location).attr('href',urlApi+'director/eliminarUsuario/'+id);
+           }
+        );
 
-        /* 
-	11. get excel file
-	*/
-        $("#excelRead").click(function(e){
-            //alert("jajaja");
-            $("#openDoc").modal('show');
-        });
-                        
-    	function inicioInput()
-	{
-            $("#error").removeClass("d-block");
-            $("#error").addClass("d-none");            
-        }
-        
+         });
 	/* 
 
 	2. Set Header

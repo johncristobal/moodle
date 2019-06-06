@@ -10,7 +10,7 @@
         <div class="super_container">
 
         <!-- Header -->
-        <?php $this->load->view('admin/header'); ?>
+        <?php $this->load->view('director/header'); ?>
 
 	<!-- Home -->	
 	</div>
@@ -23,7 +23,7 @@
                 </div>
                 <div class="col-8 col-sm-4 right">
                     <div class="">
-                        <form action="<?= base_url() ?>admin/register" method="post" class="">
+                        <form action="<?= base_url() ?>director/register" method="post" class="">
                             <!--div>
                                 <input type="text" class="course_input" placeholder="Course" >
                             </div-->
@@ -98,10 +98,10 @@
                         <div class="news_post_author"><?= date("m/d/Y", strtotime($value["fecha_alta"])) ?></div>
                     </div>
                         <div class="col-sm-1">
-                        <div class="news_post_author"><a href="<?= base_url(); ?>admin/editarUsuario/<?= $value["id"];?>" <i class="fa fa-pencil" aria-hidden="true"></i></a></div>
+                        <div class="news_post_author"><a href="<?= base_url(); ?>director/editarUsuario/<?= $value["id"];?>" <i class="fa fa-pencil" aria-hidden="true"></i></a></div>
                         </div>                   
                         <div class="col-sm-1">
-                        <div class="news_post_author"><a href="#" id="<?= $value["id"];?>" class="confirmationUser"> <i class="fa fa-trash-o" aria-hidden="true"></i></a></div>
+                        <div class="news_post_author"><a href="#" id="<?= $value["id"];?>" class="deleteDirectorUser"> <i class="fa fa-trash-o" aria-hidden="true"></i></a></div>
                         </div>  
 
                     <!--div class="col-1 col-sm-1">
@@ -151,5 +151,7 @@
     var urlApi = "<?php echo base_url() ?>";
 </script>
 <?php $this->load->view('scripts'); ?>    
+<script src="<?= base_url() ?>js/director.js"></script>
+
 </body>
 </html>

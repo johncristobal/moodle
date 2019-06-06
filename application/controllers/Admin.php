@@ -17,6 +17,7 @@ class Admin extends CI_Controller {
     public function __construct() {
         parent::__construct();
         $this->load->model('Adminmodel');
+        $this->load->model('Usermodel');
     }
     
     public function index(){
@@ -33,7 +34,7 @@ class Admin extends CI_Controller {
         
     public function users(){
         if($this->sesionActiva()){
-            $data["usuarios"] = $this->Adminmodel->getUsers();
+            $data["usuarios"] = $this->Usermodel->getUsers();
             $this->load->view('admin/users',$data);
         }else{
             redirect('/');            
@@ -42,7 +43,7 @@ class Admin extends CI_Controller {
     
     public function register(){
         if($this->sesionActiva()){
-            $data["usuarios"] = $this->Adminmodel->getUsers();
+            $data["usuarios"] = $this->Usermodel->getUsers();
             $this->load->view('admin/register',$data);
         }else{
             redirect('/');            
@@ -55,23 +56,27 @@ class Admin extends CI_Controller {
                 $info=$this->input->post(); 
                 //$edad=$this->calcularEdad($info["fecha_nacim"]);
                 //Se crea primero al usuario
-                $result=$this->Adminmodel->crearUsuario($info); 
+                $result=$this->Usermodel->crearUsuario($info); 
                 
                 switch($result[1]){
                     case "profesores":
                         // Se crea al estudiante
-                        $resultU=$this->Adminmodel->crearProfesor($info,$result[0]);
+                        $resultU=$this->Usermodel->crearProfesor($info,$result[0]);
                         break;
                     case "alumnos":
                         // Se crea al estudiante
-                        $resultU=$this->Adminmodel->crearAlumno($info,$result[0]);
+                        $resultU=$this->Usermodel->crearAlumno($info,$result[0]);
+                        break;
+                    case "directores":
+                        // Se crea al estudiante
+                        $resultU=$this->Usermodel->crearDirector($info,$result[0]);
                         break;
                     default: 
                         break;
                 }
                 
                 if($resultU){
-                    $data["usuarios"] = $this->Adminmodel->getUsers();
+                    $data["usuarios"] = $this->Usermodel->getUsers();
                     $this->load->view('admin/users',$data);
                 }
             }
@@ -82,7 +87,7 @@ class Admin extends CI_Controller {
     
     public function editarUsuario($id){
         if($this->sesionActiva()){
-            $result=$this->Adminmodel->getRol($id); 
+            $result=$this->Usermodel->getRol($id); 
             if($result){
                 switch ($result["rol"]) {
                     case '1':
@@ -93,12 +98,15 @@ class Admin extends CI_Controller {
                         break;
                     case '3':
                         $tabla="alumnos"; 
-                        break;                                           
+                        break; 
+                    case '4':
+                        $tabla="directores"; 
+                        break; 
                     default:
                         break;
                 }
                 
-                $data["info"]=$this->Adminmodel->getInfoUser($id,$tabla);
+                $data["info"]=$this->Usermodel->getInfoUser($id,$tabla);
                 $data["idUser"]=$id;
                 if($data){
                     $this->load->view('admin/editUser',$data);
@@ -111,7 +119,7 @@ class Admin extends CI_Controller {
     
     public function eliminarUsuario($id){
         if($this->sesionActiva()){
-             $result=$this->Adminmodel->getRol($id); 
+             $result=$this->Usermodel->getRol($id); 
              if($result){
                 switch ($result["rol"]) {
                     case '1':
@@ -122,11 +130,14 @@ class Admin extends CI_Controller {
                         break;
                     case '3':
                         $tabla="alumnos"; 
-                        break;                                           
+                        break; 
+                    case '4':
+                        $tabla="directores"; 
+                        break; 
                     default:
                         break;
                 }
-               $result=$this->Adminmodel->eliminarUser($id,$tabla);
+               $result=$this->Usermodel->eliminarUser($id,$tabla);
                if($result){
                 redirect('admin/users');
                }
@@ -147,6 +158,7 @@ class Admin extends CI_Controller {
             redirect('/');            
         }
     }
+    
     public function calcularEdad($fecha_nacim){
         $fechaHoy = new DateTime();
         $fechaNacim = new DateTime($fecha_nacim);
@@ -428,7 +440,7 @@ class Admin extends CI_Controller {
             
         }
 
-        //$users["usuarios"] = $this->Adminmodel->getUsers();
+        //$users["usuarios"] = $this->Usermodel->getUsers();
         //$this->load->view('admin/users',$users);
         redirect('admin/users');
         //send the data in an array format

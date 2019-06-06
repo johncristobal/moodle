@@ -72,6 +72,7 @@
                                                         <select id="tipoUser" name="tipoUser" class="form-control">
                                                             <option <?php if($info->rol==3) {echo'selected';} ?>>Alumno</option>
                                                             <option <?php if($info->rol==2) {echo'selected';} ?>>Maestro</option>
+                                                            <option <?php if($info->rol==4) {echo'selected';} ?>>Director</option>
                                                         </select>
                                                     </div>
                                                 </div>
