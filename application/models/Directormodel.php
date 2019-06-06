@@ -12,12 +12,15 @@ class Directormodel extends CI_Model {
         }
     }
     
+    
     //recupermos materias
-    /*public function getMateriasProfesor($id){
-        $query = $this->db->select('profesor_materia.id_pm,profesor_materia.grupo, materias.materia')
+   public function getMateriasDirector($id){
+        $query = $this->db->select('profesor_materia.id_pm,profesor_materia.grupo, materias.materia,profesores.nombre')
             ->from('materias')
             ->join("profesor_materia","profesor_materia.materia = materias.id")
-            ->where('profesor',$id)->get();
+            ->join("profesores","profesor_materia.profesor = profesores.id")
+            //->where('profesor',$id)
+            ->get();
 
         if($query->num_rows() == 0){
             return "-1";
@@ -27,7 +30,7 @@ class Directormodel extends CI_Model {
     }
     
     //recuperamos tareas
-    public function getTareasMateriaProfesor($idpm){
+    public function getTareasMateriaDirector($idpm){
         $query = $this->db->select('*')
             ->from('tareas')
             ->where('id_pm',$idpm)->get();
@@ -55,7 +58,7 @@ class Directormodel extends CI_Model {
     }
     
     public function getInfoTarea($id){
-        $query = $this->db->select('id,nombre')->from('profesores')->where('Fk_usuario',$id)->get();
+        $query = $this->db->select('id,tarea')->from('tareas')->where('id',$id)->get();
         
         if($query->num_rows() == 0){
             return "-1";
@@ -64,7 +67,7 @@ class Directormodel extends CI_Model {
         }
     }
     
-    public function getAlumnosMateriasProfesor($idpm){
+    /*public function getAlumnosMateriasProfesor($idpm){
         $query = $this->db->select('*')
             ->from('alumno_profesor_materia')
             ->where('id_pm',$idpm)

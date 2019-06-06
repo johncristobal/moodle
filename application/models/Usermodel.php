@@ -99,7 +99,6 @@ class Usermodel extends CI_Model {
           }else{
             return false;
           }
-
     }
 
     public function crearUsuario($info){
@@ -172,15 +171,18 @@ class Usermodel extends CI_Model {
                 $tipoUser=null;
                 break;
         }
-         $datos = [
+        
+        $datos = [
             'correo' => $info["correo"],
             //'password' => $info["password"],//
             'estatus' => '1',// Personalizar esto cuando esté la tabla estatus @cmaya
             'rol' =>$tipoUser,
             'fecha_alta' => date("Y-m-d")
-        ];       
+        ];
+        
         $this->db->where('id', $info["idUser"]);
         $this->db->update('usuarios', $datos);
+        
         //Actualizamos ahora a la tabla del rol de usuario
         $datosRol = [
             'nombre' => $info["nombre"],
@@ -188,7 +190,8 @@ class Usermodel extends CI_Model {
             'fecha_nac' => $info["fecha_nacim"],
             'estatus' => '1',// Personalizar esto cuando esté la tabla estatus @cmaya
             'fecha_alta' => date("Y-m-d"),
-        ];        
+        ]; 
+        
         $this->db->where('Fk_usuario', $info["idUser"]);
         $this->db->update($tabla, $datosRol);
         return true;
@@ -220,7 +223,6 @@ class Usermodel extends CI_Model {
             return "-1";
         }else{
             return $query->result_array()[0];
-
         } 
     }
 

@@ -170,6 +170,71 @@ class Director extends CI_Controller {
         }
     }
     
+// =============================================================================
+// Calificaciones
+// =============================================================================
+    public function califications(){
+        //el director puede ver y editar calificaciones
+        //leemos grupos con sus datos
+        //de cada grupo, recuperamos las tareas
+        //al dar clic en tarea, visualizar calificaciones de quien ha subido tarea
+        if($this->sesionActiva()){
+            //recupero id profesor
+            $iddirector = $this->session->userdata("iddirector");
+
+            /*
+             * con idprofesor recuperas materias de tabla profesor_materia
+             * lista con idprofesor_materia (idPM)
+             * recuperas tareas con la lista de materias tabla tareas (donde idPM)
+             * materia1 => array(tareas)
+             * materia2 => array(tareas)
+             * formar json
+             */
+
+            //materias
+            $tareas = array();
+            $idpm = array();
+            $materias = $this->Directormodel->getMateriasDirector($iddirector);
+            if($materias != "-1"){
+                foreach ($materias as $value) {
+                    //recuperamos tareas con id_PM
+                    $materia = $value["materia"];
+                    $grupo = $value["grupo"];
+                    $tareas_materia = $this->Directormodel->getTareasMateriaDirector($value["id_pm"]);      
+                    
+                    //materian => tareas
+                    $tareas[$materia." - ".$grupo] = $tareas_materia;
+                    $idpm[$materia." - ".$grupo] = $value["id_pm"];
+                }
+                $data["tareas"] = $tareas;
+                $data["idpm"] = $idpm;
+            }else{
+                $data["tareas"] = "-1";
+                $data["idpm"] = "-1";
+            }
+
+            $this->load->view("director/asignatures",$data);
+        }else{
+             redirect('/');
+        }
+    }
+    
+/* ////////////////////////////////////////////////////////////////////////////
+ * Modulo tareas
+ */////////////////////////////////////////////////////////////////////////////
+    public function homework_alumno($idtarea){
+        //select from alumno_tarea donde idtarea = idtarea
+        if($this->sesionActiva()){
+            $tareas = $this->Directormodel->getTareasAlumno($idtarea);
+            $data["tareas"] = $tareas;
+            $data["infotarea"] = $this->Directormodel->getInfoTarea($idtarea);
+            $this->load->view("director/homeworks_alumno",$data);
+        }
+        else{
+            redirect('/');
+        }
+    }
+    
     public function sesionActiva(){
         $sesion = $this->session->userdata("session");
         if($sesion === "1"){

@@ -34,7 +34,9 @@ $(document).ready(function()
 	var header = $('.header');
 	var burger = $('.hamburger');
 	var ctrl = new ScrollMagic.Controller();
-
+        var idpm = "";
+        var idtareatemp = "";
+        
 	setHeader();
 
 	$(window).on('resize', function()
@@ -68,7 +70,114 @@ $(document).ready(function()
            }
         );
 
-         });
+        });
+        
+        $(".downloadFileAlumno").click(function(e){
+            e.preventDefault();
+            var archivo = $(this).attr("href");
+            var idpm = $(this).attr("id");
+            var id = $(this).attr("dir");
+            console.log(archivo);
+            
+            if(archivo === ""){
+                swal("Esperando tarea...!", "El alumno aún no ha subido su tarea...", "error");       
+            }else{            
+                //empeiza descarga de archivo...
+                window.open(urlApi+"tareas/"+idpm+"/"+id+"/"+archivo, '_blank');
+            }
+        });
+        
+        /*
+         * director calificará tarea subida 
+         */
+        $(".openModalCalificar").click(function(e){
+            e.preventDefault();
+            var archivo = $(this).attr("href");
+            var idtareaPadre = $(this).attr("id");
+            var idtarea = $(this).attr("dir");
+            idtareatemp = idtareaPadre;
+
+            var calif = $(this).parent().siblings(".calificacion").attr("id");
+            var estatus = $(this).parent().siblings(".estatus").attr("id");
+            
+            var archivo = $(this).parent().siblings(".archivo").attr("id");
+            var alumno = $(this).parent().siblings(".alumno").attr("id");
+            
+            if(estatus === "4"){                
+                swal("Tarea revisada...", "Finalizado...", "success");               
+            }else if(estatus === "0"){                
+                swal("Sin tarea...", "El alumno aún no sube su tarea...", "error");               
+            }else{
+                console.log(archivo);
+
+                $(".cali").empty();
+                $(".idtarea").empty();
+                $(".idgrupo").empty();
+                $(".alumnoModal").empty();
+                $(".archivoModal").empty();
+                
+                $(".cali").attr("placeholder","Calificación máxima: "+calif);  
+                $(".alumnoModal").attr("placeholder",alumno);
+                $(".archivoModal").attr("placeholder",archivo);
+                
+                $(".cali").attr("max",calif);
+                $(".idtarea").attr("value",idtarea);
+                $(".idgrupo").attr("value",idtareaPadre);  
+                $("#modalCalificarTarea").modal('show');
+            }
+        });
+        
+        /*
+         * director manda calificacion tarea modal
+         */
+        $("#formularioCalificarTarea").submit(function(e){
+            e.preventDefault();
+            //var data = $('#formularioTarea').serialize();
+            // Get form
+            var form = $(this)[0];
+            // Create an FormData object 
+            var data = new FormData(form);
+        
+            swal({   
+		title: "¿Seguro que deseas continuar?",   
+		//text: "No podrás deshacer este paso...",   
+		type: "warning",   
+		showCancelButton: true,
+		cancelButtonText: "No",  
+		cancelButtonColor: "#DD6B55", 		
+		confirmButtonColor: "#ffae01",   
+		confirmButtonText: "Continuar",   
+		closeOnConfirm: false , 
+		closeOnCancel: true,
+            },
+            function(isConfirm){   
+                if (isConfirm) {     
+                    $.ajax({
+                        url: urlApi+"api/homework/saveStudentCalif",
+                        cache: false, 
+                        processData: false,  // Important
+                        contentType: false,
+                        enctype: 'multipart/form-data',
+                        method: "post",
+                        data: data,
+                        success: function(e){
+                            if(e === "listo"){
+                                window.location.href = urlApi+"director/homework_alumno/"+idtareatemp;
+                            }else{
+
+                            }
+                        },
+                        error: function(e){
+                            alert(e);
+                        }
+                    });	
+		}else {
+                    return false;
+                }
+            }
+            );
+        });
+        
 	/* 
 
 	2. Set Header

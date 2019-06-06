@@ -20,7 +20,7 @@
 					<div class="col">
                                             <div class="header_content d-flex flex-row align-items-center justify-content-start">
                                                 <div class="logo_container">
-                                                    <a href="<?= base_url(); ?>teacher">
+                                                    <a href="<?= base_url(); ?>director">
                                                         <div class="logo_content d-flex flex-row align-items-end justify-content-start">
                                                             <div class="logo_img"><img class="logo" src="<?= base_url(); ?>images/logo_instituto.jpg" alt=""></div>
                                                             &nbsp;&nbsp;&nbsp;&nbsp;<div class="logo_text">Idea</div>
@@ -33,7 +33,7 @@
                                                         <li><a href="<?= base_url() ?>admin/users">Usuarios</a></li-->
                                                         <li><a href="<?= base_url() ?>director/users">Usuarios</a></li>
                                                         <li><a href="<?= base_url() ?>director/califications">Calificaciones</a></li>
-                                                        <li><a href="<?= base_url() ?>director/profile">Perfil</a></li>
+                                                        <!--li><a href="<?= base_url() ?>director/profile">Perfil</a></li-->
                                                         <li><a href="<?= base_url() ?>admin/cerrar">Cerrar sesión</a></li>
                                                     </ul>
                                                     <!--div class="search_button"><i class="fa fa-search" aria-hidden="true"></i></div-->
@@ -85,7 +85,7 @@
 			<ul class="menu_mm">
                             <li class="menu_mm"><a href="<?= base_url() ?>director/users">Usuarios</a></li>
                             <li class="menu_mm"><a href="<?= base_url() ?>director/califications">Calificaciones</a></li>
-                            <li class="menu_mm"><a href="<?= base_url() ?>director/profile">Perfil</a></li>
+                            <!--li class="menu_mm"><a href="<?= base_url() ?>director/profile">Perfil</a></li-->
                             <li class="menu_mm"><a href="<?= base_url() ?>admin/cerrar">Cerrar sesión</a></li>
 
 				<!--li class="menu_mm"><a href="index.html">Home</a></li>

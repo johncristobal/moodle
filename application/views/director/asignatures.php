@@ -3,7 +3,7 @@
 <head>
     <?php 
         $datos = array(
-            "titulo" => 'Tareas profesor'
+            "titulo" => 'Calificaciones'
         );
         $this->load->view('head',$datos);
     ?>
@@ -13,7 +13,7 @@
         <div class="super_container">
 
             <!-- Header -->
-            <?php $this->load->view('teacher/header'); ?>
+            <?php $this->load->view('director/header'); ?>
 
 	<!-- Home -->	
 	</div>
@@ -22,7 +22,12 @@
         <div class="container login">
             <div class="row">
                 <div class="col-12">
-                    <div class="section_title text-center"><h2>Mis Materias</h2></div>
+                    <div class="section_title text-center"><h2>Materias</h2></div>
+                    <div class="text-center">
+                        <p>
+                            Visualice los grupos y sus respectivas tareas <br> De click sobre cada tarea para mostrar las calificaciones.
+                        </p>
+                    </div>
                     <div class="accordions">
                         <?php
                             if($tareas != "-1"){
@@ -31,11 +36,11 @@
                         <div class="accordion_container">
                             <div class="accordion d-flex flex-row align-items-center active"><div><?= $key ?></div></div>                           
                                 <div class="accordion_panel" style="max-height: 164px;">
-                                    <div class="row">
+                                    <!--div class="row">
                                         <div class="col offset-4 offset-sm-10">
                                             <button class="btn btn-danger nuevatarea msg-warning" id="<?= $idpm[$key] ?>">Nueva tarea</button>
                                         </div>
-                                    </div>
+                                    </div-->
                                     
                                     <?php 
                                         if($value != "-1"){
@@ -45,7 +50,7 @@
                                         <div class="col-5 col-sm-2 offset-1">
                                         <div class="p">
                                             <div class="news_post_comments">
-                                                <a href="<?= base_url() ?>teacher/homework_alumno/<?= $tarea["id"]?>"><?= $tarea["tarea"] ?></a>
+                                                <a href="<?= base_url() ?>director/homework_alumno/<?= $tarea["id"]?>"><?= $tarea["tarea"] ?></a>
                                             </div>                                                                                                                               
                                         </div>
                                         </div>
@@ -61,6 +66,10 @@
                                     </div>
                                     <?php
                                             }
+                                        }else{
+                                    ?>
+                                        <div class="text-right"><h3>No tiene tareas asignadas</h3></div>
+                                    <?php
                                         }
                                     ?>                                    
                                 </div>                            

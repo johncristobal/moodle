@@ -22,7 +22,7 @@
         <div class="container login">
             <div class="row">
                 <div class="col-12 col-sm-4">
-                    <div class="section_title text-center"><h2>Tareas de alumnos</h2></div>                    
+                    <div class="section_title text-center"><h2><strong>Tarea:</strong> <?= $infotarea["tarea"] ?> </h2></div>                    
                 </div>
                 <!--div class="col-12 col-sm-8 text-center">
                     <h3><?= $grupo["grupo"] ?></h3>
@@ -185,7 +185,7 @@
     var urlApi = "<?php echo base_url() ?>";
 </script>
 <?php $this->load->view('scripts'); ?>    
-<script src="<?= base_url() ?>js/homework.js"></script>
+<script src="<?= base_url() ?>js/director.js"></script>
 <script src="<?= base_url() ?>js/bootstrap-datepicker.min.js"></script>
 <script src="<?= base_url() ?>js/bootstrap-datepicker.es.min.js" charset="UTF-8"></script>
 
