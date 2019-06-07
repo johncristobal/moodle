@@ -54,6 +54,7 @@
                     <div class="col-sm-2"><div class="news_post_title_user">Rol</div></div>
                     <div class="col-sm-2"><div class="news_post_title_user">Fecha creación</div></div>
                     <div class="col-sm-1"><div class="news_post_title_user">Editar</div></div>
+                    <div class="col-sm-1"><div class="news_post_title_user">Activo</div></div>
                     <div class="col-sm-1"><div class="news_post_title_user">Borrar</div></div>
                 </div>
             </div>
@@ -96,10 +97,17 @@
                     </div>
                         <div class="col-sm-1">
                         <div class="news_post_author"><a href="<?= base_url(); ?>admin/editarUsuario/<?= $value["id"];?>" <i class="fa fa-pencil" aria-hidden="true"></i></a></div>
-                        </div>                   
+                        </div> 
+                        <div class="col-sm-1">
+                        <label class="switch">
+                          <input type="checkbox" checked>
+                          <span class="slider round"></span>
+                        </label>
+                        </div>                    
                         <div class="col-sm-1">
                         <div class="news_post_author"><a href="#" id="<?= $value["id"];?>" class="confirmationUser"> <i class="fa fa-trash-o" aria-hidden="true"></i></a></div>
                         </div>  
+                      
 
                     <!--div class="col-1 col-sm-1">
                         <a href=""><img src="<?= base_url() ?>" /></a>
