@@ -72,6 +72,7 @@ jQuery("#editSubjectForm").click(function() {
     );
 
  });
+ 
  $('.confirmationUser').on('click', function(){
 	 var id = $(this).attr("id");
 	     swal({
@@ -87,6 +88,7 @@ jQuery("#editSubjectForm").click(function() {
     );
 
  });
+ 
 jQuery(".msg-cond").click(function() {
 	swal({   
 		title: "¿Deseas unirte al lado oscuro?",   

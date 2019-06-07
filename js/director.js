@@ -34,7 +34,9 @@ $(document).ready(function()
 	var header = $('.header');
 	var burger = $('.hamburger');
 	var ctrl = new ScrollMagic.Controller();
-
+        var idpm = "";
+        var idtareatemp = "";
+        
 	setHeader();
 
 	$(window).on('resize', function()
@@ -54,65 +56,127 @@ $(document).ready(function()
 	initMilestones();
 	initAccordions();
 
-        /*
-         * onsubmit form login
-         */
-        $("#mail").on("change",function(){
-            inicioInput();
-        });
-        $("#mail").on("change",function(){
-            inicioInput();            
+        $('.deleteDirectorUser').on('click', function(){
+            var id = $(this).attr("id");
+                swal({
+               title: "¿Seguro que deseas eliminar a este usuario?",
+               type: "warning",
+               showCancelButton: true,
+               confirmButtonColor: "#ffae01",
+               confirmButtonText: "Continuar",
+               closeOnConfirm: false }, function()
+           {
+               $(location).attr('href',urlApi+'director/eliminarUsuario/'+id);
+           }
+        );
+
         });
         
-        $("#login_form").submit(function(e){
+        $(".downloadFileAlumno").click(function(e){
             e.preventDefault();
-            console.log($("#mail").val());
-            console.log($("#pass").val());
-            $.ajax({
-                url: urlApi+"Login/validate",
-                cache: false, 
-                method: "post",
-                data: {correo: $("#mail").val(), pass: $("#pass").val()},
-                success: function(e){
-                    switch(e){
-                        case "1":
-                            window.location.href = urlApi+"admin";
-                        break;
-                        case "2":
-                            window.location.href = urlApi+"teacher";
-                        break;
-                        case "3":
-                            window.location.href = urlApi+"student";
-                        break;
-                        case "4":
-                            window.location.href = urlApi+"director";
-                        break;
-                        default:
-                            $("#error").removeClass("d-none");
-                            $("#error").addClass("d-block");
-                            //alert(e);
-                        break;
-                    }
-                },
-                error: function(e){
-                    alert(e);
-                }
-            });
+            var archivo = $(this).attr("href");
+            var idpm = $(this).attr("id");
+            var id = $(this).attr("dir");
+            console.log(archivo);
+            
+            if(archivo === ""){
+                swal("Esperando tarea...!", "El alumno aún no ha subido su tarea...", "error");       
+            }else{            
+                //empeiza descarga de archivo...
+                window.open(urlApi+"tareas/"+idpm+"/"+id+"/"+archivo, '_blank');
+            }
         });
+        
+        /*
+         * director calificará tarea subida 
+         */
+        $(".openModalCalificar").click(function(e){
+            e.preventDefault();
+            var archivo = $(this).attr("href");
+            var idtareaPadre = $(this).attr("id");
+            var idtarea = $(this).attr("dir");
+            idtareatemp = idtareaPadre;
 
-        /* 
-	11. get excel file
-	*/
-        $("#excelRead").click(function(e){
-            //alert("jajaja");
-            $("#openDoc").modal('show');
+            var calif = $(this).parent().siblings(".calificacion").attr("id");
+            var estatus = $(this).parent().siblings(".estatus").attr("id");
+            
+            var archivo = $(this).parent().siblings(".archivo").attr("id");
+            var alumno = $(this).parent().siblings(".alumno").attr("id");
+            
+            if(estatus === "4"){                
+                swal("Tarea revisada...", "Finalizado...", "success");               
+            }else if(estatus === "0"){                
+                swal("Sin tarea...", "El alumno aún no sube su tarea...", "error");               
+            }else{
+                console.log(archivo);
+
+                $(".cali").empty();
+                $(".idtarea").empty();
+                $(".idgrupo").empty();
+                $(".alumnoModal").empty();
+                $(".archivoModal").empty();
+                
+                $(".cali").attr("placeholder","Calificación máxima: "+calif);  
+                $(".alumnoModal").attr("placeholder",alumno);
+                $(".archivoModal").attr("placeholder",archivo);
+                
+                $(".cali").attr("max",calif);
+                $(".idtarea").attr("value",idtarea);
+                $(".idgrupo").attr("value",idtareaPadre);  
+                $("#modalCalificarTarea").modal('show');
+            }
         });
-                        
-    	function inicioInput()
-	{
-            $("#error").removeClass("d-block");
-            $("#error").addClass("d-none");            
-        }
+        
+        /*
+         * director manda calificacion tarea modal
+         */
+        $("#formularioCalificarTarea").submit(function(e){
+            e.preventDefault();
+            //var data = $('#formularioTarea').serialize();
+            // Get form
+            var form = $(this)[0];
+            // Create an FormData object 
+            var data = new FormData(form);
+        
+            swal({   
+		title: "¿Seguro que deseas continuar?",   
+		//text: "No podrás deshacer este paso...",   
+		type: "warning",   
+		showCancelButton: true,
+		cancelButtonText: "No",  
+		cancelButtonColor: "#DD6B55", 		
+		confirmButtonColor: "#ffae01",   
+		confirmButtonText: "Continuar",   
+		closeOnConfirm: false , 
+		closeOnCancel: true,
+            },
+            function(isConfirm){   
+                if (isConfirm) {     
+                    $.ajax({
+                        url: urlApi+"api/homework/saveStudentCalif",
+                        cache: false, 
+                        processData: false,  // Important
+                        contentType: false,
+                        enctype: 'multipart/form-data',
+                        method: "post",
+                        data: data,
+                        success: function(e){
+                            if(e === "listo"){
+                                window.location.href = urlApi+"director/homework_alumno/"+idtareatemp;
+                            }else{
+
+                            }
+                        },
+                        error: function(e){
+                            alert(e);
+                        }
+                    });	
+		}else {
+                    return false;
+                }
+            }
+            );
+        });
         
 	/* 
 

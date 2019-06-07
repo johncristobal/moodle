@@ -10,7 +10,7 @@
         <div class="super_container">
 
         <!-- Header -->
-        <?php $this->load->view('admin/header'); ?>
+        <?php $this->load->view('director/header'); ?>
 
 	<!-- Home -->	
 	</div>
@@ -23,7 +23,7 @@
                 </div>
                 <div class="col-8 col-sm-4 right">
                     <div class="">
-                        <form action="<?= base_url() ?>admin/register" method="post" class="">
+                        <form action="<?= base_url() ?>director/register" method="post" class="">
                             <!--div>
                                 <input type="text" class="course_input" placeholder="Course" >
                             </div-->
@@ -54,13 +54,15 @@
                     <div class="col-sm-2"><div class="news_post_title_user">Rol</div></div>
                     <div class="col-sm-2"><div class="news_post_title_user">Fecha creación</div></div>
                     <div class="col-sm-1"><div class="news_post_title_user">Editar</div></div>
-                    <div class="col-sm-1"><div class="news_post_title_user">Activo</div></div>
                     <div class="col-sm-1"><div class="news_post_title_user">Borrar</div></div>
                 </div>
             </div>
 
             <?php 
                 foreach ($usuarios as $value) {
+                    if($value["rol"] == "1" || $value["rol"]== "4"){
+                        continue;
+                    }
             ?>
             
             <div class="d-none d-sm-block d-sm-block d-md-block d-lg-block d-xl-block text-center justify-content-center">
@@ -99,18 +101,11 @@
                         <div class="news_post_author"><?= date("m/d/Y", strtotime($value["fecha_alta"])) ?></div>
                     </div>
                         <div class="col-sm-1">
-                        <div class="news_post_author"><a href="<?= base_url(); ?>admin/editarUsuario/<?= $value["id"];?>" <i class="fa fa-pencil" aria-hidden="true"></i></a></div>
-                        </div> 
+                        <div class="news_post_author"><a href="<?= base_url(); ?>director/editarUsuario/<?= $value["id"];?>" <i class="fa fa-pencil" aria-hidden="true"></i></a></div>
+                        </div>                   
                         <div class="col-sm-1">
-                        <label class="switch">
-                          <input type="checkbox" checked>
-                          <span class="slider round"></span>
-                        </label>
-                        </div>                    
-                        <div class="col-sm-1">
-                        <div class="news_post_author"><a href="#" id="<?= $value["id"];?>" class="confirmationUser"> <i class="fa fa-trash-o" aria-hidden="true"></i></a></div>
+                        <div class="news_post_author"><a href="#" id="<?= $value["id"];?>" class="deleteDirectorUser"> <i class="fa fa-trash-o" aria-hidden="true"></i></a></div>
                         </div>  
-                      
 
                     <!--div class="col-1 col-sm-1">
                         <a href=""><img src="<?= base_url() ?>" /></a>
@@ -134,8 +129,8 @@
                     <br/>
                 </div>
                 <div class="col-2">
-                    <div class="news_post_author"><a href="<?= base_url(); ?>admin/editarUsuario/<?= $value["id"];?>" <i class="fa fa-pencil" aria-hidden="true"></i></a></div>
-                    <div class="news_post_author"><a href="#" id="<?= $value["id"];?>" class="confirmationUser"> <i class="fa fa-trash-o" aria-hidden="true"></i></a></div>
+                    <div class="news_post_author"><a href="<?= base_url(); ?>director/editarUsuario/<?= $value["id"];?>" <i class="fa fa-pencil" aria-hidden="true"></i></a></div>
+                    <div class="news_post_author"><a href="#" id="<?= $value["id"];?>" class="deleteDirectorUser"> <i class="fa fa-trash-o" aria-hidden="true"></i></a></div>
                 </div>
             </div>
             </div>
@@ -159,5 +154,7 @@
     var urlApi = "<?php echo base_url() ?>";
 </script>
 <?php $this->load->view('scripts'); ?>    
+<script src="<?= base_url() ?>js/director.js"></script>
+
 </body>
 </html>

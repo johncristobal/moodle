@@ -50,6 +50,7 @@ http://qnimate.com/database-design-for-storing-chat-messages/
                                             <div class="chat-body clearfix">
                                                 <div class="col user">
                                                     <strong class="primary-font"><?= $value["user"] ?></strong> 
+                                                    <small style="color:black;"><?= $value["materia"] ?></small>
                                                     <small class="pull-right notRead text-muted" <?php if($value["numMessages"] == 0){echo "style='display:none'"; } ?> >                                                        
                                                         <?= $value["numMessages"] ?>
                                                     </small>

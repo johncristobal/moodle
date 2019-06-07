@@ -16,7 +16,7 @@
 	<div class="super_container">
 
         <!-- Header -->
-        <?php $this->load->view('admin/header'); ?>
+        <?php $this->load->view('director/header'); ?>
 
 	</div>	
         <div class="container headerTitle">
@@ -52,7 +52,7 @@
 				<!-- Contact Content -->
                             <div class="col-12 col-sm-6 offset-sm-3">
                                 <div class="">						
-                                    <form  id="contact_form" action="<?= base_url() ?>admin/nuevoUsuario " method="post" class="_form">
+                                    <form  id="contact_form" action="<?= base_url() ?>director/nuevoUsuario " method="post" class="_form">
                                         <div>
                                             <div class="row">
                                                 <div class="col-12 col-sm-6 contact_name_col">
@@ -83,7 +83,6 @@
                                                         <select id="tipoUser" name="tipoUser" class="form-control" >
                                                             <option>Alumno</option>
                                                             <option>Maestro</option>
-                                                            <option>Director</option>
                                                         </select>
                                                     </div>
                                                 </div>
