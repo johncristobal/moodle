@@ -37,7 +37,7 @@
                             <?php
                                 if($data["imagen_perfil"] == ""){
                             ?>
-                                <img src="http://localhost/Moodle//images/usericon.jpg" class="img-rounded" width="200px" height="200px">
+                                <img src="<?= base_url() ?>images/usericon.jpg" class="img-rounded" width="200px" height="200px">
                             <?php
                                 }else{
                             ?>

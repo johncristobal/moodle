@@ -90,6 +90,20 @@ class Profesormodel extends CI_Model {
             return $query->result_array()[0];
         }
     }
+    
+    // obtenemos la información del alumno
+    public function getInfoAlumno($id){
+        $query = $this->db->select('alumnos.*')
+            ->from('alumnos')
+            ->where('alumnos.id',$id)
+            ->get();
+        
+        if($query->num_rows() == 0){
+            return "-1";
+        }else{
+            return $query->result_array()[0];
+        }
+    }  
 
     public function updateProfileProfesor($data,$archivo,$idprofesor){
         

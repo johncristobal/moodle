@@ -15,7 +15,7 @@ class Chatmodel extends CI_Model {
         }else{
             return $datos->result_array();
         }
-    }  
+    }
     
     public function updateLastTime($idusers,$time,$idme){
         $data = array(
@@ -59,8 +59,7 @@ class Chatmodel extends CI_Model {
         }
     }
     
-    public function getChats($idfrom){
-     
+    public function getChats($idfrom){     
         $datos = $this->db->select('*')
             ->from('mainchat')
             ->like('users',$idfrom)

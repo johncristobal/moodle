@@ -45,7 +45,17 @@ http://qnimate.com/database-design-for-storing-chat-messages/
                                         <a href="<?= $value["userchat"] ?>" id="<?= $me ?>">
                                             <li class="left clearfix">
                                             <span class="chat-img pull-left">
+                                                <?php
+                                                    if($value["imagen"] == ""){
+                                                ?>
                                                 <img src="http://placehold.it/50/55C1E7/fff&amp;text=U" alt="User Avatar" class="rounded-circle">
+                                                <?php
+                                                    }else{
+                                                ?>
+                                                    <img src="<?= base_url() ?><?= $value["perfil"] ?>/<?= $value["idimagen"] ?>/<?= $value["imagen"]; ?>" class="rounded-circle" width="60px" height="60px">                                    
+                                                <?php
+                                                    }
+                                                ?>  
                                             </span>
                                             <div class="chat-body clearfix">
                                                 <div class="col user">

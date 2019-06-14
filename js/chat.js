@@ -118,33 +118,40 @@ $(document).ready(function()
                     var data = $.parseJSON(e);
                     $.each(data, function(k, v) {
                         lastmessage = v.timestamp;
+                        
+                        var myDate = new Date(1000*v.timestamp);
+                        var real = ('0' + (myDate.getDate())).slice(-2) +"/"+ ("0" + (myDate.getMonth() + 1)).slice(-2)+"/"+myDate.getFullYear();
+                        
                         if (v.envia === me){
-                            $(".chat").append("<li class='right clearfix'><span class='chat-img pull-right'>"+
+                            
+                            $(".chat").append("<li class='right clearfix'>"+
+                                "<!--span class='chat-img pull-right'>"+
                                 "<img src='http://placehold.it/50/FA6F57/fff&amp;text=ME' alt='User Avatar' class='rounded-circle'>"+
-                                "</span>"+
+                                "</span-->"+
                                 "    <div class='chat-body clearfix'>"+
                                 "        <div class=''>"+
-                                "            <small class=' text-muted'><span class='glyphicon glyphicon-time'></span>"+v.timestamp+"</small>"+
                                 "            <strong class='pull-right primary-font'> "+v.tempName+" </strong>"+
-                                "        </div>"+
-                                "        <p>"+
+                                "        </div><br>"+
+                                "        <p class='pull-right'>"+
                                 "            "+v.message+
-                                "        </p>"+
+                                "        </p><br><br>"+
+                                "        <small class='pull-right text-muted'><span class='glyphicon glyphicon-time'></span>"+real+"</small>"+
                                 "    </div>"+
                                 "</li>");                                                       
                         }else{
                             $(".chat").append("<li class='left clearfix'>"+
-                                "<span class='chat-img pull-left'>"+
+                                "<!--span class='chat-img pull-left'>"+
                                 "    <img src='http://placehold.it/50/55C1E7/fff&amp;text=U' alt='User Avatar' class='rounded-circle'>"+
-                                "</span>"+
+                                "</span-->"+
                                 "<div class='chat-body clearfix'>"+
                                 "    <div class=''>"+
-                                "        <strong class='primary-font'> "+v.tempName+" </strong> <small class='pull-right text-muted'>"+
-                                "            <span class='glyphicon glyphicon-time'></span>"+v.timestamp+"</small>"+
+                                "        <strong class='primary-font'> "+v.tempName+" </strong>"+
                                 "    </div>"+
                                 "    <p>"+
                                 "        "+v.message+
                                 "    </p>"+
+                                "        <small class='pull-right text-muted'>"+
+                                "        <span class='glyphicon glyphicon-time'></span>"+real+"</small>"+
                                 "</div>"+
                             "</li>");                            
                         }
@@ -198,18 +205,22 @@ $(document).ready(function()
                 method: "post",
                 data: {message: mensaje, where: idchatTemp, envia: mee, tempNameS: tempName},
                 success: function(e){
-                     lastmessage = Number(e);
-                     $(".chat").append("<li class='right clearfix'><span class='chat-img pull-right'>"+
+                    lastmessage = Number(e);
+                    var myDate = new Date(1000*lastmessage);
+                    var real = ('0' + (myDate.getDate())).slice(-2) +"/"+ ("0" + (myDate.getMonth() + 1)).slice(-2)+"/"+myDate.getFullYear();
+                        
+                     $(".chat").append("<li class='right clearfix'>"+
+                        "<!--span class='chat-img pull-right'>"+
                         "<img src='http://placehold.it/50/FA6F57/fff&amp;text=ME' alt='User Avatar' class='rounded-circle'>"+
-                        "</span>"+
-                        "    <div class='chat-body clearfix'>"+
+                        "</span-->"+
+                        "    <div class='clearfix'>"+
                         "        <div class=''>"+
-                        "            <small class=' text-muted'><span class='glyphicon glyphicon-time'></span>"+lastmessage+"</small>"+
                         "            <strong class='pull-right primary-font'> "+tempName+" </strong>"+
-                        "        </div>"+
-                        "        <p>"+
+                        "        </div><br>"+
+                        "        <p class='pull-right'>"+
                         "            "+mensaje+
-                        "        </p>"+
+                        "        </p><br><br>"+
+                        "        <small class='pull-right text-muted'><span class='glyphicon glyphicon-time'></span>"+real+"</small>"+
                         "    </div>"+
                         "</li>");
 

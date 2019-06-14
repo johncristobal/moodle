@@ -2302,12 +2302,12 @@ chat
 
 .chat li.left .chat-body
 {
-    margin-left: 70px;
+    margin-left: 10px;
 }
 
 .chat li.right .chat-body
 {
-    margin-right: 70px;
+    margin-right: 10px;
 }
 
 

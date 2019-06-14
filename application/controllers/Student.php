@@ -72,7 +72,10 @@ class Student extends CI_Controller {
                         "user" => $value["materia"],
                         "id" => "PM_".$value["id_pm"],
                         "userchat" => "PM_".$value["id_pm"],
-                        "materia" => "",
+                        "materia" => $value["materia"],
+                        "imagen" => "",
+                        "perfil" => "perfilMateria",
+                        "idimagen" => $value["id_pm"],                        
                         "numMessages" => $numMessages
                     );
                     
@@ -94,6 +97,9 @@ class Student extends CI_Controller {
                         "id" => "P_".$value["id"],
                         "userchat" => "A_".$idalumno.";P_".$value["id"],
                         "materia" => $value["materia"],
+                        "imagen" => $value["imagen_perfil"],
+                        "perfil" => "perfilProfesor",
+                        "idimagen" => $value["id"], 
                         "numMessages" => $numMessages
                     );
                     array_push($chats, $tempArray);

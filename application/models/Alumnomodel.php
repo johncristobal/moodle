@@ -92,7 +92,7 @@ inner join alumno_profesor_materia on profesor_materia.id_pm = alumno_profesor_m
 where alumno_profesor_materia.id_alumno = 1
      */
     public function getMateriasAlumno($id){
-        $query = $this->db->select('materias.materia,profesores.nombre,profesor_materia.id_pm,profesor_materia.grupo,profesores.id')
+        $query = $this->db->select('materias.materia,profesores.nombre,profesores.imagen_perfil,profesor_materia.id_pm,profesor_materia.grupo,profesores.id')
                 ->from('materias')
                 ->join("profesor_materia","materias.id = profesor_materia.materia")
                 ->join("profesores","profesores.id = profesor_materia.profesor")

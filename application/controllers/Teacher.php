@@ -71,6 +71,9 @@ class Teacher extends CI_Controller {
                         "id" => "PM_".$value["id_pm"],
                         "userchat" => "PM_".$value["id_pm"],
                         "materia" => "",
+                        "imagen" => "",
+                        "perfil" => "perfilMateria",
+                        "idimagen" => $value["id_pm"],
                         "numMessages" => $numMessages
                     );                    
                     
@@ -88,7 +91,7 @@ class Teacher extends CI_Controller {
                     $alumnos = $this->Profesormodel->getAlumnosMateriasProfesor($value["id_pm"]);
                     if($alumnos != "-1"){
                         foreach ($alumnos as $alumno) {
-                            $datosUser = $this->Alumnomodel->getInfoAlumno($alumno["id_alumno"]);
+                            $datosUser = $this->Profesormodel->getInfoAlumno($alumno["id_alumno"]);
 
                             $numMessages = $this->Chatmodel->lastMessages($idprofesor,"A_".$datosUser["id"].";P_".$idprofesor);
 
@@ -97,6 +100,9 @@ class Teacher extends CI_Controller {
                                 "id" => "A_".$datosUser["id"],
                                 "userchat" => "A_".$datosUser["id"].";P_".$idprofesor,
                                 "materia" => $value["materia"],
+                                "perfil" => "perfilAlumno",
+                                "imagen" => $datosUser["imagen_perfil"],
+                                "idimagen" => $datosUser["id"],
                                 "numMessages" => $numMessages
                             );
                             array_push($chats, $tempArray);
