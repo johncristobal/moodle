@@ -38,7 +38,18 @@ class Profesormodel extends CI_Model {
             return $query->result_array();
         }
     }
-    
+     //recuperamos alumnos 
+    public function getAlumnosMateriaProfesor($idpm){
+        $query = $this->db->select('*')
+            ->from('alumno_profesor_materia')
+            ->join("calificaciones","calificaciones.fk_student = alumno_profesor_materia.id_alumno")
+            ->where('alumno_profesor_materia.id_pm',$idpm)->get();
+        if($query->num_rows() == 0){
+            return "-1";
+        }else{
+            return $query->result_array();
+        }
+    }
     public function getTareasAlumno($idtarea){
         $query = $this->db->select('alumno_tareas.id,alumno_tareas.archivo,alumno_tareas.calificacion,tareas.puntos,tareas.tarea,tareas.id_pm,alumnos.nombre,alumno_tareas.estatus,alumno_tareas.id_tarea')
             ->from('alumno_tareas')

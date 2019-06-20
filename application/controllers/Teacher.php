@@ -255,6 +255,47 @@ class Teacher extends CI_Controller {
         }
     }
 
+/* ////////////////////////////////////////////////////////////////////////////
+ * Modulo calificaciones
+ */////////////////////////////////////////////////////////////////////////////
+    public function grades(){
+        if($this->sesionActiva()){
+            $idprofesor = $this->session->userdata("idprofesor");
+                        /*
+             * con idprofesor recuperas materias de tabla profesor_materia
+             * lista con idprofesor_materia (idPM)
+             * recuperas tareas con la lista de materias tabla tareas (donde idPM)
+             * materia1 => array(tareas)
+             * materia2 => array(tareas)
+             * formar json
+             */
+            $alumnos = array();
+            $idpm = array();
+            $materias = $this->Profesormodel->getMateriasProfesor($idprofesor);
+            if($materias != "-1"){
+                foreach ($materias as $value) {
+                    //recuperamos tareas con id_PM
+                    $materia = $value["materia"];
+                    $grupo = $value["grupo"];
+                    $alumnos_materia = $this->Profesormodel->getAlumnosMateriaProfesor($value["id_pm"]);      
+                    
+                    //materian => tareas
+                    $alumnos[$materia." - ".$grupo] = $alumnos_materia;
+                    $idpm[$materia." - ".$grupo] = $value["id_pm"];
+                }
+                $data["alumnos"] = $alumnos;
+                $data["idpm"] = $idpm;
+            }else{
+                $data["alumnos"] = "-1";
+                $data["idpm"] = "-1";
+            }
+
+            $this->load->view("teacher/grades",$data);            
+        }else{
+             redirect('/');
+        }
+
+    }
     public function sesionActiva(){
         $sesion = $this->session->userdata("session");
         if($sesion === "1"){

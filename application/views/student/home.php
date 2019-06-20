@@ -92,6 +92,12 @@
                             <span class="smallCustom">Chat</span>
                             </a>
                         </div>
+                         <div class="row mt-2">
+                            <a href="<?= base_url() ?>student/grades">
+                            <span class="fa fa-clipboard"></span>                            
+                            <span class="smallCustom">Calificaciones</span>
+                            </a>
+                        </div>
                         <div class="row mt-2">
                             <a href="#">
                             <span class="fa fa-phone"></span>                            

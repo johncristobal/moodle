@@ -136,7 +136,40 @@ where alumno_profesor_materia.id_alumno = 1
             return $query->result_array()[0];
         }
     }
+/************************
+ *  Calificaciones
+ ***********************/  
+//SELECT * FROM `calificaciones`t1 JOIN profesor_materia t2 ON t2.id_pm=t1.id_pm JOIN materias t3 ON t3.id=t2.materia WHERE t1.fk_student=2
+    public function getGrades($idalumno){
+        $query = $this->db->select('calificaciones.examen,calificaciones.tareas,calificaciones.calificacion,profesor_materia.grupo,materias.materia')
+            ->from('calificaciones')
+            ->join("profesor_materia","profesor_materia.id_pm = calificaciones.id_pm")
+            ->join("materias","materias.id = profesor_materia.materia")
+            ->where('fk_student',$idalumno)->get();
 
+        if($query->num_rows() == 0){
+            return "-1";
+        }else{
+            return $query->result_array();
+        }
+
+    }
+    //obtener el nombre de la materia y grupo
+//SELECT * from profesor_materia t1 JOIN materias t2 ON t1.materia=t2.id WHERE t1.id_pm=100001
+ /*   public function getRestInfo($id_pm){
+          $query = $this->db->select('
+            profesor_materia.grupo, materias.materia
+            ')
+            ->from('profesor_materia')
+            ->join("materias","materias.id = profesor_materia.materia")
+            ->where('profesor_materia.id_pm',$id_pm)->get();
+
+        if($query->num_rows() == 0){
+            return "-1";
+        }else{
+            return $query->result_array()[0];
+        }
+    }*/
 /************************
  *  Login
  ***********************/    

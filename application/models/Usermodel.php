@@ -7,6 +7,7 @@ class Usermodel extends CI_Model {
         $datos = $this->db->select('*')
             ->from('usuarios')
             ->where('estatus',"1")
+            ->or_where('estatus',"2") //Agregué esta condición para que se muestren los usuarios bloqueados
             ->get();
         
         if($datos->num_rows() == 0){
@@ -21,6 +22,7 @@ class Usermodel extends CI_Model {
         $datos = $this->db->select('*')
             ->from('profesores')
             ->where('estatus',"1")
+            ->or_where('estatus',"2")
             ->get();
         
         if($datos->num_rows() == 0){
@@ -239,4 +241,34 @@ class Usermodel extends CI_Model {
             return $query->row();
         } 
     }
+
+    public function changeStatus($id,$Status){
+        //Creamos una función de cambio de estatus 
+             $datos = [
+            'estatus' => $Status,
+        ]; 
+        $this->db->where('id', $id);
+        $result=$this->db->update('usuarios', $datos);
+        if($result){
+            return true;
+        }else{
+            return false;
+        }   
+
+    } 
+
+     public function getStatus($id){
+
+        $datos = $this->db->select('*')
+            ->from('usuarios')
+            ->where('id',$id)
+            ->get();
+        
+        if($datos->num_rows() == 0){
+            return "";
+        }else{        
+            return $datos->row();
+        }
+    }
+
 }

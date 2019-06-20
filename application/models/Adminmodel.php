@@ -28,7 +28,7 @@ class Adminmodel extends CI_Model {
         }else{        
             return $datos->result_array();
         }
-    }    
+    }   
 
 /* =============================================================================
  * Modulo para materias

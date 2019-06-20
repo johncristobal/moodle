@@ -18,12 +18,18 @@ class Student extends CI_Controller {
         
         $this->load->model("Chatmodel");
         $this->load->model("Alumnomodel");
+        $this->load->model('Usermodel');
     }
     
     public function index(){
 
         if($this->sesionActiva()){
             $id = $this->session->userdata("id");
+            $status=$this->validateStatus($id);
+            //Hago una validación exclusiva para validar si el usuario está bloqueado
+            if($status==2){
+               $this->load->view("blocked");
+            }else{
             $idalumnoSesion = $this->session->userdata("idalumno");
             $idalumno = $this->Alumnomodel->getIdAlumno($id);
             $this->session->set_userdata("idalumno",$idalumno["id"]);  
@@ -33,11 +39,19 @@ class Student extends CI_Controller {
             $data["materias"] = $this->Alumnomodel->getMateriasAlumno($idalumno["id"]);
             $data["idalumno"] = $idalumnoSesion;
             $this->load->view("student/home",$data);  
+        }
         }else{
             redirect('/');
         }
     }
-    
+    public function validateStatus($idUser){
+        if($this->sesionActiva()){
+           $data["info"]= $this->Usermodel->getStatus($idUser);
+            return($data["info"]->estatus);
+        }else{
+            redirect('/');            
+        }
+    }
 /* ////////////////////////////////////////////////////////////////////////////
  * Modulo chat
  */////////////////////////////////////////////////////////////////////////////
@@ -225,7 +239,18 @@ class Student extends CI_Controller {
             redirect("/");
         }
     }
-    
+ /* ////////////////////////////////////////////////////////////////////////////
+ * Modulo calificaciones
+ */////////////////////////////////////////////////////////////////////////////
+    public function grades(){
+        if($this->sesionActiva()){
+            $idalumno = $this->session->userdata("idalumno");
+            $data["calificaciones"]=$this->Alumnomodel->getGrades($idalumno);
+            $this->load->view("student/grades",$data);
+        }else{
+            redirect("/");
+        }
+    }   
 /* ////////////////////////////////////////////////////////////////////////////
  * Modulo sesionj
  */////////////////////////////////////////////////////////////////////////////

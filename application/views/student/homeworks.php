@@ -77,14 +77,6 @@
                                     <a href="<?= $value["archivo"]; ?>" id="<?= $value["id"]; ?>" dir="<?= $grupo["id_pm"] ?>" class="openModal"><i class="fa fa-upload fa-lg" aria-hidden="true"></i></a>
                                 </div>
                             </div>
-                            <!--div class="row">
-                                <div class="col-sm-2 offset-sm-1">
-                                    <div class="news_post_author"><a href="#" class="btn btn-danger">Descargar</a></div>
-                                </div>
-                                <div class="col-sm-2">
-                                    <div class="news_post_author"><a href="#" class="btn btn-danger">Subir tarea</a></div>
-                                </div> 
-                            </div-->
                     </div>
 
                     <!--responsive-->

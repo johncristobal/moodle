@@ -165,7 +165,36 @@ class Admin extends CI_Controller {
         $dif = $fechaHoy->diff($fechaNacim);
         return $dif->y;
     }
-    
+   
+    public function blockUser($id){
+          if($this->sesionActiva()){
+            /* Primero se cambia el estatus del ususario a bloqueado, Estatus de bloqueo =2 */
+            $result=$this->Usermodel->changeStatus($id,2);
+            if($result){
+              redirect('admin/users');   
+            }
+          }else{
+                redirect('/');   
+         }
+    }
+    public function unBlockUser($id){
+          if($this->sesionActiva()){
+            $result=$this->Usermodel->changeStatus($id,1);
+            if($result){
+              redirect('admin/users');   
+            }
+          }else{
+                redirect('/');   
+         }
+    }
+    public function validateStatus($idUser){
+        if($this->sesionActiva()){
+           $status= $this->Usermodel->getStatus($idUser);
+            return($status);
+        }else{
+            redirect('/');            
+        }
+    }
 /* =============================================================================
  * Modulo para materias
  =============================================================================*/    

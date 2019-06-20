@@ -88,7 +88,43 @@ jQuery("#editSubjectForm").click(function() {
     );
 
  });
- 
+  $('.confirmationBlockUser').on('change', function(){
+	 var id = $(this).attr("id");
+	 if (this.checked){
+	 	swal({
+            title: "¿Seguro que deseas desbloquear a este usuario?",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#ffae01",
+            confirmButtonText: "Continuar",
+            closeOnConfirm: false }, function(isConfirm)
+        {
+        	if(isConfirm==false){
+        		$(this).prop('checked', false);
+        	}else{
+        		$(location).attr('href',urlApi+'admin/unBlockUser/'+id);
+        	}         
+        } 
+    );
+	 }else{
+	     swal({
+            title: "¿Seguro que deseas bloquear a este usuario?",
+            type: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#ffae01",
+            confirmButtonText: "Continuar",
+            closeOnConfirm: false }, function(isConfirm)
+        {
+        	if(isConfirm==false){
+        		$(this).prop('checked', true);
+        	}else{
+        		$(location).attr('href',urlApi+'admin/blockUser/'+id);
+        	}
+           
+        } 
+    );
+	}
+ });
 jQuery(".msg-cond").click(function() {
 	swal({   
 		title: "¿Deseas unirte al lado oscuro?",   
