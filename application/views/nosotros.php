@@ -25,7 +25,7 @@
 				<!-- Slider Item -->
 				<div class="owl-item">
 					<!-- Background image artist https://unsplash.com/@benwhitephotography -->
-					<div class="home_slider_background" style="background-image:url(images/index.jpg)"></div>
+					<div class="home_slider_background" style="background-image:linear-gradient(to bottom, rgba(255, 255, 255, 0.10), rgba(10, 10, 10, 0.73)), url(images/banners/banner4.jpeg)"></div>
 					<div class="home_container">
 						<div class="container">
 							<div class="row">
@@ -53,55 +53,6 @@
 				</div>
 
 				<!-- Slider Item -->
-				<!--div class="owl-item">
-					<!-- Background image artist https://unsplash.com/@benwhitephotography -->
-					<div class="home_slider_background" style="background-image:url(images/index.jpg)"></div>
-					<div class="home_container">
-						<div class="container">
-							<div class="row">
-								<div class="col">
-									<div class="home_content text-center">
-										<div class="home_logo"><img src="images/home_logo.png" alt=""></div>
-										<div class="home_text">
-											<div class="home_title">Complete Online Courses</div>
-											<div class="home_subtitle">Maecenas rutrum viverra sapien sed fermentum. Morbi tempor odio eget lacus tempus pulvinar. Praesent vel nisl fermentum, gravida augue ut, fermentum ipsum.</div>
-										</div>
-										<div class="home_buttons">
-											<div class="button home_button"><a href="#">learn more<div class="button_arrow"><i class="fa fa-angle-right" aria-hidden="true"></i></div></a></div>
-											<div class="button home_button"><a href="#">see all courses<div class="button_arrow"><i class="fa fa-angle-right" aria-hidden="true"></i></div></a></div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div-->
-
-				<!-- Slider Item -->
-				<!--div class="owl-item">
-					<!-- Background image artist https://unsplash.com/@benwhitephotography -->
-					<div class="home_slider_background" style="background-image:url(images/index.jpg)"></div>
-					<div class="home_container">
-						<div class="container">
-							<div class="row">
-								<div class="col">
-									<div class="home_content text-center">
-										<div class="home_logo"><img src="images/home_logo.png" alt=""></div>
-										<div class="home_text">
-											<div class="home_title">Complete Online Courses</div>
-											<div class="home_subtitle">Maecenas rutrum viverra sapien sed fermentum. Morbi tempor odio eget lacus tempus pulvinar. Praesent vel nisl fermentum, gravida augue ut, fermentum ipsum.</div>
-										</div>
-										<div class="home_buttons">
-											<div class="button home_button"><a href="#">learn more<div class="button_arrow"><i class="fa fa-angle-right" aria-hidden="true"></i></div></a></div>
-											<div class="button home_button"><a href="#">see all courses<div class="button_arrow"><i class="fa fa-angle-right" aria-hidden="true"></i></div></a></div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div-->
-
 			</div>
 		</div>
 	</div>
@@ -290,52 +241,7 @@
 		</div>
 	</div>
         
-        <div class="milestones">
-                
-		<!-- Background image artis https://unsplash.com/@thepootphotographer -->
-		<div class="parallax_background parallax-window" data-parallax="scroll" data-image-src="images/milestones.jpg" data-speed="0.8"></div>
-		<div class="container">
-			<div class="row milestones_container">
-				Contacto			
-				<!-- Milestone -->
-				<!--div class="col-lg-3 milestone_col">
-					<div class="milestone text-center">
-						<div class="milestone_icon"><img src="images/milestone_1.svg" alt=""></div>
-						<div class="milestone_counter" data-end-value="1548">0</div>
-						<div class="milestone_text">Online Courses</div>
-					</div>
-				</div>
-
-				<!-- Milestone >
-				<div class="col-lg-3 milestone_col">
-					<div class="milestone text-center">
-						<div class="milestone_icon"><img src="images/milestone_2.svg" alt=""></div>
-						<div class="milestone_counter" data-end-value="7286">0</div>
-						<div class="milestone_text">Students</div>
-					</div>
-				</div>
-
-				<!-- Milestone >
-				<div class="col-lg-3 milestone_col">
-					<div class="milestone text-center">
-						<div class="milestone_icon"><img src="images/milestone_3.svg" alt=""></div>
-						<div class="milestone_counter" data-end-value="257">0</div>
-						<div class="milestone_text">Teachers</div>
-					</div>
-				</div>
-
-				<!-- Milestone >
-				<div class="col-lg-3 milestone_col">
-					<div class="milestone text-center">
-						<div class="milestone_icon"><img src="images/milestone_4.svg" alt=""></div>
-						<div class="milestone_counter" data-end-value="39">0</div>
-						<div class="milestone_text">Countries</div>
-					</div>
-				</div-->
-
-			</div>
-		</div>
-	</div>
+                <?php $this->load->view('contacto')?>
 	<!-- Join -->
 <!--
 	<div class="join">
@@ -351,7 +257,7 @@
 	</div>
 -->
 <?php $this->load->view('footer')?>
-</div>
+
 
 <script>
     var urlApi = "<?php echo base_url() ?>";

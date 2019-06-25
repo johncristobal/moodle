@@ -62,7 +62,7 @@
 									<!--li><a href="about.html">Acerca de nosotros</a></li>
 									<li><a href="courses.html">Oferta educativa</a></li-->
                                                                         <li><a href="<?= base_url() ?>nosotros">Nosotros</a></li>
-                                                                        <li><a href="contact.html">Contacto</a></li>
+                                                                        <li><a href="<?= base_url() ?>contacto">Contacto</a></li>
                                                                         <li><a href="<?= base_url() ?>login">Iniciar sesión</a></li>
 								</ul>
 								<!-- Hamburger -->
@@ -110,7 +110,8 @@
 		<nav class="menu_nav">
 			<ul class="menu_mm">
                                 <li class="menu_mm"><a href="<?= base_url() ?>">Inicio</a></li>
-                                <li><a href="contact.html">Contacto</a></li>
+                                <li><a href="<?= base_url() ?>nosotros">Nosotros</a></li>
+                                <li><a href="<?= base_url() ?>contacto">Contacto</a></li>
                                 <li><a href="<?= base_url() ?>login">Iniciar sesión</a></li>
 				<!--li class="menu_mm"><a href="index.html">Home</a></li>
 				<li class="menu_mm"><a href="courses.html">Courses</a></li>
