@@ -93,32 +93,58 @@
 					</div>
 				</div>
 			</div>
-		</div>
-	</div>
-
-	<!-- Courses -->
+        </div>
+        
+<!-- Courses -->
 
 	<div class="courses">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-10 offset-lg-1">
-					<div class="section_subtitle">Somos una Institución Educativa con 32 años de experiencia, Actualmente contamos Con 17 Planteles en la Ciudad de México y el área Metropolitana. Nuestro éxito se basa en la flexibilidad que ofrecemos a nuestros alumnos para concluir sus estudios rápidamente.</div>
-				</div>
-			</div>
-			<!--
-			<div class="row">
-				<div class="col">
-					<div class="course_search">
-						<form action="#" class="course_search_form d-flex flex-md-row flex-column align-items-start justify-content-between">
-							<div><input type="text" class="course_input" placeholder="Course" required="required"></div>
-							<div><input type="text" class="course_input" placeholder="Level" required="required"></div>
-							<button class="course_button"><span>search course</span><span class="button_arrow"><i class="fa fa-angle-right" aria-hidden="true"></i></span></button>
-						</form>
-					</div>
-				</div>
-			</div> -->
-			
-		</div>
+            <div class="container">
+                <div class="row text-center">
+                    <div class="col">
+                        <h2>¿Quienes somos?</h2>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-10 offset-lg-1">
+                        <div class="section_subtitle">
+                            <p>
+                                Somos una Institución Educativa con 32 años de experiencia, 
+                                Actualmente contamos Con 17 Planteles en la Ciudad de México y el 
+                                área Metropolitana. Nuestro éxito se basa en la flexibilidad que ofrecemos a 
+                                nuestros alumnos para concluir sus estudios rápidamente.
+                            </p>
+                            <p>
+                                Nuestro innovador sistema académico, amplia el acceso a una educación de calidad
+                                global para formar personas productivas que agreguen un valor social.
+                            </p>
+                            <p><i>
+                                Creemos en la educación como principio transformador y como derecho de los seres
+                                humanos a crecer y desarrollarse a través de ella.</i>
+                            </p>
+                            <p><i>
+                                Creemos en la importancia de mantener la eficiencia y la eficacia en nuestros procesos y
+                                servicios, como sello distintivo de nuestra gestión.</i>
+                            </p>
+                            <p><i>
+                                Creemos en nuestra capacidad de creación, diseño e implementación de modalidades y
+                                escenarios novedosos que nos permitan desarrollarnos de manera orgánica e integrada.</i>
+                            </p>
+                            <p>
+                                Es por ello que en el Instituto de Educación Avanzada creemos en la pluralidad y la
+                                multiculturalidad como signos esenciales de la sociedad. Por ello, estamos convencidos
+                                que los criterios incluyentes enriquecen, diversifican y abren oportunidades para todos
+                                mientras que las exclusiones empobrecen.
+                            </p>
+                            <p><strong>
+                                Creemos que el estudiante es el eje del que hacer, IDEA se distingue por su experiencia
+                                en el ramo de la Educación, por ser más sólida ya que nuestros egresados cuentan con
+                                competencias personales y profesionales a partir de las cuales participará en la mejora
+                                de su comunidad y la sociedad de México y del mundo.</strong>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
 	</div>
 
 
@@ -130,116 +156,46 @@
                                 <div class="section_title text-center"><h2>Acerca de nosotros</h2></div>
                                 <br>
                             </div-->			                            
-                            <div class="row borderWhite">
-                                <div class="borderWhite redSS col-12 col-sm-3 col-md-3 text-center">
-                                    <div class="milestone_icon text-center"><img src="images/milestone_1.svg" alt=""></div>
-                                </div>
-                                <div class="col-12 col-sm-9">
-                                    <div class="title"><strong>¿Quiénes somos?</strong></div>
-                                    <br>
-                                    <p>Somos una Institución Educativa con 32 años de experiencia, Actualmente contamos Con 17 Planteles en la Ciudad de México y el área Metropolitana. Nuestro éxito se basa en la flexibilidad que ofrecemos a nuestros alumnos para concluir sus estudios rápidamente.</p>
-                                </div>
-                            </div>
+                            <div class="col-6">
                             <div class="row">
                                 <div class="col-12 col-sm-9 col-md-9 text-right">
                                     <div class="title"><strong>Misión</strong></div>
                                     <br>
-                                    <p>Nuestro innovador sistema académico, amplia el acceso a una educación de calidad global para formar personas productivas que agreguen un valor social.</p>                                                
+                                    <p>
+                                        Impartir un servicio educativo de calidad fomentando en nuestros alumnos una
+                                        formación de valores y excelencia académica, que les permita ingresar a un mundo de
+                                        competencia y desarrollo integral.
+                                    </p>                                                
 
                                 </div>
                                 <div class="col-12 col-sm-3 col-md-3">
                                     <div class="milestone_icon text-right"><img src="images/milestone_2.svg" alt=""></div>
                                 </div>
                             </div>
-                            <div class="row borderWhite">
-                                <div class="borderWhite redSS col-12 col-sm-3 col-md-3 text-center">
+                            </div>
+                            <div class="col-6">
+                            <div class="row">
+                                <div class="col-12 col-sm-3 col-md-3 text-center">
                                     <div class="milestone_icon text-center"><img src="images/milestone_3.svg" alt=""></div>
                                 </div>
                                 <div class="col-12 col-sm-9">
                                     <div class="title"><strong>Visión</strong></div>
                                     <br>
                                     <p>
-                                        Impartir un servicio educativo de calidad fomentando en nuestros alumnos una formación de valores y excelencia académica, que les permita ingresar a un mundo de competencia y desarrollo integral.
+                                        Crear, a través de una educación de alta calidad, una sociedad conformada por
+                                        individuos conscientes de su propia identidad y de su papel en la sociedad del siglo XXI,
+                                        capaces de proponer e implementar estrategias de cambio para su beneficio.
                                     </p>
                                 </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-12 col-sm-9 col-md-9 text-right">
-                                    <div class="title"><strong>¿Qué esperar de nosotros?</strong></div>
-                                    <br>
-                                    <p>
-                                        Crear, a través de una educación de alta calidad, una sociedad conformada por individuos conscientes de su propia identidad y de su papel en la sociedad del siglo XXI, capaces de proponer e implementar estrategias de cambio para su beneficio.
-                                    </p> 
-
-                                </div>
-                                <div class="col-12 col-sm-3 col-md-3">
-                                    <div class="milestone_icon text-right"><img src="images/milestone_4.svg" alt=""></div>
-                                </div>
-                            </div>
-                            <!--div class="row borderWhite">
-                                <div class="borderWhite whiteSS col-12 col-sm-12 col-md-6 text-center">
-                                    <div class="milestone_icon text-center"><img src="images/milestone_3.svg" alt=""></div>
-                                    <br>
-                                    <br><div class="title">Visión</div>
-                                    <br>
-                                    <p>Impartir un servicio educativo de calidad fomentando en nuestros alumnos una formación de valores y excelencia académica, que les permita ingresar a un mundo de competencia y desarrollo integral.</p>
-                                </div>
-                                <div class="borderWhite redSS col-12 col-sm-12 col-md-6 text-center">
-                                    <div class="milestone_icon text-center"><img src="images/milestone_4.svg" alt=""></div>
-                                    <br>
-                                    <br><div class="title">¿Qué esperar de nosotros?</div>
-                                    <br>
-                                    <p>Crear, a través de una educación de alta calidad, una sociedad conformada por individuos conscientes de su propia identidad y de su papel en la sociedad del siglo XXI, capaces de proponer e implementar estrategias de cambio para su beneficio.</p>
-                                </div>
-                            </div-->
-
-                                <!--div class="col-lg-4 grouped_col">
-					<div class="accordions">
-
-						<div class="accordion_container">
-							<div class="accordion d-flex flex-row align-items-center active"><div>¿Quiénes somos?</div></div>
-							<div class="accordion_panel">
-								<div>
-									<p>Somos una Institución Educativa con 32 años de experiencia, Actualmente contamos Con 17 Planteles en la Ciudad de México y el área Metropolitana. Nuestro éxito se basa en la flexibilidad que ofrecemos a nuestros alumnos para concluir sus estudios rápidamente.</p>
-								</div>
-							</div>
-						</div>
-
-						<div class="accordion_container">
-							<div class="accordion d-flex flex-row align-items-center"><div>¿Qué esperar de nosotros?</div></div>
-							<div class="accordion_panel">
-								<div>
-									<p>Nuestro innovador sistema académico, amplia el acceso a una educación de calidad global para formar personas productivas que agreguen un valor social.</p>
-								</div>
-							</div>
-						</div>
-
-						<div class="accordion_container">
-							<div class="accordion d-flex flex-row align-items-center"><div>Mauris vehicula nisi congue?</div></div>
-							<div class="accordion_panel">
-								<div>
-									<p>Suspendisse tincidunt magna eget massa hendrerit efficitur. Ut euismod pellentesque imperdiet. Cras laoreet gravida lectus, at viverra lorem venenatis in. Aenean id varius quam.</p>
-								</div>
-							</div>
-						</div>
-
-						<div class="accordion_container">
-							<div class="accordion d-flex flex-row align-items-center"><div>Nisi congue, blandit purus sed?</div></div>
-							<div class="accordion_panel">
-								<div>
-									<p>Suspendisse tincidunt magna eget massa hendrerit efficitur. Ut euismod pellentesque imperdiet. Cras laoreet gravida lectus, at viverra lorem venenatis in. Aenean id varius quam.</p>
-								</div>
-							</div>
-						</div>
-
-					</div>
-
-				</div-->
-
-				
+                            </div>   
+                            </div>                                
 			</div>
 		</div>
 	</div>
+        
+</div>
+
+	
         
                 <?php $this->load->view('contacto')?>
 	<!-- Join -->

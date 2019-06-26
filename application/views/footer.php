@@ -65,11 +65,11 @@
 						<div class="footer_contact_info">
 							<div class="footer_contact_item">
 								<div class="footer_contact_title">Ubicación:</div>
-								<div class="footer_contact_line">Calle falsa 123, Tultepec, Estado de México </div>
+								<div class="footer_contact_line">Calle morelos #2, Tultepec, Estado de México </div>
 							</div>
 							<div class="footer_contact_item">
 								<div class="footer_contact_title">Teléfono:</div>
-								<div class="footer_contact_line">+53 345 7953 32453</div>
+								<div class="footer_contact_line">58927248</div>
 							</div>
 							<div class="footer_contact_item">
 								<div class="footer_contact_title">Correo electrónico:</div>

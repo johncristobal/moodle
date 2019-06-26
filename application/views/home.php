@@ -236,7 +236,7 @@
 
 	<div class="grouped_sections">
 		<div class="container">
-			<div class="row">
+			<!--div class="row">
                             <div class="col text-center">				
                                 <div class="section_title text-center"><h2>Acerca de nosotros</h2></div>
                                 <br>
@@ -273,52 +273,7 @@
                                     <p>Crear, a través de una educación de alta calidad, una sociedad conformada por individuos conscientes de su propia identidad y de su papel en la sociedad del siglo XXI, capaces de proponer e implementar estrategias de cambio para su beneficio.</p>
                                 </div>
                             </div>
-
-                                <!--div class="col-lg-4 grouped_col">
-					<div class="accordions">
-
-						<div class="accordion_container">
-							<div class="accordion d-flex flex-row align-items-center active"><div>¿Quiénes somos?</div></div>
-							<div class="accordion_panel">
-								<div>
-									<p>Somos una Institución Educativa con 32 años de experiencia, Actualmente contamos Con 17 Planteles en la Ciudad de México y el área Metropolitana. Nuestro éxito se basa en la flexibilidad que ofrecemos a nuestros alumnos para concluir sus estudios rápidamente.</p>
-								</div>
-							</div>
-						</div>
-
-						<div class="accordion_container">
-							<div class="accordion d-flex flex-row align-items-center"><div>¿Qué esperar de nosotros?</div></div>
-							<div class="accordion_panel">
-								<div>
-									<p>Nuestro innovador sistema académico, amplia el acceso a una educación de calidad global para formar personas productivas que agreguen un valor social.</p>
-								</div>
-							</div>
-						</div>
-
-						<div class="accordion_container">
-							<div class="accordion d-flex flex-row align-items-center"><div>Mauris vehicula nisi congue?</div></div>
-							<div class="accordion_panel">
-								<div>
-									<p>Suspendisse tincidunt magna eget massa hendrerit efficitur. Ut euismod pellentesque imperdiet. Cras laoreet gravida lectus, at viverra lorem venenatis in. Aenean id varius quam.</p>
-								</div>
-							</div>
-						</div>
-
-						<div class="accordion_container">
-							<div class="accordion d-flex flex-row align-items-center"><div>Nisi congue, blandit purus sed?</div></div>
-							<div class="accordion_panel">
-								<div>
-									<p>Suspendisse tincidunt magna eget massa hendrerit efficitur. Ut euismod pellentesque imperdiet. Cras laoreet gravida lectus, at viverra lorem venenatis in. Aenean id varius quam.</p>
-								</div>
-							</div>
-						</div>
-
-					</div>
-
-				</div-->
-
-				
-			</div>
+			</div-->
 		</div>
 	</div>
         

@@ -55,7 +55,7 @@
                         <div class="row mt-2">
                            <div class="col-6">
                            <div class="p">                            
-                               <div class="news_post_comments">
+                               <div class="news_post">
                                    <a href="<?php echo base_url()?>student/asignature/<?= $value["id_pm"] ?>"><?= $value["materia"] ?></a>
                                </div>                                                                                                                               
                            </div>
@@ -130,11 +130,11 @@
                                         <?php
                                             if($infoAlumno["imagen_perfil"] == ""){
                                         ?>
-                                            <img src="<?=base_url()?>/images/usericon.jpg" class="img-rounded" width="200px" height="200px">
+                                            <img src="<?=base_url()?>/images/usericon.jpg" class="rounded-circle" width="200px" height="200px">
                                         <?php
                                             }else{
                                         ?>
-                                            <img src="<?= base_url() ?>perfilAlumno/<?= $idalumno ?>/<?= $infoAlumno["imagen_perfil"]; ?>" class="img-rounded" width="150px" height="150px">                                    
+                                            <img src="<?= base_url() ?>perfilAlumno/<?= $idalumno ?>/<?= $infoAlumno["imagen_perfil"]; ?>" class="rounded-circle" width="150px" height="150px">                                    
                                         <?php
                                             }
                                         ?>   
@@ -195,7 +195,7 @@
                             </div>
                         </div>   
                         
-                      <div class="row">    
+                      <!--div class="row">    
                       <div class="container">
                        <h2>Tareas próximas</h2>                   
                      <div class="col-lg 12 col-sm-9">
@@ -228,7 +228,7 @@
                         </div>
                     </div>
 
-                    </div>              
+                    </div-->              
                     </div>
                 </div> 
             </div>

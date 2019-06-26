@@ -54,7 +54,7 @@
                     <div class="col-sm-2"><div class="news_post_title_user">Descripción</div></div>
                     <div class="col-sm-2"><div class="news_post_title_user">Fecha creación</div></div>
                     <div class="col-sm-2"><div class="news_post_title_user">Editar</div></div>
-                    <div class="col-sm-2"><div class="news_post_title_user">Borrar</div></div>
+                    <div class="col-sm-1"><div class="news_post_title_user">Borrar</div></div>
                 </div>
             </div>
 
@@ -63,13 +63,7 @@
             ?>
             
             <div class="d-none d-sm-block d-sm-block d-md-block d-lg-block d-xl-block text-center justify-content-center">
-                <div class="row">
-                    <!--div class="col-3 col-sm-3">
-                        <div class="news_post_image">
-                            
-                            <img src="<?= base_url() ?>images/news_1.jpg" alt="https://unsplash.com/@beccatapert">
-                        </div>
-                    </div-->
+                <div class="row dataRow">                   
                     <div class="col-sm-2 offset-1">
                         <div class="news_post_date"><?= $value["materia"]; ?></div>
                     </div>
@@ -82,7 +76,7 @@
                     <div class="col-sm-2">
                         <div class="news_post_author"><a href="<?= base_url()?>admin/editSubject/<?= $value["id"];?>"><i class="fa fa-pencil" aria-hidden="true"></i></a></div>
                     </div>                   
-                    <div class="col-sm-2">
+                    <div class="col-sm-1">
                         <div class="news_post_author"><a href="#" id="<?= $value["id"];?>" class="confirmation" ><i class="fa fa-trash-o" aria-hidden="true"></i></a></div>
                     </div>  
                     <!--<?=base_url();?>admin/deleteSubject/<?= $value["id"];?>-->

@@ -66,13 +66,8 @@
             ?>
             
             <div class="d-none d-sm-block d-sm-block d-md-block d-lg-block d-xl-block text-center justify-content-center">
-                <div class="row">
-                    <!--div class="col-3 col-sm-3">
-                        <div class="news_post_image">
-                            
-                            <img src="<?= base_url() ?>images/news_1.jpg" alt="https://unsplash.com/@beccatapert">
-                        </div>
-                    </div-->
+                <div class="row dataRow">
+                    
                     <div class="col-sm-2 offset-2">
                         <div class="news_post_date"><?= $value["correo"]; ?></div>
                     </div>

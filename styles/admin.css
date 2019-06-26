@@ -2374,7 +2374,19 @@ chat
 .backgray{
     background: #f2f1f8;
 }
+.dataRow{
+    background-color: #f7f7f7;
+    padding: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    border-radius: 20px;
+    margin-bottom: 5px;
+}
 
+.news_post_comments{
+    font-size: 20px;
+    font-weight: bold;
+}
 @media only screen and (max-width: 575px)
 {
     .combosMaterias{

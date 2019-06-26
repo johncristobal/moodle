@@ -53,7 +53,7 @@
             ?>
             <div class="d-none d-sm-block d-sm-block d-md-block d-lg-block d-xl-block text-center" style="padding: 20px;">
                 <div class="row">
-                    <div class="col-sm-2 offset-2"><div class="news_post_title_user">Correo</div></div>
+                    <div class="col-sm-2 offset-1"><div class="news_post_title_user">Correo</div></div>
                     <div class="col-sm-2"><div class="news_post_title_user">Rol</div></div>
                     <div class="col-sm-2"><div class="news_post_title_user">Fecha creación</div></div>
                     <div class="col-sm-1"><div class="news_post_title_user">Editar</div></div>
@@ -72,14 +72,8 @@
             ?>
             
             <div class="d-none d-sm-block d-sm-block d-md-block d-lg-block d-xl-block text-center justify-content-center">
-                <div class="row">
-                    <!--div class="col-3 col-sm-3">
-                        <div class="news_post_image">
-                            
-                            <img src="<?= base_url() ?>images/news_1.jpg" alt="https://unsplash.com/@beccatapert">
-                        </div>
-                    </div-->
-                    <div class="col-sm-2 offset-2">
+                <div class="row dataRow">                    
+                    <div class="col-sm-2 offset-1">
                         <div class="news_post_date"><?= $value["correo"]; ?></div>
                     </div>
                     <div class="col-sm-2">
@@ -110,10 +104,10 @@
                         <div class="news_post_author"><a href="<?= base_url(); ?>admin/editarUsuario/<?= $value["id"];?>" <i class="fa fa-pencil" aria-hidden="true"></i></a></div>
                         </div> 
                  
-                        <div class="col-sm-1">
-                        <div class="news_post_author"><a href="#" id="<?= $value["id"];?>" class="confirmationUser"> <i class="fa fa-trash-o" aria-hidden="true"></i></a></div>
+                        <div class="col-sm-1 text-center">
+                        <div class="news_post_author text-center"><a href="#" id="<?= $value["id"];?>" class="confirmationUser"> <i class="fa fa-trash-o" aria-hidden="true"></i></a></div>
                         </div>                       
-                        <div class="col-sm-1">
+                        <div class="col-sm-2">
                         <label class="switch">
                           <input type="checkbox" <?=$checked?>  class="confirmationBlockUser" id="<?= $value["id"];?>" >
                           <span class="slider round"></span>

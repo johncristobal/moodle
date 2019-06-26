@@ -22,8 +22,11 @@
         
         <div class="container login">
             <div class="row justify-content-between">
-                <div class="col-6 offset-3">
+                <div class="col text-center">
                     <div class="section_title text-center"><h2>Hola Admin</h2></div>                
+                    <p>
+                        Selecciona alguna de las opciones del menú para comenzar...
+                    </p>
                 </div>
             </div>
         </div>

@@ -41,7 +41,7 @@
                                         if($value != "-1"){
                                             foreach ($value as $tarea) {
                                     ?>
-                                        <div class="row">
+                                        <div class="row dataRow">
                                         <div class="col-5 col-sm-2 offset-1">
                                         <div class="p">
                                             <div class="news_post_comments">

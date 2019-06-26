@@ -73,7 +73,7 @@
 
                     <div class="d-none d-sm-block d-sm-block d-md-block d-lg-block d-xl-block text-center justify-content-center">
                         <div class="row"><br></div>
-                        <div class="row">
+                        <div class="row dataRow">
                             <div class="col-sm-1 offset-2">
                                 <div class="news_post_date"><?= $value["id_pm"]; ?></div>
                             </div>
