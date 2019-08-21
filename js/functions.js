@@ -88,8 +88,13 @@ jQuery("#editSubjectForm").click(function() {
     );
 
  });
-  $('.confirmationBlockUser').on('change', function(){
+ 
+  //$('.confirmationBlockUser').on('change', function(e){
+  $('.confirmationBlockUser').on('click', function(e){
+          e.preventDefault();
 	 var id = $(this).attr("id");
+         var elementCheck = $(this);
+         
 	 if (this.checked){
 	 	swal({
             title: "¿Seguro que deseas desbloquear a este usuario?",
@@ -100,7 +105,8 @@ jQuery("#editSubjectForm").click(function() {
             closeOnConfirm: false }, function(isConfirm)
         {
         	if(isConfirm==false){
-        		$(this).prop('checked', false);
+                    elementCheck.removeAttr('checked');
+                        
         	}else{
         		$(location).attr('href',urlApi+'admin/unBlockUser/'+id);
         	}         
@@ -116,7 +122,7 @@ jQuery("#editSubjectForm").click(function() {
             closeOnConfirm: false }, function(isConfirm)
         {
         	if(isConfirm==false){
-        		$(this).prop('checked', true);
+        		elementCheck.attr('checked',"true");
         	}else{
         		$(location).attr('href',urlApi+'admin/blockUser/'+id);
         	}

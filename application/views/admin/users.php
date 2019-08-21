@@ -108,10 +108,10 @@
                         <div class="news_post_author text-center"><a href="#" id="<?= $value["id"];?>" class="confirmationUser"> <i class="fa fa-trash-o" aria-hidden="true"></i></a></div>
                         </div>                       
                         <div class="col-sm-2">
-                        <label class="switch">
-                          <input type="checkbox" <?=$checked?>  class="confirmationBlockUser" id="<?= $value["id"];?>" >
-                          <span class="slider round"></span>
-                        </label>
+                            <label class="switch">
+                              <input type="checkbox" <?=$checked?>  class="confirmationBlockUser" id="<?= $value["id"];?>" >
+                              <span class="slider round"></span>
+                            </label>
                         </div>   
                     <!--div class="col-1 col-sm-1">
                         <a href=""><img src="<?= base_url() ?>" /></a>
