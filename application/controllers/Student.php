@@ -263,4 +263,8 @@ class Student extends CI_Controller {
             return false; 
         }
     }
+    
+    public function pdf(){
+        $this->load->view("student/pdf");
+    }
 }

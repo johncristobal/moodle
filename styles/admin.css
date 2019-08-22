@@ -2393,3 +2393,25 @@ chat
         height: 130px;
     } 
 }
+
+.shadowGray{
+    border-radius: 10px;
+    box-shadow: 5px 5px #ededed;
+}
+
+.footerPdf{
+    width: 100%;
+    background: #f2f1f8;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+
+.redColor{
+    color: red;
+}
+
+.redborder{
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid #ff0000;
+}
