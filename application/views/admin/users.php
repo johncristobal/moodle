@@ -47,6 +47,22 @@
         </div>
         
         <div class="container-fluid">
+            <div class="row text-center centered">
+                <div class="col-12 col-sm-6 offset-sm-3">                    
+                    <div class="form-group row">
+                        <div class="col-10 nopadding">
+                            <input id="myInput" type="text" class="form-control" placeholder="Buscar por correo...">
+                        </div>
+                        <div class="col-1 nopadding">
+                            <div class="input-group-btn">
+                                <button class="btn" type="submit">
+                                  <i class="fa fa-search"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <?php 
                 if($usuarios){   
 
@@ -68,10 +84,10 @@
                     $checked=" ";
                      if($value["estatus"]=="1"){
                         $checked="checked";
-                     }      
+                    }      
             ?>
             
-            <div class="d-none d-sm-block d-sm-block d-md-block d-lg-block d-xl-block text-center justify-content-center">
+            <div class="d-none d-sm-block d-sm-block d-md-block d-lg-block d-xl-block text-center justify-content-center filterData">
                 <div class="row dataRow">                    
                     <div class="col-sm-2 offset-1">
                         <div class="news_post_date"><?= $value["correo"]; ?></div>
@@ -113,16 +129,16 @@
                               <span class="slider round"></span>
                             </label>
                         </div>   
-                    <!--div class="col-1 col-sm-1">
-                        <a href=""><img src="<?= base_url() ?>" /></a>
-                    </div>
-                    <div class="col-1 col-sm-1">
-                    </div-->
+                        <!--div class="col-1 col-sm-1">
+                            <a href=""><img src="<?= base_url() ?>" /></a>
+                        </div>
+                        <div class="col-1 col-sm-1">
+                        </div-->
                 </div>
             </div>
             
-            <div class="d-block d-sm-none d-sm-none d-md-none d-lg-none d-xl-none">
-            <div class="row">
+            <div class="d-block d-sm-none d-sm-none d-md-none d-lg-none d-xl-none filterDataMini">
+            <div class="row dataTemp">
                 <!--div class="col-3">
                     <div class="news_post_image">
                         <img src="<?= base_url() ?>images/news_1.jpg" alt="https://unsplash.com/@beccatapert">
@@ -160,5 +176,19 @@
     var urlApi = "<?php echo base_url() ?>";
 </script>
 <?php $this->load->view('scripts'); ?>    
+<script>
+$(document).ready(function(){
+  $("#myInput").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $(".filterData .dataRow").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+    
+    $(".filterDataMini .dataTemp").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+</script>
 </body>
 </html>

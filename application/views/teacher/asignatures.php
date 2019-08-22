@@ -22,7 +22,7 @@
         <div class="container login">
             <div class="row">
                 <div class="col-12">
-                    <div class="section_title text-center"><h2>Mis Materias</h2></div>
+                    <div class="section_title text-center"><h2>Tareas...</h2></div>
                     <div class="accordions">
                         <?php
                             if($tareas != "-1"){

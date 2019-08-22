@@ -31,7 +31,7 @@
                                                     <ul class="main_nav">
                                                         <!--li><a href="<?= base_url() ?>admin">Admin</a></li>
                                                         <li><a href="<?= base_url() ?>admin/users">Usuarios</a></li-->
-                                                        <li><a href="<?= base_url() ?>teacher/asignatures">Materias</a></li>
+                                                        <li><a href="<?= base_url() ?>teacher/asignatures">Tareas</a></li>
                                                         <li><a href="<?= base_url() ?>teacher/grades">Calificaciones</a></li>
                                                         <li><a href="<?= base_url() ?>teacher/messages">Chat</a></li>
                                                         <li><a href="<?= base_url() ?>teacher/profile">Perfil</a></li>
