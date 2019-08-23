@@ -989,7 +989,7 @@ section
 .home_container
 {
 	position: absolute;
-	top: 35.5%;
+	top: 60.5%;
 	left: 0;
 	width: 100%;
 }
@@ -1006,12 +1006,12 @@ section
 }
 .home_text
 {
-	margin-top: -55px;
+	margin-top: 5px;
 }
 .home_title
 {
 	width: 100%;
-	font-size: 72px;
+	font-size: 52px;
 	line-height: 1.2;
 	font-weight: 600;
 	color: #FFFFFF;

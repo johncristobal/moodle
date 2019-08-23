@@ -395,12 +395,69 @@ class Admin extends CI_Controller {
         
         echo "listo";
     }
+
+/* =============================================================================
+ * Modulo para anuncios
+ =============================================================================*/   
+    
+    public function banners(){
+        //parametro
+        $key = "banner";
+        //$back = $this->AdminModel->getParametro($key);
+        $back = "banners";
+        
+        $map = $this->Adminmodel->getBanners();
+        
+        $data["banners"] = $map;
+        $data["urlfolder"] = $back;
+        //vista con banners
+        $this->load->view("admin/bannersList",$data);
+    }
+    
+    public function createBanner(){
+        $this->load->view("admin/bannerNew");        
+    }
+
+    public function deleteBanner(){
+        $post = $this->input->post("id");
+        $this->Adminmodel->deleteBanners($post);
+    }
+    
+    public function saveBanner(){
+        $datos = $this->db->select('orden')
+            ->from('banners')
+            ->where('estatus',"1")
+            ->order_by('orden', 'DESC')
+            ->get();
+        
+        $orden = 0;
+        if($datos->num_rows() == 0){
+            $orden = 1;
+        }else{        
+            $orden = $datos->result_array()[0]["orden"] + 1;
+        }
+        
+        $post = $this->input->post("fototext");
+        $sourcePath = $_FILES;
+        //$back = $this->AdminModel->getParametro($key);
+        $back = "banners";
+
+        foreach ($sourcePath as $value) {
+            if($value["name"] != "")
+            {
+                $sourcePath = $value["tmp_name"]; // Storing source path of the file in a variable
+                $targetPath = $back."/".$value["name"];//banner".$indice.".png";//.$_FILES['file']['name']; // Target path where file is to be stored
+                move_uploaded_file($sourcePath,$targetPath); // Moving Uploaded file
+                
+                $this->Adminmodel->saveBanners($post,$value["name"],$orden);
+            }
+        }        
+    }
     
 /* =============================================================================
  * Modulo para sesion
  =============================================================================*/    
-    
-    
+        
     public function sesionActiva(){
         $sesion = $this->session->userdata("session");
         if($sesion === "1"){

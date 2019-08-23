@@ -20,6 +20,12 @@ class Welcome extends CI_Controller {
 	 */
 	public function index()
 	{
-		$this->load->view('home');
+            $this->load->model('Adminmodel');
+            $map = $this->Adminmodel->getBanners();
+            $back = "banners";
+            $data["banners"] = $map;
+            $data["urlfolder"] = $back;
+            //vista con banners
+            $this->load->view('home',$data);
 	}
 }

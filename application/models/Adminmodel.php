@@ -318,4 +318,47 @@ class Adminmodel extends CI_Model {
             return $datos->result_array()[0];
         }
     }
+
+/* =============================================================================
+ * Modulo para banners
+ =============================================================================*/    
+    
+    public function deleteBanners($id){
+        $this->db->delete('banners', array('id' => $id)); 
+    }
+    
+    public function getBanners(){
+        $datos = $this->db->select('*')
+            ->from('banners')
+            ->where('estatus',"1")
+            ->order_by('orden', 'ASC')
+            ->get();
+        
+        if($datos->num_rows() == 0){
+            return "-1";
+        }else{        
+            return $datos->result_array();
+        }
+    }
+    
+    public function saveBanners($text,$imagen,$orden){
+        
+        $datos = [
+            'id' => '',
+            'texto' => $text,
+            'imagen' => $imagen,
+            "orden" => $orden,
+            "estatus" => "1",
+            'fecha_create' => date("Y-m-d")
+        ];
+        
+        $result=$this->db->insert('banners', $datos); 
+         
+        if($result){
+            $insertId = $this->db->insert_id();
+            return $insertId;
+        }else{
+            return null;
+        }
+    }   
 }
