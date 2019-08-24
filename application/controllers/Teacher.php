@@ -166,8 +166,7 @@ class Teacher extends CI_Controller {
                     //recuperamos tareas con id_PM
                     $materia = $value["materia"];
                     $grupo = $value["grupo"];
-                    $tareas_materia = $this->Profesormodel->getTareasMateriaProfesor($value["id_pm"]);      
-                    
+                    $tareas_materia = $this->Profesormodel->getTareasMateriaProfesor($value["id_pm"]);                          
                     //materian => tareas
                     $tareas[$materia." - ".$grupo] = $tareas_materia;
                     $idpm[$materia." - ".$grupo] = $value["id_pm"];
@@ -271,6 +270,8 @@ class Teacher extends CI_Controller {
              */
             $alumnos = array();
             $idpm = array();
+            $porcentaje = array();
+            $maxCalif= array();
             $materias = $this->Profesormodel->getMateriasProfesor($idprofesor);
             if($materias != "-1"){
                 foreach ($materias as $value) {
@@ -278,13 +279,16 @@ class Teacher extends CI_Controller {
                     $materia = $value["materia"];
                     $grupo = $value["grupo"];
                     $alumnos_materia = $this->Profesormodel->getAlumnosMateriaProfesor($value["id_pm"]);      
-                    
+                    $totalTareas = $this->Profesormodel->getTotalMaterias($value["id_pm"]);  
                     //materian => tareas
                     $alumnos[$materia." - ".$grupo] = $alumnos_materia;
                     $idpm[$materia." - ".$grupo] = $value["id_pm"];
+                    $porcentaje[$materia." - ".$grupo] = $value["porcentaje"];
                 }
                 $data["alumnos"] = $alumnos;
                 $data["idpm"] = $idpm;
+                $data["porcentaje"]=$porcentaje;
+
             }else{
                 $data["alumnos"] = "-1";
                 $data["idpm"] = "-1";

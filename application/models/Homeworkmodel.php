@@ -141,4 +141,61 @@ class Homeworkmodel extends CI_Model {
             return $datos->result_array()[0];
         }
     }
+    //Actualiza el porcentaje de la materia
+    public function updatePorcentajeTareas($idMateria,$porcentaje){
+        $datos = array(
+            'porcentaje' => $porcentaje
+        );
+        
+        $this->db->where('id_pm',$idMateria);
+        $this->db->update('profesor_materia',$datos);
+        
+        return 1;
+    }
+    public function getPorcentajeTareas($idMateria){
+        $query = $this->db->select('porcentaje')
+            ->from('profesor_materia')
+            ->where('id_pm',$idMateria)
+            ->get();
+        if($query->num_rows() == 0){
+            return "-1";
+        }else{
+            return $query->result_array();
+        }    
+    }
+    public function getIdAlumnoTarea($idtarea){
+        $query = $this->db->select('id_alumno')
+            ->from('alumno_tareas')
+            ->where('id',$idtarea)
+            ->get();
+        if($query->num_rows() == 0){
+            return "-1";
+        }else{
+            return $query->result_array();
+        } 
+    }
+    public function sumGrades($materia,$idAlumno){
+        $query = $this->db->select('SUM(alumno_tareas.calificacion) as totalCalif')
+            ->from('tareas')
+            ->join("alumno_tareas","alumno_tareas.id_tarea = tareas.id")
+            ->where('tareas.id_pm',$materia)
+            ->where('alumno_tareas.id_alumno',$idAlumno)
+            ->get();
+
+        if($query->num_rows() == 0){
+            return "-1";
+        }else{
+            return $query->result_array();
+        }
+    }
+    public function updatePorcentajeTarea($califParcial,$idAlumno,$materia){
+         $datos = array(
+            'tareas' => $califParcial,
+        );
+        
+        $this->db->where('fk_student',$idAlumno);
+        $this->db->where('id_pm',$materia);
+        $this->db->update('calificaciones',$datos);
+  
+    }
 }

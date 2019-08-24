@@ -47,7 +47,11 @@ $(document).ready(function()
 	initHeaderSearch();
 	initMenu();
 	initMilestones();
-        
+        $(".nuevoPorcentaje").click(function(e){
+            idpm = $(this).attr("id");
+            $("#id_pm").val(idpm);
+            $("#modalAddPor").modal("show");
+        })
         $(".nuevatarea").click(function(e){
             idpm = $(this).attr("id");
             $("#id_pm").val(idpm);
@@ -82,7 +86,33 @@ $(document).ready(function()
                 }
             });
         });
+        $("#formularioPorTarea").submit(function(e){
+            e.preventDefault();
+            //var data = $('#formularioTarea').serialize();
+            // Get form
+            var form = $(this)[0];
+            // Create an FormData object 
+            var data = new FormData(form);
+            $.ajax({
+                url: urlApi+"api/homework/savePorcentajeTarea",
+                cache: false, 
+                processData: false,  // Important
+                contentType: false,
+                enctype: 'multipart/form-data',
+                method: "post",
+                data: data,
+                success: function(e){
+                    if(e === "listo"){
+                        window.location.href = urlApi+"teacher/grades";
+                    }else{
 
+                    }
+                },
+                error: function(e){
+                    alert(e);
+                }
+            });
+        });
 /*//////////////////////////////////////////////////////////////////////////////
         * alumno descargar tarea alumno
 *///////////////////////////////////////////////////////////////////////////////
@@ -245,7 +275,6 @@ $(document).ready(function()
             var form = $(this)[0];
             // Create an FormData object 
             var data = new FormData(form);
-        
             swal({   
 		title: "¿Seguro que deseas continuar?",   
 		//text: "No podrás deshacer este paso...",   
@@ -272,11 +301,10 @@ $(document).ready(function()
                             if(e === "listo"){
                                 window.location.href = urlApi+"teacher/homework_alumno/"+idtareatemp;
                             }else{
-
+                                alert(e);
                             }
                         },
                         error: function(e){
-                            alert(e);
                         }
                     });	
 		}else {
