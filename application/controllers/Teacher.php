@@ -300,6 +300,36 @@ class Teacher extends CI_Controller {
         }
 
     }
+    public function editGrades($idAlumno,$idpm){
+        if($this->sesionActiva()){
+            if($this->input->post()){
+                $examenes=$this->input->post("examenes");
+                $tareasComp=$this->input->post("tareasComp");
+                $tareasMoodle=$this->input->post("tareasMoodle");
+                $calificacion= $tareasMoodle+$tareasComp+$examenes;
+                $this->Profesormodel->updateGrades($idAlumno,$tareasComp,$calificacion);
+                $this->grades();
+            }else{
+                $info=array();
+                $res=$this->Profesormodel->getGradesAlumno($idAlumno,$idpm);
+                $info["examen"]=$res["examen"];
+                $info["nombre"]=$res["nombre"];
+                $info["tareasMoodle"]=$res["tareas"];
+                $info["tareasComp"]=$res["tareasComp"];
+                $info["calificacion"]=$res["calificacion"];
+                $info["idAlumno"]=$idAlumno;
+                $info["idpm"]=$idpm;
+                $data["info"]=$info;
+              $this->load->view("teacher/editGrades",$data);
+            }  
+           
+
+            
+        }else{
+            redirect('/');   
+        }
+
+    }
     public function sesionActiva(){
         $sesion = $this->session->userdata("session");
         if($sesion === "1"){

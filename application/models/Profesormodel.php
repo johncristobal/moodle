@@ -127,7 +127,30 @@ class Profesormodel extends CI_Model {
             return $query->result_array()[0];
         }
     }  
+    public function updateGrades($idAlumno,$tareasComp,$calificacion){
+         $data = array(
+            "tareasComp" => $tareasComp,
+            "calificacion" => $calificacion,
+        );
+        
+        $this->db->where("fk_student",$idAlumno);
+        $this->db->update("calificaciones",$data);       
 
+    }
+    public function getGradesAlumno ($idAlumno,$idpm){
+        $query = $this->db->select('calificaciones.*,alumnos.nombre')
+            ->from('calificaciones')
+            ->join("alumnos","calificaciones.fk_student=alumnos.id")
+            ->where('calificaciones.fk_student',$idAlumno)
+            ->where('calificaciones.id_pm',$idpm)
+            ->get();
+        
+        if($query->num_rows() == 0){
+            return "-1";
+        }else{
+            return $query->result_array()[0];
+        }
+    }
     public function updateProfileProfesor($data,$archivo,$idprofesor){
         
         if($archivo == ""){

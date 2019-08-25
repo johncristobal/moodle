@@ -49,7 +49,8 @@
                                        <div class="d-none d-sm-block d-sm-block d-md-block d-lg-block d-xl-block text-center" style="padding: 20px;">
                                         <div class="row">
                                             <br>
-                                            <div class="col-sm-2 offset-sm-1"><div class="news_post_title_user">Alumno</div></div>
+                                            <div class="col-sm-2"><div class="news_post_title_user">Alumno</div></div>
+                                            <div class="col-sm-2"><div class="news_post_title_user">Moodle</div></div>
                                             <div class="col-sm-2"><div class="news_post_title_user">Tareas</div></div>
                                             <div class="col-sm-2"><div class="news_post_title_user">Examen</div></div>
                                             <div class="col-sm-2"><div class="news_post_title_user">Calificación</div></div>
@@ -60,12 +61,15 @@
                                             foreach ($value as $alumno) {
                                     ?>
                         <div class="d-none d-sm-block d-sm-block d-md-block d-lg-block d-xl-block text-center justify-content-center">
-                            <div class="row">
-                                <div class="col-sm-2 offset-sm-1 text-center">
+                            <div class="row">        
+                                <div class="col-sm-2  text-center">
                                     <div class="text-center"><?= $alumno["id_alumno"]; ?></div>
                                 </div>
                                 <div class="col-sm-2">
                                     <div class="news_post_author"><?= $alumno["tareas"]; ?></div>
+                                </div>
+                                 <div class="col-sm-2">
+                                    <div class="news_post_author"><?= $alumno["tareasComp"]; ?></div>
                                 </div>
                                 <div class="col-sm-2">
                                     <div class=""><?= $alumno["examen"]; ?></div>
@@ -74,7 +78,7 @@
                                     <div class=""><?= $alumno["calificacion"]; ?></div>
                                 </div>
                                 <div class="col-sm-2">
-                                    <a href="" id="" class="downloadFile"><i class="fa fa-pencil fa-lg" aria-hidden="true"></i></a>
+                                    <a href="" id="" class=""><a href="<?= base_url()?>teacher/editGrades/<?= $alumno["id_alumno"];?>/<?= $idpm[$key] ?>"><i class="fa fa-pencil fa-lg" aria-hidden="true"></i></a>
                                 </div> 
                             </div>
                     </div>
