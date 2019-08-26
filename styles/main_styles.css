@@ -1628,7 +1628,7 @@ section
     color: #6c6a74;
     line-height: 2.2;
 }
-.accordion_panel .nuevatarea{
+.accordion_panel .nuevatarea, .accordion_panel .nuevoPorcentaje{
     margin-top: 15px;
 }
 /*********************************

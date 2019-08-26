@@ -17,6 +17,7 @@ class Homework extends CI_Controller {
         parent::__construct();
         
         $this->load->model("Homeworkmodel");
+        $this->load->model("Profesormodel");
     }
     
     public function saveHW(){
@@ -90,11 +91,33 @@ class Homework extends CI_Controller {
         $data = $this->input->post();
         $idtarea = $data["idtarea"];
         $cali= $data["cali"];
-        
+        $materia=$data["materia"];
         //actualiza calificacion en tarea y listo 
         $this->Homeworkmodel->updateHomeworkStudent($idtarea,$cali);
-        
+       //obtenermos el id del alumno
+        $alumno=$this->Homeworkmodel->getIdAlumnoTarea($idtarea);
+        // Se llama a este método para calcular el porcentaje del alumno de tareas moodle
+        $this->updatePorcentajeAlumno($materia,$alumno[0]["id_alumno"]);
         echo "listo";
+    }
+    public function savePorcentajeTarea (){
+        $data= $this->input->post();
+        $porcentaje=$data["porcentaje"];
+        $idMateria=$data["idpm"];
+        $this->Homeworkmodel->updatePorcentajeTareas($idMateria,$porcentaje);
+        echo "listo";
+    }
+    //método para actualizar y calcular el porcentaje que lleva el alumno en las tareas moodle
+    public function updatePorcentajeAlumno($materia,$idAlumno){
+        //Sumamos las calificaciones para obtener la parte proporcional
+      
+       $sumaCal= $this->Homeworkmodel->sumGrades($materia,$idAlumno);
+       $totalTareas = $this->Profesormodel->getTotalMaterias($materia); 
+       $total=$totalTareas[0]["totalTareas"]*10;
+       $porcentaje= $this->Homeworkmodel->getPorcentajeTareas($materia);
+       $califParcial= number_format(($sumaCal[0]["totalCalif"]*$porcentaje[0]["porcentaje"])/$total, 2, '.', '') ;
+       //Actualizamos la calificación parcial del alumno
+       $this->Homeworkmodel->updatePorcentajeTarea($califParcial,$idAlumno,$materia);
     }
     
 }
