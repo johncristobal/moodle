@@ -61,14 +61,25 @@
                     </div>                 
                 
             </div>
-            </div>
-            
+            </div>         
             <!--responsive-->
             <div class="d-block d-sm-none d-sm-none d-md-none d-lg-none d-xl-none">
 
             </div>
             <?php                     
-                }            
+                }    
+                ?>
+             <div class="d-none d-sm-block d-sm-block d-md-block d-lg-block d-xl-block text-center justify-content-center">
+            <div class="row dataRow">
+                    <div class="col-sm-2 offset-7">
+                        <div class="news_post_date">Promedio:</div>
+                    </div>               
+                     <div class="col-sm-2 offset-9">
+                        <div class="news_post_date"><?= $promedio ?></div>
+                    </div>                   
+            </div>
+            </div>     
+                <?php        
                 }else{
             ?>
                 <div class="col-4 col-sm-5 offset-sm-3">

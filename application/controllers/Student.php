@@ -246,6 +246,12 @@ class Student extends CI_Controller {
         if($this->sesionActiva()){
             $idalumno = $this->session->userdata("idalumno");
             $data["calificaciones"]=$this->Alumnomodel->getGrades($idalumno);
+            $totalMaterias=count($data["calificaciones"]);
+            foreach ($data["calificaciones"] as $key) {
+               @$sumCalif+= $key["calificacion"];
+            }
+            $promedio=$sumCalif/ $totalMaterias;
+             $data["promedio"]=number_format($promedio, 2, '.', '');
             $this->load->view("student/grades",$data);
         }else{
             redirect("/");

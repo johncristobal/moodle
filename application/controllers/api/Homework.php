@@ -105,6 +105,13 @@ class Homework extends CI_Controller {
         $porcentaje=$data["porcentaje"];
         $idMateria=$data["idpm"];
         $this->Homeworkmodel->updatePorcentajeTareas($idMateria,$porcentaje);
+        //Se llama a la función updatePorcentajeAlumno para actualizar porcentaje moodle y posteriormente la calificación final de todos los alumnos
+        $alumnos=$this->Profesormodel->getAlumnosMateriaProfesor($idMateria); 
+        foreach ($alumnos as $key => $value) {
+          $this->updatePorcentajeAlumno($idMateria,$value["id_alumno"]); 
+          $this->Profesormodel->updateCaliFinal($value["id_alumno"],$idMateria);
+       }
+            
         echo "listo";
     }
     //método para actualizar y calcular el porcentaje que lleva el alumno en las tareas moodle
@@ -118,6 +125,8 @@ class Homework extends CI_Controller {
        $califParcial= number_format(($sumaCal[0]["totalCalif"]*$porcentaje[0]["porcentaje"])/$total, 2, '.', '') ;
        //Actualizamos la calificación parcial del alumno
        $this->Homeworkmodel->updatePorcentajeTarea($califParcial,$idAlumno,$materia);
+        //Actualizamos calificacion final
+        $this->Profesormodel->updateCaliFinal($idAlumno,$materia);
     }
     
 }

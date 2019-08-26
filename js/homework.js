@@ -105,7 +105,7 @@ $(document).ready(function()
                     if(e === "listo"){
                         window.location.href = urlApi+"teacher/grades";
                     }else{
-
+                       
                     }
                 },
                 error: function(e){

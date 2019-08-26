@@ -151,6 +151,13 @@ class Profesormodel extends CI_Model {
             return $query->result_array()[0];
         }
     }
+    public function updateCaliFinal($idAlumno,$id_pm){
+        //UPDATE `calificaciones` SET `calificacion`= (tareas+tareasComp+examen) WHERE fk_student = 2 AND id_pm=100001
+        $this->db->set('calificacion', 'tareas+tareasComp+examen', FALSE);
+        $this->db->where("fk_student",$idAlumno);
+         $this->db->where("id_pm",$id_pm);
+        $this->db->update("calificaciones"); 
+    }
     public function updateProfileProfesor($data,$archivo,$idprofesor){
         
         if($archivo == ""){
