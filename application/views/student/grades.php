@@ -21,12 +21,32 @@
                 <div class="col-4 col-sm-5 offset-sm-3">
                     <div class="section_title text-center"><h2>Calificaciones</h2></div>                
                 </div>
+                <div class="col-8 col-sm-4 right">
+                    <div class="">
+                        <form action="<?= base_url() ?>student/exportPDF" method="post" class="">
+                            <!--div>
+                                <input type="text" class="course_input" placeholder="Course" >
+                            </div-->
+                            <div class="d-none d-sm-block d-sm-block d-md-block d-lg-block d-xl-block">
+                                <button class="course_button_add">                                
+                                    <span>Exportar calificaciones</span>   
+                                </button>
+                                <img class="" src="<?= base_url() ?>images/milestone_2.svg" alt="" width="50px" height="50px">                                
+                            </div>
+                            <div class="d-block d-sm-none d-sm-none d-md-none d-lg-none d-xl-none">
+                                <button class="course_button_add_res">
+                                    <span>Exportar calificaciones</span> 
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
         
         <div class="container-fluid">
             <?php 
-                if($calificaciones){                
+                if($calificaciones){
             ?>
             <div class="d-none d-sm-block d-sm-block d-md-block d-lg-block d-xl-block text-center" style="padding: 20px;">
                 <div class="row">

@@ -12,6 +12,31 @@ jQuery(".msg-exito").click(function() {
 	swal("¡Bien!", "Has hecho clic en el botón :)", "success");
 });
 
+$("#exportDataForm").submit(function(e){
+    e.preventDefault();
+    console.log("PDF");
+    //call to export PDF
+    //download file
+    //set
+    $.ajax({
+        type:'POST',
+        url: urlApi+"/student/exportPDF",
+        success:function(data){
+            console.log("success");
+            window.location.href = urlApi+"/student/grades";
+        },
+        error: function(data){
+            console.log("error");
+            swal({   
+                    title: "Tuvimos un error...",   
+                    text: "Se cerrará en 3 segundos.",   
+                    timer: 3000,   
+                    showConfirmButton: false 
+            });
+        }
+    });
+});
+
 jQuery("#editForm").click(function() {
 	swal({   
 		title: "¿Seguro que deseas continuar?",   

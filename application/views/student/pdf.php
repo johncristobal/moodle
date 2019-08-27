@@ -48,9 +48,9 @@
                             <img src="<?=base_url()?>/images/usericon.jpg" class="rounded-circle" width="100px" height="100px"> 
                         </div>
                         <div class="col-8">
-                            <h2><strong>Nombre: </strong> John Cristobal</h2>
+                            <h2><strong>Nombre: </strong> <?= $alumnoData["nombre"] ?></h2>
                             <br>
-                            <h4><strong>Matrícula: </strong> 2011630059</h4>                                                        
+                            <h4><strong>Matrícula: </strong> <?= $alumnoData["matricula"] ?> </h4>                                                        
                         </div>                        
                     </div>  
                 </div>                
@@ -68,73 +68,60 @@
                         </div>
                     </div>
                     <div class="redborder">
-                    <div class="row">
-                        <div class="col-4 text-center">
-                            <h4 class="redColor">Materia</h4>
+                        
+                        <div class="row">
+                            <div class="col-4 text-center">
+                                <h4 class="redColor">Materia</h4>
+                            </div>
+                            <div class="col-2">
+                                <h4 class="redColor">Grupo</h4>
+                            </div>
+                            <div class="col-2">
+                                <h4 class="redColor">Exámen</h4>
+                            </div>
+                            <div class="col-2">
+                                <h4 class="redColor">Tareas</h4>
+                            </div>
+                            <div class="col-2">
+                                <h4 class="redColor">Calificación</h4>
+                            </div>
                         </div>
-                        <div class="col-2">
-                            <h4 class="redColor">Moodle</h4>
+                        <div class="row">
+                            <div class="col-12">
+                                <hr>
+                            </div>
                         </div>
-                        <div class="col-2">
-                            <h4 class="redColor">Proyectos</h4>
-                        </div>
-                        <div class="col-2">
-                            <h4 class="redColor">Exámen</h4>
-                        </div>
-                        <div class="col-2">
-                            <h4 class="redColor">Calificación</h4>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-12">
-                            <hr>
-                        </div>
-                    </div>
-                    
-                    <div class="row">
-                        <div class="col-4 text-center">
-                            <p>Español</p>
-                        </div>
-                        <div class="col-2">
-                            <p>20%</p>
-                        </div>
-                        <div class="col-2">
-                            <p>10%</p>
-                        </div>
-                        <div class="col-2">
-                            <p>60%</p>
-                        </div>
-                        <div class="col-2">
-                            <p>90%</p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-12">
-                            <hr>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-4 text-center">
-                            <p>Español</p>
-                        </div>
-                        <div class="col-2">
-                            <p>20%</p>
-                        </div>
-                        <div class="col-2">
-                            <p>10%</p>
-                        </div>
-                        <div class="col-2">
-                            <p>60%</p>
-                        </div>
-                        <div class="col-2">
-                            <p>90%</p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-12">
-                            <hr>
-                        </div>
-                    </div>   
+
+                        <?php 
+                            if($calificaciones){
+                                foreach ($calificaciones as $value) {
+                        ?>
+                            <div class="row">
+                                <div class="col-4 text-center">
+                                    <p><?= $value["materia"] ?></p>
+                                </div>
+                                <div class="col-2">
+                                    <p><?= $value["grupo"] ?></p>
+                                </div>
+                                <div class="col-2">
+                                    <p><?= $value["examen"] ?></p>
+                                </div>
+                                <div class="col-2">
+                                    <p><?= $value["tareas"] ?></p>
+                                </div>
+                                <div class="col-2 text-center">
+                                    <p><?= $value["calificacion"] ?></p>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <hr>
+                                </div>
+                            </div>
+                        <?php
+                                }
+                            }
+                        ?>                           
                     </div>
                     
                     <div class="row mt-3">
@@ -151,8 +138,8 @@
                         <div class="col-2">
                             <h4><strong>Promedio</strong></h4>
                         </div>
-                        <div class="col-2">
-                            <h4><strong>90%</strong></h4>
+                        <div class="col-2 text-center">
+                            <h4><strong><?= $promedio ?></strong></h4>
                         </div>
                     </div>
                 </div><!--Fin de materias-->
