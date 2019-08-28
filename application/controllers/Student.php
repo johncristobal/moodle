@@ -294,8 +294,7 @@ class Student extends CI_Controller {
             //$pdffile = $this->pdfgenerator->generate($html, $filename, true, 'Letter', 'portrait');
 
             $this->load->view("student/pdf",$data);
-            
-            
+                        
         }else{
             redirect("/");
         }

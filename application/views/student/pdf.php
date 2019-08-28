@@ -45,14 +45,26 @@
     padding: 10px;
     background-color: #f2f1f8;
     }
+    .redborder{
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid #ff0000;
+    }
+    .redColor{
+        color: red;
+    }    
+    .footerPdf{
+    width: 100%;
+    background: #f2f1f8;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    }
 </style>
 </head>
 
 <body>
         <div class="container-fluid">            
-            <div class="">
-                
-                <br><br><br>
+            <div class="">                                
                 <table style="margin-top: 60px; text-align:center; margin-left: 8.333333%; position: relative; width: 100%;">
                     <tbody>
                         <tr>
@@ -66,21 +78,21 @@
                     </tbody>
                 </table>
                 <br>
-                <table class="backGray shadowGray" style="text-align:center; margin-left: 8.333333%; position: relative; width: 100%; margin-right: 8.3333%">
+                <table class="backGray shadowGray" style="text-align:center; position: relative; width: 100%;">
                     <tbody>
                         <tr>
                             <td>
-                            <h2><strong>Nombre: </strong> <?= $alumnoData["nombre"] ?></h2>
+                            <h1><strong>Nombre: </strong> <?= $alumnoData["nombre"] ?></h1>
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                <h4><strong>Matrícula: </strong> <?= $alumnoData["matricula"] ?> </h4> 
+                                <h2><strong>Matrícula: </strong> <?= $alumnoData["matricula"] ?> </h2> 
                             </td>
                         </tr>
                     </tbody>
                 </table>
-                <br><br><br><br>
+                <br><br>
 
                 <!--div class="col-10 col-sm-10 offset-1">
                     <div class="mt-3 mb-3">                        
@@ -113,18 +125,103 @@
                 </div--> <!--header...-->
             </div>
 
-            <div class="container">
-            <div class="row">   <!--Materias-->
+            <div class="container-fluid">
+            <div class="">   <!--Materias-->
+                <table style="text-align:center; margin-left: 8.333333%; position: relative; width: 100%; margin-right: 8.3333%">
+                    <tbody>
+                        <tr>
+                            <td>
+                                <h3><strong>Resumen de calificaciones</strong></h3>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="redborder">
+                <table style="text-align:center; margin-left: 8.333333%; position: relative; width: 100%; margin-right: 8.3333%">
+                    <tbody>
+                        <tr>
+                            <td>
+                                <h4 class="redColor" style="margin-left: 40px;">Materia</h4>
+                            </td>
+                            <td>
+                                <h4 class="redColor">Grupo</h4>
+                            </td>
+                            <td>
+                                <h4 class="redColor">Examen</h4>
+                            </td>
+                            <td>
+                                <h4 class="redColor">Tareas</h4>
+                            </td>
+                            <td>
+                                <h4 class="redColor">Calificación</h4>
+                            </td>
+                        </tr> 
+                        
+                        <?php 
+                            if($calificaciones){
+                                foreach ($calificaciones as $value) {
+                        ?>
+                        <tr>
+                            <td>
+                                <p style="margin-left: 40px;"><?= $value["materia"] ?></p>
+                            </td>
+                            <td>
+                                <p><?= $value["grupo"] ?></p>
+                            </td>
+                            <td>
+                                <p><?= $value["examen"] ?><p>
+                            </td>
+                            <td>
+                                <p><?= $value["tareas"] ?></p>
+                            </td>
+                            <td>
+                                <p><?= $value["calificacion"] ?></p>
+                            </td>
+                        </tr> 
+                        <?php
+                                }
+                            }
+                        ?>
+                        
+                    </tbody>
+                </table>
+                           
+                </div>
+                <table style="text-align:right; margin-left: 8.333333%; position: relative; width: 100%; margin-right: 18.3333%">
+                    <tbody>
+                        <tr>
+                            <td>
+                               <h4><strong>Promedio</strong></h4> 
+                            </td>
+                            <td>
+                               <h4><strong><?= $promedio ?></strong></h4> 
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <br><br>
+                <div class="footerPdf">
+                    <div class="">
+                        <table style="text-align:center; position: relative; width: 100%; ">
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <h4 class="redColor">Este documento carece de validez oficial.</h4>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>                            
+                    </div>
+		</div>
                 <div class="col-12">
-                    <div class="row">
+                    <!--div class="row">
                         <div class="col-12 text-center">
                             <br>
                             <h3><strong>Resumen de calificaciones</strong></h3>
                             <br>
                         </div>
-                    </div>
-                    <div class="redborder">
-                        
+                    </div-->
+                    <!--div class="redborder">                        
                         <div class="row">
                             <div class="col-4 text-center">
                                 <h4 class="redColor">Materia</h4>
@@ -178,9 +275,9 @@
                                 }
                             }
                         ?>                           
-                    </div>
+                    </div-->
                     
-                    <div class="row mt-3">
+                    <!--div class="row mt-3">
                         <br>
                         <div class="col-4 text-center">
                             <p></p>
@@ -197,19 +294,15 @@
                         <div class="col-2 text-center">
                             <h4><strong><?= $promedio ?></strong></h4>
                         </div>
-                    </div>
-                </div><!--Fin de materias-->
-                
-                <div class="col-12">
-                    <br>
-                </div>
+                    </div-->
+                </div><!--Fin de materias-->               
             </div>
             </div>
 	<!-- Home -->	
 	</div>
 	
 	<!-- menu respnsibe -->
-        <footer class="footerPdf">
+        <!--footer class="footerPdf">
 		<div class="container">
 			<div class="row">
                             <div class="col-12 text-center">
@@ -217,6 +310,6 @@
                             </div>
 			</div>
 		</div>
-	</footer>
+	</footer-->
 </body>
 </html>
