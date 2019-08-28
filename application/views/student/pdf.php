@@ -69,10 +69,10 @@
                     <tbody>
                         <tr>
                             <td style="text-align: center!important;">
-                            <img class="logo" src="./images/logo_instituto.jpg" alt="">
+                            <img class="logo" src="../images/logo_instituto.jpg" alt="">
                             </td>
                             <td style="text-align: center!important;">
-                            <h3>Instituto de Educación Avanzada</h3>                                
+                            <h3>Instituto de Educación Avanzada</h3>
                             </td>
                         </tr>
                     </tbody>
