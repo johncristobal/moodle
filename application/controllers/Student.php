@@ -279,7 +279,7 @@ class Student extends CI_Controller {
             $this->dompdf->loadHtml($html);
 
             // (Optional) Setup the paper size and orientation
-            $this->dompdf->setPaper('A4', 'landscape');
+            $this->dompdf->setPaper('A4', 'portrait');
 
             // Render the HTML as PDF
             $this->dompdf->render();
@@ -314,6 +314,23 @@ class Student extends CI_Controller {
     }
     
     public function pdf(){
-        $this->load->view("student/pdf");
+        if($this->sesionActiva()){
+            $idalumno = $this->session->userdata("idalumno");
+            $data["alumnoData"] = $this->Alumnomodel->getInfoAlumno($idalumno);
+            $data["calificaciones"]=$this->Alumnomodel->getGrades($idalumno);
+            $totalMaterias=count($data["calificaciones"]);
+            foreach ($data["calificaciones"] as $key) {
+               @$sumCalif+= $key["calificacion"];
+            }
+            $promedio=$sumCalif/ $totalMaterias;
+            $data["promedio"]=number_format($promedio, 2, '.', '');
+                     
+
+            $this->load->view("student/pdf",$data);
+            
+            
+        }else{
+            redirect("/");
+        }
     }
 }
