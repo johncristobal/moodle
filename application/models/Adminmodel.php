@@ -262,6 +262,7 @@ class Adminmodel extends CI_Model {
     }
     
     public function createSubject($info){
+        $tabla = "";
         $datos = [
             'id' => '',
             'materia' => $info["nombreMateria"],
