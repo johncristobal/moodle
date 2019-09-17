@@ -225,7 +225,51 @@
 									</div>
 								</div>
 							</div>
+                                                        
+                                                        <div class="owl-item">
+								<div class="course">
+									<div class="course_image"><img src="images/course_4.jpg" alt=""></div>
+									<div class="course_body">
+										<div class="course_header d-flex flex-row align-items-center justify-content-start">
+											<div class="course_tag"><a href="#">Profesional</a></div>
+										</div>
+										<div class="course_title"><h3><a href="courses.html">Psicología</a></h3></div>
+                                                                                <div class="course_text">
+                                                                                    Formar un profesional de la psicóloga capaz de evaluar, diagnosticar y modificar las conductas desadaptadas que ocurran en el entorno social del sujeto; para contribuir al mejoramiento de la salud mental capaces de utilizar eficazmente las estrategias de intervención, evaluación y tratamiento en los ámbitos individual, familiar y grupal...<br>
+                                                                                </div>
+									</div>
+								</div>
+							</div>
+                                                        
+                                                        <div class="owl-item">
+								<div class="course">
+									<div class="course_image"><img src="images/course_5.jpg" alt=""></div>
+									<div class="course_body">
+										<div class="course_header d-flex flex-row align-items-center justify-content-start">
+											<div class="course_tag"><a href="#">Profesional</a></div>
+										</div>
+										<div class="course_title"><h3><a href="courses.html">Pedagodía</a></h3></div>
+                                                                                <div class="course_text">
+                                                                                    El egresado de la licenciatura en Pedagogía será un profesional con un alto nivel de conocimientos teórico -metodológicos sobre el hecho educativo, capaz de aplicar la pedagogía como la ciencia que reflexiona, investiga y propone soluciones a problemas vinculados con el fenómeno educativo...<br>
+                                                                                </div>
+									</div>
+								</div>
+							</div>
 
+                                                        <div class="owl-item">
+								<div class="course">
+									<div class="course_image"><img src="images/course_6.jpg" alt=""></div>
+									<div class="course_body">
+										<div class="course_header d-flex flex-row align-items-center justify-content-start">
+											<div class="course_tag"><a href="#">Profesional</a></div>
+										</div>
+										<div class="course_title"><h3><a href="courses.html">Administración de empresas</a></h3></div>
+                                                                                <div class="course_text">
+                                                                                    La licenciatura en Administración de Empresas se encarga de formar a un profesional altamente calificado que contara con las bases necesarias tanto teóricas como metodológicas y técnicas para planear, organizar, dirigir y controlar las actividades de una empresa, apoyado en una sólida ética profesional.<br>
+                                                                                </div>
+									</div>
+								</div>
+							</div>
 
 						</div>
 						
