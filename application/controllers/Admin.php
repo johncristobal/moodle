@@ -319,15 +319,17 @@ class Admin extends CI_Controller {
             $data["alumnos"] = $this->Adminmodel->getAlumnos();
             
             //alumnos en grupos
-            foreach ($data["materias_profesor"] as $value) {
-                $idpm = $value["id_pm"];
-                $grupo = $value["grupo"];
-                $alumnosMateria = $this->Adminmodel->getAlumnosMateria($idpm);
-                
-                $alumnosMateriaArray[$grupo] = $alumnosMateria;                
+            if ($data["materias_profesor"] != ""){
+                foreach ($data["materias_profesor"] as $value) {
+                    $idpm = $value["id_pm"];
+                    $grupo = $value["grupo"];
+                    $alumnosMateria = $this->Adminmodel->getAlumnosMateria($idpm);
+
+                    $alumnosMateriaArray[$grupo] = $alumnosMateria;                
+                }
+
+                $data["alumnosMateriaArray"] = $alumnosMateriaArray;
             }
-            
-            $data["alumnosMateriaArray"] = $alumnosMateriaArray;
             
             $this->load->view('admin/groups',$data);
         }else{

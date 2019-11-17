@@ -58,7 +58,7 @@
         <div class="container-fluid">
             
             <?php 
-                if($banners){                
+                if($banners != "-1"){                
             ?>
             <!--div class="d-none d-sm-block d-sm-block d-md-block d-lg-block d-xl-block text-center" style="padding: 20px;">
                 <div class="row">

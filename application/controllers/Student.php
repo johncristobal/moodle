@@ -257,6 +257,48 @@ class Student extends CI_Controller {
             redirect("/");
         }
     }   
+    
+    public function exportPDF(){
+        if($this->sesionActiva()){
+            $idalumno = $this->session->userdata("idalumno");
+            $data["alumnoData"] = $this->Alumnomodel->getInfoAlumno($idalumno);
+            $data["calificaciones"]=$this->Alumnomodel->getGrades($idalumno);
+            $totalMaterias=count($data["calificaciones"]);
+            foreach ($data["calificaciones"] as $key) {
+               @$sumCalif+= $key["calificacion"];
+            }
+            $promedio=$sumCalif/ $totalMaterias;
+            $data["promedio"]=number_format($promedio, 2, '.', '');
+                     
+            $html = $this->load->view('student/pdf', $data, TRUE);
+            
+            // Load pdf library
+            $this->load->library('pdfgenerator');
+
+            // Load HTML content
+            $this->dompdf->loadHtml($html);
+
+            // (Optional) Setup the paper size and orientation
+            $this->dompdf->setPaper('A4', 'portrait');
+
+            // Render the HTML as PDF
+            $this->dompdf->render();
+
+            // Output the generated PDF (1 = download and 0 = preview)
+            $this->dompdf->stream("welcome.pdf", array("Attachment"=>0));
+            
+            //$this->load->library('pdfgenerator');
+            // definamos un nombre para el archivo. No es necesario agregar la extension .pdf
+            //$filename = 'comprobante_pago';
+            // generamos el PDF. Pasemos por encima de la configuración general y definamos otro tipo de papel
+            //$pdffile = $this->pdfgenerator->generate($html, $filename, true, 'Letter', 'portrait');
+
+            $this->load->view("student/pdf",$data);
+                        
+        }else{
+            redirect("/");
+        }
+    }
 /* ////////////////////////////////////////////////////////////////////////////
  * Modulo sesionj
  */////////////////////////////////////////////////////////////////////////////
@@ -271,6 +313,23 @@ class Student extends CI_Controller {
     }
     
     public function pdf(){
-        $this->load->view("student/pdf");
+        if($this->sesionActiva()){
+            $idalumno = $this->session->userdata("idalumno");
+            $data["alumnoData"] = $this->Alumnomodel->getInfoAlumno($idalumno);
+            $data["calificaciones"]=$this->Alumnomodel->getGrades($idalumno);
+            $totalMaterias=count($data["calificaciones"]);
+            foreach ($data["calificaciones"] as $key) {
+               @$sumCalif+= $key["calificacion"];
+            }
+            $promedio=$sumCalif/ $totalMaterias;
+            $data["promedio"]=number_format($promedio, 2, '.', '');
+                     
+
+            $this->load->view("student/pdf",$data);
+            
+            
+        }else{
+            redirect("/");
+        }
     }
 }
