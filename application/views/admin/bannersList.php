@@ -58,7 +58,7 @@
         <div class="container-fluid">
             
             <?php 
-                if($banners != "-1"){                
+                if($banners){                
             ?>
             <!--div class="d-none d-sm-block d-sm-block d-md-block d-lg-block d-xl-block text-center" style="padding: 20px;">
                 <div class="row">
@@ -72,6 +72,7 @@
 
             <?php 
                 foreach ($banners as $value) {
+            
             ?>
             
             <div class="d-none d-sm-block d-sm-block d-md-block d-lg-block d-xl-block justify-content-center filterData">

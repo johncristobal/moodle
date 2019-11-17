@@ -22,7 +22,7 @@
                                                 <div class="logo_container">
                                                     <a href="#">
                                                         <div class="logo_content d-flex flex-row align-items-end justify-content-start">
-                                                            <div class="logo_img"><img src="<?= base_url() ?>images/play_big.png" alt=""></div>
+                                                            <div class="logo_img"><img src="<?= base_url() ?>images/play_big.png" onclick="window.history.back();" alt="regresar"></div>
                                                             <div class="logo_text" onclick="window.history.back();">Regresar</div>
                                                         </div>
                                                     </a>

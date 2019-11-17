@@ -63,11 +63,6 @@
 		<div class="container">
 			<div class="row">
 				<div class="col">
-					<!-- Home Slider Nav -->
-					<div class="home_slider_nav_container d-flex flex-row align-items-start justify-content-between">
-						<div class="home_slider_nav home_slider_prev trans_200"><i class="fa fa-angle-left" aria-hidden="true"></i></div>
-						<div class="home_slider_nav home_slider_next trans_200"><i class="fa fa-angle-right" aria-hidden="true"></i></div>
-					</div>
 					<div class="featured_container">
 						<!--div class="row">
 							<div class="col-lg-6 featured_col">
@@ -168,18 +163,18 @@
                                     </p>                                                
 
                                 </div>
-                                <div class="col-12 col-sm-3 col-md-3">
+                                <div  id="vision" class="col-12 col-sm-3 col-md-3">
                                     <div class="milestone_icon text-right"><img src="images/milestone_2.svg" alt=""></div>
                                 </div>
                             </div>
                             </div>
-                            <div class="col-6">
+                            <div class="col-6" >
                             <div class="row">
                                 <div class="col-12 col-sm-3 col-md-3 text-center">
                                     <div class="milestone_icon text-center"><img src="images/milestone_3.svg" alt=""></div>
                                 </div>
                                 <div class="col-12 col-sm-9">
-                                    <div class="title"><strong>Visión</strong></div>
+                                    <div  class="title"><strong>Visión</strong></div>
                                     <br>
                                     <p>
                                         Crear, a través de una educación de alta calidad, una sociedad conformada por

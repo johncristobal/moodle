@@ -51,10 +51,9 @@
 					<div class="footer_links">
 						<div class="footer_title">Nosotros</div>
 						<ul class="footer_list">
-							<li><a href="#">¿Quiénes somos?</a></li>
-							<li><a href="#">Misión</a></li>
-							<li><a href="#">Visión</a></li>
-							<li><a href="#">Preguntas frecuentes</a></li>
+							<li><a href="<?= base_url() ?>nosotros">¿Quiénes somos?</a></li>
+							<li><a href="<?= base_url() ?>nosotros#vision">Misión</a></li>
+							<li><a href="<?= base_url() ?>nosotros#vision">Visión</a></li>
 						</ul>
 					</div>
 				</div>

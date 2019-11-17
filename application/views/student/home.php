@@ -98,12 +98,12 @@
                             <span class="smallCustom">Calificaciones</span>
                             </a>
                         </div>
-                        <div class="row mt-2">
+                       <!-- <div class="row mt-2">
                             <a href="#">
                             <span class="fa fa-phone"></span>                            
                             <span class="smallCustom">Contacto</span>
                             </a>
-                        </div>
+                        </div> -->
                         <div class="row mt-2">
                             <a href="<?= base_url() ?>student/profile">
                             <span class="fa fa-image"></span>                            

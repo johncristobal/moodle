@@ -336,7 +336,7 @@ class Adminmodel extends CI_Model {
             ->get();
         
         if($datos->num_rows() == 0){
-            return "-1";
+            return false;
         }else{        
             return $datos->result_array();
         }

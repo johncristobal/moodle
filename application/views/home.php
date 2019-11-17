@@ -6,6 +6,7 @@
             "titulo" => 'Modle'
         );
         $this->load->view('head',$datos);
+
     ?>
 <body>
 
@@ -35,8 +36,8 @@
                                                                                         <div class="home_subtitle">Para administar tareas entre Directores, Maestros y Alumnos.</div>
 										</div>
 										<div class="home_buttons">
-											<div class="button home_button"><a href="#">Nosotros<div class="button_arrow"><i class="fa fa-angle-right" aria-hidden="true"></i></div></a></div>
-											<div class="button home_button"><a href="#">Contacto<div class="button_arrow"><i class="fa fa-angle-right" aria-hidden="true"></i></div></a></div>
+											<div class="button home_button"><a href="<?= base_url() ?>nosotros">Nosotros<div class="button_arrow"><i class="fa fa-angle-right" aria-hidden="true"></i></div></a></div>
+											<div class="button home_button"><a href="<?= base_url() ?>contacto">Contacto<div class="button_arrow"><i class="fa fa-angle-right" aria-hidden="true"></i></div></a></div>
 										</div>
 									</div>
 								</div>
@@ -233,7 +234,7 @@
 										<div class="course_header d-flex flex-row align-items-center justify-content-start">
 											<div class="course_tag"><a href="#">Profesional</a></div>
 										</div>
-										<div class="course_title"><h3><a href="courses.html">Psicología</a></h3></div>
+										<div class="course_title"><h3><a href="#">Psicología</h3></div>
                                                                                 <div class="course_text">
                                                                                     Formar un profesional de la psicóloga capaz de evaluar, diagnosticar y modificar las conductas desadaptadas que ocurran en el entorno social del sujeto; para contribuir al mejoramiento de la salud mental capaces de utilizar eficazmente las estrategias de intervención, evaluación y tratamiento en los ámbitos individual, familiar y grupal...<br>
                                                                                 </div>
