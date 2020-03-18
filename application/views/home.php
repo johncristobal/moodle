@@ -158,18 +158,6 @@
 					<div class="section_subtitle">Somos una Institución Educativa con 32 años de experiencia, Actualmente contamos Con 17 Planteles en la Ciudad de México y el área Metropolitana. Nuestro éxito se basa en la flexibilidad que ofrecemos a nuestros alumnos para concluir sus estudios rápidamente.</div>
 				</div>
 			</div>
-			<!--
-			<div class="row">
-				<div class="col">
-					<div class="course_search">
-						<form action="#" class="course_search_form d-flex flex-md-row flex-column align-items-start justify-content-between">
-							<div><input type="text" class="course_input" placeholder="Course" required="required"></div>
-							<div><input type="text" class="course_input" placeholder="Level" required="required"></div>
-							<button class="course_button"><span>search course</span><span class="button_arrow"><i class="fa fa-angle-right" aria-hidden="true"></i></span></button>
-						</form>
-					</div>
-				</div>
-			</div> -->
 			<div class="row">
 				<div class="col">
 					
@@ -185,9 +173,9 @@
 										<div class="course_header d-flex flex-row align-items-center justify-content-start">
 											<div class="course_tag"><a href="#">Bachillerato</a></div>
 										</div>
-										<div class="course_title"><h3><a href="courses.html">Bachillerato a 18 meses</a></h3></div>
+										<div class="course_title"><h3><a href="#">Bachillerato a 18 meses</a></h3></div>
 										<div class="course_text">
-                                                                                ·         Aplicación de Examen en el Plantel<br>
+                                        ·         Aplicación de Examen en el Plantel<br>
 										·         Certificación con validez oficial (bachillerato General)<br>
 										·         Desde 2 horas diarias o en sabatino<br>
 										·         Sin restricción de edad<br>
@@ -206,9 +194,9 @@
 									<div class="course_image"><img src="images/course_2.jpg" alt=""></div>
 									<div class="course_body">
 										<div class="course_header d-flex flex-row align-items-center justify-content-start">
-											<div class="course_tag"><a href="#">Licenciatura</a></div>
+											<div class="course_tag"><a href="<?= base_url()?>ofertaeducativa/derecho">Licenciatura</a></div>
 										</div>
-										<div class="course_title"><h3><a href="courses.html">Derecho</a></h3></div>
+										<div class="course_title"><h3><a href="<?= base_url()?>ofertaeducativa/derecho">Derecho</a></h3></div>
 										<div class="course_text">La carrera de Derecho tiene como objetivo formar profesionales en la ciencia jurídica con énfasis en el área empresarial. <br><br>El abogado es un profesional capacitado para ejercer competitivamente la profesión con un alto sentido ético que le permite desempeñarse de manera eficiente y confiable.</div>
 									</div>
 								</div>
@@ -219,9 +207,9 @@
 									<div class="course_image"><img src="images/course_3.jpg" alt=""></div>
 									<div class="course_body">
 										<div class="course_header d-flex flex-row align-items-center justify-content-start">
-											<div class="course_tag"><a href="#">Licenciatura</a></div>
+											<div class="course_tag"><a href="<?= base_url()?>ofertaeducativa/contaduria">Licenciatura</a></div>
 										</div>
-										<div class="course_title"><h3><a href="courses.html">Contaduría</a></h3></div>
+										<div class="course_title"><h3><a href="<?= base_url()?>ofertaeducativa/contaduria">Contaduría</a></h3></div>
                                                                                 <div class="course_text">El objetivo de la licenciatura es contaduría tiene como principal objetivo la formación de profesionales que proyecten y hagan uso adecuado de la información financiera.<br><br>Esto con base a las normas principios y técnicas contables y en existencia en el ámbito tanto nacional como en el internacional.<br></div>
 									</div>
 								</div>
@@ -232,46 +220,64 @@
 									<div class="course_image"><img src="images/course_4.jpg" alt=""></div>
 									<div class="course_body">
 										<div class="course_header d-flex flex-row align-items-center justify-content-start">
-											<div class="course_tag"><a href="#">Profesional</a></div>
+											<div class="course_tag"><a href="<?= base_url()?>ofertaeducativa/psicologia">Licenciatura</a></div>
 										</div>
-										<div class="course_title"><h3><a href="#">Psicología</h3></div>
-                                                                                <div class="course_text">
-                                                                                    Formar un profesional de la psicóloga capaz de evaluar, diagnosticar y modificar las conductas desadaptadas que ocurran en el entorno social del sujeto; para contribuir al mejoramiento de la salud mental capaces de utilizar eficazmente las estrategias de intervención, evaluación y tratamiento en los ámbitos individual, familiar y grupal...<br>
-                                                                                </div>
+										<div class="course_title"><h3><a href="<?= base_url()?>ofertaeducativa/psicologia">Psicología</a></h3></div>
+                                        <div class="course_text">
+                                            Formar un profesional de la psicóloga capaz de evaluar, diagnosticar y modificar las conductas desadaptadas que ocurran en el entorno social del sujeto; para contribuir al mejoramiento de la salud mental capaces de utilizar eficazmente las estrategias de intervención, evaluación y tratamiento en los ámbitos individual, familiar y grupal...<br>
+                                        </div>
 									</div>
 								</div>
 							</div>
                                                         
-                                                        <div class="owl-item">
+                               <div class="owl-item">
 								<div class="course">
 									<div class="course_image"><img src="images/course_5.jpg" alt=""></div>
 									<div class="course_body">
 										<div class="course_header d-flex flex-row align-items-center justify-content-start">
-											<div class="course_tag"><a href="#">Profesional</a></div>
+											<div class="course_tag"><a href="<?= base_url()?>ofertaeducativa/pedagogia">Licenciatura</a></div>
 										</div>
-										<div class="course_title"><h3><a href="courses.html">Pedagodía</a></h3></div>
-                                                                                <div class="course_text">
-                                                                                    El egresado de la licenciatura en Pedagogía será un profesional con un alto nivel de conocimientos teórico -metodológicos sobre el hecho educativo, capaz de aplicar la pedagogía como la ciencia que reflexiona, investiga y propone soluciones a problemas vinculados con el fenómeno educativo...<br>
-                                                                                </div>
+										<div class="course_title"><h3><a href="<?= base_url()?>ofertaeducativa/pedagogia">Pedagodía</a></h3></div>
+		                                <div class="course_text">
+		                                    El egresado de la licenciatura en Pedagogía será un profesional con un alto nivel de conocimientos teórico -metodológicos sobre el hecho educativo, capaz de aplicar la pedagogía como la ciencia que reflexiona, investiga y propone soluciones a problemas vinculados con el fenómeno educativo...<br>
+		                                </div>
 									</div>
 								</div>
 							</div>
 
-                                                        <div class="owl-item">
+                             <div class="owl-item">
 								<div class="course">
 									<div class="course_image"><img src="images/course_6.jpg" alt=""></div>
 									<div class="course_body">
 										<div class="course_header d-flex flex-row align-items-center justify-content-start">
-											<div class="course_tag"><a href="#">Profesional</a></div>
+											<div class="course_tag"><a href="<?= base_url()?>ofertaeducativa/admempresas">Licenciatura</a></div>
 										</div>
-										<div class="course_title"><h3><a href="courses.html">Administración de empresas</a></h3></div>
-                                                                                <div class="course_text">
-                                                                                    La licenciatura en Administración de Empresas se encarga de formar a un profesional altamente calificado que contara con las bases necesarias tanto teóricas como metodológicas y técnicas para planear, organizar, dirigir y controlar las actividades de una empresa, apoyado en una sólida ética profesional.<br>
-                                                                                </div>
+										<div class="course_title"><h3><a href="<?= base_url()?>ofertaeducativa/admempresas">Administración de empresas</a></h3></div>
+                                        <div class="course_text">
+                                            La licenciatura en Administración de Empresas se encarga de formar a un profesional altamente calificado que contara con las bases necesarias tanto teóricas como metodológicas y técnicas para planear, organizar, dirigir y controlar las actividades de una empresa, apoyado en una sólida ética profesional.<br>
+                                        </div>
 									</div>
 								</div>
 							</div>
-
+                            <div class="owl-item">
+								<div class="course">
+									<div class="course_image"><img src="images/course_6.jpg" alt=""></div>
+									<div class="course_body">
+										<div class="course_header d-flex flex-row align-items-center justify-content-start">
+											<div class="course_tag"><a href="<?= base_url()?>ofertaeducativa/computacion">Profesional</a></div>
+										</div>
+										<div class="course_title"><h3><a href="<?= base_url()?>ofertaeducativa/computacion">Plan de computación</a></h3></div>
+                                        <div class="course_text">
+											<ul>
+												<li> ·  Administrativo</li>
+												<li> ·  Diseño gráfico</li>
+												<li> ·  Programación</li>
+											</ul>	
+                                            <br>
+                                        </div>
+									</div>
+								</div>
+							</div>
 						</div>
 						
 						<!-- Courses Slider Nav -->

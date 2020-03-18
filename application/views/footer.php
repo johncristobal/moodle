@@ -12,7 +12,7 @@
 						<div class="logo_container">
 							<a href="#">
 								<div class="logo_content d-flex flex-row align-items-end justify-content-start">
-									<div class="logo_img"><img class="logo" src="<?= base_url() ?>images/logo_instituto.jpg" alt=""></div>
+									<div class="logo_img"><img class="logo" src="<?= base_url() ?>images/logo_idea.jpg" alt=""></div>
 									
 								</div>
 							</a>
@@ -40,9 +40,12 @@
 					<div class="footer_links">
 						<div class="footer_title">Oferta educativa</div>
 						<ul class="footer_list">
-							<li><a href="#">Derecho</a></li>
-							<li><a href="#">Contaduría</a></li>
-							<li><a href="#">Oferta educativa</a></li>
+							<li><a href="<?= base_url();?>ofertaeducativa/derecho">Derecho</a></li>
+							<li><a href="<?= base_url();?>ofertaeducativa/contaduria">Contaduría</a></li>
+							<li><a href="<?= base_url();?>ofertaeducativa/psicologia">Psicología</a></li>
+							<li><a href="<?= base_url();?>ofertaeducativa/pedagogia">Pedagogía</a></li>
+							<li><a href="<?= base_url();?>ofertaeducativa/admempresas">Administración de empresas</a></li>
+							<li><a href="<?= base_url();?>ofertaeducativa/computacion">Plan de computación</a></li>
 						</ul>
 					</div>
 				</div>

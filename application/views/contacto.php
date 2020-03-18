@@ -1,7 +1,7 @@
 <div class="milestones">
                 
 		<!-- Background image artis https://unsplash.com/@thepootphotographer data-image-src="images/banners/bannercorreo.jpeg"-->
-		<div class="parallax_background parallax-window" data-parallax="scroll"  data-speed="0.8" style="background-image:linear-gradient(to bottom, rgba(10, 10, 10, 0.70), rgba(10, 10, 10, 0.73)), url(images/banners/bannercorreo.jpeg)"></div>
+		<div class="parallax_background parallax-window" data-parallax="scroll"  data-speed="0.8" style="background-image:linear-gradient(to bottom, rgba(10, 10, 10, 0.70), rgba(10, 10, 10, 0.73)), url(<?= base_url();?>images/banners/bannercorreo.jpeg)"></div>
 		<div class="container">
 			<div class="row milestones_container">
                             

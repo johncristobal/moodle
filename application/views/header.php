@@ -51,7 +51,7 @@
 							<div class="logo_container">
 								<a href="<?= base_url(); ?>">
 									<div class="logo_content d-flex flex-row align-items-end justify-content-start">
-                                                                            <div class="logo_img"><img class="logo" src="images/logo_instituto.jpg" alt=""></div>
+                                                                            <div class="logo_img"><img class="logo" src="<?=base_url()?>images/logo_instituto.jpg" alt=""></div>
                                                                             &nbsp;&nbsp;&nbsp;&nbsp;<div class="logo_text">Idea</div>
 									</div>
 								</a>
@@ -59,11 +59,10 @@
 							<nav class="main_nav_contaner ml-auto">
 								<ul class="main_nav">
 									<li><a href="<?= base_url() ?>">Inicio</a></li>
-									<!--li><a href="about.html">Acerca de nosotros</a></li>
-									<li><a href="courses.html">Oferta educativa</a></li-->
+									<li><a href="<?= base_url() ?>ofertaeducativa">Oferta educativa</a></li>
                                                                         <li><a href="<?= base_url() ?>nosotros">Nosotros</a></li>
                                                                         <li><a href="<?= base_url() ?>contacto">Contacto</a></li>
-                                                                        <li><a href="<?= base_url() ?>login">Iniciar sesión</a></li>
+                                                                       <li><a href="<?= base_url() ?>login">Iniciar sesión</a></li>
 								</ul>
 								<!-- Hamburger -->
 
