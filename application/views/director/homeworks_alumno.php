@@ -6,6 +6,7 @@
             "titulo" => 'Tareas Profesor'
         );
         $this->load->view('head',$datos);
+        $materia="";
     ?>
 </head>
 <body>
@@ -73,6 +74,9 @@
                                     <a href="<?= $value["archivo"]; ?>" id="<?= $value["id_tarea"]; ?>" dir="<?= $value["id"] ?>" class="openModalCalificar"><i class="fa fa-pencil fa-lg" aria-hidden="true"></i></a>
                                 </div>
                             </div>
+                            <?php 
+                                $materia=$value["id_pm"];
+                                ?>
                             <div class="row">
                                 <div class="col-12"><hr></div>
                             </div>
@@ -145,6 +149,7 @@
               <div class="modal-body">
                   <input type="hidden" class="idtarea" name="idtarea" id="idtarea">
                   <input type="hidden" class="idgrupo" name="idpm" id="idpm">
+                  <input type="hidden"  name="materia" id="materia" value="<?= $materia?>">
                 <div class="form-group row">
                   <label class="col-sm-3" for="alumno">Alumno: </label>
                   <div class="col-sm-8">
