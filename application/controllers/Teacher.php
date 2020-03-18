@@ -307,7 +307,7 @@ class Teacher extends CI_Controller {
                 $tareasComp=$this->input->post("tareasComp");
                 $tareasMoodle=$this->input->post("tareasMoodle");
                 $calificacion= $tareasMoodle+$tareasComp+$examenes;
-                $this->Profesormodel->updateGrades($idAlumno,$tareasComp,$calificacion);
+                $this->Profesormodel->updateGrades($idAlumno,$tareasComp,$calificacion,$examenes);
                 $this->grades();
             }else{
                 $info=array();

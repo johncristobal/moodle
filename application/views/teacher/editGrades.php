@@ -70,10 +70,10 @@
                                                     <div class="news_post_author"><?= $info["tareasMoodle"]?></div>
                                                 </div>
                                                 <div class="col-sm-2">
-                                                     <input type="number" class="form-control" name="tareasComp" id="tareasComp" placeholder="" required="required" value="<?= $info["tareasComp"]?>">
+                                                     <input type="number" class="form-control" name="tareasComp" id="tareasComp" placeholder="" max=20 min=0 required="required" value="<?= $info["tareasComp"]?>">
                                                 </div>
                                                 <div class="col-sm-2">
-                                                    <input type="number" min="1"  max="70" class="form-control" name="examenes" id="examenes" placeholder="" required="required" value="<?= $info["examen"]?>">
+                                                    <input type="number" min=0  max=40 class="form-control" name="examenes" id="examenes" placeholder="" required="required" value="<?= $info["examen"]?>">
                                                 </div>                   
                                                 <div class="col-sm-2">
                                                     <div class="news_post_author"><b><?= $info["calificacion"]?></b></div>

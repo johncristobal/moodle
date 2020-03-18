@@ -32,15 +32,15 @@
                             <div class="accordion d-flex flex-row align-items-center active"><div><?= $key ?></div></div>                           
                                 <div class="accordion_panel" style="max-height: 164px;">
                                     <div class="row">
-                                        <div class="col-md-3 col-sm-12">
-                                            <p>El porcentaje de tareas es: <b> <?= $porcentaje[$key] ?> % </b></p>
+                                        <div class="col-md-4 col-sm-12">
+                                            <p>El porcentaje de tareas Moodle es: <b> <?= $porcentaje[$key] ?> % </b></p>
                                         </div>
-                                        <div class="col offset-2 ">
+                                        <div class="col offset-1 ">
                                             <button class="btn btn-danger nuevoPorcentaje msg-warning" id="<?= $idpm[$key] ?>">Definir porcentaje</button>
                                         </div>
-                                        <div class="col offset-3 ">
+                                       <!-- <div class="col offset-3 ">
                                             <button class="btn btn-danger nuevatarea msg-warning" id="<?= $idpm[$key] ?>">Subir excel</button>
-                                        </div>
+                                        </div> -->
                                     </div>
                                 
                                     <?php 
@@ -110,7 +110,7 @@
           <div class="modal-dialog" role="document">
             <div class="modal-content">
               <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Definición de porcentaje de tareas</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Definición de porcentaje de tareas Moodle </h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
@@ -119,8 +119,8 @@
               <div class="modal-body">
                   <input type="hidden" name="idpm" id="id_pm">
                 <div class="form-group">
-                  <label for="description">Escriba el porcentaje (máximo 30%)</label>
-                  <input type="number" class="form-control" max=30 min=1 id="porcentaje" name="porcentaje" placeholder="Escriba el porcentaje %">
+                  <label for="description">Escriba el porcentaje (máximo 40%)</label>
+                  <input type="number" class="form-control" max=40 min=1 id="porcentaje" name="porcentaje" placeholder="Escriba el porcentaje %">
                 </div>
             
               </div>

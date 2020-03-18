@@ -72,7 +72,7 @@
                     <div class="col-5 col-sm-2 offset-2 offset-sm-4">
                     <div class="p">
                         <div class="news_post_comments">
-                            <a href="<?= base_url() ?>admin/homework_alumno/<?= $alumno["id_alumno"]?>"><?= $alumno["nombre"] ?></a>
+                            <?= $alumno["nombre"] ?>
                         </div>                                                                                                                               
                     </div>
                     </div>

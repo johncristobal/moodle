@@ -127,10 +127,11 @@ class Profesormodel extends CI_Model {
             return $query->result_array()[0];
         }
     }  
-    public function updateGrades($idAlumno,$tareasComp,$calificacion){
+    public function updateGrades($idAlumno,$tareasComp,$calificacion,$examen){
          $data = array(
             "tareasComp" => $tareasComp,
             "calificacion" => $calificacion,
+            "examen"=>$examen
         );
         
         $this->db->where("fk_student",$idAlumno);
