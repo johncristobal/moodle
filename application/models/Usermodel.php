@@ -45,6 +45,20 @@ class Usermodel extends CI_Model {
             return $datos->result_array();
         }
     }
+    public function getAlumno($idAlumno){
+
+        $datos = $this->db->select('*')
+            ->from('alumnos')
+            ->where('estatus',"1")
+            ->where('Fk_usuario',$idAlumno)
+            ->get();
+        
+        if($datos->num_rows() == 0){
+            return "";
+        }else{        
+            return $datos->result_array()[0];
+        }
+    }
     
     public function crearDirector($info,$idUser){
 
@@ -176,7 +190,7 @@ class Usermodel extends CI_Model {
         
         $datos = [
             'correo' => $info["correo"],
-            //'password' => $info["password"],//
+            'password' => $info["password"],
             'estatus' => '1',// Personalizar esto cuando esté la tabla estatus @cmaya
             'rol' =>$tipoUser,
             'fecha_alta' => date("Y-m-d")
@@ -214,7 +228,21 @@ class Usermodel extends CI_Model {
         return false;
        }    
     }
-    
+     public function eliminarProfAlum($idAlumno){
+       $this->db->where('id_alumno', $idAlumno);
+       $result=$this->db->delete('alumno_profesor_materia');  
+       if($result){
+        $this->db->where('id_alumno', $idAlumno);
+       $result=$this->db->delete('alumno_tareas');  
+           if ($result2){
+            return true;  
+           } else{
+            return false;
+           }
+       }else{
+        return false;
+       }    
+    }   
     public function getRol($id){
         $query = $this->db->select('rol')
             ->from('usuarios')

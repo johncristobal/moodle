@@ -45,4 +45,8 @@ class OfertaEducativa extends CI_Controller {
     public function computacion(){
     	$this->load->view("computacion");
     } 
+
+    public function bachillerato(){
+         $this->load->view("bachillerato");  
+    }
 }

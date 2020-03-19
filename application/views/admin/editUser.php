@@ -3,7 +3,7 @@
 <head>
     <?php 
         $datos = array(
-            "titulo" => 'Registrar usuario'
+            "titulo" => 'Editar usuario'
         );
         $this->load->view('head',$datos);
     ?>
@@ -39,7 +39,7 @@
 				<!-- Contact Content -->
                             <div class="col-12 col-sm-6 offset-sm-3">
                                 <div class="">						
-                                    <form  id="contact_form"  action="<?=base_url()?>Admin/guardarCambios" method="post" class="_form">
+                                    <form  id="contact_form"  action="<?=base_url()?>admin/guardarCambios" method="post" class="_form">
                                         <input type="hidden" name="idUser" value="<?= $idUser?>"/>
                                         <div>
                                             <div class="row">

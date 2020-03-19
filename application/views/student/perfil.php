@@ -81,11 +81,6 @@
                         </strong>
                         </div>
                     </div>
-                    <div class="row mt-4">
-                        <div class="col-12 text-center">
-                            <button class="btn msg-warning" data-toggle="modal" data-target="#modalEditarInfo">Editar información</button>
-                        </div>
-                    </div>
                 </div>
                     
                 </div>

@@ -40,6 +40,7 @@
 					<div class="footer_links">
 						<div class="footer_title">Oferta educativa</div>
 						<ul class="footer_list">
+							<li><a href="<?= base_url();?>ofertaeducativa/bachillerato">Bachillerato en 18 meses</a></li>
 							<li><a href="<?= base_url();?>ofertaeducativa/derecho">Derecho</a></li>
 							<li><a href="<?= base_url();?>ofertaeducativa/contaduria">Contaduría</a></li>
 							<li><a href="<?= base_url();?>ofertaeducativa/psicologia">Psicología</a></li>

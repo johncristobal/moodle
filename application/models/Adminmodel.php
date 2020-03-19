@@ -177,11 +177,34 @@ class Adminmodel extends CI_Model {
             return "-1";
         }
     }
-    
+    public function inicializarCalificaciones($idpm,$idalumno){
+              $temp = array(
+                "fk_student" => $idalumno,
+                "id_pm" => $idpm,
+                "tareas" => 0,
+                "tareasComp" => 0,
+                "examen" => 0,
+                "calificacion" => 0,
+                "estatus" => 1,
+            );
+
+            $result=$this->db->insert('calificaciones', $temp); 
+
+            return $result;      
+
+    }
     public function eliminarRelationAlumnoGrupo($idpm,$alumnos){
         $this->db->where('id_pm', $idpm); 
         $this->db->where('id_alumno', $alumnos); 
         $num = $this->db->delete("alumno_profesor_materia");
+
+        return $num;
+    }
+
+    public function eliminarCalificaciones($idpm,$alumnos){
+        $this->db->where('id_pm', $idpm); 
+        $this->db->where('fk_student', $alumnos); 
+        $num = $this->db->delete("calificaciones");
 
         return $num;
     }
@@ -300,7 +323,7 @@ class Adminmodel extends CI_Model {
        $this->db->where('id', $idSubject);
        $result=$this->db->delete('materias');  
          
-        if($result){
+        if ($result){
             return true;
         }else{
             return false;

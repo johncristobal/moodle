@@ -48,38 +48,6 @@
 			</div>
 		</div>
 	</div>
-
-	<!-- Featured Course -->
-
-	<div class="featured">
-		<div class="container">
-			<div class="row">
-				<div class="col">
-					<div class="featured_container">
-						<!--div class="row">
-							<div class="col-lg-6 featured_col">
-								<div class="featured_content">
-									<div class="featured_header d-flex flex-row align-items-center justify-content-start">
-										<div class="featured_tag"><a href="#">Featured</a></div>
-										<div class="featured_price ml-auto">Price: <span>$35</span></div>
-									</div>
-									<div class="featured_title"><h3><a href="courses.html">Online Literature Course</a></h3></div>
-									<div class="featured_text">Maecenas rutrum viverra sapien sed fermentum. Morbi tempor odio eget lacus tempus pulvinar. Donec vehicula efficitur nibh, in pretium nulla interdum non.</div>
-									<div class="featured_footer d-flex align-items-center justify-content-start">
-										<div class="featured_author_image"><img src="images/featured_author.jpg" alt=""></div>
-										<div class="featured_author_name">By <a href="#">James S. Morrison</a></div>
-										<div class="featured_sales ml-auto"><span>352</span> Sales</div>
-									</div>
-								</div>
-							</div>
-							<div class="col-lg-6 featured_col">
-								<!-- Background image artist https://unsplash.com/@jtylernix -->
-							</div>
-						</div-->
-					</div>
-				</div>
-			</div>
-        </div>
         
 <!-- Courses -->
 <div class="teachers">
@@ -90,11 +58,21 @@
                 </div>
             </div>
             <div class="row teachers_row">
-                
+
+                 <!-- Teacher -->
+                <div class="col-lg-4 col-md-6">
+                    <div class="teacher">
+                        <div class="teacher_image"><img src="<?=base_url(); ?>images/course_1.jpg"></div>
+                        <div class="teacher_body text-center">
+                            <div class="teacher_title"><a href="<?= base_url()?>ofertaeducativa/bachillerato">Bachillerato 18 meses</a></div>
+                            <div class="teacher_subtitle">Bachillerato</div>
+                        </div>
+                    </div>
+                </div>               
                 <!-- Teacher -->
                 <div class="col-lg-4 col-md-6">
                     <div class="teacher">
-                        <div class="teacher_image"><img src="images/teacher_1.jpg" ></div>
+                        <div class="teacher_image"><img src="<?=base_url(); ?>images/course_2.jpg" ></div>
                         <div class="teacher_body text-center">
                             <div class="teacher_title"><a href="<?= base_url()?>ofertaeducativa/derecho">Derecho</a></div>
                             <div class="teacher_subtitle">Licenciatura</div>
@@ -105,7 +83,7 @@
                 <!-- Teacher -->
                 <div class="col-lg-4 col-md-6">
                     <div class="teacher">
-                        <div class="teacher_image"><img src="images/teacher_2.jpg"></div>
+                        <div class="teacher_image"><img src="<?=base_url(); ?>images/course_3.jpg"></div>
                         <div class="teacher_body text-center">
                             <div class="teacher_title"><a href="<?= base_url()?>ofertaeducativa/contaduria">Contaduría</a></div>
                             <div class="teacher_subtitle">Licenciatura</div>
@@ -116,7 +94,7 @@
                 <!-- Teacher -->
                 <div class="col-lg-4 col-md-6">
                     <div class="teacher">
-                        <div class="teacher_image"><img src="images/teacher_3.jpg" ></div>
+                        <div class="teacher_image"><img src="<?=base_url(); ?>images/course_4.jpg" ></div>
                         <div class="teacher_body text-center">
                             <div class="teacher_title"><a href="<?= base_url()?>ofertaeducativa/psicologia">Psicología</a></div>
                             <div class="teacher_subtitle">Licenciatura</div>
@@ -127,7 +105,7 @@
                 <!-- Teacher -->
                 <div class="col-lg-4 col-md-6">
                     <div class="teacher">
-                        <div class="teacher_image"><img src="images/teacher_4.jpg" ></div>
+                        <div class="teacher_image"><img src="<?=base_url(); ?>images/course_5.jpg" ></div>
                         <div class="teacher_body text-center">
                             <div class="teacher_title"><a href="<?= base_url()?>ofertaeducativa/pedagogia">Pedagogía</a></div>
                             <div class="teacher_subtitle">Licenciatura</div>
@@ -138,7 +116,7 @@
                 <!-- Teacher -->
                 <div class="col-lg-4 col-md-6">
                     <div class="teacher">
-                        <div class="teacher_image"><img src="images/teacher_5.jpg" alt="https://unsplash.com/@christinhumephoto"></div>
+                        <div class="teacher_image"><img src="<?=base_url(); ?>images/course_6.jpg" alt="https://unsplash.com/@christinhumephoto"></div>
                         <div class="teacher_body text-center">
                             <div class="teacher_title"><a href="<?= base_url()?>ofertaeducativa/admempresas">Administración de empresas</a></div>
                             <div class="teacher_subtitle">Licenciatura</div>
@@ -149,14 +127,13 @@
                 <!-- Teacher -->
                 <div class="col-lg-4 col-md-6">
                     <div class="teacher">
-                        <div class="teacher_image"><img src="images/teacher_6.jpg"></div>
+                        <div class="teacher_image"><img src="<?=base_url(); ?>images/course_9.jpg"></div>
                         <div class="teacher_body text-center">
                             <div class="teacher_title"><a href="<?= base_url()?>ofertaeducativa/computacion">Plan de computación</a></div>
                             <div class="teacher_subtitle">Profesional</div>
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>

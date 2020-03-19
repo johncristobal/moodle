@@ -171,9 +171,9 @@
 									<div class="course_image"><img src="images/course_1.jpg" alt=""></div>
 									<div class="course_body">
 										<div class="course_header d-flex flex-row align-items-center justify-content-start">
-											<div class="course_tag"><a href="#">Bachillerato</a></div>
+											<div class="course_tag"><a href="<?= base_url()?>ofertaeducativa/bachillerato">Bachillerato</a></div>
 										</div>
-										<div class="course_title"><h3><a href="#">Bachillerato a 18 meses</a></h3></div>
+										<div class="course_title"><h3><a href="<?= base_url()?>ofertaeducativa/bachillerato">Bachillerato a 18 meses</a></h3></div>
 										<div class="course_text">
                                         ·         Aplicación de Examen en el Plantel<br>
 										·         Certificación con validez oficial (bachillerato General)<br>
@@ -261,7 +261,7 @@
 							</div>
                             <div class="owl-item">
 								<div class="course">
-									<div class="course_image"><img src="images/course_6.jpg" alt=""></div>
+									<div class="course_image"><img src="images/course_9.jpg" alt=""></div>
 									<div class="course_body">
 										<div class="course_header d-flex flex-row align-items-center justify-content-start">
 											<div class="course_tag"><a href="<?= base_url()?>ofertaeducativa/computacion">Profesional</a></div>

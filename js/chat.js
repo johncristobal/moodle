@@ -162,7 +162,7 @@ $(document).ready(function()
                 },
                 error: function(e){
                     $(".gif").hide();
-                    alert("error1");
+                   // alert("error1");
                 }
             });
         });
@@ -234,7 +234,7 @@ $(document).ready(function()
                     //setTimeout("getMessagesUpdate()",1000)
                 },
                 error: function(e){
-                    alert("error2");
+                  //  alert("error2");
                 }
             });
         }
@@ -272,7 +272,7 @@ $(document).ready(function()
                         }
                     },
                     error: function(e){
-                        alert("error3");
+                      //  alert("error3");
                     }
                 });
                 //console.log($(this).attr("href"));

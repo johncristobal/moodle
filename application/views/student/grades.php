@@ -103,7 +103,7 @@
                 }else{
             ?>
                 <div class="col-4 col-sm-5 offset-sm-3">
-                    <div class="section_title text-center"><h2>Sin materias</h2></div>                
+                    <div class="section_title text-center"><h2>Sin calificaciones </h2></div>                
                 </div>
             <?php
                 }

@@ -130,6 +130,10 @@ class Admin extends CI_Controller {
                         break;
                     case '3':
                         $tabla="alumnos"; 
+                        //obtenemos id de la tabla alumnos
+                        $result=$this->Usermodel->getAlumno($id);
+                        //en caso de ser alumnos se debe elimnar la relación de la tabla profesor alumno materia
+                        $this->Usermodel->eliminarProfAlum($result["id"]);
                         break; 
                     case '4':
                         $tabla="directores"; 
@@ -137,6 +141,7 @@ class Admin extends CI_Controller {
                     default:
                         break;
                 }
+
                $result=$this->Usermodel->eliminarUser($id,$tabla);
                if($result){
                 redirect('admin/users');
@@ -151,7 +156,7 @@ class Admin extends CI_Controller {
         if($this->sesionActiva()){
             if($this->input->post()){
                 $info=$this->input->post();
-                $result=$this->Adminmodel->editarUser($info);  
+                $result=$this->Usermodel->editarUser($info);  
                 redirect('admin/users');              
              }
         }else{
@@ -382,7 +387,10 @@ class Admin extends CI_Controller {
         $todos = explode(",", $alumnos);
         foreach ($todos as $value) {
             if($value != ""){
-                $this->Adminmodel->saveRelationAlumnoGrupo($idpm,$value);
+                
+                $this->Adminmodel->saveRelationAlumnoGrupo($idpm,$value); 
+                //Inicializamos las calificaciones en 0 de los alumnos que se registraron
+                $this->Adminmodel->inicializarCalificaciones($idpm,$value);               
             }
         }
         
@@ -392,7 +400,8 @@ class Admin extends CI_Controller {
     public function eliminarAlumnoMateria(){
         $alumnos = $this->input->post("alumno"); 
         $idpm = $this->input->post("idpm"); 
-        
+        //Primero eliminamos la relación en calificaciones
+         $this->Adminmodel->eliminarCalificaciones($idpm,$alumnos);
         $this->Adminmodel->eliminarRelationAlumnoGrupo($idpm,$alumnos);
         
         echo "listo";
