@@ -167,6 +167,12 @@ $(document).ready(function(){
       $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
     });
   });
+
+    <?php if($this->session->flashdata('msg')){ ?>
+    swal("Error", "<?php echo $this->session->flashdata('msg'); ?>", "error");
+    <?php } ?>
+
+
 });
 </script>
 </body>

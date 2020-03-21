@@ -28,7 +28,7 @@ class Director extends CI_Controller {
     }
     
     public function index(){
-        if($this->sesionActiva()){
+        if($this->sesionActiva() && $this->validaUser()){
             $id = $this->session->userdata("id");
             $iddirector = $this->Directormodel->getIdDirector($id);
             $this->session->set_userdata("iddirector",$iddirector["id"]);
@@ -44,7 +44,7 @@ class Director extends CI_Controller {
 // Usuarios
 // =============================================================================
     public function users(){
-        if($this->sesionActiva()){
+        if($this->sesionActiva() && $this->validaUser()){
             $data["usuarios"] = $this->Usermodel->getUsers();
             $this->load->view('director/users',$data);
         }else{
@@ -53,7 +53,7 @@ class Director extends CI_Controller {
     }
     
     public function register(){
-        if($this->sesionActiva()){
+        if($this->sesionActiva() && $this->validaUser()){
             $data["usuarios"] = $this->Usermodel->getUsers();
             $this->load->view('director/register',$data);
         }else{
@@ -62,7 +62,7 @@ class Director extends CI_Controller {
     }
     
     public function nuevoUsuario(){
-        if($this->sesionActiva()){
+        if($this->sesionActiva() && $this->validaUser()){
             if($this->input->post()){
                 $info=$this->input->post(); 
                 //$edad=$this->calcularEdad($info["fecha_nacim"]);
@@ -97,7 +97,7 @@ class Director extends CI_Controller {
     }  
 
     public function editarUsuario($id){
-        if($this->sesionActiva()){
+        if($this->sesionActiva() && $this->validaUser()){
             $result=$this->Usermodel->getRol($id); 
             if($result){
                 switch ($result["rol"]) {
@@ -129,7 +129,7 @@ class Director extends CI_Controller {
     }
     
     public function guardarCambios(){
-        if($this->sesionActiva()){
+        if($this->sesionActiva() && $this->validaUser()){
             if($this->input->post()){
                 $info=$this->input->post();
                 $result=$this->Usermodel->editarUser($info);  
@@ -141,7 +141,7 @@ class Director extends CI_Controller {
     }
     
     public function eliminarUsuario($id){
-        if($this->sesionActiva()){
+        if($this->sesionActiva() && $this->validaUser()){
              $result=$this->Usermodel->getRol($id); 
              if($result){
                 switch ($result["rol"]) {
@@ -178,7 +178,7 @@ class Director extends CI_Controller {
         //leemos grupos con sus datos
         //de cada grupo, recuperamos las tareas
         //al dar clic en tarea, visualizar calificaciones de quien ha subido tarea
-        if($this->sesionActiva()){
+        if($this->sesionActiva() && $this->validaUser()){
             //recupero id profesor
             $iddirector = $this->session->userdata("iddirector");
 
@@ -224,7 +224,7 @@ class Director extends CI_Controller {
  */////////////////////////////////////////////////////////////////////////////
     public function homework_alumno($idtarea){
         //select from alumno_tarea donde idtarea = idtarea
-        if($this->sesionActiva()){
+        if($this->sesionActiva() && $this->validaUser()){
             $tareas = $this->Directormodel->getTareasAlumno($idtarea);
             $data["tareas"] = $tareas;
             $data["infotarea"] = $this->Directormodel->getInfoTarea($idtarea);
@@ -241,6 +241,14 @@ class Director extends CI_Controller {
             return true;
         }else{
             return false; 
+        }
+    }
+        public function validaUser(){
+        $rol=$this->session->userdata("rol");
+        if($rol=="4"){ //caso de director
+            return true;
+        }else{
+            return false;
         }
     }
 

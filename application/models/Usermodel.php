@@ -59,7 +59,20 @@ class Usermodel extends CI_Model {
             return $datos->result_array()[0];
         }
     }
-    
+    public function getIdPmProfesor($idProfesor){
+
+        $datos = $this->db->select('profesor_materia.id_pm')
+            ->from('profesores')
+            ->join('profesor_materia ',"profesores.id = profesor_materia.profesor")
+            ->where('profesores.Fk_usuario',$idProfesor)
+            ->get();
+        
+        if($datos->num_rows() == 0){
+            return "";
+        }else{        
+            return $datos->result_array()[0];
+        }
+    }    
     public function crearDirector($info,$idUser){
 
         $datos = [
@@ -243,6 +256,21 @@ class Usermodel extends CI_Model {
         return false;
        }    
     }   
+     public function eliminarProfAlum_Prof($idPm){
+       $this->db->where('id_pm', $idPm);
+       $result=$this->db->delete('alumno_profesor_materia');  
+       if($result){
+        $this->db->where('id_alumno', $idAlumno);
+       $result=$this->db->delete('alumno_tareas');  
+           if ($result2){
+            return true;  
+           } else{
+            return false;
+           }
+       }else{
+        return false;
+       }    
+    }      
     public function getRol($id){
         $query = $this->db->select('rol')
             ->from('usuarios')

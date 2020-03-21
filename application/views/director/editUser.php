@@ -93,14 +93,15 @@
                                         <div>
                                             <div class="form-group">
                                                 <label for="password">Contraseña</label>
-                                                <input type="password" class="form-control" id="password" name="password" placeholder="Escriba una contraseña" >
+                                                <input type="password" class="form-control" id="password" name="password" placeholder="Escriba una contraseña" required="required" >
                                             </div>
                                         </div>
                                         <div>
                                             <div class="form-group">
                                                 <label for="password2">Repita la contraseña</label>
-                                                <input type="password" class="form-control" id="password2" name="password2" placeholder="Escriba nuevamente la contraseña">
+                                                <input type="password" class="form-control" id="password2" name="password2" placeholder="Escriba nuevamente la contraseña" required="required">
                                             </div>
+                                            <span id='message'></span>
                                         </div>	
                                         <div class="text-center">
                                             <input type="button" value="Guardar cambios" id ="editForm" class="msg-warning btn btn-info" >
@@ -155,6 +156,17 @@
     $(function () {
         $('#datetimepicker1').datetimepicker();
     });
+
+$('#password, #password2').on('keyup', function () {
+  if ($('#password').val() == $('#password2').val()) {
+    $('#message').html('Correcto').css('color', 'green');
+    $('#editForm').removeAttr("disabled");
+  } else {
+    $('#message').html('Las contraseña no coincide').css('color', 'red');
+    $('#editForm').attr("disabled", true);
+  }
+
+});      
 </script>
 </body>
 </html>

@@ -76,7 +76,20 @@ class Adminmodel extends CI_Model {
             return $datos->result_array();
         } 
     }
-    
+    public function getProfesorMateria($idMateria){
+        $datos = $this->db->select('*')
+            ->from('profesor_materia')
+            ->where('materia',$idMateria)
+            ->where('estatus',"1")
+            ->get();
+        if($datos->num_rows() == 0){
+            return "-1";            
+        }else{
+            return $datos->result_array()[0];
+        }
+
+
+    }
     public function saveRelationProfesorMateria($idmateria,$idprofesor,$grupo){
         
         //la insertare por si acaso

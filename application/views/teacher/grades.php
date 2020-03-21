@@ -63,7 +63,7 @@
                         <div class="d-none d-sm-block d-sm-block d-md-block d-lg-block d-xl-block text-center justify-content-center">
                             <div class="row">        
                                 <div class="col-sm-2  text-center">
-                                    <div class="text-center"><?= $alumno["id_alumno"]; ?></div>
+                                    <div class="text-center"><?= $alumno["nombre"]; ?></div>
                                 </div>
                                 <div class="col-sm-2">
                                     <div class="news_post_author"><?= $alumno["tareas"]; ?></div>

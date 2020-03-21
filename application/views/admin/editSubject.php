@@ -29,16 +29,7 @@
                         <!--div>
                             <input type="text" class="course_input" placeholder="Course" >
                         </div-->
-                        <div class="d-none d-sm-block d-sm-block d-md-block d-lg-block d-xl-block">
-                            <button class="course_button_add" id="">                                
-                                <span>Importar excel</span>   
-                            </button>
-                        </div>
-                        <div class="d-block d-sm-none d-sm-none d-md-none d-lg-none d-xl-none">
-                            <button class="course_button_add_res">
-                                <span>Importar excel</span> 
-                            </button>
-                        </div>
+                        
                     </div>
                 </div>
             </div>
@@ -71,7 +62,9 @@
                                                             </span>
                                                         </div-->
                                                         <label for="fecha_nacim">Estatus</label>
-                                                        <input type="text" class="form-control" name="estatusMateria" id="estatusMateria" required="required" value="<?= $info->estatus?>">
+                                                        <select class="form-control" name="estatusMateria" id="estatusMateria" required="required">
+                                                         <option value="1">Activo</option>
+                                                        </select>
                                                     </div>
                                                 </div>
                                             </div>

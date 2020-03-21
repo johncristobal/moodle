@@ -3,7 +3,7 @@
 <head>
     <?php 
         $datos = array(
-            "titulo" => 'Registrar usuario'
+            "titulo" => 'Registrar materia'
         );
         $this->load->view('head',$datos);
     ?>
@@ -22,7 +22,7 @@
         <div class="container headerTitle">
             <div class="row justify-content-between">
                 <div class="col-12 col-sm-5 offset-sm-3">
-                    <div class="section_title text-center"><h2>Registrar nueva Materia</h2></div>                
+                    <div class="section_title text-center"><h2>Registrar nueva materia</h2></div>                
                 </div>
                 <div class="col-8 col-sm-4 right">
                     <div id="excelRead">
@@ -70,7 +70,9 @@
                                                             </span>
                                                         </div-->
                                                         <label for="fecha_nacim">Estatus</label>
-                                                        <input type="text" class="form-control" name="estatusMateria" id="estatusMateria" required="required">
+                                                        <select class="form-control" name="estatusMateria" id="estatusMateria" required="required">
+                                                         <option value="1">Activo</option>
+                                                        </select>
                                                     </div>
                                                 </div>
                                             </div>

@@ -23,7 +23,7 @@ class Student extends CI_Controller {
     
     public function index(){
 
-        if($this->sesionActiva()){
+        if($this->sesionActiva() && $this->validaUser()){
             $id = $this->session->userdata("id");
             $status=$this->validateStatus($id);
             //Hago una validación exclusiva para validar si el usuario está bloqueado
@@ -45,7 +45,7 @@ class Student extends CI_Controller {
         }
     }
     public function validateStatus($idUser){
-        if($this->sesionActiva()){
+        if($this->sesionActiva() && $this->validaUser()){
            $data["info"]= $this->Usermodel->getStatus($idUser);
             return($data["info"]->estatus);
         }else{
@@ -56,7 +56,7 @@ class Student extends CI_Controller {
  * Modulo chat
  */////////////////////////////////////////////////////////////////////////////
     public function messages(){
-        if($this->sesionActiva()){
+        if($this->sesionActiva() && $this->validaUser()){
            /*
              * recuperar lista de chat disponibles
              * empezando con las materias del profe
@@ -165,7 +165,7 @@ class Student extends CI_Controller {
  */////////////////////////////////////////////////////////////////////////////
     
     public function asignature($idpm){
-        
+      if($this->sesionActiva() && $this->validaUser()){  
         $idalumno = $this->session->userdata("idalumno");
         //recuperar tareas que ha subido profe a idpm
         $tareas = $this->Alumnomodel->getTareasMateriaAlumno($idpm);
@@ -184,6 +184,9 @@ class Student extends CI_Controller {
         $data["grupo"] = $this->Alumnomodel->getInfoGrupo($idpm);
        
         $this->load->view("student/homeworks",$data);
+        }else{
+            redirect("/");
+        }
     }
 
 /* ////////////////////////////////////////////////////////////////////////////
@@ -191,7 +194,7 @@ class Student extends CI_Controller {
  */////////////////////////////////////////////////////////////////////////////
      
     public function profile(){
-        if($this->sesionActiva()){
+        if($this->sesionActiva() && $this->validaUser()){
             $idalumno = $this->session->userdata("idalumno");
 
             //select from alumno_tarea donde idtarea = idtarea
@@ -206,7 +209,7 @@ class Student extends CI_Controller {
     
     public function saveDataProfile(){
         
-        if($this->sesionActiva()){
+        if($this->sesionActiva() && $this->validaUser()){
             
             $idalumno = $this->session->userdata("idalumno");
              
@@ -243,7 +246,7 @@ class Student extends CI_Controller {
  * Modulo calificaciones
  */////////////////////////////////////////////////////////////////////////////
     public function grades(){
-        if($this->sesionActiva()){
+        if($this->sesionActiva() && $this->validaUser()){
             $idalumno = $this->session->userdata("idalumno");
             $data["calificaciones"]=$this->Alumnomodel->getGrades($idalumno);
             if($data["calificaciones"]!="-1"){
@@ -265,7 +268,7 @@ class Student extends CI_Controller {
     }   
     
     public function exportPDF(){
-        if($this->sesionActiva()){
+        if($this->sesionActiva() && $this->validaUser()){
             $idalumno = $this->session->userdata("idalumno");
             $data["alumnoData"] = $this->Alumnomodel->getInfoAlumno($idalumno);
             $data["calificaciones"]=$this->Alumnomodel->getGrades($idalumno);
@@ -317,9 +320,16 @@ class Student extends CI_Controller {
             return false; 
         }
     }
-    
+    public function validaUser(){
+        $rol=$this->session->userdata("rol");
+        if($rol=="3"){ //caso de alumno
+            return true;
+        }else{
+            return false;
+        }
+    }
     public function pdf(){
-        if($this->sesionActiva()){
+        if($this->sesionActiva() && $this->validaUser()){
             $idalumno = $this->session->userdata("idalumno");
             $data["alumnoData"] = $this->Alumnomodel->getInfoAlumno($idalumno);
             $data["calificaciones"]=$this->Alumnomodel->getGrades($idalumno);

@@ -21,7 +21,7 @@ class Admin extends CI_Controller {
     }
     
     public function index(){
-        if($this->sesionActiva()){
+        if($this->sesionActiva() && $this->validaUser()){
             $this->load->view('admin/admin');
         }else{
             redirect('/');
@@ -33,7 +33,7 @@ class Admin extends CI_Controller {
  =============================================================================*/    
         
     public function users(){
-        if($this->sesionActiva()){
+        if($this->sesionActiva() && $this->validaUser()){
             $data["usuarios"] = $this->Usermodel->getUsers();
             $this->load->view('admin/users',$data);
         }else{
@@ -42,7 +42,7 @@ class Admin extends CI_Controller {
     }
     
     public function register(){
-        if($this->sesionActiva()){
+        if($this->sesionActiva() && $this->validaUser()){
             $data["usuarios"] = $this->Usermodel->getUsers();
             $this->load->view('admin/register',$data);
         }else{
@@ -51,7 +51,7 @@ class Admin extends CI_Controller {
     }
      
     public function nuevoUsuario(){
-        if($this->sesionActiva()){
+        if($this->sesionActiva() && $this->validaUser()){
             if($this->input->post()){
                 $info=$this->input->post(); 
                 //$edad=$this->calcularEdad($info["fecha_nacim"]);
@@ -86,7 +86,7 @@ class Admin extends CI_Controller {
     }  
     
     public function editarUsuario($id){
-        if($this->sesionActiva()){
+        if($this->sesionActiva() && $this->validaUser()){
             $result=$this->Usermodel->getRol($id); 
             if($result){
                 switch ($result["rol"]) {
@@ -118,7 +118,7 @@ class Admin extends CI_Controller {
     }
     
     public function eliminarUsuario($id){
-        if($this->sesionActiva()){
+        if($this->sesionActiva() && $this->validaUser()){
              $result=$this->Usermodel->getRol($id); 
              if($result){
                 switch ($result["rol"]) {
@@ -127,6 +127,16 @@ class Admin extends CI_Controller {
                         break;
                      case '2':
                         $tabla="profesores"; 
+                        $idpm=$this->Usermodel->getIdPmProfesor($id);
+                        //en caso de ser profesores se debe elimnar la relación de la tabla profesor alumno materia
+                        $this->Adminmodel->deleteChatProfesorMateria($idpm["id_pm"]);
+                        $this->Adminmodel->deleteTareasProfesorMateria($idpm["id_pm"]);
+
+                        //primero set estatus 2 en tabla profesor_materia
+                        $this->Adminmodel->deleteAlumnosProfesorMateria($idpm["id_pm"]);
+
+                        //primero set estatus 2 en tabla profesor_materia
+                        $this->Adminmodel->deleteProfesorMateria($idpm["id_pm"]);
                         break;
                     case '3':
                         $tabla="alumnos"; 
@@ -153,7 +163,7 @@ class Admin extends CI_Controller {
     }
     
     public function guardarCambios(){
-        if($this->sesionActiva()){
+        if($this->sesionActiva() && $this->validaUser()){
             if($this->input->post()){
                 $info=$this->input->post();
                 $result=$this->Usermodel->editarUser($info);  
@@ -172,7 +182,7 @@ class Admin extends CI_Controller {
     }
    
     public function blockUser($id){
-          if($this->sesionActiva()){
+          if($this->sesionActiva() && $this->validaUser()){
             /* Primero se cambia el estatus del ususario a bloqueado, Estatus de bloqueo =2 */
             $result=$this->Usermodel->changeStatus($id,2);
             if($result){
@@ -183,7 +193,7 @@ class Admin extends CI_Controller {
          }
     }
     public function unBlockUser($id){
-          if($this->sesionActiva()){
+          if($this->sesionActiva() && $this->validaUser()){
             $result=$this->Usermodel->changeStatus($id,1);
             if($result){
               redirect('admin/users');   
@@ -193,7 +203,7 @@ class Admin extends CI_Controller {
          }
     }
     public function validateStatus($idUser){
-        if($this->sesionActiva()){
+        if($this->sesionActiva() && $this->validaUser()){
            $status= $this->Usermodel->getStatus($idUser);
             return($status);
         }else{
@@ -205,7 +215,7 @@ class Admin extends CI_Controller {
  =============================================================================*/    
     
     public function asignatures(){
-        if($this->sesionActiva()){
+        if($this->sesionActiva() && $this->validaUser()){
             $data["materias"] = $this->Adminmodel->getAsignatures();
             $this->load->view('admin/asignatures',$data);
         }else{
@@ -215,7 +225,7 @@ class Admin extends CI_Controller {
 
 
     public function registerAsignatures(){
-        if($this->sesionActiva()){
+        if($this->sesionActiva() && $this->validaUser()){
             $data["materias"] = $this->Adminmodel->getAsignatures();
             $this->load->view('admin/asignatures',$data);
         }else{
@@ -224,7 +234,7 @@ class Admin extends CI_Controller {
     }
     
     public function deleteProfesorMateria(){
-        if($this->sesionActiva()){
+        if($this->sesionActiva() && $this->validaUser()){
             //rewcupero json con datos de select's
             $idpm = $this->input->post("idpm"); 
             
@@ -247,7 +257,7 @@ class Admin extends CI_Controller {
     }
     
     public function createSubject(){
-        if($this->sesionActiva()){
+        if($this->sesionActiva() && $this->validaUser()){
             if($this->input->post()){
                 $info=$this->input->post();
                $idSubject=$this->Adminmodel->createSubject($info);
@@ -266,7 +276,7 @@ class Admin extends CI_Controller {
         }
     }
     public function editSubject($id){
-        if($this->sesionActiva()){
+        if($this->sesionActiva() && $this->validaUser()){
             if($this->input->post()){
             $info=$this->input->post();
             $result=$this->Adminmodel->editSubject($id,$info);
@@ -291,14 +301,22 @@ class Admin extends CI_Controller {
 
     }
     public function deleteSubject($id){
-        if($this->sesionActiva()){
-            $result=$this->Adminmodel->deleteSubject($id);
-            if($result){
-               redirect('admin/asignatures'); 
+        if($this->sesionActiva() && $this->validaUser()){
+            //validamos que no exista alguna dependencia en profesor materia
+            $rel=$this->Adminmodel->getProfesorMateria($id);
+            if($rel!="-1"){
+                $this->session->set_flashdata('msg', 'No se puede elimar al usuario - considerar eliminar primero grupos relacionados');
+                redirect('admin/asignatures');
             }else{
-               /* Llamar a página de error*/
-                echo "error";  
+                $result=$this->Adminmodel->deleteSubject($id);
+                if($result){
+                   redirect('admin/asignatures'); 
+                }else{
+                   /* Llamar a página de error*/
+                    echo "error - eliminar usuario";  
+                } 
             }
+
         }else{
             redirect('/');   
         }
@@ -310,7 +328,7 @@ class Admin extends CI_Controller {
  =============================================================================*/    
     
     public function groups(){
-        if($this->sesionActiva()){
+        if($this->sesionActiva() && $this->validaUser()){
             
             $alumnosMateriaArray = array();
             
@@ -343,6 +361,7 @@ class Admin extends CI_Controller {
     }
     
     public function studentsGroups($idpm){
+        if($this->sesionActiva() && $this->validaUser()){
         $alumnosMateria = $this->Adminmodel->getAlumnosMateria($idpm);
 
         $data["grupo"] = $this->Adminmodel->getDataGrupo($idpm);
@@ -351,6 +370,9 @@ class Admin extends CI_Controller {
         $data["alumnos"] = $this->Adminmodel->getAlumnos();
 
         $this->load->view("admin/studentsGroup",$data);
+    }else{
+        redirect("/");
+    }
     }
     
     public function getAlumnosGrupo(){
@@ -360,7 +382,7 @@ class Admin extends CI_Controller {
     }
     
     public function saveProfesroMateria(){
-        if($this->sesionActiva()){
+        if($this->sesionActiva() && $this->validaUser()){
             //rewcupero json con datos de select's
             $datos = $this->input->post("data"); 
             $json = json_decode($datos);
@@ -426,7 +448,11 @@ class Admin extends CI_Controller {
     }
     
     public function createBanner(){
-        $this->load->view("admin/bannerNew");        
+        if($this->sesionActiva() && $this->validaUser()){
+        $this->load->view("admin/bannerNew");  
+        }else{
+            redirect('/');
+        }      
     }
 
     public function deleteBanner(){
@@ -477,19 +503,28 @@ class Admin extends CI_Controller {
             return false; 
         }
     }
-    
+    public function validaUser(){
+        $rol=$this->session->userdata("rol");
+        if($rol=="1"){ //caso de adm
+            return true;
+        }else{
+            return false;
+        }
+    }
+ /* =============================================================================
+ * Modulo para excel
+ =============================================================================*/       
     public function openExcel(){
         $this->load->view("admin/excel");
     }
     
-    public function readExcelUsuarios(){        
+    public function readExcelUsuarios(){     
+    if($this->sesionActiva()){   
         if ($_FILES['excelFile']) {
             $data = $_FILES['excelFile']["tmp_name"];
         }
-        
         //$data = $this->input->post('excelFile');
         $file = $data;//'./libro.xlsx';
- 
         //load the excel library
         $this->load->library('excel');
 
@@ -501,31 +536,35 @@ class Admin extends CI_Controller {
 
         //extract to a PHP readable array format
         foreach ($cell_collection as $cell) {
+
             $column = $objPHPExcel->getActiveSheet()->getCell($cell)->getColumn();
             $row = $objPHPExcel->getActiveSheet()->getCell($cell)->getRow();
             $data_value = $objPHPExcel->getActiveSheet()->getCell($cell)->getValue();
 
             if ($data_value == ""){
+
                 break;
             }
             
             //The header will/should be in row 1 only. of course, this can be modified to suit your need.
             if ($row == 1) {
                 $header[$row][$column] = $data_value;
+
             } else {
+
                 $datosUsuario[$column] =  $data_value;   
                 if($column == "F"){
+                   
                     //guardas datos usuaruio y alumno
                     $info["tipoUser"] = $datosUsuario["C"];
                     $info["correo"] = $datosUsuario["A"];
                     $info["password"] = $datosUsuario["B"];
                     $info["nombre"] = $datosUsuario["D"];
                     $info["matricula"] = $datosUsuario["E"];
-
-                    $result=$this->Adminmodel->crearUsuario($info); 
-
+                    $info["fecha_nacim"] = $datosUsuario["F"];
+                    $result=$this->Usermodel->crearUsuario($info); 
                     // Se crea al estudiante
-                    $resultAlumno=$this->Adminmodel->crearAlumno($info,$result,0);
+                    $resultAlumno=$this->Usermodel->crearAlumno($info,$result[0],0);
                     if($resultAlumno){
                         continue;
                     }else{
@@ -539,7 +578,15 @@ class Admin extends CI_Controller {
 
         //$users["usuarios"] = $this->Usermodel->getUsers();
         //$this->load->view('admin/users',$users);
+        if($this->session->userdata("rol")=="1"){
         redirect('admin/users');
+        }else{
+        redirect('director/users');    
+        }
+    }else{
+        redirect('/');
+    }
+        
         //send the data in an array format
         //$data['header'] = $header;
         //$data['values'] = $arr_data;

@@ -21,6 +21,7 @@ class Login extends CI_Controller {
         if($res['id'] != "-1"){
 
             $this->session->set_userdata("id",$res['id']);
+            $this->session->set_userdata("rol",$res['rol']);
             $this->session->set_userdata("session","1");
 
             echo $res['rol'];

@@ -112,9 +112,10 @@
                                                 <label for="password2">Repita la contraseña</label>
                                                 <input type="password" class="form-control" id="password2" name="password2" placeholder="Escriba nuevamente la contraseña">
                                             </div>
+                                             <span id='message'></span>
                                         </div>	
                                         <div class="text-center">
-                                            <button class="_button msg-warning" type="submit">
+                                            <button class="_button msg-warning" id="btnCrear"  type="submit">
                                                <span>Crear usuario</span>
                                            </button>
                                         </div>
@@ -146,7 +147,7 @@
                     <div class="modal-body">
                       <p>Selecciona el documento de excel con la plantilla definida.</p>
                         <div class="form-group">
-                          <input type="file" class="form-control-file" id="excelFile" name="excelFile">
+                          <input type="file" class="form-control-file" id="excelFile" name="excelFile" required="required">
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -168,6 +169,17 @@
     $(function () {
         $('#datetimepicker1').datetimepicker();
     });
+
+    $('#password, #password2').on('keyup', function () {
+  if ($('#password').val() == $('#password2').val()) {
+    $('#message').html('Correcto').css('color', 'green');
+    $('#btnCrear').removeAttr("disabled");
+  } else {
+    $('#message').html('Las contraseña no coincide').css('color', 'red');
+    $('#btnCrear').attr("disabled", true);
+  }
+
+});    
 </script>
 </body>
 </html>

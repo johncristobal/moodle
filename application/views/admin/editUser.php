@@ -102,6 +102,7 @@
                                                 <input type="password" class="form-control" id="password2" name="password2" placeholder="Escriba nuevamente la contraseña">
                                             </div>
                                         </div>	
+                                         <span id='message'></span>
                                         <div class="text-center">
                                             <input type="button" value="Guardar cambios" id ="editForm" class="msg-warning btn btn-info" >
                                             <!--<button type="button" class="msg-warning btn btn-info">Advertencia con condicion</button>-->
@@ -155,6 +156,16 @@
     $(function () {
         $('#datetimepicker1').datetimepicker();
     });
+    $('#password, #password2').on('keyup', function () {
+  if ($('#password').val() == $('#password2').val()) {
+    $('#message').html('Correcto').css('color', 'green');
+    $('#editForm').removeAttr("disabled");
+  } else {
+    $('#message').html('Las contraseña no coincide').css('color', 'red');
+    $('#editForm').attr("disabled", true);
+  }
+
+});     
 </script>
 </body>
 </html>

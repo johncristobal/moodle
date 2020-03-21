@@ -22,7 +22,7 @@ class Teacher extends CI_Controller {
     }
     
     public function index(){
-        if($this->sesionActiva()){
+        if($this->sesionActiva() && $this->validaUser()){
             $id = $this->session->userdata("id");
             $idprofesor = $this->Profesormodel->getIdProfesor($id);
             $this->session->set_userdata("idprofesor",$idprofesor["id"]);
@@ -39,7 +39,7 @@ class Teacher extends CI_Controller {
  */////////////////////////////////////////////////////////////////////////////
     
     public function messages(){
-        if($this->sesionActiva()){
+        if($this->sesionActiva() && $this->validaUser()){
             /*
              * recuperar lista de chat disponibles
              * empezando con las materias del profe
@@ -144,7 +144,7 @@ class Teacher extends CI_Controller {
     
     public function asignatures(){
         
-        if($this->sesionActiva()){
+        if($this->sesionActiva() && $this->validaUser()){
             //recupero id profesor
             $idprofesor = $this->session->userdata("idprofesor");
 
@@ -190,7 +190,7 @@ class Teacher extends CI_Controller {
  
     public function homework_alumno($idtarea){
         //select from alumno_tarea donde idtarea = idtarea
-        if($this->sesionActiva()){
+        if($this->sesionActiva() && $this->validaUser()){
             $tareas = $this->Profesormodel->getTareasAlumno($idtarea);
             $data["tareas"] = $tareas;
             $this->load->view("teacher/homeworks_alumno",$data);
@@ -205,7 +205,7 @@ class Teacher extends CI_Controller {
  */////////////////////////////////////////////////////////////////////////////
      
     public function profile(){
-        if($this->sesionActiva()){
+        if($this->sesionActiva() && $this->validaUser()){
             $idprofesor = $this->session->userdata("idprofesor");
 
             //select from alumno_tarea donde idtarea = idtarea
@@ -220,7 +220,7 @@ class Teacher extends CI_Controller {
     
     public function saveDataProfile(){
         
-        if($this->sesionActiva()){
+        if($this->sesionActiva() && $this->validaUser()){
             
             $idprofesor = $this->session->userdata("idprofesor");
              
@@ -258,7 +258,7 @@ class Teacher extends CI_Controller {
  * Modulo calificaciones
  */////////////////////////////////////////////////////////////////////////////
     public function grades(){
-        if($this->sesionActiva()){
+        if($this->sesionActiva() && $this->validaUser()){
             $idprofesor = $this->session->userdata("idprofesor");
                         /*
              * con idprofesor recuperas materias de tabla profesor_materia
@@ -301,7 +301,7 @@ class Teacher extends CI_Controller {
 
     }
     public function editGrades($idAlumno,$idpm){
-        if($this->sesionActiva()){
+        if($this->sesionActiva() && $this->validaUser()){
             if($this->input->post()){
                 $examenes=$this->input->post("examenes");
                 $tareasComp=$this->input->post("tareasComp");
@@ -336,6 +336,15 @@ class Teacher extends CI_Controller {
             return true;
         }else{
             return false; 
+        }
+    }
+    
+    public function validaUser(){
+        $rol=$this->session->userdata("rol");
+        if($rol=="2"){ //caso de profesor
+            return true;
+        }else{
+            return false;
         }
     }
 }
