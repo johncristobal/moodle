@@ -283,7 +283,7 @@ class Student extends CI_Controller {
             
             // Load pdf library
             $this->load->library('pdfgenerator');
-
+              $this->dompdf->set_option('isRemoteEnabled', true);  
             // Load HTML content
             $this->dompdf->loadHtml($html);
 

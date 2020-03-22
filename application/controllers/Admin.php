@@ -18,6 +18,7 @@ class Admin extends CI_Controller {
         parent::__construct();
         $this->load->model('Adminmodel');
         $this->load->model('Usermodel');
+        $this->load->library('encrypt');
     }
     
     public function index(){
@@ -56,11 +57,12 @@ class Admin extends CI_Controller {
                 $info=$this->input->post(); 
                 //$edad=$this->calcularEdad($info["fecha_nacim"]);
                 //Se crea primero al usuario
+                $info["password"]= password_hash($info["password"], PASSWORD_DEFAULT);
                 $result=$this->Usermodel->crearUsuario($info); 
                 
                 switch($result[1]){
                     case "profesores":
-                        // Se crea al estudiante
+                        // Se crea al profesor
                         $resultU=$this->Usermodel->crearProfesor($info,$result[0]);
                         break;
                     case "alumnos":
@@ -68,7 +70,7 @@ class Admin extends CI_Controller {
                         $resultU=$this->Usermodel->crearAlumno($info,$result[0]);
                         break;
                     case "directores":
-                        // Se crea al estudiante
+                        // Se crea al director
                         $resultU=$this->Usermodel->crearDirector($info,$result[0]);
                         break;
                     default: 
@@ -558,7 +560,7 @@ class Admin extends CI_Controller {
                     //guardas datos usuaruio y alumno
                     $info["tipoUser"] = $datosUsuario["C"];
                     $info["correo"] = $datosUsuario["A"];
-                    $info["password"] = $datosUsuario["B"];
+                    $info["password"]= password_hash($datosUsuario["B"], PASSWORD_DEFAULT);
                     $info["nombre"] = $datosUsuario["D"];
                     $info["matricula"] = $datosUsuario["E"];
                     $info["fecha_nacim"] = $datosUsuario["F"];

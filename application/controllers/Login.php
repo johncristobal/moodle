@@ -17,14 +17,19 @@ class Login extends CI_Controller {
         
         $data = $this->input->post();        
         $res = $this->Loginmodel->validateLogin($data); 
-        
+        //$passInput=password_hash($data["pass"], PASSWORD_DEFAULT);
         if($res['id'] != "-1"){
-
-            $this->session->set_userdata("id",$res['id']);
+            if (password_verify($data["pass"],$res['password'])) {
+             $this->session->set_userdata("id",$res['id']);
             $this->session->set_userdata("rol",$res['rol']);
             $this->session->set_userdata("session","1");
 
-            echo $res['rol'];
+            echo $res['rol'];               
+            }
+            else{
+            echo "Verifica datos";
+        }
+
 
         }else{
             echo "Verifica datos";
