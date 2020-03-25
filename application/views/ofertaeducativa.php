@@ -64,7 +64,7 @@
                     <div class="teacher">
                         <div class="teacher_image"><img src="<?=base_url(); ?>images/course_1.jpg"></div>
                         <div class="teacher_body text-center">
-                            <div class="teacher_title"><a href="<?= base_url()?>ofertaeducativa/bachillerato">Bachillerato 18 meses</a></div>
+                            <div class="teacher_title"><a href="<?= base_url()?>OfertaEducativa/bachillerato">Bachillerato 18 meses</a></div>
                             <div class="teacher_subtitle">Bachillerato</div>
                         </div>
                     </div>
@@ -74,7 +74,7 @@
                     <div class="teacher">
                         <div class="teacher_image"><img src="<?=base_url(); ?>images/course_2.jpg" ></div>
                         <div class="teacher_body text-center">
-                            <div class="teacher_title"><a href="<?= base_url()?>ofertaeducativa/derecho">Derecho</a></div>
+                            <div class="teacher_title"><a href="<?= base_url()?>OfertaEducativa/derecho">Derecho</a></div>
                             <div class="teacher_subtitle">Licenciatura</div>
                         </div>
                     </div>
@@ -85,7 +85,7 @@
                     <div class="teacher">
                         <div class="teacher_image"><img src="<?=base_url(); ?>images/course_3.jpg"></div>
                         <div class="teacher_body text-center">
-                            <div class="teacher_title"><a href="<?= base_url()?>ofertaeducativa/contaduria">Contaduría</a></div>
+                            <div class="teacher_title"><a href="<?= base_url()?>OfertaEducativa/contaduria">Contaduría</a></div>
                             <div class="teacher_subtitle">Licenciatura</div>
                         </div>
                     </div>
@@ -96,7 +96,7 @@
                     <div class="teacher">
                         <div class="teacher_image"><img src="<?=base_url(); ?>images/course_4.jpg" ></div>
                         <div class="teacher_body text-center">
-                            <div class="teacher_title"><a href="<?= base_url()?>ofertaeducativa/psicologia">Psicología</a></div>
+                            <div class="teacher_title"><a href="<?= base_url()?>OfertaEducativa/psicologia">Psicología</a></div>
                             <div class="teacher_subtitle">Licenciatura</div>
                         </div>
                     </div>
@@ -107,7 +107,7 @@
                     <div class="teacher">
                         <div class="teacher_image"><img src="<?=base_url(); ?>images/course_5.jpg" ></div>
                         <div class="teacher_body text-center">
-                            <div class="teacher_title"><a href="<?= base_url()?>ofertaeducativa/pedagogia">Pedagogía</a></div>
+                            <div class="teacher_title"><a href="<?= base_url()?>OfertaEducativa/pedagogia">Pedagogía</a></div>
                             <div class="teacher_subtitle">Licenciatura</div>
                         </div>
                     </div>
@@ -118,7 +118,7 @@
                     <div class="teacher">
                         <div class="teacher_image"><img src="<?=base_url(); ?>images/course_6.jpg" alt="https://unsplash.com/@christinhumephoto"></div>
                         <div class="teacher_body text-center">
-                            <div class="teacher_title"><a href="<?= base_url()?>ofertaeducativa/admempresas">Administración de empresas</a></div>
+                            <div class="teacher_title"><a href="<?= base_url()?>OfertaEducativa/admempresas">Administración de empresas</a></div>
                             <div class="teacher_subtitle">Licenciatura</div>
                         </div>
                     </div>
@@ -129,7 +129,7 @@
                     <div class="teacher">
                         <div class="teacher_image"><img src="<?=base_url(); ?>images/course_9.jpg"></div>
                         <div class="teacher_body text-center">
-                            <div class="teacher_title"><a href="<?= base_url()?>ofertaeducativa/computacion">Plan de computación</a></div>
+                            <div class="teacher_title"><a href="<?= base_url()?>OfertaEducativa/computacion">Plan de computación</a></div>
                             <div class="teacher_subtitle">Profesional</div>
                         </div>
                     </div>

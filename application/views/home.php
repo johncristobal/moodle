@@ -353,10 +353,14 @@
 -->
 <?php $this->load->view('footer')?>
 
-
+<?php $this->load->view('scripts'); ?> 
 <script>
     var urlApi = "<?php echo base_url() ?>";
+
+    <?php if($this->session->flashdata('correo')){ ?>
+    swal("Muchas gracias por su contacto", "<?php echo $this->session->flashdata('correo'); ?>", "success");
+    <?php } ?>    
 </script>
-<?php $this->load->view('scripts'); ?> 
+
 </body>
 </html>

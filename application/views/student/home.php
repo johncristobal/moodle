@@ -287,12 +287,6 @@
                             </a>
                         </div>
                         <div class="row mt-2">
-                            <a href="#">
-                            <span class="smallCustom">Contacto</span>
-                            <span class="fa fa-phone"></span>                            
-                            </a>
-                        </div>
-                        <div class="row mt-2">
                             <a href="<?= base_url() ?>student/profile">
                             <span class="smallCustom">Perfil</span>
                             <span class="fa fa-image"></span>                            
@@ -305,18 +299,6 @@
                             </a>
                         </div>
                     </div>
-		<!--div class="menu_extra">
-			<div class="menu_phone"><span class="menu_title">phone:</span>(009) 35475 6688933 32</div>
-			<div class="menu_social">
-				<span class="menu_title">follow us</span>
-				<ul>
-					<li><a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
-					<li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-					<li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
-					<li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-				</ul>
-			</div>
-		</div-->
 	</div>
         
 <?php $this->load->view('footer')?>

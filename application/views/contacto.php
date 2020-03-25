@@ -11,27 +11,30 @@
                                 Déjanos un mensaje
                               </h2>
                                     <br>
-                                    <form id="contactForm" name="sentMessage" novalidate="novalidate">
+                                    <form action="<?= base_url();?>contacto/enviarCorreo" method="post"name="sentMessage" >
                                 <div class="row">
                                   <div class="col-md-6">
                                     <div class="form-group">
-                                      <input class="form-control" id="name" type="text" placeholder="Nombre" required="required" data-validation-required-message="Ingresa tu nombre.">
+                                      <input class="form-control" name="name" id="name" type="text" placeholder="Nombre" required="required" data-validation-required-message="Ingresa tu nombre.">
                                       <p class="help-block text-danger"></p>
                                     </div>
                                     <div class="form-group">
-                                      <input class="form-control" id="email" type="email" placeholder="Correo" required="required" data-validation-required-message="Ingresa tu contraseña.">
+                                      <input class="form-control" name="email" id="email" type="email" placeholder="Correo" required="required" data-validation-required-message="Ingresa tu contraseña.">
                                       <p class="help-block text-danger"></p>
                                     </div>
                                     <div class="form-group">
-                                      <input class="form-control" id="phone" type="tel" placeholder="Teléfono">
+                                      <input class="form-control"  name="phone" id="phone" type="tel" placeholder="Teléfono">
                                       <p class="help-block text-danger"></p>
                                     </div>
                                   </div>
                                   <div class="col-md-6">
                                     <div class="form-group">
-                                      <textarea class="form-control" id="message" placeholder="Mensaje" required="required" data-validation-required-message="Ingresa tu mensaje."></textarea>
+                                      <textarea class="form-control" name="message" id="message" placeholder="Mensaje" required="required" data-validation-required-message="Ingresa tu mensaje."></textarea>
                                       <p class="help-block text-danger"></p>
                                     </div>
+                                     <div class="form-group">
+                                    	<div class="g-recaptcha" data-sitekey="<?= $this->config->item('google_key');?>" required></div>
+                                	</div>
                                   </div>
                                   <div class="clearfix"></div>
                                   <div class="col-lg-12 text-center">

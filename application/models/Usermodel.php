@@ -246,7 +246,7 @@ class Usermodel extends CI_Model {
        $result=$this->db->delete('alumno_profesor_materia');  
        if($result){
         $this->db->where('id_alumno', $idAlumno);
-       $result=$this->db->delete('alumno_tareas');  
+       $result2=$this->db->delete('alumno_tareas');  
            if ($result2){
             return true;  
            } else{
@@ -258,7 +258,7 @@ class Usermodel extends CI_Model {
     }   
      public function eliminarProfAlum_Prof($idPm){
        $this->db->where('id_pm', $idPm);
-       $result=$this->db->delete('alumno_profesor_materia');  
+       $result2=$this->db->delete('alumno_profesor_materia');  
        if($result){
         $this->db->where('id_alumno', $idAlumno);
        $result=$this->db->delete('alumno_tareas');  

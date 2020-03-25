@@ -88,24 +88,6 @@
                             <li class="menu_mm"><a href="<?= base_url() ?>admin/groups">Grupos</a></li>
                             <li class="menu_mm"><a href="<?= base_url() ?>admin/banners">Anuncios</a></li>
                             <li class="menu_mm"><a href="<?= base_url() ?>admin/cerrar">Cerrar sesión</a></li>
-				<!--li class="menu_mm"><a href="index.html">Home</a></li>
-				<li class="menu_mm"><a href="courses.html">Courses</a></li>
-				<li class="menu_mm"><a href="instructors.html">Instructors</a></li>
-				<li class="menu_mm"><a href="#">Events</a></li>
-				<li class="menu_mm"><a href="blog.html">Blog</a></li>
-				<li class="menu_mm"><a href="contact.html">Contact</a></li-->
 			</ul>
 		</nav>
-		<div class="menu_extra">
-			<div class="menu_phone"><span class="menu_title">phone:</span>(009) 35475 6688933 32</div>
-			<div class="menu_social">
-				<span class="menu_title">follow us</span>
-				<ul>
-					<li><a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i></a></li>
-					<li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
-					<li><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
-					<li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
-				</ul>
-			</div>
-		</div>
 	</div>

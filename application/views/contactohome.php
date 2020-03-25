@@ -74,29 +74,33 @@
                                     <h2 class="section-subheading text-center">
                                 Déjanos un mensaje
                               </h2>
-                                    <br>
-                                    <form id="contactForm" name="sentMessage" novalidate="novalidate">
+                                    <br> 
+                                    <form  action="<?= base_url();?>contacto/enviarCorreo" method="post" name="sentMessage" >
                                 <div class="row">
                                   <div class="col-md-6">
                                     <div class="form-group">
-                                      <input class="form-control" id="name" type="text" placeholder="Nombre" required="required" data-validation-required-message="Ingresa tu nombre.">
+                                      <input class="form-control" id="name" name="name" type="text" placeholder="Nombre" required="required" data-validation-required-message="Ingresa tu nombre.">
                                       <p class="help-block text-danger"></p>
                                     </div>
                                     <div class="form-group">
-                                      <input class="form-control" id="email" type="email" placeholder="Correo" required="required" data-validation-required-message="Ingresa tu contraseña.">
+                                      <input class="form-control" id="email" name="email" type="email" placeholder="Correo" required="required" data-validation-required-message="Ingresa tu contraseña.">
                                       <p class="help-block text-danger"></p>
                                     </div>
                                     <div class="form-group">
-                                      <input class="form-control" id="phone" type="tel" placeholder="Teléfono">
+                                      <input class="form-control" id="phone" name="phone" type="tel" placeholder="Teléfono">
                                       <p class="help-block text-danger"></p>
                                     </div>
                                   </div>
                                   <div class="col-md-6">
                                     <div class="form-group">
-                                      <textarea class="form-control" id="message" placeholder="Mensaje" required="required" data-validation-required-message="Ingresa tu mensaje."></textarea>
+                                      <textarea class="form-control" id="message"  name="message" placeholder="Mensaje" required="required" data-validation-required-message="Ingresa tu mensaje."></textarea>
                                       <p class="help-block text-danger"></p>
                                     </div>
+                                    <div class="form-group">
+                                    	<div class="g-recaptcha" data-sitekey="<?= $this->config->item('google_key');?>" required></div>
+                                	</div>
                                   </div>
+
                                   <div class="clearfix"></div>
                                   <div class="col-lg-12 text-center">
                                       
@@ -106,60 +110,11 @@
                                 </div>
                               </form>
                                 </div>
-                            
-				<!-- Milestone -->
-				<!--div class="col-lg-3 milestone_col">
-					<div class="milestone text-center">
-						<div class="milestone_icon"><img src="images/milestone_1.svg" alt=""></div>
-						<div class="milestone_counter" data-end-value="1548">0</div>
-						<div class="milestone_text">Online Courses</div>
-					</div>
-				</div>
 
-				<!-- Milestone >
-				<div class="col-lg-3 milestone_col">
-					<div class="milestone text-center">
-						<div class="milestone_icon"><img src="images/milestone_2.svg" alt=""></div>
-						<div class="milestone_counter" data-end-value="7286">0</div>
-						<div class="milestone_text">Students</div>
-					</div>
-				</div>
-
-				<!-- Milestone >
-				<div class="col-lg-3 milestone_col">
-					<div class="milestone text-center">
-						<div class="milestone_icon"><img src="images/milestone_3.svg" alt=""></div>
-						<div class="milestone_counter" data-end-value="257">0</div>
-						<div class="milestone_text">Teachers</div>
-					</div>
-				</div>
-
-				<!-- Milestone >
-				<div class="col-lg-3 milestone_col">
-					<div class="milestone text-center">
-						<div class="milestone_icon"><img src="images/milestone_4.svg" alt=""></div>
-						<div class="milestone_counter" data-end-value="39">0</div>
-						<div class="milestone_text">Countries</div>
-					</div>
-				</div-->
 
 			</div>
 		</div>
 	</div>
-	<!-- Join -->
-<!--
-	<div class="join">
-		<div class="container">
-			<div class="row">
-				<div class="col-lg-10 offset-lg-1">
-					<div class="section_title text-center"><h2>Join Our Platform Today</h2></div>
-					<div class="section_subtitle">Suspendisse tincidunt magna eget massa hendrerit efficitur. Ut euismod pellentesque imperdiet. Cras laoreet gravida lectus, at viverra lorem venenatis in. Aenean id varius quam. Nullam bibendum interdum dui, ac tempor lorem convallis ut</div>
-				</div>
-			</div>
-		</div>
-		<div class="button join_button"><a href="#">register now<div class="button_arrow"><i class="fa fa-angle-right" aria-hidden="true"></i></div></a></div>
-	</div>
--->
 <?php $this->load->view('footer')?>
 
 

@@ -168,6 +168,7 @@ class Admin extends CI_Controller {
         if($this->sesionActiva() && $this->validaUser()){
             if($this->input->post()){
                 $info=$this->input->post();
+                $info["password"]= password_hash($info["password"], PASSWORD_DEFAULT);
                 $result=$this->Usermodel->editarUser($info);  
                 redirect('admin/users');              
              }

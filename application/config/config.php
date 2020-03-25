@@ -23,7 +23,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://localhost/Moodle/';
+$config['base_url'] = 'http://localhost/Moodle';
 
 /*
 |--------------------------------------------------------------------------
@@ -36,6 +36,16 @@ $config['base_url'] = 'http://localhost/Moodle/';
 |
 */
 $config['index_page'] = '';
+
+//local
+//$config['google_key'] = '6LfPY6AUAAAAAFLo8-6nwwoD6psgdg6S51iv5SEt';
+//host
+$config['google_key'] = '6LfJ3uMUAAAAALPHm2Vbrx2SyFoO3xcJsZiOtql6';
+
+//local
+//$config['google_secret'] = '6LfPY6AUAAAAAIkd1hox7Ysv33Zcsro0C4l-OBRZ';
+//host
+$config['google_secret'] = '6LfJ3uMUAAAAACS0NqHU2vymnsMkWme5A9Rk-i50';
 
 /*
 |--------------------------------------------------------------------------

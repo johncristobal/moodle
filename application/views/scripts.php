@@ -1,3 +1,4 @@
+<script src='https://www.google.com/recaptcha/api.js?hl=es'></script>
 <script src="<?= base_url() ?>js/jquery-3.2.1.min.js"></script>
 <script src="<?= base_url() ?>styles/bootstrap4/popper.js"></script>
 <script src="<?= base_url() ?>styles/bootstrap4/bootstrap.min.js"></script>

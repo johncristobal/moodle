@@ -40,13 +40,13 @@
 					<div class="footer_links">
 						<div class="footer_title">Oferta educativa</div>
 						<ul class="footer_list">
-							<li><a href="<?= base_url();?>ofertaeducativa/bachillerato">Bachillerato en 18 meses</a></li>
-							<li><a href="<?= base_url();?>ofertaeducativa/derecho">Derecho</a></li>
-							<li><a href="<?= base_url();?>ofertaeducativa/contaduria">Contaduría</a></li>
-							<li><a href="<?= base_url();?>ofertaeducativa/psicologia">Psicología</a></li>
-							<li><a href="<?= base_url();?>ofertaeducativa/pedagogia">Pedagogía</a></li>
-							<li><a href="<?= base_url();?>ofertaeducativa/admempresas">Administración de empresas</a></li>
-							<li><a href="<?= base_url();?>ofertaeducativa/computacion">Plan de computación</a></li>
+							<li><a href="<?= base_url();?>OfertaEducativa/bachillerato">Bachillerato en 18 meses</a></li>
+							<li><a href="<?= base_url();?>OfertaEducativa/derecho">Derecho</a></li>
+							<li><a href="<?= base_url();?>OfertaEducativa/contaduria">Contaduría</a></li>
+							<li><a href="<?= base_url();?>OfertaEducativa/psicologia">Psicología</a></li>
+							<li><a href="<?= base_url();?>OfertaEducativa/pedagogia">Pedagogía</a></li>
+							<li><a href="<?= base_url();?>OfertaEducativa/admempresas">Administración de empresas</a></li>
+							<li><a href="<?= base_url();?>OfertaEducativa/computacion">Plan de computación</a></li>
 						</ul>
 					</div>
 				</div>
